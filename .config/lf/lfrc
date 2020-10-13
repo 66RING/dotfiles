@@ -1,0 +1,270 @@
+#     ______         
+#    / / __/_________
+#   / / /_/ ___/ ___/
+#  / / __/ /  / /__  
+# /_/_/ /_/   \___/  
+#                    
+                   
+#************************
+#* global setting 
+#************************
+set previewer /home/ring/.config/lf/scope.sh
+set shell bash
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set color256
+set icons
+
+
+#************************
+#* scripts
+#************************
+cmd quit_back ${{
+    lf -remote "send $id cd $LF_BACK"
+    lf -remote "send $id quit"
+}}
+
+cmd open_with ${{
+    if [ $# -gt 0 ]; then
+        $1 $fx
+    fi
+    lf -remote "send $id unselect"
+}}
+
+cmd open ${{
+    case $(file --mime-type $f -b) in
+        # text file
+        text/*|application/octet-stream|*/json|*/x-empty) $EDITOR $f;;
+        */csv|inode/symlink) $EDITOR $fx;;
+
+        audio/*) mpv --audio-display=no $f ;;
+        video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+        #office things
+        image/vnd.djvu|application/pdf|application/epub*) setsid -f wpspdf $fx >/dev/null 2>&1 ;;
+        application/ppt) setsid -f wpp $fx >/dev/null 2>&1 ;;
+        application/xlsx) setsid -f et $fx >/dev/null 2>&1 ;;
+        application/docx|application/doc|application/*officedocument*|application/msword) setsid -f wps $fx >/dev/null 2>&1 ;;
+        #default
+        image/*) setsid -f sxiv -a $fx 2>/dev/null ;;
+        *) lf -remote "send $id push :open_with<space>"
+    esac
+}}
+
+
+cmd bulk-rename ${{
+    old=$(mktemp)
+    new=$(mktemp)
+    printf "$fx\n" > $old
+    printf "$fx\n" > $new
+    selected=$(cat $new | wc -l)
+    
+    $EDITOR $new
+    paste $old $new | while read names; do
+        src=$(printf $names | cut -f1)
+        dst=$(printf $names | cut -f2)
+        [ $src = $dst ] && continue
+        [ -e $dst ] && continue
+        mv $src $dst
+    done
+
+    rm $old $new
+    lf -remote "send $id unselect"
+}}
+
+
+# move to ~/tem
+cmd trash ${{
+    if [ $# -lt 2 ]; then
+        ans="N"
+    else
+        ans=$2
+    fi
+    [ $ans = "y" ] || [ $ans = "Y" ] && mv $fx ~/tem
+}}
+
+cmd delete ${{
+    if [ $# -lt 2 ]; then
+        ans="N"
+    else
+        ans=$2
+    fi
+    [ $ans = "y" ] || [ $ans = "Y" ] && rm -rf $fx
+}}
+
+
+# cmd mkdirs $mkdir -p "$(echo $* | tr ' ' '\ ')"
+cmd mkdirs ${{
+    DIR="$(echo $* | tr ' ' '\ ')"
+    mkdir -p $DIR
+    if [ ! -z "$fs" ]; then
+        mv $fs $DIR
+    fi
+    lf -remote "send $id cd $DIR"
+}}
+
+
+cmd mkfiles $nvim $*
+
+
+cmd chmod ${{
+    if [ $# -gt 0 ]; then
+        for file in "$fx"
+        do
+          chmod $1 $file
+        done
+    fi
+    lf -remote "send reload"
+}}
+
+
+cmd extract ${{
+    if [ $# -lt 2 ]; then
+        ans="y"
+    else
+        ans=$2
+    fi
+    [ $ans = "y" ] || [ $ans = "Y" ]&& 
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+
+# compress current file or selected files with tar and gunzip
+cmd creat_tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+
+# compress current file or selected files with zip
+cmd creat_zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 4 | fzf --reverse --preview='head -$LINES {}' --header='Jump to location')"
+    if [ -f "$res" ]; then
+      cmd="select"
+    elif [ -d "$res" ]; then
+      cmd="cd"                                                       
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd fzf_find_in_file ${{
+    res="$(grep --line-buffered --color=never -r "" * | fzf --reverse | cut -d":" -f1)"
+    cmd=""
+    if [ -f "$res" ]; then
+      cmd="select"
+    elif [ -d "$res" ]; then
+      cmd="cd"
+    fi
+    if [ ! -z "$cmd" ]; then
+      lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+
+
+# drag-and-drop
+cmd dragon $dragon-drag-and-drop -a -x $fx
+cmd dlfile $dlfile
+cmd dragon-individual %dragon-drag-and-drop $fx
+
+
+# copy files path
+cmd cpath $echo $fx | tr -d '\n' |  xsel -b
+
+#************************
+#* unbind some default key
+#************************
+map h
+map y
+map d
+map y
+map m
+map w
+map c
+map p
+map e
+map q
+map <c-p>
+
+
+#************************
+#* basic movement
+#************************
+map i up
+map k down
+map I push 5i
+map K push 5k
+map j updir
+map l open
+map e push :open_with<space>
+# use enter for shell commands
+map <enter> shell
+map M mark-save
+
+
+#************************
+#* function key
+#************************
+map yy copy
+map yp cpath
+map pp paste
+map dd cut
+map dD push :delete<space>?[y/N]<space>
+map DD push :trash<space>?[y/N]<space>
+map Q quit_back
+map cw bulk-rename
+map cm push :chmod<space>
+map S quit
+map U !du -sh $fx
+
+# archive things
+map X push :extract<space>?[Y/n]<space>
+map cz push :creat_zip
+map ct push :creat_tar
+
+# file
+map md push :mkdirs<space>
+map mf push :mkfiles<space>
+
+# quick move
+map gf cd ~/.config
+map gm cd ~/Videos
+map gc cd ~/Documents/code
+map gv cd ~/var
+map gs cd ~/scripts
+map gd cd ~/Downloads
+map gu cd /usr
+
+
+#************************
+#* plug
+#************************
+# jump with fuzzy
+map <c-p> :fzf_jump
+map <c-f> :fzf_find_in_file
+
+# drag and drop
+map dr dragon
+map dl dlfile
+map di dragon-individual
+
+# qrcp
+map tp !qrcp $fx

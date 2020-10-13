@@ -3,7 +3,6 @@
 st
 *.orig
 *.rej
-init.vim
 sessions
 plugged
 .netrwhist
@@ -15,5 +14,4 @@ autoload/tablemode.vim
 dein
 
 autoload/charblob.vim
-lua
 plugin/charblob.vim

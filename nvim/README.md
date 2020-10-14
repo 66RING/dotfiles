@@ -19,11 +19,5 @@
 Pretty statusline and tabline
 ![dashboard](./demo/nice_tabbar_and_statusline.png)
 
-## Install
-
-``` 
-git clone https://github.com/66RING/.vim.git ~/.config/nvim
-```
-
 
 

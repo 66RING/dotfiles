@@ -41,7 +41,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'junegunn/vim-easy-align' , { 'on': ['<Plug>(EasyAlign)']}
 "Plug 'tpope/vim-surround' " type ysiw' i sur in word '' or type cs'` to change 'word' to `word` or 'ds' del sur or 'yss'' for sur line h h-> 'h h'
 "Plug 'easymotion/vim-easymotion', { 'on': ['<Plug>(easymotion-sn)']}
-"Plug 'liuchengxu/vim-clap', { 'on': 'Clap', 'do': ':Clap install-binary' }
+Plug 'liuchengxu/vim-clap', { 'on': 'Clap', 'do': ':Clap install-binary' , 'branch': 'fix-shadow-win'}
 "Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'kristijanhusak/defx-icons'
 "" Plug 'junegunn/goyo.vim'  " goyo to turn on goyo! to turn off, g:goyo_  to config

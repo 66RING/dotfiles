@@ -377,6 +377,7 @@ let g:clap_theme = 'material_design_dark'
 let g:clap_current_selection_sign= { 'text': '🚀', 'texthl': "ClapCurrentSelectionSign", "linehl": "ClapCurrentSelection"}
 let g:clap_layout = { 'relative': 'editor' }
 let g:clap_enable_icon = 1
+let g:clap_enable_background_shadow = v:false
 let g:clap_provider_grep_enable_icon = 1
 
 noremap <C-f> :<C-u>Clap filer %:p:h<CR>
@@ -426,25 +427,19 @@ let g:dashboard_custom_header = [
     \]
 
 
-let g:dashboard_custom_section={
-  \ 'empty_buffer': [' Empty Buffer'],
-  \ 'find_history': ['ﭯ History     '],
-  \ 'find_files':   [' Find Files  '],
-  \ }
-
 autocmd FileType dashboard noremap <silent><buffer> e :enew<CR>
 
-function! EMPTY_BUFFER()
-    enew
-endfunction
-
-function! FIND_HISTORY()
-    :Clap history
-endfunction
-
-function! FIND_FILES()
-    :Clap filer
-endfunction
+let g:dashboard_custom_section={
+  \ 'empty_buffer': {
+      \ 'description': [' Empty Buffer'],
+      \ 'command': 'enew' },
+  \ 'find_history': {
+      \ 'description': ['ﭯ History     '],
+      \ 'command': 'Clap history' },
+  \ 'find_file': {
+      \ 'description': [' Find Files  '],
+      \ 'command': 'Clap filer' },
+  \ }
 
 
 "========================

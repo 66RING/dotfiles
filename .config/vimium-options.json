@@ -9,7 +9,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\n# Insert your preferred key mappings here.\nunmap r\nmap k scrollDown\nmap i scrollUp\nmap j scrollLeft\nmap l scrollRight\nmap J previousTab\nmap L nextTab\nmap K scrollPageDown\nmap I scrollPageUp\nmap <a-j> goBack\nmap <a-l> goForward\nmap <a-w> removeTab\nmap <a-t> createTab\nmap <a-r> reload\nmap <a-T> restoreTab",
+  "keyMappings": "# Insert your preferred key mappings here.\n# Insert your preferred key mappings here.\nunmap r\nunmap x\nunmap X\nmap k scrollDown\nmap i scrollUp\nmap j scrollLeft\nmap l scrollRight\nmap J previousTab\nmap L nextTab\nmap K scrollPageDown\nmap I scrollPageUp\nmap <a-j> goBack\nmap <a-l> goForward\nmap <a-w> removeTab\nmap <a-t> createTab\nmap <a-r> reload\nmap <a-T> restoreTab",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",

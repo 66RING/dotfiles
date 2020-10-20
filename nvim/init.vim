@@ -92,6 +92,8 @@ noremap <silent> M :exec ":mark "nr2char(getchar())<CR>
 nmap ' <Plug>(bookmarks_nvim)
 noremap <C-j> 0
 noremap <C-l> $
+inoremap <C-j> <ESC>I
+inoremap <C-l> <ESC>A
 noremap <LEADER><CR> :nohlsearch<CR>
 
 
@@ -318,6 +320,6 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 execute 'source' fnamemodify('$HOME/.config/nvim/config/plugin_config.vim', '')
 " " dein.vim
 execute 'source' fnamemodify('$HOME/.config/nvim/config/dein_plugins.vim', '')
-" execute 'source' fnamemodify('$HOME/.vim/config/plugins.vim', '')
+" execute 'source' fnamemodify('$HOME/.config/nvim/config/plugins.vim', '')
 
 

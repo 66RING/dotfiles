@@ -184,12 +184,14 @@ function! s:dein_init()
         filetype detect
     endif
 
-    if !has('vim_starting')
+    " if !has('vim_starting')
         call dein#call_hook('source')
         call dein#call_hook('post_source')
-    endif
+    " endif
 
 endfunction
 
 
-call s:dein_init()
+if has('vim_starting')
+  call s:dein_init()
+endif

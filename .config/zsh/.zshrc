@@ -10,4 +10,5 @@ source ~/.config/zsh/aliases.zsh
 
 export LFS=/home/ring/var/LFS
 
+fortune -s
 

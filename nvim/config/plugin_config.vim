@@ -404,7 +404,6 @@ vmap <silent> ts <Plug>TranslateWV
 "========================
 " dashboard
 "========================
-let g:dashboard_default_executive = 'vim-clap'
 let g:dashboard_custom_header = [
     \'',
     \'',
@@ -426,6 +425,13 @@ let g:dashboard_custom_header = [
     \'',
     \]
 
+" let g:dashboard_preview_command = 'cowsay'
+" let g:dashboard_preview_file = ' '
+" let g:dashboard_preview_file_height = 9 
+" let g:dashboard_preview_file_width = 30
+
+" let footer = systemlist('fortune -s')
+" let g:dashboard_custom_footer = footer
 
 autocmd FileType dashboard noremap <silent><buffer> e :enew<CR>
 

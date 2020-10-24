@@ -16,11 +16,28 @@
 " autocmd ColorScheme * highlight! Cursorline cterm=bold ctermfg=black guibg=#666666
 " autocmd ColorScheme * highlight! Colorcolumn cterm=bold guibg=#666666
 " set background=dark " dulp in oceanic_material
-" let g:onedark_terminal_italics = 1
 let g:oceanic_material_transparent_background = 1
 let g:colors_name="oceanic_material"
 " call theme#theme_init("dark", "oceanic_material")
 
+
+" Disable vim distribution plugins
+let g:loaded_getscript = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_gzip = 1
+let g:loaded_logiPat = 1
+let g:loaded_matchit = 1
+let g:loaded_matchparen = 1
+let g:loaded_rrhelper = 1  " ?
+let g:loaded_shada_plugin = 1  " ?
+let g:loaded_tar = 1
+let g:loaded_tarPlugin = 1
+let g:loaded_tutor_mode_plugin = 0
+let g:loaded_2html_plugin = 1
+let g:loaded_vimball = 1
+let g:loaded_vimballPlugin = 1
+let g:loaded_zip = 1
+let g:loaded_zipPlugin = 1
 
 " netrw
 let g:netrw_browsex_viewer= "setsid xdg-open" 
@@ -221,25 +238,25 @@ func! RunCode()
     if &filetype == 'c' 
 		set splitbelow
 		:sp
-        :term ./%<
+        :term %:p:r
     elseif &filetype == 'cpp'
 		set splitbelow
 		:sp
-        :term ./%<
+        :term %:p:r
     elseif &filetype == 'python'
 		set splitbelow
 		:sp
-        :term python %
+        :term python %:p
     elseif &filetype == 'java'
 		set splitbelow
 		:sp
-        :term java %<
+        :term java %:p:r
     elseif &filetype == 'sh'
 		set splitbelow
 		:sp
-        :term bash %
+        :term bash %:p
     elseif &filetype == 'vim'
-        :source %
+        :source %:p
 	elseif &filetype == 'markdown'
 		exec 'MarkdownPreview'
 	elseif &filetype == 'vimwiki'
@@ -247,7 +264,7 @@ func! RunCode()
     elseif &filetype == 'go'
 		set splitbelow
 		:sp
-		:term go run %
+		:term go run %:p
     elseif &filetype == 'processing'
 		set splitbelow
 		:sp
@@ -255,11 +272,11 @@ func! RunCode()
     elseif &filetype == 'html'
 		set splitbelow
 		:sp
-		:term google-chrome-stable %
+		:term google-chrome-stable %:p
     elseif &filetype == 'lua'
 		set splitbelow
 		:sp
-		:term lua %
+		:term lua %:p
     else
         echo "nothing to run"
     endif                                                                              
@@ -271,19 +288,21 @@ func! BuildCode()
     if &filetype == 'c' 
 		set splitbelow
 		:sp
-        :term gcc -g % -o %<
+        "              v  for my school work only
+        :term gcc -std=c90 -g %:p -o %<
     elseif &filetype == 'cpp'
 		set splitbelow
 		:sp
-        :term g++ -g % -o %<
+        " :term g++ -std=c++98 -g % -o %<
+        :term g++ -g %:p -o %<
     elseif &filetype == 'java'
 		set splitbelow
 		:sp
-        :term javac %
+        :term javac %:p
     elseif &filetype == 'typescript'
 		set splitbelow
 		:sp
-        :term tsc %
+        :term tsc %:p
     elseif &filetype == 'processing'
 		set splitbelow
 		:sp
@@ -291,7 +310,7 @@ func! BuildCode()
     elseif &filetype == 'lua'
 		set splitbelow
 		:sp
-		:term luac %
+		:term luac %:p
     else
         echo "nothing to build"
     endif                                                                              
@@ -304,11 +323,11 @@ func! DebugWithGDB()
     if &filetype == 'c' 
 		set splitbelow
 		:sp
-        :term gdb %<
+        :term gdb %:p:r
     elseif &filetype == 'cpp'
 		set splitbelow
 		:sp
-        :term gdb %<
+        :term gdb %:p:r
     else
         echo "nothing to debug"
     endif                                                                              

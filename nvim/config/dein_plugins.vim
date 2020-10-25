@@ -47,8 +47,30 @@ function! s:dein_init()
         call dein#add('66RING/bookmarks-nvim')
         " call dein#add('glepnir/spaceline.vim')
         call dein#add('mg979/vim-xtabline')
-        
 
+
+        " enhance
+        call dein#add('norcalli/nvim-colorizer.lua', {
+            \ 'hook_source': "    
+                \lua << EOF\n
+                \ require 'colorizer'.setup {
+                \   css = { rgb_fn = true; };
+                \   scss = { rgb_fn = true; };
+                \   sass = { rgb_fn = true; };
+                \   stylus = { rgb_fn = true; };
+                \   vim = { names = false; };
+                \   tmux = { names = false; };
+                \   'javascript';
+                \   'javascriptreact';
+                \   'typescript';
+                \   'typescriptreact';
+                \   html = {
+                \     mode = 'foreground';
+                \   }
+                \ } \n
+                \EOF\n"
+              \ })
+        call dein#add('itchyny/vim-cursorword', {'on_event':['BufReadPre,BufNewFile']})
         " Genreal Highlighter
         " call dein#add('jaxbot/semantic-highlight.vim', {
         "             \'on_ft': ['python', 'java', 'javascript', 'typescript', 'c', 'cpp'], 

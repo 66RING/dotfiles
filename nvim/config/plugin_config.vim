@@ -16,7 +16,7 @@ let g:coc_global_extensions = [
     \ 'coc-python', 'coc-java', 'coc-html', 'coc-json', 'coc-css', 
     \ 'coc-tsserver', 'coc-tslint-plugin',
     \ 'coc-lists', 'coc-yank',
-    \ 'coc-vimlsp', 'coc-highlight', 'coc-tailwindcss',
+    \ 'coc-vimlsp', 'coc-tailwindcss',
     \ 'coc-snippets', 'coc-diagnostic', 
     \ 'coc-style-helper', 'coc-yaml', 'coc-sql',
     \ 'coc-vetur'
@@ -45,8 +45,6 @@ inoremap <silent><expr> <CR> complete_info().selected!=-1 ? "\<C-y>" : "\<C-g>u\
 " disable coc suggest for:
 autocmd FileType markdown let b:coc_suggest_disable = 1
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 nmap <silent> gd :<C-u>call autoload#smart_split("normal \<Plug>(coc-definition)")<CR>
@@ -67,10 +65,6 @@ let coc_snippet_prev = "<C-j>"
 " coc-diagnostic
 nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
-
-" Coc multiple cursor 
-" override the highlight of multiple cursor
-"hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
 
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 xmap <silent> <C-c> <Plug>(coc-cursors-range)

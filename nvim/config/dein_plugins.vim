@@ -3,7 +3,7 @@ let $CACHE_PATH = expand("$HOME") . '/.config/nvim'
 function! s:dein_init()
 
     " dein global options
-    let g:dein#auto_recache = 1
+    " let g:dein#auto_recache = 1
     let g:dein#install_max_processes = 12
     " let g:dein#install_progress_type = 'title'
     " let g:dein#enable_notification = 1
@@ -43,7 +43,8 @@ function! s:dein_init()
         " dress up
         call dein#add('ryanoasis/vim-devicons')
         call dein#add('glepnir/dashboard-nvim')
-        call dein#add('66RING/eleline.vim')
+        " call dein#add('66RING/eleline.vim')
+        call dein#add('glepnir/galaxyline.nvim', {'hook_post_source':"lua require('statusline.moonline')"})
         call dein#add('66RING/bookmarks-nvim')
         " call dein#add('glepnir/spaceline.vim')
         call dein#add('mg979/vim-xtabline')
@@ -80,7 +81,7 @@ function! s:dein_init()
 
         " markdown
         call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-					\ 'dein-options-hook_post_update': 'sh -c "cd app && yarn install"' })
+					\ 'build': 'sh -c "cd app && yarn install"' })
         call dein#add('dhruvasagar/vim-table-mode', { 'on_ft': 'markdown' })
         call dein#add('dkarter/bullets.vim', { 'on_ft': 'markdown' })
            

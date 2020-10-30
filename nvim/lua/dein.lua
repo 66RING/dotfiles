@@ -16,8 +16,4 @@ function dein:init()
       vim.o.runtimepath = vim.o.runtimepath ..','..dein_dir
     end
   end
-
-
-
-
 end

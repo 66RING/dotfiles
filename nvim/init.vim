@@ -340,5 +340,6 @@ execute 'source' fnamemodify('$HOME/.config/nvim/config/plugin_config.vim', '')
 " " dein.vim
 execute 'source' fnamemodify('$HOME/.config/nvim/config/dein_plugins.vim', '')
 " execute 'source' fnamemodify('$HOME/.config/nvim/config/plugins.vim', '')
+" lua require('statusline.moonline')
 
 

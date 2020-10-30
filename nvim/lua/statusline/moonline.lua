@@ -1,10 +1,10 @@
 local gl = require('galaxyline')
 local gls = gl.section
-gl.short_line_list = {'defx','vista'}
+gl.short_line_list = {'defx','vista', 'dbui', 'vista_markdown'}
 
 local colors = {
   bg = '#282c34',
-  reverse = '#F2C38F',
+  reverse = '#8be9fd',
   none = 'NONE',
   line_bg = '#21242b',
   yellow = '#ffff66',

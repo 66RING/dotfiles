@@ -70,8 +70,10 @@ local function get_git_status()
   return status
 end
 
-
-gls.left[1] = {
+--
+-- Left
+--
+table.insert(gls.left,{
   FirstElement = {
     provider = function() 
       vim.api.nvim_command('hi GalaxyFirstElement guibg='..mode_color[vim.fn.mode()])
@@ -79,8 +81,9 @@ gls.left[1] = {
     end,
     highlight = {colors.none,colors.blue}
   },
-}
-gls.left[2] = {
+})
+
+table.insert(gls.left, {
   ViMode = {
     provider = function()
       -- auto change color according the vim mode
@@ -89,9 +92,9 @@ gls.left[2] = {
     end,
     highlight = {colors.line_bg,colors.blue,'bold'},
   },
-}
+})
 
-gls.left[3] = {
+table.insert(gls.left, {
   FileName = {
     provider = function()
       vim.api.nvim_command('hi GalaxyFileName guibg='..mode_color[vim.fn.mode()]..' guifg='..mode_color_fg[vim.fn.mode()])
@@ -111,35 +114,42 @@ gls.left[3] = {
     condition = buffer_not_empty,
     highlight = {colors.line_bg,colors.blue,'bold'},
   }
-}
+})
 
-gls.left[4] = {
+table.insert(gls.left, {
   Sep = {
     provider = function()
       vim.api.nvim_command('hi GalaxySep guifg='..mode_color[vim.fn.mode()])
       return ' '
     end, 
-    condition = buffer_not_empty,
     highlight = {colors.blue,colors.none,'bold'},
   }
-}
+})
 
-gls.left[5] = {
+table.insert(gls.left, {
   GitIcon = {
-    provider = function() return ' ' end,
+    provider = function() 
+      return ' ' 
+    end,
     condition = find_git_root,
     highlight = {colors.yellow,colors.none, 'bold'},
   }
-}
-gls.left[6] = {
+})
+table.insert(gls.left, {
   GitBranch = {
     provider = {'GitBranch'},
-    condition = buffer_not_empty,
+    condition = find_git_root,
     highlight = {colors.yellow,colors.none,'bold'},
   }
-}
+})
 
-gls.left[7] = {
+table.insert(gls.left, {
+  Space = {
+    provider = function () return ' ' end
+  }
+})
+
+table.insert(gls.left, {
   GitStatus = {
     provider = function() 
         local status = get_git_status()
@@ -148,53 +158,41 @@ gls.left[7] = {
     condition = function() return find_git_root() and checkwidth() end,
     highlight = {colors.orange,colors.none},
   }
-}
+})
 
-gls.left[11] = {
+
+table.insert(gls.left, {
   DiagnosticError = {
-    provider = function()
-        local has_info,info = pcall(vim.fn.nvim_buf_get_var,0,'coc_diagnostic_info')
-        if not has_info then return end
-        if info.error > 0 then
-          return info.error
-        end
-        return ''
-      end,
+    provider = 'DiagnosticError',
     icon = '  ',
     highlight = {colors.red,colors.none}
   }
-}
-
-gls.left[12] = {
+})
+table.insert(gls.left, {
   Space = {
     provider = function () return ' ' end
   }
-}
-
-gls.left[13] = {
+})
+table.insert(gls.left, {
   DiagnosticWarn = {
-    provider = function() 
-        local has_info,info = pcall(vim.fn.nvim_buf_get_var,0,'coc_diagnostic_info')
-        if not has_info then return end
-        if info.warning > 0 then
-          return  info.warning
-        end
-        return ''
-      end,
+    provider = 'DiagnosticWarn',
     icon = '  ',
     highlight = {colors.blue,colors.none},
   }
-}
+})
 
 
-
-gls.right[1]= {
+--
+-- Right
+--
+table.insert(gls.right, {
   FileFormat = {
     provider = 'FileFormat',
     highlight = {colors.magenta,colors.none},
   }
-}
-gls.right[2] = {
+})
+
+table.insert(gls.right, {
   LineInfo = {
     provider = 'LineColumn',
     separator = ' | ',
@@ -202,8 +200,9 @@ gls.right[2] = {
     condition = buffer_not_empty,
     highlight = {colors.grey,colors.none},
   },
-}
-gls.right[3] = {
+})
+
+table.insert(gls.right, {
   PerCent = {
     provider = 'LinePercent',
     separator = ' | ',
@@ -211,8 +210,9 @@ gls.right[3] = {
     condition = buffer_not_empty,
     highlight = {colors.grey,colors.none},
   }
-}
-gls.right[4] = {
+})
+
+table.insert(gls.right, {
   ScrollBar = {
     provider = 'FileSize',
     separator = ' | ',
@@ -220,14 +220,26 @@ gls.right[4] = {
     condition = buffer_not_empty,
     highlight = {colors.cyan,colors.none},
   }
-}
+})
 
-
-gls.short_line_left[1] = {
+--
+-- Short Line left
+--
+table.insert(gls.short_line_left, {
   BufferType = {
     provider = 'FileTypeName',
     separator = '',
     separator_highlight = {colors.dim,colors.none},
     highlight = {colors.reverse,colors.dim}
   }
-}
+})
+
+table.insert(gls.short_line_right, {
+  BufferIcon = {
+    provider= 'BufferIcon',
+    separator = '',
+    separator_highlight = {colors.dim,colors.none},
+    highlight = {colors.reverse,colors.dim}
+  }
+})
+

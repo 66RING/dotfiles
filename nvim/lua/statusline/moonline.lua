@@ -90,7 +90,7 @@ table.insert(gls.left, {
       vim.api.nvim_command('hi GalaxyViMode guibg='..mode_color[vim.fn.mode()])
       return mode_icon[vim.fn.mode()]..' '
     end,
-    highlight = {colors.line_bg,colors.blue,'bold'},
+    highlight = {colors.none,colors.blue,'bold'},
   },
 })
 
@@ -198,7 +198,7 @@ table.insert(gls.right, {
     separator = ' | ',
     separator_highlight = {colors.darkblue,colors.none},
     condition = buffer_not_empty,
-    highlight = {colors.grey,colors.none},
+    highlight = {colors.dim,colors.none},
   },
 })
 
@@ -208,7 +208,7 @@ table.insert(gls.right, {
     separator = ' | ',
     separator_highlight = {colors.darkblue,colors.none},
     condition = buffer_not_empty,
-    highlight = {colors.grey,colors.none},
+    highlight = {colors.dim,colors.none},
   }
 })
 

@@ -35,19 +35,28 @@ cmd open_with ${{
 cmd open ${{
     case $(file --mime-type $f -b) in
         # text file
-        text/*|application/octet-stream|*/json|*/x-empty) $EDITOR $f;;
-        */csv|inode/symlink) $EDITOR $fx;;
-
-        audio/*) mpv --audio-display=no $f ;;
-        video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+        text/*|application/octet-stream|*/json|*/x-empty)
+            $EDITOR $f;;
+        */csv|inode/symlink)
+            $EDITOR $fx;;
+        audio/*)
+            mpv --audio-display=no $f ;;
+        video/*)
+            setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
         #office things
-        image/vnd.djvu|application/pdf|application/epub*) setsid -f wpspdf $fx >/dev/null 2>&1 ;;
-        application/ppt|application/vnd.ms-powerpoint) setsid -f wpp $fx >/dev/null 2>&1 ;;
-        application/xlsx) setsid -f et $fx >/dev/null 2>&1 ;;
-        application/docx|application/doc|application/*officedocument*|application/msword) setsid -f wps $fx >/dev/null 2>&1 ;;
+        image/vnd.djvu|application/pdf|application/epub*)
+            setsid -f wpspdf $fx >/dev/null 2>&1 ;;
+        application/ppt|application/vnd.ms-powerpoint|application/*office*presentation)
+            setsid -f wpp $fx >/dev/null 2>&1 ;;
+        application/xlsx)
+            setsid -f et $fx >/dev/null 2>&1 ;;
+        application/docx|application/doc|application/*office*document|application/msword)
+            setsid -f wps $fx >/dev/null 2>&1 ;;
         #default
-        image/*) setsid -f sxiv -a $fx 2>/dev/null ;;
-        *) lf -remote "send $id push :open_with<space>"
+        image/*)
+            setsid -f sxiv -a $fx 2>/dev/null ;;
+        *)
+            lf -remote "send $id push :open_with<space>"
     esac
 }}
 

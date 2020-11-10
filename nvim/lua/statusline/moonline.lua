@@ -122,6 +122,7 @@ table.insert(gls.left, {
       vim.api.nvim_command('hi GalaxySep guifg='..mode_color[vim.fn.mode()])
       return ' '
     end, 
+    separator = '%<',
     highlight = {colors.blue,colors.none,'bold'},
   }
 })
@@ -155,7 +156,7 @@ table.insert(gls.left, {
         local status = get_git_status()
         return '+'..status[1]..' ~'..status[2]..' -'..status[3]
       end,
-    condition = function() return find_git_root() and checkwidth() end,
+    condition = find_git_root,
     highlight = {colors.orange,colors.none},
   }
 })

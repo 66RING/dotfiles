@@ -48,7 +48,7 @@ cmd open ${{
             setsid -f wpspdf $fx >/dev/null 2>&1 ;;
         application/ppt|application/vnd.ms-powerpoint|application/*office*presentation)
             setsid -f wpp $fx >/dev/null 2>&1 ;;
-        application/xlsx)
+        application/xlsx|application/*office*sheet)
             setsid -f et $fx >/dev/null 2>&1 ;;
         application/docx|application/doc|application/*office*document|application/msword)
             setsid -f wps $fx >/dev/null 2>&1 ;;

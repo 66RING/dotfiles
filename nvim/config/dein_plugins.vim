@@ -103,6 +103,7 @@ function! s:dein_init()
                     \'hook_post_update': ':Clap install-binary' ,
                     \'on_cmd': 'Clap',
                     \})
+        call dein#add('mg979/vim-visual-multi')
 
         call dein#add('Shougo/defx.nvim', {
                     \'on_cmd': 'Defx', 

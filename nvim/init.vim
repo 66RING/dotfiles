@@ -181,7 +181,7 @@ autocmd InsertLeave * call <SID>fcitx2en()
 " something Useful
 "========================
 " open a terminal window
-noremap <LEADER>/ :<C-u>terminal<CR>
+" noremap <LEADER>/ :<C-u>terminal<CR>
 " exit terminal mode
 " tnoremap <LEADER><Esc> <C-\><C-n>
 tnoremap <C-n> <C-\><C-n>
@@ -340,6 +340,5 @@ execute 'source' fnamemodify('$HOME/.config/nvim/config/plugin_config.vim', '')
 " " dein.vim
 execute 'source' fnamemodify('$HOME/.config/nvim/config/dein_plugins.vim', '')
 " execute 'source' fnamemodify('$HOME/.config/nvim/config/plugins.vim', '')
-" lua require('statusline.moonline')
 
 

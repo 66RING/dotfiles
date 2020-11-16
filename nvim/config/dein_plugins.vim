@@ -154,19 +154,12 @@ function! s:dein_init()
               \ let g:indentLine_concealcursor = 'inc' \n
               \ let g:indentLine_showFirstIndentLevel =1 \n
               \ "})
+        
+        " call dein#add('glepnir/indent-guides.nvim')
         " call dein#add('glepnir/indent-guides.nvim', { 
         "     \'hook_source': "
         "       \lua << EOF\n
-        "         \require('indent_guides').default_opts = { 
-        "         \  indent_levels = 30;
-        "         \  indent_guide_size = 0;
-        "         \  indent_start_level = 1;
-        "         \  indent_space_guides = true;
-        "         \  indent_tab_guides = true;
-        "         \  indent_pretty_guides = false;
-        "         \  indent_soft_pattern = '\\s';
-        "         \  exclude_filetypes = {'dashboard'}
-        "         \} \n
+        "       \require('indent_guides').default_opts.indent_soft_pattern = '\\s' \n
         "       \EOF\n"
         "     \})
 

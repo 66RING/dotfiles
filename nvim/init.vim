@@ -342,3 +342,18 @@ execute 'source' fnamemodify('$HOME/.config/nvim/config/dein_plugins.vim', '')
 " execute 'source' fnamemodify('$HOME/.config/nvim/config/plugins.vim', '')
 
 
+" lua << EOF
+"   require('indent_guides').default_opts = { 
+"     indent_levels = 30;
+"     indent_guide_size = 0;
+"     indent_start_level = 1;
+"     indent_space_guides = true;
+"     indent_tab_guides = true;
+"     indent_pretty_guides = false;
+"     indent_soft_pattern = '\\s';
+"     exclude_filetypes = {'dashboard'}
+"   }
+" EOF
+
+
+

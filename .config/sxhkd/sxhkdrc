@@ -43,6 +43,9 @@ super + shift + r
 super + {t,shift + f}
 	bspc node -t {\~tiled,\~floating}
 
+super + shift + e
+    bspc node @/ -B
+
 super + m
     $HOME/scripts/bspwm/bspfullscreen.sh
 

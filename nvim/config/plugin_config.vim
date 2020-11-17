@@ -422,7 +422,7 @@ let g:dashboard_custom_header = [
 " let footer = systemlist('fortune -s')
 " let g:dashboard_custom_footer = footer
 
-autocmd FileType dashboard noremap <silent><buffer> e :enew<CR>
+autocmd FileType dashboard nnoremap <silent><buffer> e :exec "set laststatus=2 \| enew"<CR>
 
 let g:dashboard_custom_section={
   \ 'empty_buffer': {

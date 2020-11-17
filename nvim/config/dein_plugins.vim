@@ -145,23 +145,32 @@ function! s:dein_init()
         " call dein#add('junegunn/vim-peekaboo')
 
         " indentLine
-        call dein#add('Yggdroot/indentLine', { 
-              \ 'on_event': 'BufReadPre', 
-              \ 'hook_source': "
-              \ let g:indentLine_enabled = 1 \n
-              \ let g:indentLine_char='¦' \n
-              \ let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown'] \n
-              \ let g:indentLine_concealcursor = 'inc' \n
-              \ let g:indentLine_showFirstIndentLevel =1 \n
-              \ "})
+        " call dein#add('Yggdroot/indentLine', { 
+        "       \ 'on_event': 'BufReadPre', 
+        "       \ 'hook_source': "
+        "       \ let g:indentLine_enabled = 1 \n
+        "       \ let g:indentLine_char='¦' \n
+        "       \ let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown'] \n
+        "       \ let g:indentLine_concealcursor = 'inc' \n
+        "       \ let g:indentLine_showFirstIndentLevel =1 \n
+        "       \ "})
         
         " call dein#add('glepnir/indent-guides.nvim')
-        " call dein#add('glepnir/indent-guides.nvim', { 
-        "     \'hook_source': "
-        "       \lua << EOF\n
-        "       \require('indent_guides').default_opts.indent_soft_pattern = '\\s' \n
-        "       \EOF\n"
-        "     \})
+        call dein#add('glepnir/indent-guides.nvim', { 
+            \'hook_post_source': "
+              \lua << EOF\n
+              \   require('indent_guides').options = { 
+              \     indent_levels = 30;
+              \     indent_guide_size = 1;
+              \     indent_start_level = 1;
+              \     indent_space_guides = true;
+              \     indent_tab_guides = false;
+              \     indent_soft_pattern = '\\\\s';
+              \     indent_pretty_guides = false;
+              \     exclude_filetypes = {'dashboard'}
+              \   } \n
+              \EOF\n"
+            \})
 
         " search selected
         call dein#add('bronson/vim-visual-star-search')

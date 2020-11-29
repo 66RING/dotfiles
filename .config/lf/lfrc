@@ -52,6 +52,8 @@ cmd open ${{
             setsid -f et $fx >/dev/null 2>&1 ;;
         application/docx|application/doc|application/*office*document|application/msword)
             setsid -f wps $fx >/dev/null 2>&1 ;;
+        application/*opendoc*)
+            setsid -f soffice $fx >/dev/null 2>&1 ;;
         #default
         image/*)
             setsid -f sxiv -a $fx 2>/dev/null ;;

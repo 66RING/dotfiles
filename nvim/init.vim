@@ -16,6 +16,7 @@
 " autocmd ColorScheme * highlight! Cursorline cterm=bold ctermfg=black guibg=#666666
 " autocmd ColorScheme * highlight! Colorcolumn cterm=bold guibg=#666666
 " set background=dark " dulp in oceanic_material
+
 let g:oceanic_material_transparent_background = 1
 let g:colors_name="oceanic_material"
 " call theme#theme_init("dark", "oceanic_material")
@@ -55,6 +56,9 @@ map <Down> <Nop>
 map <Right> <Nop>
 map <Left> <Nop>
 map <Space>  <Nop>
+map gh  <Nop>
+map gH  <Nop>
+map g<C-h>  <Nop>
 
 
 set enc=utf8
@@ -184,7 +188,7 @@ autocmd InsertLeave * call <SID>fcitx2en()
 " noremap <LEADER>/ :<C-u>terminal<CR>
 " exit terminal mode
 " tnoremap <LEADER><Esc> <C-\><C-n>
-tnoremap <C-n> <C-\><C-n>
+" tnoremap <C-n> <C-\><C-n>
 " to next <++>
 nnoremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 

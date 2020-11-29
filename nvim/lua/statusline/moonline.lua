@@ -59,11 +59,7 @@ local checkwidth = function()
   return false
 end
 
-local function find_git_root()
-  local path = vim.fn.expand('%:p:h')
-  local get_git_dir = require('galaxyline.provider_vcs').get_git_dir
-  return get_git_dir(path)
-end
+local find_git_root = require('galaxyline.provider_vcs').check_git_workspace
 
 local function get_git_status()
   local status = vim.fn.GitGutterGetHunkSummary()
@@ -151,15 +147,39 @@ table.insert(gls.left, {
 })
 
 table.insert(gls.left, {
-  GitStatus = {
-    provider = function() 
-        local status = get_git_status()
-        return '+'..status[1]..' ~'..status[2]..' -'..status[3]
-      end,
-    condition = find_git_root,
+  DiffAdd = {
+    provider = 'DiffAdd',
+    icon = ' ',
+    highlight = {colors.green,colors.none},
+  }
+})
+
+table.insert(gls.left, {
+  DiffModified = {
+    provider = 'DiffModified',
+    icon = ' ',
     highlight = {colors.orange,colors.none},
   }
 })
+
+table.insert(gls.left, {
+  DiffRemove = {
+    provider = 'DiffRemove',
+    icon = ' ',
+    highlight = {colors.red,colors.none},
+  }
+})
+
+-- table.insert(gls.left, {
+--   GitStatus = {
+--     provider = function() 
+--         local status = get_git_status()
+--         return '+'..status[1]..' ~'..status[2]..' -'..status[3]
+--       end,
+--     condition = find_git_root,
+--     highlight = {colors.orange,colors.none},
+--   }
+-- })
 
 
 table.insert(gls.left, {
@@ -206,7 +226,7 @@ table.insert(gls.right, {
 table.insert(gls.right, {
   PerCent = {
     provider = 'LinePercent',
-    separator = ' | ',
+    separator = ' |',
     separator_highlight = {colors.darkblue,colors.none},
     condition = buffer_not_empty,
     highlight = {colors.dim,colors.none},
@@ -216,7 +236,7 @@ table.insert(gls.right, {
 table.insert(gls.right, {
   ScrollBar = {
     provider = 'FileSize',
-    separator = ' | ',
+    separator = '| ',
     separator_highlight = {colors.darkblue,colors.none},
     condition = buffer_not_empty,
     highlight = {colors.cyan,colors.none},

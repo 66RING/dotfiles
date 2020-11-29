@@ -40,6 +40,26 @@ function! s:dein_init()
         " completion
         call dein#add('neoclide/coc.nvim', {'rev': 'release'})
         
+        " call dein#add('nvim-lua/completion-nvim')
+        " call dein#add('nvim-lua/completion-nvim', {
+        "       \'on_event': ["BufReadPre","BufNewFile"],
+        "       \'hook_source': "autocmd BufReadPre,BufNewFile * lua require'completion'.on_attach()",
+        "       \'hook_add':"
+        "           \let g:completion_enable_auto_hover = 0
+        "           \let g:completion_auto_change_source = 1
+        "           \let g:completion_matching_ignore_case = 1
+        "           \let g:completion_enable_snippet = 'vim-vsnip'
+        "           \let g:completion_confirm_key = ''
+        "           \let g:completion_chain_complete_list = [
+        "               \ {'complete_items': ['lsp']},
+        "               \ {'complete_items': ['snippet']},
+        "               \ {'complete_items': ['buffers']},
+        "               \ {'complete_items': ['path']},
+        "               \ {'mode': '<c-p>'},
+        "               \ {'mode': '<c-n>'}
+        "           \]"
+        "       \})
+        
         " dress up
         call dein#add('ryanoasis/vim-devicons')
         call dein#add('glepnir/dashboard-nvim')
@@ -48,6 +68,10 @@ function! s:dein_init()
         call dein#add('66RING/bookmarks-nvim')
         " call dein#add('glepnir/spaceline.vim')
         call dein#add('mg979/vim-xtabline')
+
+        " colortheme
+        " call dein#add('glepnir/zephyr-nvim', {'hook_post_source':"lua require('zephyr') "})
+        " call dein#add('nvim-treesitter/nvim-treesitter')
 
 
         " enhance
@@ -103,6 +127,12 @@ function! s:dein_init()
                     \'hook_post_update': ':Clap install-binary' ,
                     \'on_cmd': 'Clap',
                     \})
+        " fuzzy find
+        " call dein#add('nvim-lua/popup.nvim', { 'on_source': 'telescope.nvim'})
+        " call dein#add('nvim-lua/plenary.nvim', { 'on_source': 'telescope.nvim'})
+        " call dein#add('nvim-telescope/telescope.nvim', { 'on_cmd': 'Telescope'})
+
+
         call dein#add('mg979/vim-visual-multi')
 
         call dein#add('Shougo/defx.nvim', {
@@ -145,32 +175,32 @@ function! s:dein_init()
         " call dein#add('junegunn/vim-peekaboo')
 
         " indentLine
-        " call dein#add('Yggdroot/indentLine', { 
-        "       \ 'on_event': 'BufReadPre', 
-        "       \ 'hook_source': "
-        "       \ let g:indentLine_enabled = 1 \n
-        "       \ let g:indentLine_char='¦' \n
-        "       \ let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown'] \n
-        "       \ let g:indentLine_concealcursor = 'inc' \n
-        "       \ let g:indentLine_showFirstIndentLevel =1 \n
-        "       \ "})
+        call dein#add('Yggdroot/indentLine', { 
+              \ 'on_event': 'BufReadPre', 
+              \ 'hook_source': "
+              \ let g:indentLine_enabled = 1 \n
+              \ let g:indentLine_char='¦' \n
+              \ let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown'] \n
+              \ let g:indentLine_concealcursor = 'inc' \n
+              \ let g:indentLine_showFirstIndentLevel =1 \n
+              \ "})
         
         " call dein#add('glepnir/indent-guides.nvim')
-        call dein#add('glepnir/indent-guides.nvim', { 
-            \'hook_post_source': "
-              \lua << EOF\n
-              \   require('indent_guides').options = { 
-              \     indent_levels = 30;
-              \     indent_guide_size = 1;
-              \     indent_start_level = 1;
-              \     indent_space_guides = true;
-              \     indent_tab_guides = false;
-              \     indent_soft_pattern = '\\\\s';
-              \     indent_pretty_guides = false;
-              \     exclude_filetypes = {'dashboard'}
-              \   } \n
-              \EOF\n"
-            \})
+        " call dein#add('glepnir/indent-guides.nvim', { 
+        "     \'hook_post_source': "
+        "       \lua << EOF\n
+        "       \   require('indent_guides').options = { 
+        "       \     indent_levels = 30;
+        "       \     indent_guide_size = 1;
+        "       \     indent_start_level = 1;
+        "       \     indent_space_guides = true;
+        "       \     indent_tab_guides = false;
+        "       \     indent_soft_pattern = '\\\\s';
+        "       \     indent_pretty_guides = false;
+        "       \     exclude_filetypes = {'dashboard'}
+        "       \   } \n
+        "       \EOF\n"
+        "     \})
 
         " search selected
         call dein#add('bronson/vim-visual-star-search')

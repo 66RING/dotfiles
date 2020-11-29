@@ -422,6 +422,8 @@ let g:dashboard_custom_header = [
 " let footer = systemlist('fortune -s')
 " let g:dashboard_custom_footer = footer
 
+autocmd FileType dashboard set laststatus=0 | autocmd BufEnter,WinLeave <buffer> set laststatus=2
+autocmd FileType dashboard set showtabline=0 | autocmd BufEnter,WinLeave <buffer> set showtabline=2
 autocmd FileType dashboard nnoremap <silent><buffer> e :exec "set laststatus=2 \| enew"<CR>
 
 let g:dashboard_custom_section={

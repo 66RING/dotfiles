@@ -144,26 +144,31 @@ cmd extract ${{
         *.rar) unrar x $f;;
         *.7z) 7z x $f;;
     esac
+    lf -remote "send $id unselect"
 }}
 
 
 # compress current file or selected files with tar and gunzip
 cmd creat_tar ${{
-    set -f
-    mkdir $1
-    cp -r $fx $1
-    tar czf $1.tar.gz $1
-    rm -rf $1
+    # set -f
+    # mkdir $1
+    # cp -r $fx $1
+    # tar czf $1.tar.gz $1
+    # rm -rf $1
+    tar czf $1.tar.gz $fx
+    lf -remote "send $id unselect"
 }}
 
 
 # compress current file or selected files with zip
 cmd creat_zip ${{
-    set -f
-    mkdir $1
-    cp -r $fx $1
-    zip -r $1.zip $1
-    rm -rf $1
+    # set -f
+    # mkdir $1
+    # cp -r $fx $1
+    # zip -r $1.zip $1
+    # rm -rf $1
+    zip -r $1.zip $fx
+    lf -remote "send $id unselect"
 }}
 
 
@@ -192,9 +197,18 @@ cmd fzf_find_in_file ${{
 
 
 # drag-and-drop
-cmd dragon $dragon-drag-and-drop -a -x $fx
-cmd dlfile $dlfile
-cmd dragon-individual %dragon-drag-and-drop $fx
+cmd dragon ${{
+    dragon-drag-and-drop -a -x $fx
+    lf -remote "send $id unselect"
+}}
+cmd dlfile ${{
+    dlfile
+    lf -remote "send $id unselect"
+}}
+cmd dragon-individual ${{
+    dragon-drag-and-drop $fx
+    lf -remote "send $id unselect"
+}}
 
 
 # copy files path
@@ -248,8 +262,8 @@ map U !du -sh $fx
 
 # archive things
 map X push :extract<space>?[Y/n]<space>
-map cz push :creat_zip
-map ct push :creat_tar
+map cz push :creat_zip<space>
+map ct push :creat_tar<space>
 
 # file
 map md push :mkdirs<space>

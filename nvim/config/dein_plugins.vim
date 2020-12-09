@@ -44,20 +44,6 @@ function! s:dein_init()
         " call dein#add('nvim-lua/completion-nvim', {
         "       \'on_event': ["BufReadPre","BufNewFile"],
         "       \'hook_source': "autocmd BufReadPre,BufNewFile * lua require'completion'.on_attach()",
-        "       \'hook_add':"
-        "           \let g:completion_enable_auto_hover = 0
-        "           \let g:completion_auto_change_source = 1
-        "           \let g:completion_matching_ignore_case = 1
-        "           \let g:completion_enable_snippet = 'vim-vsnip'
-        "           \let g:completion_confirm_key = ''
-        "           \let g:completion_chain_complete_list = [
-        "               \ {'complete_items': ['lsp']},
-        "               \ {'complete_items': ['snippet']},
-        "               \ {'complete_items': ['buffers']},
-        "               \ {'complete_items': ['path']},
-        "               \ {'mode': '<c-p>'},
-        "               \ {'mode': '<c-n>'}
-        "           \]"
         "       \})
         
         " dress up

@@ -10,5 +10,7 @@ source ~/.config/zsh/aliases.zsh
 
 export LFS=/home/ring/var/LFS
 
-fortune -s
+if type "fortune" &> /dev/null; then
+    fortune -s
+fi
 

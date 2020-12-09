@@ -249,9 +249,9 @@ table.insert(gls.right, {
 table.insert(gls.short_line_left, {
   BufferType = {
     provider = 'FileTypeName',
-    separator = '',
-    separator_highlight = {colors.dim,colors.none},
-    highlight = {colors.reverse,colors.dim}
+    separator = '',
+    separator_highlight = {colors.reverse,colors.none},
+    highlight = {colors.dim,colors.reverse}
   }
 })
 
@@ -259,8 +259,8 @@ table.insert(gls.short_line_right, {
   BufferIcon = {
     provider= 'BufferIcon',
     separator = '',
-    separator_highlight = {colors.dim,colors.none},
-    highlight = {colors.reverse,colors.dim}
+    separator_highlight = {colors.reverse,colors.none},
+    highlight = {colors.dim,colors.reverse}
   }
 })
 

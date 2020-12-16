@@ -249,7 +249,7 @@ table.insert(gls.right, {
 table.insert(gls.short_line_left, {
   BufferType = {
     provider = 'FileTypeName',
-    separator = '',
+    separator = '%m',
     separator_highlight = {colors.reverse,colors.none},
     highlight = {colors.dim,colors.reverse}
   }

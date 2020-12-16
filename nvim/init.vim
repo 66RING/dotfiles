@@ -103,6 +103,21 @@ noremap I 5k
 noremap j h
 noremap J 5h
 noremap L 5l
+noremap <C-j> 0
+noremap <C-l> $
+inoremap <C-j> <ESC>I
+inoremap <C-l> <ESC>A
+
+" " standard vim
+" noremap H 5j
+" noremap J 5j
+" noremap K 5k
+" noremap L 5l
+" noremap <C-h> 0
+" noremap <C-l> $
+" inoremap <C-h> <ESC>I
+" inoremap <C-l> <ESC>A
+
 noremap Y "+y
 " :[range]y[ank] [x]
 nnoremap yY :%y+<CR> 
@@ -111,10 +126,6 @@ noremap P "+p
 noremap m J  
 noremap <silent> M :exec ":mark "nr2char(getchar())<CR>
 nmap ' <Plug>(bookmarks_nvim)
-noremap <C-j> 0
-noremap <C-l> $
-inoremap <C-j> <ESC>I
-inoremap <C-l> <ESC>A
 noremap <LEADER><CR> :nohlsearch<CR>
 
 
@@ -126,12 +137,26 @@ noremap sj :<C-u>set nosplitright<CR>:vsplit<CR>
 noremap si :<C-u>set nosplitbelow<CR>:split<CR>
 noremap sk :<C-u>set splitbelow<CR>:split<CR>
 noremap st :<C-u>set splitbelow<CR>:sp<CR>:term<CR>
+
+" " standard
+" noremap sl :<C-u>set splitright<CR>:vsplit<CR>
+" noremap sh :<C-u>set nosplitright<CR>:vsplit<CR>
+" noremap sk :<C-u>set nosplitbelow<CR>:split<CR>
+" noremap sj :<C-u>set splitbelow<CR>:split<CR>
+" noremap st :<C-u>set splitbelow<CR>:sp<CR>:term<CR>
 "=== split screen movement===
 noremap <LEADER>w <C-w>w
 noremap <LEADER>i <C-w>k
 noremap <LEADER>k <C-w>j
 noremap <LEADER>j <C-w>h
 noremap <LEADER>l <C-w>l
+
+" " standard
+" noremap <LEADER>w <C-w>w
+" noremap <LEADER>h <C-w>h
+" noremap <LEADER>j <C-w>j
+" noremap <LEADER>k <C-w>k
+" noremap <LEADER>l <C-w>l
 "=== split operation===
 noremap s<up>    :<C-u>res-5<CR>
 noremap s<down>  :<C-u>res+5<CR>

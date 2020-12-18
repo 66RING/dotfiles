@@ -40,6 +40,7 @@ function! s:dein_init()
         " completion
         call dein#add('neoclide/coc.nvim', {'rev': 'release'})
         
+        " call dein#add('neovim/nvim-lspconfig')
         " call dein#add('nvim-lua/completion-nvim')
         " call dein#add('nvim-lua/completion-nvim', {
         "       \'on_event': ["BufReadPre","BufNewFile"],

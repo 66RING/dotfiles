@@ -21,6 +21,9 @@ set icons
 #* scripts
 #************************
 cmd quit_back ${{
+    num=$(sed -n "/^'/=" ~/.local/share/lf/marks)
+    sed -i "${num}c ':$(pwd)" ~/.local/share/lf/marks
+
     lf -remote "send $id cd $LF_BACK"
     lf -remote "send $id quit"
 }}

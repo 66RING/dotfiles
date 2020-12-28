@@ -65,8 +65,8 @@ line-color = #f00
 ; border-size = 4
 ; border-color = #00000000
 
-padding-left = 0
-padding-right = 0
+padding-left = 1
+padding-right = 1
 
 module-margin-left = 1
 module-margin-right = 1
@@ -81,8 +81,8 @@ font-6 = twemoji:scale=4;2
 
 
 modules-left = terminal bspwm  weather 
-modules-center = title
-modules-right = pulseaudio  memory cpu cputemp battery date
+modules-center = date
+modules-right = pulseaudio  memory cpu cputemp battery 
 tray-position = right
 tray-padding = 2
 tray-maxsize = 60
@@ -115,8 +115,8 @@ line-color = #f00
 ; border-size = 4
 ; border-color = #00000000
 
-padding-left = 0
-padding-right = 0
+padding-left = 1
+padding-right = 1
 
 module-margin-left = 1
 module-margin-right = 1
@@ -131,8 +131,8 @@ font-6 = twemoji:scale=4;2
 
 
 modules-left = terminal bspwm
-modules-center = title
-modules-right = pulseaudio updates uptime fulldate
+modules-center = fulldate
+modules-right = pulseaudio updates uptime 
 
 wm-restack = bspwm
 

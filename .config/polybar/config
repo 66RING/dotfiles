@@ -86,7 +86,7 @@ modules-right = pulseaudio  memory cpu cputemp battery
 tray-position = right
 tray-padding = 2
 tray-maxsize = 60
-; tray-background = #0063ff
+tray-background = ${colors.background}
 
 wm-restack = bspwm
 

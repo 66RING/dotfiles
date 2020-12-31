@@ -17,12 +17,14 @@
 " autocmd ColorScheme * highlight! Colorcolumn cterm=bold guibg=#666666
 " set background=dark " dulp in oceanic_material
 
-let g:oceanic_material_transparent_background = 1
-let g:colors_name="oceanic_material"
+" let g:oceanic_material_transparent_background = 1
+" let g:colors_name="oceanic_material"
 " call theme#theme_init("dark", "oceanic_material")
 
 
+"========================
 " Disable vim distribution plugins
+"========================
 let g:loaded_getscript = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
@@ -368,6 +370,5 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 execute 'source' fnamemodify('$HOME/.config/nvim/config/plugin_config.vim', '')
 " " dein.vim
 execute 'source' fnamemodify('$HOME/.config/nvim/config/dein_plugins.vim', '')
-" execute 'source' fnamemodify('$HOME/.config/nvim/config/plugins.vim', '')
 
 

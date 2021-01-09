@@ -57,8 +57,8 @@ function! s:dein_init()
         call dein#add('mg979/vim-xtabline')
 
         " colortheme
-        call dein#add('glepnir/zephyr-nvim', {'hook_post_source':"lua require('zephyr') "})
-        call dein#add('nvim-treesitter/nvim-treesitter')
+        " call dein#add('glepnir/zephyr-nvim', {'hook_post_source':"lua require('zephyr') "})
+        " call dein#add('nvim-treesitter/nvim-treesitter')
 
 
         " enhance

@@ -38,4 +38,4 @@ alias venvon="source $(which virtualenvwrapper.sh)"
 alias proxyon='export http_proxy="127.0.0.1:12333" export https_proxy="127.0.0.1:12333"'
 alias proxyoff='unset http_proxy ; unset export https_proxy'
 
-alias tsr="$HOME/scripts/tools/ai_trans_demo.py"
+alias t="$HOME/scripts/tools/ai_trans_demo.py"

@@ -6,66 +6,91 @@
 "               |___/                                      |___/     
 
 
+""========================
+"" coc
+""========================
+"" fix the most annoying bug that coc has
+"silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
+"let g:coc_disable_transparent_cursor = 1
+"let g:coc_global_extensions = [
+"    \ 'coc-python', 'coc-java', 'coc-html', 'coc-json', 'coc-css', 
+"    \ 'coc-tsserver', 'coc-tslint-plugin',
+"    \ 'coc-lists', 'coc-yank',
+"    \ 'coc-vimlsp', 'coc-tailwindcss',
+"    \ 'coc-snippets', 'coc-diagnostic', 
+"    \ 'coc-style-helper', 'coc-yaml', 'coc-sql',
+"    \ 'coc-vetur'
+"    \ ]    " to install 'coc-vetur'  , 
+"" npm i eslint eslint-plugin-vue -D in root workspace to use vetur
+
+"" " coc statusline
+"" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+"" tab to expend
+"function! s:check_back_space() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
+
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ get(b:, 'coc_suggest_disable') == 1 ? "\<C-n>" : coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+"" key to confirm suggest
+"" inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"inoremap <silent><expr> <CR> complete_info().selected!=-1 ? "\<C-y>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+"" disable coc suggest for:
+"autocmd FileType markdown let b:coc_suggest_disable = 1
+
+
+"nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+"nmap <silent> gd :<C-u>call autoload#smart_split("normal \<Plug>(coc-definition)")<CR>
+"nmap <silent> gy :<C-u>call autoload#smart_split("normal \<Plug>(coc-type-definition)")<CR>
+"nmap <silent> gi :<C-u>call autoload#smart_split("normal \<Plug>(coc-implementation)")<CR>
+"nmap <silent> gr :<C-u>call autoload#smart_split("normal \<Plug>(coc-references)")<CR>
+"nmap <leader>rn <Plug>(coc-rename)
+
+"" Remap for format selected region
+"xmap <C-s>  <Plug>(coc-format-selected)
+"nmap <C-s>  <Plug>(coc-format-selected)
+
+"" coc-snippets
+"imap <C-e> <Plug>(coc-snippets-expand)
+"let coc_snippet_next = "<C-l>"
+"let coc_snippet_prev = "<C-j>"
+
+"" coc-diagnostic
+"nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
+"nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
+
+
 "========================
-" coc
+" completion
 "========================
-" fix the most annoying bug that coc has
-silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_disable_transparent_cursor = 1
-let g:coc_global_extensions = [
-    \ 'coc-python', 'coc-java', 'coc-html', 'coc-json', 'coc-css', 
-    \ 'coc-tsserver', 'coc-tslint-plugin',
-    \ 'coc-lists', 'coc-yank',
-    \ 'coc-vimlsp', 'coc-tailwindcss',
-    \ 'coc-snippets', 'coc-diagnostic', 
-    \ 'coc-style-helper', 'coc-yaml', 'coc-sql',
-    \ 'coc-vetur'
-    \ ]    " to install 'coc-vetur'  , 
-" npm i eslint eslint-plugin-vue -D in root workspace to use vetur
-
-" " coc statusline
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" tab to expend
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ get(b:, 'coc_suggest_disable') == 1 ? "\<C-n>" : coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" key to confirm suggest
-" inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <silent><expr> <CR> complete_info().selected!=-1 ? "\<C-y>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" disable coc suggest for:
-autocmd FileType markdown let b:coc_suggest_disable = 1
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-nmap <silent> gd :<C-u>call autoload#smart_split("normal \<Plug>(coc-definition)")<CR>
-nmap <silent> gy :<C-u>call autoload#smart_split("normal \<Plug>(coc-type-definition)")<CR>
-nmap <silent> gi :<C-u>call autoload#smart_split("normal \<Plug>(coc-implementation)")<CR>
-nmap <silent> gr :<C-u>call autoload#smart_split("normal \<Plug>(coc-references)")<CR>
-nmap <leader>rn <Plug>(coc-rename)
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
 
-" Remap for format selected region
-xmap <C-s>  <Plug>(coc-format-selected)
-nmap <C-s>  <Plug>(coc-format-selected)
+let g:completion_confirm_key = ""
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
-" coc-snippets
-imap <C-e> <Plug>(coc-snippets-expand)
-let coc_snippet_next = "<C-l>"
-let coc_snippet_prev = "<C-j>"
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
 
-" coc-diagnostic
-nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
-nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
-
+" let g:completion_enable_snippet = 'UltiSnips'
+" let g:completion_enable_auto_hover = 0
+let g:completion_auto_change_source = 1
+let g:completion_enable_auto_popup = 1
+let g:completion_matching_ignore_case = 0
 
 "========================
 " easymotion
@@ -136,40 +161,40 @@ let g:closetag_shortcut = '>'
 let g:tagalong_additional_filetypes = ['vue', 'wxml']
 
 
-"========================
-" vim-go
-"========================
-let g:go_def_mapping_enabled = 0
-let g:go_template_autocreate = 0
-let g:go_doc_keywordprg_enabled = 0
-let g:go_textobj_enabled = 0
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_chan_whitespace_error = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_string_spellcheck = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_types = 1
-let g:go_highlight_variable_assignments = 0
-let g:go_highlight_variable_declarations = 0
-let g:go_term_enabled = 1
-let g:go_term_mode = 'split '
-let g:go_echo_go_info = 0
+""========================
+"" vim-go
+""========================
+"let g:go_def_mapping_enabled = 0
+"let g:go_template_autocreate = 0
+"let g:go_doc_keywordprg_enabled = 0
+"let g:go_textobj_enabled = 0
+"let g:go_highlight_array_whitespace_error = 1
+"let g:go_highlight_build_constraints = 1
+"let g:go_highlight_chan_whitespace_error = 1
+"let g:go_highlight_extra_types = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_format_strings = 1
+"let g:go_highlight_function_calls = 1
+"let g:go_highlight_function_parameters = 1
+"let g:go_highlight_functions = 1
+"let g:go_highlight_generate_tags = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_space_tab_error = 1
+"let g:go_highlight_string_spellcheck = 1
+"let g:go_highlight_structs = 1
+"let g:go_highlight_trailing_whitespace_error = 1
+"let g:go_highlight_types = 1
+"let g:go_highlight_variable_assignments = 0
+"let g:go_highlight_variable_declarations = 0
+"let g:go_term_enabled = 1
+"let g:go_term_mode = 'split '
+"let g:go_echo_go_info = 0
 
-au FileType go nmap <LEADER>d <Plug>(go-doc)
-au FileType go nmap <leader>B <Plug>(go-build)
-au FileType go nnoremap <LEADER>rn :GoRename<CR>
-autocmd BufWritePre,FileWritePre *.go  exe "GoImports"
+"au FileType go nmap <LEADER>d <Plug>(go-doc)
+"au FileType go nmap <leader>B <Plug>(go-build)
+"au FileType go nnoremap <LEADER>rn :GoRename<CR>
+"autocmd BufWritePre,FileWritePre *.go  exe "GoImports"
 
 
 "========================

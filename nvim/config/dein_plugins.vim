@@ -38,14 +38,23 @@ function! s:dein_init()
 
         call dein#add(s:dein_repo)
         " completion
-        call dein#add('neoclide/coc.nvim', {'rev': 'release'})
+        " call dein#add('neoclide/coc.nvim', {'rev': 'release'})
         
-        " call dein#add('neovim/nvim-lspconfig')
-        " call dein#add('nvim-lua/completion-nvim')
-        " call dein#add('nvim-lua/completion-nvim', {
-        "       \'on_event': ["BufReadPre","BufNewFile"],
-        "       \'hook_source': "autocmd BufReadPre,BufNewFile * lua require'completion'.on_attach()",
-        "       \})
+        call dein#add('neovim/nvim-lspconfig', {
+            \'on_event': 'BufRead',
+            \'on_source': ['completion-nvim','lspaga.nvim'],
+            \'hook_source': "lua require('custom.lspconfig')",
+            \})
+
+        call dein#add('glepnir/lspsaga.nvim')
+        call dein#add('steelsojka/completion-buffers', {
+              \'on_source': 'completion-nvim',
+              \'hook_source': "let g:completion_word_ignored_ft = ['LuaTree','vista']",
+              \})
+        call dein#add('nvim-lua/completion-nvim', {
+              \'on_event': ["BufReadPre","BufNewFile"],
+              \'hook_source': "autocmd BufReadPre,BufNewFile * lua require'completion'.on_attach()",
+              \})
         
         " dress up
         call dein#add('ryanoasis/vim-devicons')
@@ -204,7 +213,7 @@ function! s:dein_init()
         
         " coding
         " golang
-        call dein#add('fatih/vim-go', { 'on_ft': 'go', 'hook_post_update': ':GoUpdateBinaries' })
+        " call dein#add('fatih/vim-go', { 'on_ft': 'go', 'hook_post_update': ':GoUpdateBinaries' })
         
         
         " CSharp

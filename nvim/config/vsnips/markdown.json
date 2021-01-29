@@ -1,0 +1,14 @@
+{
+    "hexo": {
+        "prefix": "hex",
+        "body": [
+          "---",
+          "title: ${1:title}",
+          "date: ${2:datetime}",
+          "tags: ${3:tags}",
+          "mathjax: true",
+          "---"
+        ],
+        "description": "hexo prefix"
+    }
+}

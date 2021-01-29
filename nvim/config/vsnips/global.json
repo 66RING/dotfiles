@@ -1,0 +1,9 @@
+{
+	"datetime": {
+		"prefix": "datetime",
+		"body": [
+			"${VIM:system('date \"+%Y-%m-%d\"|tr -d \"\\n\"')}"
+		],
+		"description": "Current time"
+	}
+}

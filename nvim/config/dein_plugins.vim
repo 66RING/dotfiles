@@ -105,9 +105,23 @@ function! s:dein_init()
         call dein#add('dhruvasagar/vim-table-mode', { 'on_ft': 'markdown' })
         call dein#add('dkarter/bullets.vim', { 'on_ft': 'markdown' })
            
-        "" snips
-        "" Track the engine.
-        call dein#add('honza/vim-snippets')
+        " snips
+        " Track the engine.
+        " call dein#add('honza/vim-snippets')
+        " call dein#add('vim-scripts/UltiSnips', {
+        "       \'hook_source': "
+        "         \let g:UltiSnipsJumpForwardTrigger=\"<c-l>\"\n
+        "         \let g:UltiSnipsJumpBackwardTrigger=\"<c-j>\"\n
+        "         \",
+        "       \})
+        call dein#add('hrsh7th/vim-vsnip', {
+              \'on_event': 'InsertCharPre',
+              \'hook_source': 'let g:vsnip_snippet_dir = getenv("HOME") . "/.config/nvim/config/vsnips"',
+              \})
+        call dein#add('hrsh7th/vim-vsnip-integ', {
+              \'on_event': 'InsertCharPre'
+              \})
+
         call dein#add('tpope/vim-commentary')
         
         
@@ -221,19 +235,19 @@ function! s:dein_init()
         call dein#add('ctrlpvim/ctrlp.vim' , { 'on_ft': ['cs', 'vim-plug']}) " omnisharp-vim dependency
         
         " HTML, CSS, JavaScript, PHP, JSON, etc.
-        call dein#add('elzr/vim-json', { 'on_ft': 'json' })
-        call dein#add('hail2u/vim-css3-syntax', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
-        call dein#add('spf13/PIV', { 'on_ft' :['php', 'vim-plug'] })
-        call dein#add('pangloss/vim-javascript', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
-        call dein#add('yuezk/vim-js', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
-        call dein#add('MaxMEllon/vim-jsx-pretty', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
-        call dein#add('jelera/vim-javascript-syntax', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
+        " call dein#add('elzr/vim-json', { 'on_ft': 'json' })
+        " call dein#add('hail2u/vim-css3-syntax', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
+        " call dein#add('spf13/PIV', { 'on_ft' :['php', 'vim-plug'] })
+        " call dein#add('pangloss/vim-javascript', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
+        " call dein#add('yuezk/vim-js', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
+        " call dein#add('MaxMEllon/vim-jsx-pretty', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
+        " call dein#add('jelera/vim-javascript-syntax', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
         "Plug 'jaxbot/browserlink.vim'
         call dein#add('alvan/vim-closetag', { 'on_ft': ['html', 'js', 'jsx', 'vue']})
         call dein#add('AndrewRadev/tagalong.vim')
         
         " Python
-        call dein#add('Vimjas/vim-python-pep8-indent', { 'on_ft' :['python', 'vim-plug'] })
+        " call dein#add('Vimjas/vim-python-pep8-indent', { 'on_ft' :['python', 'vim-plug'] })
         " call dein#add('numirias/semshi', { 'hook_post_update': ':UpdateRemotePlugins', 'on_ft' :'python', 'hook_post_source': ':SemshiHighlight'})
         " Plug 'tweekmonster/braceless.vim'
         

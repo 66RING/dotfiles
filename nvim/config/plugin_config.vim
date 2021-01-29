@@ -70,10 +70,6 @@
 "========================
 " completion
 "========================
-" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
@@ -86,11 +82,49 @@ imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
 imap <tab> <Plug>(completion_smart_tab)
 imap <s-tab> <Plug>(completion_smart_s_tab)
 
-" let g:completion_enable_snippet = 'UltiSnips'
-" let g:completion_enable_auto_hover = 0
+let g:completion_enable_snippet = 'vim-vsnip'
+let g:completion_enable_auto_hover = 0
 let g:completion_auto_change_source = 1
 let g:completion_enable_auto_popup = 1
 let g:completion_matching_ignore_case = 0
+let g:completion_chain_complete_list = [
+    \  {'complete_items': ['lsp']},
+    \  {'complete_items': ['snippet']},
+    \  {'complete_items': ['buffers']},
+    \  {'complete_items': ['path']},
+    \  {'mode': '<c-p>'},
+    \  {'mode': '<c-n>'}
+  \]
+autocmd FileType markdown let g:completion_enable_auto_popup = 0
+
+
+"========================
+" lspsage
+"========================
+nnoremap <silent><LEADER>rn :LspSagaRename<CR>
+nnoremap <silent>gd :LspSagaDefPreview<CR>
+nnoremap <silent>gh :LspSagaFinder<CR>
+nnoremap <silent><LEADER>h <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent><LEADER>a :LspSagaCodeAction<CR>
+vnoremap <silent><LEADER>a :LspSagaRangeCodeAction<CR>
+"nnoremap <silent> gy :<C-u>call autoload#smart_split("normal \<Plug>(coc-type-definition)")<CR>
+"nnoremap <silent> gi :<C-u>call autoload#smart_split("normal \<Plug>(coc-implementation)")<CR>
+" nnoremap <silent> gr :<C-u>call autoload#smart_split("<cmd>lua vim.lsp.buf.references()<CR>")<CR>
+"" diagnostic
+nnoremap <silent><LEADER>- :LspSagaDiagJumpPrev<CR>
+nnoremap <silent><LEADER>= :LspSagaDiagJumpNext<CR>
+
+
+"========================
+" vsnips
+"========================
+" Expand
+imap <expr> <C-e>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>'
+smap <expr> <C-e>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>'
+" Jump forward or backward
+smap <expr> <C-l>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-l>'
+smap <expr> <C-j>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-j>'
+
 
 "========================
 " easymotion

@@ -97,22 +97,28 @@ let g:completion_chain_complete_list = [
   \]
 autocmd FileType markdown let g:completion_enable_auto_popup = 0
 
+" inoremap <silent><expr> <C-Space> compe#complete()
+" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+" inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+
 
 "========================
-" lspsage
+" lsp
 "========================
-nnoremap <silent><LEADER>rn :LspSagaRename<CR>
-nnoremap <silent>gd :LspSagaDefPreview<CR>
-nnoremap <silent>gh :LspSagaFinder<CR>
+nnoremap <silent><LEADER>rn <cmd>lua require('lspsaga.rename').rename()<CR>
+nnoremap <silent>gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
+nnoremap <silent>gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
 nnoremap <silent><LEADER>h <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent><LEADER>a :LspSagaCodeAction<CR>
-vnoremap <silent><LEADER>a :LspSagaRangeCodeAction<CR>
+nnoremap <silent><LEADER>a <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+vnoremap <silent><LEADER>a <cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>
 "nnoremap <silent> gy :<C-u>call autoload#smart_split("normal \<Plug>(coc-type-definition)")<CR>
 "nnoremap <silent> gi :<C-u>call autoload#smart_split("normal \<Plug>(coc-implementation)")<CR>
 " nnoremap <silent> gr :<C-u>call autoload#smart_split("<cmd>lua vim.lsp.buf.references()<CR>")<CR>
 "" diagnostic
-nnoremap <silent><LEADER>- :LspSagaDiagJumpPrev<CR>
-nnoremap <silent><LEADER>= :LspSagaDiagJumpNext<CR>
+nnoremap <silent><LEADER>- <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
+nnoremap <silent><LEADER>= <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
+" nnoremap <silent><C-s> <cmd>lua vim.lsp.buf.formatting()<CR>
+command! Format lua vim.lsp.buf.formatting()
 
 
 "========================
@@ -131,17 +137,6 @@ smap <expr> <C-j>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-j>'
 "========================
 let g:EasyMotion_do_mapping = 'off'
 nmap ss <Plug>(easymotion-sn)
-
-
-"========================
-" eleine-line
-"========================
-let g:custom_vim_status_icon = {"n": "😏 ","V":"😏 ","v":"😏 ","\<C-v>": "😏 ","i":"😈 ","R":"🧐 ","s":"🧐 ","t":"🤨 ","c":"😈 ","!":"SE"}
-let g:nmode_color='#61AFEF'
-let g:imode_color='#d7ffd7'
-let g:vmode_color='#6272a4'
-let g:tmode_color='#99cc66'
-let g:cmode_color='#ffff66'
 
 
 "========================
@@ -416,6 +411,9 @@ let g:vista_executive_for = {
   \ 'typescriptreact': 'coc',
   \ }
 
+"========================
+" Telescope
+"========================
 
 "========================
 " vim-clap

@@ -320,7 +320,8 @@ func! BuildCode()
 		set splitbelow
 		:sp
         "              v  for my school work only
-        :term gcc -std=c90 -g %:p -o %<
+        " :term gcc -std=c90 -g %:p -o %<
+        :term gcc -g %:p -o %<
     elseif &filetype == 'cpp'
 		set splitbelow
 		:sp

@@ -4,7 +4,11 @@ local api = vim.api
 local util = require("lspconfig/util")
 local saga = require 'lspsaga'
 
-saga.init_lsp_saga()
+saga.init_lsp_saga{
+  finder_action_keys = {
+    open = 'o', vsplit = 'v',split = 's',quit = 'q'
+  },
+}
 
 local custom_attach = function(client, bufnr)
   -- local has_completion,completion = pcall(require,'completion')
@@ -13,6 +17,7 @@ local custom_attach = function(client, bufnr)
   --   return
   -- end
   -- completion.on_attach()
+
   -- TODO --
   api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
@@ -33,6 +38,14 @@ end
 
 -- lspconfig.pyright.setup{
 --   on_attach = custom_attach,
+--   settings = {
+--     python = {
+--       analysis = {
+--         autoSearchPaths = true,
+--         useLibraryCodeForTypes = true
+--       }
+--     }
+--   }
 -- }
 
 lspconfig.pyls.setup {

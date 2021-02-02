@@ -42,19 +42,64 @@ function! s:dein_init()
         
         call dein#add('neovim/nvim-lspconfig', {
             \'on_event': 'BufRead',
-            \'on_source': ['completion-nvim','lspaga.nvim'],
             \'hook_source': "lua require('custom.lspconfig')",
             \})
 
-        call dein#add('glepnir/lspsaga.nvim')
-        call dein#add('steelsojka/completion-buffers', {
-              \'on_source': 'completion-nvim',
-              \'hook_source': "let g:completion_word_ignored_ft = ['LuaTree','vista']",
+        call dein#add('glepnir/lspsaga.nvim', {
+              \"on_event": "BufRead",
+              \"on_cmd": "Lspsaga",
+              \"depends": "nvim-lspconfig",
               \})
-        call dein#add('nvim-lua/completion-nvim', {
-              \'on_event': ["BufReadPre","BufNewFile"],
-              \'hook_source': "autocmd BufReadPre,BufNewFile * lua require'completion'.on_attach()",
+        " call dein#add('hrsh7th/nvim-compe' ,{
+        "       \'on_event': 'InsertEnter',
+        "       \'hook_source': "
+        "         \lua << EOF\n
+        "         \require'compe'.setup {
+        "         \  enabled = true;
+        "         \  autocomplete = true;
+        "         \  debug = false;
+        "         \  min_length = 1;
+        "         \  preselect = 'always';
+        "         \  allow_prefix_unmatch = false;
+        "         \  source = {
+        "         \    path = true;
+        "         \    buffer = true;
+        "         \    vsnip = true;
+        "         \    nvim_lsp = true;
+        "         \    nvim_lua = true;
+        "         \  };
+        "         \}\n 
+        "         \EOF\n",
+        "       \})
+        call dein#add('hrsh7th/nvim-compe' ,{
+              \'on_event': 'InsertEnter',
+              \'hook_source': "
+                \lua << EOF\n
+                \require'compe'.setup {
+                \  enabled = true;
+                \  autocomplete = true;
+                \  debug = false;
+                \  min_length = 1;
+                \  preselect = 'always';
+                \  allow_prefix_unmatch = false;
+                \  source = {
+                \    path = true;
+                \    buffer = true;
+                \    vsnip = true;
+                \    nvim_lsp = true;
+                \    nvim_lua = true;
+                \  };
+                \}\n 
+                \EOF\n",
               \})
+        " call dein#add('steelsojka/completion-buffers', {
+        "       \'on_source': 'completion-nvim',
+        "       \'hook_source': "let g:completion_word_ignored_ft = ['LuaTree','vista']",
+        "       \})
+        " call dein#add('nvim-lua/completion-nvim', {
+        "       \'on_event': ["BufReadPre","BufNewFile"],
+        "       \'hook_source': "autocmd BufReadPre,BufNewFile * lua require'completion'.on_attach()",
+        "       \})
         
         " dress up
         call dein#add('ryanoasis/vim-devicons')

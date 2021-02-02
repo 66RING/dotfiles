@@ -75,31 +75,59 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
-let g:completion_confirm_key = ""
-imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
-                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
+" let g:completion_confirm_key = ""
+" imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+"                  \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
-imap <tab> <Plug>(completion_smart_tab)
-imap <s-tab> <Plug>(completion_smart_s_tab)
+" imap <tab> <Plug>(completion_smart_tab)
+" imap <s-tab> <Plug>(completion_smart_s_tab)
 
-let g:completion_enable_snippet = 'vim-vsnip'
-let g:completion_enable_auto_hover = 0
-let g:completion_auto_change_source = 1
-let g:completion_enable_auto_popup = 1
-let g:completion_matching_ignore_case = 0
-let g:completion_chain_complete_list = [
-    \  {'complete_items': ['lsp']},
-    \  {'complete_items': ['snippet']},
-    \  {'complete_items': ['buffers']},
-    \  {'complete_items': ['path']},
-    \  {'mode': '<c-p>'},
-    \  {'mode': '<c-n>'}
-  \]
-autocmd FileType markdown let g:completion_enable_auto_popup = 0
+" let g:completion_enable_snippet = 'vim-vsnip'
+" let g:completion_enable_auto_hover = 0
+" let g:completion_auto_change_source = 1
+" let g:completion_enable_auto_popup = 1
+" let g:completion_matching_ignore_case = 0
+" let g:completion_chain_complete_list = [
+"     \  {'complete_items': ['lsp']},
+"     \  {'complete_items': ['snippet']},
+"     \  {'complete_items': ['buffers']},
+"     \  {'complete_items': ['path']},
+"     \  {'mode': '<c-p>'},
+"     \  {'mode': '<c-n>'}
+"   \]
+" autocmd FileType markdown let g:completion_enable_auto_popup = 0
 
-" inoremap <silent><expr> <C-Space> compe#complete()
-" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-" inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ compe#complete()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'always'
+let g:compe.allow_prefix_unmatch = v:false
+
+let g:compe.source = {}
+let g:compe.source.path = {'ignored_filetypes': ['clap_input', 'markdown']}
+let g:compe.source.buffer = {'ignored_filetypes': ['clap_input', 'markdown']}
+let g:compe.source.calc = {'ignored_filetypes': ['clap_input', 'markdown']}
+let g:compe.source.vsnip = {'ignored_filetypes': ['clap_input', 'markdown']}
+let g:compe.source.nvim_lsp = {'ignored_filetypes': ['clap_input', 'markdown']}
+let g:compe.source.nvim_lua = {'ignored_filetypes': ['clap_input', 'markdown']}
+" let g:compe.source.spell = v:true
+" let g:compe.source.tags = v:true
+" let g:compe.source.snippets_nvim = v:true
+
+
 
 
 "========================
@@ -108,7 +136,7 @@ autocmd FileType markdown let g:completion_enable_auto_popup = 0
 nnoremap <silent><LEADER>rn <cmd>lua require('lspsaga.rename').rename()<CR>
 nnoremap <silent>gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
 nnoremap <silent>gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-nnoremap <silent><LEADER>h <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent><LEADER>h <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 nnoremap <silent><LEADER>a <cmd>lua require('lspsaga.codeaction').code_action()<CR>
 vnoremap <silent><LEADER>a <cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>
 "nnoremap <silent> gy :<C-u>call autoload#smart_split("normal \<Plug>(coc-type-definition)")<CR>

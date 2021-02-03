@@ -4,7 +4,7 @@
 		"body": [
 			"for (${size_t} ${i} = ${1:0}; ${i} < ${2:length}; ${i}++)",
 			"{",
-			"	$3",
+			"\t$3",
 			"}"
 		],
 		"description": "Code snippet for 'for' loop"
@@ -14,7 +14,7 @@
 		"body": [
 			"for (int ${i} = ${1:length} - 1; ${i} >= ${2:0}; ${i}--)",
 			"{",
-			"	$3",
+			"\t$3",
 			"}"
 		],
 		"description": "Code snippet for reverse 'for' loop"
@@ -24,7 +24,7 @@
 		"body": [
 			"while ($1)",
 			"{",
-			"	$2",
+			"\t$2",
 			"}"
 		],
 		"description": ""
@@ -34,7 +34,7 @@
 		"body": [
 			"if ($1)",
 			"{",
-			"	$2",
+			"\t$2",
 			"}"
 		],
 		"description": "Code snippet for if statement"
@@ -44,7 +44,7 @@
 		"body": [
 			"else",
 			"{",
-			"	$1",
+			"\t$1",
 			"}"
 		],
 		"description": "Code snippet for else statement"
@@ -54,7 +54,7 @@
 		"body": [
 			"else if ($1)",
 			"{",
-			"	$2",
+			"\t$2",
 			"}"
 		],
 		"description": "Code snippet for else-if statement"
@@ -64,7 +64,7 @@
 		"body": [
 			"enum ${MyEnum}",
 			"{",
-			"	$1",
+			"\t$1",
 			"};"
 		],
 		"description": "Code snippet for enum"
@@ -101,7 +101,7 @@
 		"body": [
 			"struct ${MyStruct}",
 			"{",
-			"	$1",
+			"\t$1",
 			"};"
 		],
 		"description": "Code snippet for struct"
@@ -112,7 +112,7 @@
 			"switch (${switch_on})",
 			"{",
 			"default:",
-			"	break;$1",
+			"\tbreak;$1",
 			"}"
 		],
 		"description": "Code snippet for switch statement"
@@ -122,7 +122,7 @@
 		"body": [
 			"union ${MyUnion}",
 			"{",
-			"	$1",
+			"\t$1",
 			"};"
 		],
 		"description": "Code snippet for union"

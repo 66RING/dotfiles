@@ -71,35 +71,17 @@ function! s:dein_init()
         "         \}\n 
         "         \EOF\n",
         "       \})
-        call dein#add('hrsh7th/nvim-compe' ,{
-              \'on_event': 'InsertEnter',
-              \'hook_source': "
-                \lua << EOF\n
-                \require'compe'.setup {
-                \  enabled = true;
-                \  autocomplete = true;
-                \  debug = false;
-                \  min_length = 1;
-                \  preselect = 'always';
-                \  allow_prefix_unmatch = false;
-                \  source = {
-                \    path = true;
-                \    buffer = true;
-                \    vsnip = true;
-                \    nvim_lsp = true;
-                \    nvim_lua = true;
-                \  };
-                \}\n 
-                \EOF\n",
+        " call dein#add('hrsh7th/nvim-compe' ,{
+        "       \'on_event': 'InsertEnter',
+        "       \})
+        call dein#add('steelsojka/completion-buffers', {
+              \'on_source': 'completion-nvim',
+              \'hook_source': "let g:completion_word_ignored_ft = ['LuaTree','vista']",
               \})
-        " call dein#add('steelsojka/completion-buffers', {
-        "       \'on_source': 'completion-nvim',
-        "       \'hook_source': "let g:completion_word_ignored_ft = ['LuaTree','vista']",
-        "       \})
-        " call dein#add('nvim-lua/completion-nvim', {
-        "       \'on_event': ["BufReadPre","BufNewFile"],
-        "       \'hook_source': "autocmd BufReadPre,BufNewFile * lua require'completion'.on_attach()",
-        "       \})
+        call dein#add('nvim-lua/completion-nvim', {
+              \'on_event': ["BufReadPre","BufNewFile"],
+              \'hook_source': "autocmd BufReadPre,BufNewFile * lua require'completion'.on_attach()",
+              \})
         
         " dress up
         call dein#add('ryanoasis/vim-devicons')
@@ -152,20 +134,22 @@ function! s:dein_init()
            
         " snips
         " Track the engine.
-        " call dein#add('honza/vim-snippets')
-        " call dein#add('vim-scripts/UltiSnips', {
-        "       \'hook_source': "
-        "         \let g:UltiSnipsJumpForwardTrigger=\"<c-l>\"\n
-        "         \let g:UltiSnipsJumpBackwardTrigger=\"<c-j>\"\n
-        "         \",
+        call dein#add('honza/vim-snippets')
+        call dein#add('SirVer/ultisnips', {
+              \'hook_source': "
+                \let g:UltiSnipsExpandTrigger=\"<C-e>\"\n
+                \let g:UltiSnipsJumpForwardTrigger=\"<c-l>\"\n
+                \let g:UltiSnipsJumpBackwardTrigger=\"<c-j>\"\n
+                \let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/config/Ultisnips']
+                \",
+              \})
+        " call dein#add('hrsh7th/vim-vsnip', {
+        "       \'on_event': 'InsertCharPre',
+        "       \'hook_source': 'let g:vsnip_snippet_dir = getenv("HOME") . "/.config/nvim/config/vsnips"',
         "       \})
-        call dein#add('hrsh7th/vim-vsnip', {
-              \'on_event': 'InsertCharPre',
-              \'hook_source': 'let g:vsnip_snippet_dir = getenv("HOME") . "/.config/nvim/config/vsnips"',
-              \})
-        call dein#add('hrsh7th/vim-vsnip-integ', {
-              \'on_event': 'InsertCharPre'
-              \})
+        " call dein#add('hrsh7th/vim-vsnip-integ', {
+        "       \'on_event': 'InsertCharPre'
+        "       \})
 
         call dein#add('tpope/vim-commentary')
         
@@ -235,7 +219,7 @@ function! s:dein_init()
               \ 'hook_source': "
               \ let g:indentLine_enabled = 1 \n
               \ let g:indentLine_char='¦' \n
-              \ let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown'] \n
+              \ let g:indentLine_fileTypeExclude = ['defx', 'json', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown'] \n
               \ let g:indentLine_concealcursor = 'inc' \n
               \ let g:indentLine_showFirstIndentLevel =1 \n
               \ "})
@@ -276,8 +260,8 @@ function! s:dein_init()
         
         
         " CSharp
-        call dein#add('OmniSharp/omnisharp-vim', { 'on_ft': 'cs' })
-        call dein#add('ctrlpvim/ctrlp.vim' , { 'on_ft': ['cs', 'vim-plug']}) " omnisharp-vim dependency
+        " call dein#add('OmniSharp/omnisharp-vim', { 'on_ft': 'cs' })
+        " call dein#add('ctrlpvim/ctrlp.vim' , { 'on_ft': ['cs', 'vim-plug']}) " omnisharp-vim dependency
         
         " HTML, CSS, JavaScript, PHP, JSON, etc.
         " call dein#add('elzr/vim-json', { 'on_ft': 'json' })

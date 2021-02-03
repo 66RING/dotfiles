@@ -75,58 +75,62 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
-" let g:completion_confirm_key = ""
-" imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
-"                  \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
+let g:completion_confirm_key = ""
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
-" imap <tab> <Plug>(completion_smart_tab)
-" imap <s-tab> <Plug>(completion_smart_s_tab)
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
 
-" let g:completion_enable_snippet = 'vim-vsnip'
-" let g:completion_enable_auto_hover = 0
-" let g:completion_auto_change_source = 1
-" let g:completion_enable_auto_popup = 1
-" let g:completion_matching_ignore_case = 0
-" let g:completion_chain_complete_list = [
-"     \  {'complete_items': ['lsp']},
-"     \  {'complete_items': ['snippet']},
-"     \  {'complete_items': ['buffers']},
-"     \  {'complete_items': ['path']},
-"     \  {'mode': '<c-p>'},
-"     \  {'mode': '<c-n>'}
-"   \]
-" autocmd FileType markdown let g:completion_enable_auto_popup = 0
+let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_enable_auto_hover = 0
+let g:completion_auto_change_source = 1
+let g:completion_enable_auto_popup = 1
+let g:completion_matching_ignore_case = 0
+let g:completion_chain_complete_list = [
+    \  {'complete_items': ['lsp']},
+    \  {'complete_items': ['snippet']},
+    \  {'complete_items': ['buffers']},
+    \  {'complete_items': ['path']},
+    \  {'mode': '<c-p>'},
+    \  {'mode': '<c-n>'}
+  \]
+autocmd FileType markdown let g:completion_enable_auto_popup = 0
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ compe#complete()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ compe#complete()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'always'
-let g:compe.allow_prefix_unmatch = v:false
+" let g:compe = {}
+" let g:compe.enabled = v:true
+" let g:compe.autocomplete = v:true
+" let g:compe.debug = v:false
+" let g:compe.min_length = 1
+" let g:compe.preselect = 'always'
+" let g:compe.allow_prefix_unmatch = v:false
 
-let g:compe.source = {}
-let g:compe.source.path = {'ignored_filetypes': ['clap_input', 'markdown']}
-let g:compe.source.buffer = {'ignored_filetypes': ['clap_input', 'markdown']}
-let g:compe.source.calc = {'ignored_filetypes': ['clap_input', 'markdown']}
-let g:compe.source.vsnip = {'ignored_filetypes': ['clap_input', 'markdown']}
-let g:compe.source.nvim_lsp = {'ignored_filetypes': ['clap_input', 'markdown']}
-let g:compe.source.nvim_lua = {'ignored_filetypes': ['clap_input', 'markdown']}
-" let g:compe.source.spell = v:true
-" let g:compe.source.tags = v:true
-" let g:compe.source.snippets_nvim = v:true
+" let g:compe.source = {}
+" " let g:compe.source.path = {'ignored_filetypes': ['clap_input', 'markdown']}
+" " let g:compe.source.buffer = {'ignored_filetypes': ['clap_input', 'markdown']}
+" " let g:compe.source.calc = {'ignored_filetypes': ['clap_input', 'markdown']}
+" " let g:compe.source.vsnip = {'ignored_filetypes': ['clap_input', 'markdown']}
+" " let g:compe.source.nvim_lsp = {'ignored_filetypes': ['clap_input', 'markdown']}
+" " let g:compe.source.nvim_lua = {'ignored_filetypes': ['clap_input', 'markdown']}
+" let g:compe.source.path = v:true
+" let g:compe.source.buffer = v:true
+" let g:compe.source.calc = v:true
+" let g:compe.source.vsnip = v:true
+" let g:compe.source.nvim_lsp = v:true
+" let g:compe.source.nvim_lua = v:true
 
+" autocmd FileType clap_input,markdown let g:compe.autocomplete=v:false
 
 
 
@@ -149,15 +153,15 @@ nnoremap <silent><LEADER>= <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnos
 command! Format lua vim.lsp.buf.formatting()
 
 
-"========================
-" vsnips
-"========================
+""========================
+"" snips
+""========================
 " Expand
-imap <expr> <C-e>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>'
-smap <expr> <C-e>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>'
-" Jump forward or backward
-smap <expr> <C-l>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-l>'
-smap <expr> <C-j>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-j>'
+" imap <expr> <C-e>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>'
+" smap <expr> <C-e>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>'
+" " Jump forward or backward
+" smap <expr> <C-l>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-l>'
+" smap <expr> <C-j>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-j>'
 
 
 "========================
@@ -257,45 +261,45 @@ let g:tagalong_additional_filetypes = ['vue', 'wxml']
 "========================
 " OmniSharp
 "========================
-let g:OmniSharp_typeLookupInPreview = 1
-let g:omnicomplete_fetch_full_documentation = 1
+" let g:OmniSharp_typeLookupInPreview = 1
+" let g:omnicomplete_fetch_full_documentation = 1
 
-let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_highlight_types = 2
-let g:OmniSharp_selector_ui = 'ctrlp'
+" let g:OmniSharp_server_use_mono = 1
+" let g:OmniSharp_server_stdio = 1
+" let g:OmniSharp_highlight_types = 2
+" let g:OmniSharp_selector_ui = 'ctrlp'
 
-autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDefinition<CR>
-autocmd Filetype cs nnoremap <buffer> gr :OmniSharpFindUsages<CR>
-autocmd Filetype cs nnoremap <buffer> gy :OmniSharpTypeLookup<CR>
-autocmd Filetype cs nnoremap <buffer> ga :OmniSharpGetCodeActions<CR>
-autocmd Filetype cs nnoremap <buffer> <LEADER>rn :OmniSharpRename<CR><C-N>:res +5<CR>
+" autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDefinition<CR>
+" autocmd Filetype cs nnoremap <buffer> gr :OmniSharpFindUsages<CR>
+" autocmd Filetype cs nnoremap <buffer> gy :OmniSharpTypeLookup<CR>
+" autocmd Filetype cs nnoremap <buffer> ga :OmniSharpGetCodeActions<CR>
+" autocmd Filetype cs nnoremap <buffer> <LEADER>rn :OmniSharpRename<CR><C-N>:res +5<CR>
 
-sign define OmniSharpCodeActions text=💡
+" sign define OmniSharpCodeActions text=💡
 
-augroup OSCountCodeActions
-	autocmd!
-	autocmd FileType cs set signcolumn=yes
-	autocmd CursorHold *.cs call OSCountCodeActions()
-augroup END
+" augroup OSCountCodeActions
+" 	autocmd!
+" 	autocmd FileType cs set signcolumn=yes
+" 	autocmd CursorHold *.cs call OSCountCodeActions()
+" augroup END
 
-function! OSCountCodeActions() abort
-	if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
-	if !OmniSharp#IsServerRunning() | return | endif
-	let opts = {
-				\ 'CallbackCount': function('s:CBReturnCount'),
-				\ 'CallbackCleanup': {-> execute('sign unplace 99')}
-				\}
-	call OmniSharp#CountCodeActions(opts)
-endfunction
+" function! OSCountCodeActions() abort
+" 	if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
+" 	if !OmniSharp#IsServerRunning() | return | endif
+" 	let opts = {
+" 				\ 'CallbackCount': function('s:CBReturnCount'),
+" 				\ 'CallbackCleanup': {-> execute('sign unplace 99')}
+" 				\}
+" 	call OmniSharp#CountCodeActions(opts)
+" endfunction
 
-function! s:CBReturnCount(count) abort
-	if a:count
-		let l = getpos('.')[1]
-		let f = expand('%:p')
-		execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
-	endif
-endfunction
+" function! s:CBReturnCount(count) abort
+" 	if a:count
+" 		let l = getpos('.')[1]
+" 		let f = expand('%:p')
+" 		execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
+" 	endif
+" endfunction
 
 
 "========================

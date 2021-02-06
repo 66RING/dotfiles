@@ -71,17 +71,15 @@ function! s:dein_init()
         "         \}\n 
         "         \EOF\n",
         "       \})
-        " call dein#add('hrsh7th/nvim-compe' ,{
-        "       \'on_event': 'InsertEnter',
+        call dein#add('hrsh7th/nvim-compe')
+        " call dein#add('steelsojka/completion-buffers', {
+        "       \'on_source': 'completion-nvim',
+        "       \'hook_source': "let g:completion_word_ignored_ft = ['LuaTree','vista']",
         "       \})
-        call dein#add('steelsojka/completion-buffers', {
-              \'on_source': 'completion-nvim',
-              \'hook_source': "let g:completion_word_ignored_ft = ['LuaTree','vista']",
-              \})
-        call dein#add('nvim-lua/completion-nvim', {
-              \'on_event': ["BufReadPre","BufNewFile"],
-              \'hook_source': "autocmd BufReadPre,BufNewFile * lua require'completion'.on_attach()",
-              \})
+        " call dein#add('nvim-lua/completion-nvim', {
+        "       \'on_event': ["BufReadPre","BufNewFile"],
+        "       \'hook_source': "autocmd BufReadPre,BufNewFile * lua require'completion'.on_attach()",
+        "       \})
         
         " dress up
         call dein#add('ryanoasis/vim-devicons')
@@ -134,22 +132,22 @@ function! s:dein_init()
            
         " snips
         " Track the engine.
-        call dein#add('honza/vim-snippets')
-        call dein#add('SirVer/ultisnips', {
-              \'hook_source': "
-                \let g:UltiSnipsExpandTrigger=\"<C-e>\"\n
-                \let g:UltiSnipsJumpForwardTrigger=\"<c-l>\"\n
-                \let g:UltiSnipsJumpBackwardTrigger=\"<c-j>\"\n
-                \let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/config/Ultisnips']
-                \",
+        " call dein#add('honza/vim-snippets')
+        " call dein#add('SirVer/ultisnips', {
+        "       \'hook_source': "
+        "         \let g:UltiSnipsExpandTrigger=\"<C-e>\"\n
+        "         \let g:UltiSnipsJumpForwardTrigger=\"<c-l>\"\n
+        "         \let g:UltiSnipsJumpBackwardTrigger=\"<c-j>\"\n
+        "         \let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/config/Ultisnips']
+        "         \",
+        "       \})
+        call dein#add('hrsh7th/vim-vsnip', {
+              \'on_event': 'InsertCharPre',
+              \'hook_source': 'let g:vsnip_snippet_dir = getenv("HOME") . "/.config/nvim/config/vsnips"',
               \})
-        " call dein#add('hrsh7th/vim-vsnip', {
-        "       \'on_event': 'InsertCharPre',
-        "       \'hook_source': 'let g:vsnip_snippet_dir = getenv("HOME") . "/.config/nvim/config/vsnips"',
-        "       \})
-        " call dein#add('hrsh7th/vim-vsnip-integ', {
-        "       \'on_event': 'InsertCharPre'
-        "       \})
+        call dein#add('hrsh7th/vim-vsnip-integ', {
+              \'on_event': 'InsertCharPre'
+              \})
 
         call dein#add('tpope/vim-commentary')
         

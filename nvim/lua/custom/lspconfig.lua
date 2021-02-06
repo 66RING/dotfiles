@@ -36,28 +36,28 @@ for _,server in ipairs(servers) do
 end
 
 
--- lspconfig.pyright.setup{
---   on_attach = custom_attach,
---   settings = {
---     python = {
---       analysis = {
---         autoSearchPaths = true,
---         useLibraryCodeForTypes = true
---       }
---     }
---   }
--- }
-
-lspconfig.pyls.setup {
-  enable = true,
-  plugins = {
-    pyls_mypy = {
-      enabled = true,
-      live_mode = false
+lspconfig.pyright.setup{
+  on_attach = custom_attach,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true
+      }
     }
-  },
-  on_attach = custom_attach
+  }
 }
+
+-- lspconfig.pyls.setup {
+--   enable = true,
+--   plugins = {
+--     pyls_mypy = {
+--       enabled = true,
+--       live_mode = false
+--     }
+--   },
+--   on_attach = custom_attach
+-- }
 
 
 lspconfig.tsserver.setup({

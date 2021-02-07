@@ -39,3 +39,6 @@ alias proxyon='export http_proxy="127.0.0.1:12333" export https_proxy="127.0.0.1
 alias proxyoff='unset http_proxy ; unset export https_proxy'
 
 alias t="$HOME/scripts/tools/ai_trans_demo.py"
+
+alias poweroff="prompt2 'Shutdown?' 'poweroff'"
+alias reboot="prompt2 'Reboot?' 'reboot'"

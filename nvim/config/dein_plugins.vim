@@ -270,7 +270,23 @@ function! s:dein_init()
         " call dein#add('MaxMEllon/vim-jsx-pretty', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
         " call dein#add('jelera/vim-javascript-syntax', { 'on_ft': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] })
         "Plug 'jaxbot/browserlink.vim'
-        call dein#add('alvan/vim-closetag', { 'on_ft': ['html', 'js', 'jsx', 'vue']})
+        " call dein#add('alvan/vim-closetag', { 'on_ft': ['html', 'js', 'jsx', 'vue']})
+
+        call dein#add('mattn/emmet-vim', { 
+              \ 'on_event': 'InsertEnter', 
+              \ 'on_ft': [ 'html','css','javascript','javascriptreact','vue','typescript','typescriptreact' ], 
+              \ 'hook_source': "
+                \let g:user_emmet_mode = 'ivn'\n
+                \let g:user_emmet_leader_key=','\n
+                \"
+              \})   
+        " div>li>a  div+li+a*3  div>li>a^p  div>(li>a)^p
+        " V: div>li*  * means for each line
+        " div[hello="1"]{TEXT} or some css selector grammar
+        " ul>li#item$*5  different number at least one digit
+        " ul>li#item$@3*5  start counting from 3, -3 as  reverse
+        " emmet ket + d, D, n, N, m, k, j, /, a
+
         call dein#add('AndrewRadev/tagalong.vim')
         
         " Python

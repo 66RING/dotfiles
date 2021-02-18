@@ -1,4 +1,5 @@
 local gl = require('galaxyline')
+local condition = require('galaxyline.condition')
 local gls = gl.section
 gl.short_line_list = {'defx','vista', 'dbui', 'vista_markdown'}
 
@@ -44,36 +45,14 @@ local file_readonly = function()
   return ''
 end
 
-local buffer_not_empty = function()
-  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
-    return true
-  end
-  return false
-end
-
-local checkwidth = function()
-  local squeeze_width  = vim.fn.winwidth(0) / 2
-  if squeeze_width > 40 then
-    return true
-  end
-  return false
-end
-
-local find_git_root = require('galaxyline.provider_vcs').check_git_workspace
-
-local function get_git_status()
-  local status = vim.fn.GitGutterGetHunkSummary()
-  return status
-end
-
 --
 -- Left
 --
 table.insert(gls.left,{
   FirstElement = {
-    provider = function() 
+    provider = function()
       vim.api.nvim_command('hi GalaxyFirstElement guibg='..mode_color[vim.fn.mode()])
-      return ' ' 
+      return ' '
     end,
     highlight = {colors.none,colors.blue}
   },
@@ -106,8 +85,8 @@ table.insert(gls.left, {
         end
       end
       return file .. ' '
-    end, 
-    condition = buffer_not_empty,
+    end,
+    condition = condition.buffer_not_empty,
     highlight = {colors.line_bg,colors.blue,'bold'},
   }
 })
@@ -117,7 +96,7 @@ table.insert(gls.left, {
     provider = function()
       vim.api.nvim_command('hi GalaxySep guifg='..mode_color[vim.fn.mode()])
       return ' '
-    end, 
+    end,
     separator = '%<',
     highlight = {colors.blue,colors.none,'bold'},
   }
@@ -125,17 +104,17 @@ table.insert(gls.left, {
 
 table.insert(gls.left, {
   GitIcon = {
-    provider = function() 
-      return ' ' 
+    provider = function()
+      return ' '
     end,
-    condition = find_git_root,
+    condition = condition.check_git_workspace,
     highlight = {colors.yellow,colors.none, 'bold'},
   }
 })
 table.insert(gls.left, {
   GitBranch = {
     provider = {'GitBranch'},
-    condition = find_git_root,
+    condition = condition.check_git_workspace,
     highlight = {colors.yellow,colors.none,'bold'},
   }
 })
@@ -169,18 +148,6 @@ table.insert(gls.left, {
     highlight = {colors.red,colors.none},
   }
 })
-
--- table.insert(gls.left, {
---   GitStatus = {
---     provider = function() 
---         local status = get_git_status()
---         return '+'..status[1]..' ~'..status[2]..' -'..status[3]
---       end,
---     condition = find_git_root,
---     highlight = {colors.orange,colors.none},
---   }
--- })
-
 
 table.insert(gls.left, {
   DiagnosticError = {
@@ -218,7 +185,7 @@ table.insert(gls.right, {
     provider = 'LineColumn',
     separator = ' | ',
     separator_highlight = {colors.darkblue,colors.none},
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = {colors.dim,colors.none},
   },
 })
@@ -228,7 +195,7 @@ table.insert(gls.right, {
     provider = 'LinePercent',
     separator = ' |',
     separator_highlight = {colors.darkblue,colors.none},
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = {colors.dim,colors.none},
   }
 })
@@ -238,7 +205,7 @@ table.insert(gls.right, {
     provider = 'FileSize',
     separator = '| ',
     separator_highlight = {colors.darkblue,colors.none},
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = {colors.cyan,colors.none},
   }
 })

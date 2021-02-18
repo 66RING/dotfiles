@@ -38,8 +38,6 @@ function! s:dein_init()
 
         call dein#add(s:dein_repo)
         " completion
-        " call dein#add('neoclide/coc.nvim', {'rev': 'release'})
-        
         call dein#add('neovim/nvim-lspconfig', {
             \'on_event': 'BufRead',
             \'hook_source': "lua require('custom.lspconfig')",
@@ -160,11 +158,11 @@ function! s:dein_init()
         call dein#add('junegunn/vim-easy-align' , { 'on_map': {'xn': '<Plug>(EasyAlign)'}})
         call dein#add('tpope/vim-surround') " type ysiw' i sur in word '' or type cs'` to change 'word' to `word` or 'ds' del sur or 'yss'' for sur line h h-> 'h h'
         call dein#add('easymotion/vim-easymotion', { 'on_map': {'n': '<Plug>'}})
+        " fuzzy find
         call dein#add('liuchengxu/vim-clap', { 
                     \'hook_post_update': ':Clap install-binary' ,
                     \'on_cmd': 'Clap',
                     \})
-        " fuzzy find
         " call dein#add('nvim-lua/popup.nvim', { 'on_source': 'telescope.nvim'})
         " call dein#add('nvim-lua/plenary.nvim', { 'on_source': 'telescope.nvim'})
         " call dein#add('nvim-telescope/telescope.nvim', { 'on_cmd': 'Telescope'})

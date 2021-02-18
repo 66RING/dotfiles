@@ -16,3 +16,6 @@ nvim/lua/test
 
 .config/msmtp/config
 .config/mutt
+
+.config/QtProject
+.config/NuGet

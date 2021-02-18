@@ -113,7 +113,7 @@ let g:compe.enabled = v:true
 let g:compe.autocomplete = v:true
 let g:compe.debug = v:false
 let g:compe.min_length = 1
-let g:compe.preselect = 'always'
+let g:compe.preselect = 'disable'
 let g:compe.allow_prefix_unmatch = v:false
 
 let g:compe.source = {}

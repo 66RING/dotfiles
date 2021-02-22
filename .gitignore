@@ -19,3 +19,7 @@ nvim/lua/test
 
 .config/QtProject
 .config/NuGet
+
+.config/qqmusic
+
+nvim/plugin/packer_compiled.vim

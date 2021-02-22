@@ -2,22 +2,12 @@ local lspconfig = require 'lspconfig'
 local lsp_folder = "/home/ring/var/lsp"
 local api = vim.api
 local util = require("lspconfig/util")
-local saga = require 'lspsaga'
 
-saga.init_lsp_saga{
-  finder_action_keys = {
-    open = '<enter>', vsplit = 'v',split = 's',quit = 'q'
-  },
-}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 
 local custom_attach = function(client, bufnr)
-  -- local has_completion,completion = pcall(require,'completion')
-  -- if not has_completion then
-  --   print('Does not load completion-nvim')
-  --   return
-  -- end
-  -- completion.on_attach()
-
   -- TODO --
   api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end

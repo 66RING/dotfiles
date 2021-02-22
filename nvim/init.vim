@@ -368,8 +368,15 @@ endfunc
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
+command! PackerInstall packadd packer.nvim | lua require('plugins').install()
+command! PackerUpdate packadd packer.nvim | lua require('plugins').update()
+command! PackerSync packadd packer.nvim | lua require('plugins').sync()
+command! PackerClean packadd packer.nvim | lua require('plugins').clean()
+command! PackerCompile packadd packer.nvim | lua require('plugins').compile()
+
+
 execute 'source' fnamemodify('$HOME/.config/nvim/config/plugin_config.vim', '')
 " " dein.vim
-execute 'source' fnamemodify('$HOME/.config/nvim/config/dein_plugins.vim', '')
+" execute 'source' fnamemodify('$HOME/.config/nvim/config/dein_plugins.vim', '')
 
 

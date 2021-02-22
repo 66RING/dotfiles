@@ -1,4 +1,5 @@
 local packer = nil
+local conf = require('config')
 
 local function init()
 
@@ -11,82 +12,129 @@ local function init()
   local use_rocks = packer.use_rocks
   packer.reset()
 
-
--- -- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- -- Only required if you have packer in your `opt` pack
--- vim.cmd [[packadd packer.nvim]]
--- -- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
--- vim._update_package_paths()
-
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim', opt = true}
 
-  -- Simple plugins can be specified as strings
-  use '9mm/vim-closer'
-
-  -- Lazy loading:
-  -- Load on specific commands
-  use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
-
-  -- Load on an autocommand event
-  use {'andymass/vim-matchup', event = 'VimEnter *'}
-
-  -- Load on a combination of conditions: specific filetypes or commands
-  -- Also run code after load (see the "config" key)
-  use {
-    'w0rp/ale',
-    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
-    cmd = 'ALEEnable',
-    config = 'vim.cmd[[ALEEnable]]'
+  use {"neovim/nvim-lspconfig",
+    -- event = "BufRead *",
+    config = [[require('custom.lspconfig')]]
   }
 
-  -- Plugins can have dependencies on other plugins
-  use {
-    'haorenW1025/completion-nvim',
-    opt = true,
-    requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
+  use {"glepnir/lspsaga.nvim",
+    cmd = "Lspsaga",
+    after = "nvim-lspconfig",
+    config = conf.lspsaga
   }
 
-  -- Plugins can also depend on rocks from luarocks.org:
-  use {
-    'my/supercoolplugin',
-    rocks = {'lpeg', {'lua-cjson', version = '2.1.0'}}
+  use {"hrsh7th/nvim-compe"}
+
+
+  -- dress up
+  use {"ryanoasis/vim-devicons"}
+  use {"glepnir/dashboard-nvim"}
+
+  use {'glepnir/galaxyline.nvim',
+    config = [[require('statusline.moonline')]]
   }
 
-  -- You can specify rocks in isolation
-  use_rocks 'penlight'
-  use_rocks {'lua-resty-http', 'lpeg'}
+  use {'66RING/bookmarks-nvim'}
+  use {'mg979/vim-xtabline'}
 
-  -- Local plugins can be included
-  use '~/projects/personal/hover.nvim'
-
-  -- Plugins can have post-install/update hooks
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
-
-  -- Post-install/update hook with neovim command
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
-  -- Post-install/update hook with call of vimscript function with argument
-  use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
-
-  -- Use specific branch, dependency and run lua file after load
-  use {
-    'glepnir/galaxyline.nvim', branch = 'main', config = function() require'statusline' end,
-    requires = {'kyazdani42/nvim-web-devicons'}
+  -- enhance
+  use {"norcalli/nvim-colorizer.lua",
+    config = conf.nvim_colorizer
+  }
+  use {'itchyny/vim-cursorword',
+    event={'BufReadPre *', 'BufNewFile *'}
   }
 
-  -- Use dependency and run lua function after load
-  use {
-    'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('gitsigns').setup() end
+  -- markdown
+  use {'iamcco/markdown-preview.nvim',
+    ft = {'markdown', 'pandoc.markdown', 'rmd'},
+    run = 'sh -c "cd app && yarn install"' }
+  use {'dhruvasagar/vim-table-mode',
+    ft = 'markdown'
+  }
+  use {'dkarter/bullets.vim',
+    ft = 'markdown'
   }
 
-  -- You can specify multiple plugins in a single call
-  use {'tjdevries/colorbuddy.vim', {'nvim-treesitter/nvim-treesitter', opt = true}}
+  use {'hrsh7th/vim-vsnip',
+    event = 'InsertCharPre *',
+    config = conf.nvim_vsnip
+  }
 
-  -- You can alias plugin names
-  use {'dracula/vim', as = 'dracula'}
+  use {'hrsh7th/vim-vsnip-integ',
+    event = 'InsertCharPre *'
+  }
+
+  use {'tpope/vim-commentary'}
+
+  -- git
+  use {'airblade/vim-gitgutter'}
+
+  -- something useful
+
+  use {'junegunn/vim-easy-align' ,
+    -- keys = {'xn', '<Plug>(EasyAlign)'}
+  }
+  use {'tpope/vim-surround'} -- type ysiw' i sur in word '' or type cs'` to change 'word' to `word` or 'ds' del sur or 'yss'' for sur line h h-> 'h h'
+  use {'easymotion/vim-easymotion',
+    -- keys = {'n', '<Plug>'}
+  }
+
+  -- fuzzy find
+  use {'liuchengxu/vim-clap',
+    run = [[vim.cmd('Clap install-binary')]],
+    lock = true,
+    cmd = 'Clap'
+  }
+
+  use {'mg979/vim-visual-multi'}
+  use {'Shougo/defx.nvim',
+    run = "vim.cmd('UpdateRemotePlugins')",
+    cmd = 'Defx',
+    config = conf.defx
+  }
+
+  -- TODO
+  use {'kristijanhusak/defx-icons',
+    requires = 'Shougo/defx.nvim' -- TODO
+  }
+
+  use {'voldikss/vim-translator',
+    -- keys = {'x', '<Plug>TranslateW'}
+  }
+
+  use {'liuchengxu/vista.vim',
+    cmd = 'Vista'
+  }
+
+  use {'Yggdroot/indentLine',
+    event = 'BufReadPre *',
+    config = conf.indentLine
+  }
+
+  -- sreach
+  use {'bronson/vim-visual-star-search'}
+
+  -- database
+  -- use {'tpope/vim-dadbod'}
+  use {'kristijanhusak/vim-dadbod-ui',
+    cmd = {'DBUIToggle', 'DBUIAddConnection', 'DBUI', 'DBUIFindBuffer', 'DBUIRenameBuffer'} ,
+    requires = {'tpope/vim-dadbod',opt = true}
+  }
+
+  use {'mattn/emmet-vim',
+    event = 'InsertEnter *',
+    ft = { 'html','css','javascript','javascriptreact','vue','typescript','typescriptreact' },
+    config = conf.emmet
+  }
+  use {'AndrewRadev/tagalong.vim'}
+  use {'sophacles/vim-processing',
+    ft = 'processing'
+  }
+
 end
 
 local plugins = setmetatable({}, {

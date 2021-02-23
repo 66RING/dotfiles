@@ -16,8 +16,8 @@ local function init()
   use {'wbthomason/packer.nvim', opt = true}
 
   use {"neovim/nvim-lspconfig",
-    -- event = "BufRead *",
-    config = [[require('custom.lspconfig')]]
+    event = "BufRead *",
+    setup = [[require('custom.lspconfig')]]
   }
 
   use {"glepnir/lspsaga.nvim",
@@ -26,7 +26,10 @@ local function init()
     config = conf.lspsaga
   }
 
-  use {"hrsh7th/nvim-compe"}
+  use {"hrsh7th/nvim-compe",
+    event = 'InsertEnter *',
+    -- config = conf.nvim_compe
+  }
 
 
   -- dress up
@@ -42,7 +45,7 @@ local function init()
 
   -- enhance
   use {"norcalli/nvim-colorizer.lua",
-    config = conf.nvim_colorizer
+    --config = conf.nvim_colorizer
   }
   use {'itchyny/vim-cursorword',
     event={'BufReadPre *', 'BufNewFile *'}
@@ -60,12 +63,13 @@ local function init()
   }
 
   use {'hrsh7th/vim-vsnip',
-    event = 'InsertCharPre *',
-    config = conf.nvim_vsnip
+    event = 'InsertEnter *',
+    setup = conf.vim_vsnip
   }
 
   use {'hrsh7th/vim-vsnip-integ',
-    event = 'InsertCharPre *'
+    event = 'InsertEnter *',
+    after = 'vim-vsnip'
   }
 
   use {'tpope/vim-commentary'}
@@ -74,13 +78,12 @@ local function init()
   use {'airblade/vim-gitgutter'}
 
   -- something useful
-
   use {'junegunn/vim-easy-align' ,
-    -- keys = {'xn', '<Plug>(EasyAlign)'}
+    keys = '<Plug>(EasyAlign)'
   }
   use {'tpope/vim-surround'} -- type ysiw' i sur in word '' or type cs'` to change 'word' to `word` or 'ds' del sur or 'yss'' for sur line h h-> 'h h'
   use {'easymotion/vim-easymotion',
-    -- keys = {'n', '<Plug>'}
+    keys = '<Plug>(easymotion-sn)'
   }
 
   -- fuzzy find
@@ -97,13 +100,12 @@ local function init()
     config = conf.defx
   }
 
-  -- TODO
   use {'kristijanhusak/defx-icons',
-    requires = 'Shougo/defx.nvim' -- TODO
+    after = 'defx.nvim'
   }
 
   use {'voldikss/vim-translator',
-    -- keys = {'x', '<Plug>TranslateW'}
+    keys = '<Plug>TranslateW'
   }
 
   use {'liuchengxu/vista.vim',
@@ -112,7 +114,7 @@ local function init()
 
   use {'Yggdroot/indentLine',
     event = 'BufReadPre *',
-    config = conf.indentLine
+    setup = conf.indentLine
   }
 
   -- sreach
@@ -127,8 +129,8 @@ local function init()
 
   use {'mattn/emmet-vim',
     event = 'InsertEnter *',
-    ft = { 'html','css','javascript','javascriptreact','vue','typescript','typescriptreact' },
-    config = conf.emmet
+    ft = {'html','css','javascript','javascriptreact','vue','typescript','typescriptreact'},
+    setup = conf.emmet
   }
   use {'AndrewRadev/tagalong.vim'}
   use {'sophacles/vim-processing',

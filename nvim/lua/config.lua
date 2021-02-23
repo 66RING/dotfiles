@@ -50,12 +50,12 @@ function config.defx()
 end
 
 function config.emmet()
-  vim.g.user_emmet_mode = 'ivn'
-  vim.g.user_emmet_leader_key = ','
+  vim.g.user_emmet_mode = "ivn"
+  vim.g.user_emmet_leader_key = ","
 end
 
 function config.indentLine()
-  vim.g.indentLine_enabled = 1 
+  vim.g.indentLine_enabled = 1
   vim.g.indentLine_char='¦'
   vim.g.indentLine_fileTypeExclude = {'defx', 'json', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown'}
   vim.g.indentLine_concealcursor = 'inc'
@@ -73,6 +73,29 @@ function config.lspsaga()
       open = '<enter>', vsplit = 'v',split = 's',quit = 'q'
     },
   }
+end
+
+function config.nvim_compe()
+  require'compe'.setup {
+    enabled = true;
+    autocomplete = true;
+    debug = false;
+    min_length = 1;
+    preselect = 'disable';
+    allow_prefix_unmatch = false;
+    source = {
+      path = true;
+      buffer = true;
+      calc = true;
+      vsnip = true;
+      nvim_lsp = true;
+      nvim_lua = true;
+      spell = true;
+      tags = true;
+    };
+  }
+  vim.api.nvim_command("autocmd FileType clap_input, markdown lua require'compe'.setup { enabled = false}")
+
 end
 
 

@@ -160,6 +160,7 @@ function! s:dein_init()
         call dein#add('liuchengxu/vim-clap', { 
                     \'hook_post_update': ':Clap install-binary' ,
                     \'on_cmd': 'Clap',
+                    \'frozen': v:true 
                     \})
         " call dein#add('nvim-lua/popup.nvim', { 'on_source': 'telescope.nvim'})
         " call dein#add('nvim-lua/plenary.nvim', { 'on_source': 'telescope.nvim'})

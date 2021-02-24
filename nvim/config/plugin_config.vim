@@ -6,67 +6,6 @@
 "               |___/                                      |___/     
 
 
-""========================
-"" coc
-""========================
-"" fix the most annoying bug that coc has
-"silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-"let g:coc_disable_transparent_cursor = 1
-"let g:coc_global_extensions = [
-"    \ 'coc-python', 'coc-java', 'coc-html', 'coc-json', 'coc-css', 
-"    \ 'coc-tsserver', 'coc-tslint-plugin',
-"    \ 'coc-lists', 'coc-yank',
-"    \ 'coc-vimlsp', 'coc-tailwindcss',
-"    \ 'coc-snippets', 'coc-diagnostic', 
-"    \ 'coc-style-helper', 'coc-yaml', 'coc-sql',
-"    \ 'coc-vetur'
-"    \ ]    " to install 'coc-vetur'  , 
-"" npm i eslint eslint-plugin-vue -D in root workspace to use vetur
-
-"" " coc statusline
-"" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-"" tab to expend
-"function! s:check_back_space() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-
-"inoremap <silent><expr> <TAB>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ get(b:, 'coc_suggest_disable') == 1 ? "\<C-n>" : coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"" key to confirm suggest
-"" inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-"inoremap <silent><expr> <CR> complete_info().selected!=-1 ? "\<C-y>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-"" disable coc suggest for:
-"autocmd FileType markdown let b:coc_suggest_disable = 1
-
-
-"nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-"nmap <silent> gd :<C-u>call autoload#smart_split("normal \<Plug>(coc-definition)")<CR>
-"nmap <silent> gy :<C-u>call autoload#smart_split("normal \<Plug>(coc-type-definition)")<CR>
-"nmap <silent> gi :<C-u>call autoload#smart_split("normal \<Plug>(coc-implementation)")<CR>
-"nmap <silent> gr :<C-u>call autoload#smart_split("normal \<Plug>(coc-references)")<CR>
-"nmap <leader>rn <Plug>(coc-rename)
-
-"" Remap for format selected region
-"xmap <C-s>  <Plug>(coc-format-selected)
-"nmap <C-s>  <Plug>(coc-format-selected)
-
-"" coc-snippets
-"imap <C-e> <Plug>(coc-snippets-expand)
-"let coc_snippet_next = "<C-l>"
-"let coc_snippet_prev = "<C-j>"
-
-"" coc-diagnostic
-"nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
-"nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
-
-
 "========================
 " completion
 "========================
@@ -143,10 +82,6 @@ nnoremap <silent>gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
 nnoremap <silent><LEADER>h <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 nnoremap <silent><LEADER>a <cmd>lua require('lspsaga.codeaction').code_action()<CR>
 vnoremap <silent><LEADER>a <cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>
-"nnoremap <silent> gy :<C-u>call autoload#smart_split("normal \<Plug>(coc-type-definition)")<CR>
-"nnoremap <silent> gi :<C-u>call autoload#smart_split("normal \<Plug>(coc-implementation)")<CR>
-" nnoremap <silent> gr :<C-u>call autoload#smart_split("<cmd>lua vim.lsp.buf.references()<CR>")<CR>
-"" diagnostic
 nnoremap <silent><LEADER>- <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
 nnoremap <silent><LEADER>= <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
 " nnoremap <silent><C-s> <cmd>lua vim.lsp.buf.formatting()<CR>
@@ -156,12 +91,12 @@ command! Format lua vim.lsp.buf.formatting()
 ""========================
 "" snips
 ""========================
-" Expand
-imap <expr> <C-e>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>'
-smap <expr> <C-e>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>'
-" Jump forward or backward
-smap <expr> <C-l>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-l>'
-smap <expr> <C-j>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-j>'
+" " Expand
+" imap <expr> <C-e>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>'
+" smap <expr> <C-e>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>'
+" " Jump forward or backward
+" smap <expr> <C-l>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-l>'
+" smap <expr> <C-j>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-j>'
 
 
 "========================

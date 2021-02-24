@@ -21,14 +21,13 @@ local function init()
   }
 
   use {"glepnir/lspsaga.nvim",
-    cmd = "Lspsaga",
-    after = "nvim-lspconfig",
+    event = "BufRead *",
     config = conf.lspsaga
   }
 
   use {"hrsh7th/nvim-compe",
     event = 'InsertEnter *',
-    -- config = conf.nvim_compe
+    -- setup = conf.nvim_compe
   }
 
 
@@ -45,7 +44,7 @@ local function init()
 
   -- enhance
   use {"norcalli/nvim-colorizer.lua",
-    --config = conf.nvim_colorizer
+    setup = conf.nvim_colorizer
   }
   use {'itchyny/vim-cursorword',
     event={'BufReadPre *', 'BufNewFile *'}
@@ -132,6 +131,13 @@ local function init()
     ft = {'html','css','javascript','javascriptreact','vue','typescript','typescriptreact'},
     setup = conf.emmet
   }
+  -- div>li>a  div+li+a*3  div>li>a^p  div>(li>a)^p
+  -- V: div>li*  * means for each line
+  -- div[hello="1"]{TEXT} or some css selector grammar
+  -- ul>li#item$*5  different number at least one digit
+  -- ul>li#item$@3*5  start counting from 3, -3 as  reverse
+  -- emmet ket + d, D, n, N, m, k, j, /, a
+
   use {'AndrewRadev/tagalong.vim'}
   use {'sophacles/vim-processing',
     ft = 'processing'

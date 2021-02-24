@@ -61,6 +61,7 @@ map <Space>  <Nop>
 map gh  <Nop>
 map gH  <Nop>
 map g<C-h>  <Nop>
+map <C-z>  <Nop>
 
 
 set enc=utf8

@@ -1,7 +1,7 @@
 local config = {}
-local home    = os.getenv("HOME")
 
 function config.nvim_colorizer()
+  vim.cmd [[packadd nvim-colorizer.lua]]
   require 'colorizer'.setup {
     css = { rgb_fn = true; };
     scss = { rgb_fn = true; };
@@ -43,9 +43,9 @@ function config.defx()
      }
    })
 
-  vim.fn['defx#custom#column']('mark', { 
+  vim.fn['defx#custom#column']('mark', {
        readonly_icon= '',
-       selected_icon= '' 
+       selected_icon= ''
   })
 end
 
@@ -64,6 +64,14 @@ end
 
 function config.vim_vsnip()
   vim.g.vsnip_snippet_dir = os.getenv('HOME') .. "/.config/nvim/config/vsnips"
+
+  local map_key = vim.fn.nvim_set_keymap
+  local opts = {expr=true}
+  map_key('i', '<C-e>', [[vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>']], opts)
+  map_key('s', '<C-e>', [[vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>']], opts)
+
+  map_key('s', '<C-l>', [[vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-l>']], opts)
+  map_key('s', '<C-j>', [[vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-j>']], opts)
 end
 
 function config.lspsaga()
@@ -76,6 +84,7 @@ function config.lspsaga()
 end
 
 function config.nvim_compe()
+  vim.cmd [[packadd nvim-compe]]
   require'compe'.setup {
     enabled = true;
     autocomplete = true;

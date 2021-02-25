@@ -56,12 +56,6 @@ let g:compe.preselect = 'disable'
 let g:compe.allow_prefix_unmatch = v:false
 
 let g:compe.source = {}
-" let g:compe.source.path = {'ignored_filetypes': ['clap_input', 'markdown']}
-" let g:compe.source.buffer = {'ignored_filetypes': ['clap_input', 'markdown']}
-" let g:compe.source.calc = {'ignored_filetypes': ['clap_input', 'markdown']}
-" let g:compe.source.vsnip = {'ignored_filetypes': ['clap_input', 'markdown']}
-" let g:compe.source.nvim_lsp = {'ignored_filetypes': ['clap_input', 'markdown']}
-" let g:compe.source.nvim_lua = {'ignored_filetypes': ['clap_input', 'markdown']}
 let g:compe.source.path = v:true
 let g:compe.source.buffer = v:true
 let g:compe.source.calc = v:true
@@ -76,16 +70,16 @@ autocmd FileType clap_input,markdown let g:compe.autocomplete=v:false
 "========================
 " lsp
 "========================
-nnoremap <silent><LEADER>rn <cmd>lua require('lspsaga.rename').rename()<CR>
-nnoremap <silent>gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
-nnoremap <silent>gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-nnoremap <silent><LEADER>h <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-nnoremap <silent><LEADER>a <cmd>lua require('lspsaga.codeaction').code_action()<CR>
-vnoremap <silent><LEADER>a <cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>
-nnoremap <silent><LEADER>- <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
-nnoremap <silent><LEADER>= <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
+" nnoremap <silent><LEADER>rn <cmd>lua require('lspsaga.rename').rename()<CR>
+" nnoremap <silent>gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
+" nnoremap <silent>gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+" nnoremap <silent><LEADER>h <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+" nnoremap <silent><LEADER>a <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+" vnoremap <silent><LEADER>a <cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>
+" nnoremap <silent><LEADER>- <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
+" nnoremap <silent><LEADER>= <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
 " nnoremap <silent><C-s> <cmd>lua vim.lsp.buf.formatting()<CR>
-command! Format lua vim.lsp.buf.formatting()
+" command! Format lua vim.lsp.buf.formatting()
 
 
 ""========================

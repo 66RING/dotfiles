@@ -251,7 +251,7 @@ func! FindDoc()
     else
         " default
         :exec "h ". expand("<cword>")
-    endif                                                                              
+    endif
 endfunc
 
 
@@ -311,7 +311,7 @@ func! RunCode()
 		:term lua %:p
     else
         echo "nothing to run"
-    endif                                                                              
+    endif
 endfunc
 
 nnoremap <leader>B :<C-u>call BuildCode()<CR>
@@ -346,7 +346,7 @@ func! BuildCode()
 		:term luac %:p
     else
         echo "nothing to build"
-    endif                                                                              
+    endif
 endfunc
 
 " debugging with gdb
@@ -363,17 +363,27 @@ func! DebugWithGDB()
         :term gdb %:p:r
     else
         echo "nothing to debug"
-    endif                                                                              
+    endif
 endfunc
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
+"========================
+" packer.nvim
+"========================
 command! PackerInstall packadd packer.nvim | lua require('plugins').install()
 command! PackerUpdate packadd packer.nvim | lua require('plugins').update()
 command! PackerSync packadd packer.nvim | lua require('plugins').sync()
 command! PackerClean packadd packer.nvim | lua require('plugins').clean()
 command! PackerCompile packadd packer.nvim | lua require('plugins').compile()
+autocmd BufWritePost plugins.lua PackerCompile
+" auto install packer.nvim
+let s:install_path = stdpath("data").'/site/pack/packer/opt/packer.nvim'
+if empty(glob(s:install_path))
+  execute '!git clone https://github.com/wbthomason/packer.nvim '.s:install_path
+  execute 'packadd packer.nvim'
+endif
 
 
 execute 'source' fnamemodify('$HOME/.config/nvim/config/plugin_config.vim', '')

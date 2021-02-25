@@ -32,11 +32,11 @@ local function init()
 
 
   -- dress up
-  use {"ryanoasis/vim-devicons"}
   use {"glepnir/dashboard-nvim"}
 
   use {'glepnir/galaxyline.nvim',
-    config = [[require('statusline.moonline')]]
+    config = [[require('statusline.moonline')]],
+    requires = {'kyazdani42/nvim-web-devicons'}
   }
 
   use {'66RING/bookmarks-nvim'}
@@ -141,6 +141,16 @@ local function init()
   use {'AndrewRadev/tagalong.vim'}
   use {'sophacles/vim-processing',
     ft = 'processing'
+  }
+
+  use {'szw/vim-maximizer',
+    cmd = "MaximizerToggle",
+    setup = function()
+      local opts = {silent=true, noremap=true}
+      vim.api.nvim_set_keymap('n', '<C-m>', ":MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('i', '<C-m>', ":MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('v', '<C-m>', "<C-o>:MaximizerToggle<CR>", opts)
+    end
   }
 
 end

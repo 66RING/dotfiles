@@ -1,5 +1,8 @@
 local config = {}
 
+--
+-- enhance
+--
 function config.nvim_colorizer()
   vim.cmd [[packadd nvim-colorizer.lua]]
   require 'colorizer'.setup {
@@ -19,6 +22,29 @@ function config.nvim_colorizer()
   }
 end
 
+function config.nvim_treesitter()
+  vim.api.nvim_command('set foldmethod=expr')
+  vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
+  require'nvim-treesitter.configs'.setup {
+      highlight = {
+        enable = true,
+      },
+    ensure_installed = 'all'
+  }
+end
+
+function config.indentLine()
+  vim.g.indentLine_enabled = 1
+  vim.g.indentLine_char='¦'
+  vim.g.indentLine_fileTypeExclude = {'defx', 'json', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown'}
+  vim.g.indentLine_concealcursor = 'inc'
+  vim.g.indentLine_showFirstIndentLevel =1
+end
+
+
+--
+-- editor
+--
 function config.defx()
   vim.fn['defx#custom#option']('_', {
       floating_preview= 1,
@@ -49,17 +75,41 @@ function config.defx()
   })
 end
 
+function config.telescope()
+  print("tele")
+  -- if not packer_plugins['plenary.nvim'].loaded then
+  --   vim.cmd [[packadd plenary.nvim]]
+  --   vim.cmd [[packadd popup.nvim]]
+  --   vim.cmd [[packadd telescope-fzy-native.nvim]]
+  -- end
+  require('telescope').setup {
+    defaults = {
+      prompt_prefix = '🚀 ',
+      prompt_position = 'top',
+      sorting_strategy = 'ascending',
+      -- file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+      -- grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+      -- qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+    },
+    extensions = {
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
+        }
+    }
+  }
+  -- require('telescope').load_extension('fzy_native')
+  -- require'telescope'.load_extension('dotfiles')
+  -- require'telescope'.load_extension('gosource')
+end
+
+
+--
+-- lang
+--
 function config.emmet()
   vim.g.user_emmet_mode = "ivn"
   vim.g.user_emmet_leader_key = ","
-end
-
-function config.indentLine()
-  vim.g.indentLine_enabled = 1
-  vim.g.indentLine_char='¦'
-  vim.g.indentLine_fileTypeExclude = {'defx', 'json', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown'}
-  vim.g.indentLine_concealcursor = 'inc'
-  vim.g.indentLine_showFirstIndentLevel =1
 end
 
 function config.vim_vsnip()
@@ -115,8 +165,7 @@ function config.nvim_compe()
       tags = true;
     };
   }
-  vim.api.nvim_command("autocmd FileType clap_input, markdown lua require'compe'.setup { enabled = false}")
-
+  vim.api.nvim_command("autocmd FileType clap_input,markdown call compe#setup({ 'autocomplete': v:false }, 0)")
 end
 
 

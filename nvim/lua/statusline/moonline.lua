@@ -180,13 +180,23 @@ table.insert(gls.right, {
   }
 })
 
+-- table.insert(gls.right, {
+--   LineInfo = {
+--     provider = 'LineColumn',
+--     separator = ' | ',
+--     separator_highlight = {colors.darkblue,colors.none},
+--     condition = condition.buffer_not_empty,
+--     highlight = {colors.dim,colors.none},
+--   },
+-- })
+
 table.insert(gls.right, {
-  LineInfo = {
-    provider = 'LineColumn',
-    separator = ' | ',
+  FileEncode = {
+    provider = 'FileEncode',
+    separator = ' |',
     separator_highlight = {colors.darkblue,colors.none},
     condition = condition.buffer_not_empty,
-    highlight = {colors.dim,colors.none},
+    highlight = {colors.green,colors.none},
   },
 })
 
@@ -216,9 +226,18 @@ table.insert(gls.right, {
 table.insert(gls.short_line_left, {
   BufferType = {
     provider = 'FileTypeName',
+    separator = ' ',
+    separator_highlight = {colors.dim,colors.reverse},
+    highlight = {colors.dim,colors.reverse}
+  }
+})
+
+table.insert(gls.short_line_left, {
+  SFileName = {
+    provider = 'FileName',
     separator = '%m',
     separator_highlight = {colors.reverse,colors.none},
-    highlight = {colors.dim,colors.reverse}
+    highlight = {colors.line_bg,colors.reverse}
   }
 })
 

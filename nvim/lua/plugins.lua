@@ -27,7 +27,7 @@ local function init()
 
   use {"hrsh7th/nvim-compe",
     event = 'InsertEnter *',
-    -- setup = conf.nvim_compe
+    setup = conf.nvim_compe
   }
 
 
@@ -49,6 +49,24 @@ local function init()
   use {'itchyny/vim-cursorword',
     event={'BufReadPre *', 'BufNewFile *'}
   }
+  use {"glepnir/zephyr-nvim",
+    config= function()
+      vim.cmd('colorscheme zephyr')
+      vim.cmd('highlight Normal ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight SignColumn ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
+    end,
+  }
+  use{'nvim-treesitter/nvim-treesitter',
+    event = 'BufRead *',
+    config = conf.nvim_treesitter
+  }
+  -- use {'nvim-treesitter/nvim-treesitter-textobjects',
+  --   after = 'nvim-treesitter'
+  -- }
+
+
+
 
   -- markdown
   use {'iamcco/markdown-preview.nvim',
@@ -91,6 +109,17 @@ local function init()
     lock = true,
     cmd = 'Clap'
   }
+
+  -- use {'nvim-telescope/telescope.nvim',
+  --   cmd = 'Telescope',
+  --   -- config = conf.telescope,
+  --   requires = {
+  --     {'nvim-lua/popup.nvim', after="telescope.nvim"},
+  --     {'nvim-lua/plenary.nvim', after="telescope.nvim"},
+  --     {'nvim-telescope/telescope-fzy-native.nvim', after="telescope.nvim"},
+  --   }
+  -- }
+
 
   use {'mg979/vim-visual-multi'}
   use {'Shougo/defx.nvim',
@@ -147,9 +176,9 @@ local function init()
     cmd = "MaximizerToggle",
     setup = function()
       local opts = {silent=true, noremap=true}
-      vim.api.nvim_set_keymap('n', '<C-m>', ":MaximizerToggle<CR>", opts)
-      vim.api.nvim_set_keymap('i', '<C-m>', ":MaximizerToggle<CR>", opts)
-      vim.api.nvim_set_keymap('v', '<C-m>', "<C-o>:MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('n', '<C-z>', ":MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('i', '<C-z>', "<ESC>:MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('v', '<C-z>', "<C-o>:MaximizerToggle<CR>", opts)
     end
   }
 

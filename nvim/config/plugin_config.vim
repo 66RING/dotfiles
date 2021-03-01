@@ -47,23 +47,23 @@ inoremap <silent><expr> <TAB>
       \ compe#complete()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'disable'
-let g:compe.allow_prefix_unmatch = v:false
+" let g:compe = {}
+" let g:compe.enabled = v:true
+" let g:compe.autocomplete = v:true
+" let g:compe.debug = v:false
+" let g:compe.min_length = 1
+" let g:compe.preselect = 'disable'
+" let g:compe.allow_prefix_unmatch = v:false
 
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.vsnip = v:true
-let g:compe.source.nvim_lsp = v:true
-let g:compe.source.nvim_lua = v:true
+" let g:compe.source = {}
+" let g:compe.source.path = v:true
+" let g:compe.source.buffer = v:true
+" let g:compe.source.calc = v:true
+" let g:compe.source.vsnip = v:true
+" let g:compe.source.nvim_lsp = v:true
+" let g:compe.source.nvim_lua = v:true
 
-autocmd FileType clap_input,markdown let g:compe.autocomplete=v:false
+" autocmd FileType clap_input,markdown let g:compe.autocomplete=v:false
 
 
 
@@ -100,7 +100,6 @@ let g:EasyMotion_do_mapping = 'off'
 nmap ss <Plug>(easymotion-sn)
 
 
-
 "========================
 " tagalong
 "========================
@@ -121,34 +120,6 @@ autocmd FileType c,cpp setlocal commentstring=//\ %s
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-
-"========================
-" markdown preview setting
-"========================
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 1
-let g:mkdp_refresh_slow = 0
-let g:mkdp_command_for_global = 0
-let g:mkdp_open_to_the_world = 0
-let g:mkdp_open_ip = ''
-let g:mkdp_browser = ''
-let g:mkdp_echo_preview_url = 0
-let g:mkdp_browserfunc = ''
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {}
-    \ }
-let g:mkdp_markdown_css = ''
-let g:mkdp_highlight_css = ''
-let g:mkdp_port = ''
 
 
 "========================

@@ -224,29 +224,36 @@ table.insert(gls.right, {
 -- Short Line left
 --
 table.insert(gls.short_line_left, {
-  BufferType = {
-    provider = 'FileTypeName',
-    separator = ' ',
-    separator_highlight = {colors.dim,colors.reverse},
-    highlight = {colors.dim,colors.reverse}
-  }
+  SSpace = {
+    provider = function () return "  " end,
+    condition = condition.buffer_not_empty,
+    highlight = {colors.reverse,colors.dim},
+  },
+})
+
+table.insert(gls.short_line_left, {
+  SFileIcon = {
+    provider = 'FileIcon',
+    condition = condition.buffer_not_empty,
+    highlight = {colors.reverse,colors.dim},
+  },
 })
 
 table.insert(gls.short_line_left, {
   SFileName = {
     provider = 'FileName',
+    highlight = {colors.reverse,colors.dim},
     separator = '%m',
-    separator_highlight = {colors.reverse,colors.none},
-    highlight = {colors.line_bg,colors.reverse}
+    separator_highlight = {colors.dim,colors.none},
   }
 })
 
-table.insert(gls.short_line_right, {
-  BufferIcon = {
-    provider= 'BufferIcon',
-    separator = '',
-    separator_highlight = {colors.reverse,colors.none},
-    highlight = {colors.dim,colors.reverse}
-  }
-})
+-- table.insert(gls.short_line_right, {
+--   BufferIcon = {
+--     provider= 'BufferIcon',
+--     separator = '',
+--     separator_highlight = {colors.reverse,colors.none},
+--     highlight = {colors.dim,colors.reverse}
+--   }
+-- })
 

@@ -23,3 +23,4 @@ nvim/lua/test
 .config/qqmusic
 
 nvim/plugin/packer_compiled.vim
+.config/microsoft-edge-dev

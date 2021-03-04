@@ -4,7 +4,7 @@ local config = {}
 -- enhance
 --
 function config.nvim_colorizer()
-  vim.cmd [[packadd nvim-colorizer.lua]]
+  -- vim.cmd [[packadd nvim-colorizer.lua]]
   require 'colorizer'.setup {
     css = { rgb_fn = true; };
     scss = { rgb_fn = true; };
@@ -103,6 +103,45 @@ function config.telescope()
   -- require'telescope'.load_extension('gosource')
 end
 
+function config.dashboard()
+  vim.g.dashboard_custom_header = {
+    '',
+    '',
+    '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ',
+    '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣼⣿⣦⢀⡐⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀  ',
+    '⠀⠀⠀⠀⠀⠀⠠⢀⠠⢚⡉⠘⢰⣾⣿⣿⣿⣷⠀⠈⢈⠒⢀⠀⠀⠀⠀⠀⠀⠀⠀  ',
+    '⠀⠀⠀⠀⢀⠠⠈⠑⣄⣠⠽⣰⣿⢿⣾⢾⣿⢻⣿⣰⠯⣀⣨⠋⢀⢀ ⠀⠀⠀⠀  ',
+    '⠀⠀⢀⢠⠈⠈⢶⣔⠉⢳⣴⣿⣻⢰⢽⢼⠯⢼⢻⣿⣦⠾⠹⣠⠶⠁⠑⣀⡀⠀⠀  ',
+    '⠀⠀⣀⠉⠐⣶⣉⣨⢻⣾⣿⠹⢤⢞⢸⢸⢏⡺⢼⢩⢿⣶⠛⢁⣩⣴⠊⢉⢀⠀⠀  ',
+    '⠀⠨⢁⠒⢴⣭⣰⣉⣿⣟⢶⣴⣾⣾⣿⣿⣿⣿⣶⣬⠺⣻⣽⣉⣠⣬⡶⠒⠘⠀⠀  ',
+    ' ⢾⠴⠤⣯⣤⣴⣽⣻⣾⣿⠿⣿⠟⣿⣿⣿⢻⡿⠿⣿⣷⣝⣽⣤⢤⣽⠴⢴⢶⠀  ',
+    '⠀⣌⣀⣠⣭⣴⣾⢿⢿⣷⣀⢀⠘⣶⣙⢟⣋⣾⠃⢀⣠⣾⣿⢿⣿⣦⣼⣠⣸⣠⠀  ',
+    '⠀⢈⠠⢀⣿⣿⣉⣸⢤⢙⣻⢿⣶⣶⣭⣭⣭⣴⣶⠿⢯⢻⢴⣀⣹⢿⣿⡀⠀⠁⠀  ',
+    '⠀ ⢡⣿⣾⠙⢙⣠⢜⢤⣰⢋⢾⣝⢹⢻⡟⣫⢵⢸⢼⢼⢺⣠⣩⢻⣾⣿⡘⠀⠀  ',
+    '⠀⣰⣿⢿⣾⢿⣾⣿⣾⢿⣿⣾⣾⣾⣿⣾⢿⢾⣾⣿⣿⣿⣾⣿⣷⢿⢿⢿⢾⣄⠀  ',
+    '⠀⠀⠀⠀⠨⢊⠠⢀⠾⢠⣠⠞⠀⣰⠐⢰⢀⣲⢀⢺⣐⠜⢶⠀⢀⠱⢀⠀⠀⠀⠀  ',
+    '⠀⠀⠀⠀⠀⠀⠨⠒⠠⢀⠟⠀⢹⠉⠀⣿⠘⠸⠉⠀⠻⣐⠀⠒⠀⠀⠀⠀⠀⠀⠀  ',
+    '⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠉⠀⠒⠐⠠⠿⠘⠐⢒⠈⠉⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀  ',
+    '',
+  }
+
+  vim.cmd [[autocmd FileType dashboard set laststatus=0 | autocmd BufLeave <buffer> set laststatus=2]]
+  vim.cmd [[autocmd FileType dashboard set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2]]
+  vim.cmd [[autocmd FileType dashboard nnoremap <silent><buffer> e :exec "set laststatus=2 \| enew"<CR>]]
+
+  vim.g.dashboard_custom_section={
+    empty_buffer= {
+        description = {' Empty Buffer'},
+        command= 'set laststatus=2 | enew' },
+    find_history= {
+        description= {'ﭯ History     '},
+        command= 'Clap history' },
+    find_file= {
+        description= {' Find Files  '},
+        command= 'Clap filer' },
+  }
+end
+
 
 --
 -- lang
@@ -146,7 +185,7 @@ function config.lspsaga()
 end
 
 function config.nvim_compe()
-  vim.cmd [[packadd nvim-compe]]
+  -- vim.cmd [[packadd nvim-compe]]
   require'compe'.setup {
     enabled = true;
     autocomplete = true;

@@ -234,9 +234,6 @@ if has('persistent_undo')
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
 
-" Call figlet
-noremap tx :r !figlet
-
 
 "========================
 " find doc
@@ -367,7 +364,7 @@ func! DebugWithGDB()
     endif
 endfunc
 
-autocmd FileType json syntax match Comment +\/\/.\+$+
+" autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
 "========================

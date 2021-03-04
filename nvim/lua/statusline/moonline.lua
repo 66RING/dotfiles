@@ -1,7 +1,7 @@
 local gl = require('galaxyline')
 local condition = require('galaxyline.condition')
 local gls = gl.section
-gl.short_line_list = {'defx','vista', 'dbui', 'vista_markdown'}
+gl.short_line_list = {'defx','vista', 'dbui', 'vista_markdown', 'packer'}
 
 local colors = {
   bg = '#282c34',

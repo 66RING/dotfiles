@@ -16,8 +16,8 @@ local function init()
   use {'wbthomason/packer.nvim', opt = true}
 
   use {"neovim/nvim-lspconfig",
-    event = "BufRead *",
-    setup = [[require('custom.lspconfig')]]
+    event = "BufReadPre *",
+    config = [[require('custom.lspconfig')]]
   }
 
   use {"glepnir/lspsaga.nvim",
@@ -26,25 +26,30 @@ local function init()
   }
 
   use {"hrsh7th/nvim-compe",
-    event = 'InsertEnter *',
-    setup = conf.nvim_compe
+    event = 'BufReadPre *',
+    config = conf.nvim_compe
   }
 
 
   -- dress up
-  use {"glepnir/dashboard-nvim"}
+  use {"glepnir/dashboard-nvim",
+    config = conf.dashboard
+  }
 
   use {'glepnir/galaxyline.nvim',
     config = [[require('statusline.moonline')]],
     requires = {'kyazdani42/nvim-web-devicons'}
   }
 
-  use {'66RING/bookmarks-nvim'}
+  use {'66RING/bookmarks-nvim',
+    keys = '<Plug>(bookmarks_nvim)'
+  }
   use {'mg979/vim-xtabline'}
 
   -- enhance
   use {"norcalli/nvim-colorizer.lua",
-    setup = conf.nvim_colorizer
+    ft = { 'html','css','sass','vim','typescript','typescriptreact'},
+    config = conf.nvim_colorizer
   }
   use {'itchyny/vim-cursorword',
     event={'BufReadPre *', 'BufNewFile *'}
@@ -125,11 +130,10 @@ local function init()
   use {'Shougo/defx.nvim',
     run = "vim.cmd('UpdateRemotePlugins')",
     cmd = 'Defx',
+    requires =  {'kristijanhusak/defx-icons',
+      after = 'defx.nvim'
+    },
     config = conf.defx
-  }
-
-  use {'kristijanhusak/defx-icons',
-    after = 'defx.nvim'
   }
 
   use {'voldikss/vim-translator',
@@ -167,7 +171,9 @@ local function init()
   -- ul>li#item$@3*5  start counting from 3, -3 as  reverse
   -- emmet ket + d, D, n, N, m, k, j, /, a
 
-  use {'AndrewRadev/tagalong.vim'}
+  use {'AndrewRadev/tagalong.vim',
+    ft = "html",
+  }
   use {'sophacles/vim-processing',
     ft = 'processing'
   }

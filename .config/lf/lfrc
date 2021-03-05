@@ -51,7 +51,7 @@ cmd open ${{
             setsid -f wpspdf $fx >/dev/null 2>&1 ;;
         application/ppt|application/vnd.ms-powerpoint|application/*office*presentation)
             setsid -f wpp $fx >/dev/null 2>&1 ;;
-        application/xlsx|application/*office*sheet)
+        application/xlsx|application/*office*sheet|application/*excel*)
             setsid -f et $fx >/dev/null 2>&1 ;;
         application/docx|application/doc|application/*office*document|application/msword)
             setsid -f wps $fx >/dev/null 2>&1 ;;
@@ -144,6 +144,7 @@ cmd extract ${{
         *.tar.gz|*.tgz) tar xzvf $f;;
         *.tar.xz|*.txz) tar xJvf $f;;
         *.zip) unzip $f;;
+        *.gz) gunzip $f;;
         *.rar) unrar x $f;;
         *.7z) 7z x $f;;
     esac
@@ -174,7 +175,7 @@ cmd creat_zip ${{
 
 
 cmd fzf_jump ${{
-    res="$(find . -maxdepth 4 | fzf --reverse --preview='head -$LINES {}' --header='Jump to location')"
+    res="$(rg --files-with-matches --no-messages . | fzf --preview 'highlight -O ansi -l {} 2> /dev/null' --reverse)"
     if [ -f "$res" ]; then
       cmd="select"
     elif [ -d "$res" ]; then
@@ -184,7 +185,7 @@ cmd fzf_jump ${{
 }}
 
 cmd fzf_find_in_file ${{
-    res="$(grep --line-buffered --color=never -r "" * | fzf --reverse | cut -d":" -f1)"
+    res="$(rg \. | fzf --reverse | cut -d':' -f1)"
     cmd=""
     if [ -f "$res" ]; then
       cmd="select"
@@ -284,8 +285,8 @@ map gu cd /usr
 #* plug
 #************************
 # jump with fuzzy
-map <c-p> :fzf_jump
-map <c-f> :fzf_find_in_file
+map <c-f> :fzf_jump
+map <c-p> :fzf_find_in_file
 
 # drag and drop
 map dr dragon

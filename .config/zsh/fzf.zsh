@@ -6,8 +6,8 @@
 #
 # - <Ctrl-r>  fzf-history-widget             
 # - <Ctrl-t>  fzf-cd-widget      
-# - <Ctrl-p>  fzf-find-widget
-# - <Ctrl-f>  find-in-file
+# - <Ctrl-f>  fzf-find-widget
+# - <Ctrl-p>  find-in-file
 #
 export FZF_DEFAULT_OPTS='--bind=ctrl-t:top,change:top --bind ctrl-k:down,ctrl-i:up'
 
@@ -26,8 +26,8 @@ fzf-redraw-prompt() {
 }
 zle -N fzf-redraw-prompt
 
-zle -N fzf-find-widget
-bindkey '^p' fzf-find-widget
+# zle -N fzf-find-widget
+# bindkey '^f' fzf-find-widget
 
 fzf-cd-widget() {
 	local tokens=(${(z)LBUFFER})
@@ -62,8 +62,14 @@ fif() {
   rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 }
 
+find-file() {
+  rg --files-with-matches --no-messages \. | fzf --preview "highlight -O ansi -l {} 2> /dev/null" --reverse
+}
+zle -N find-file
+bindkey '^f' find-file
+
 find-in-file() {
-	grep --line-buffered --color=never -r "" * | fzf | cut -d":" -f1
+	rg \. | fzf --reverse | cut -d":" -f1
 }
 zle -N find-in-file
-bindkey '^f' find-in-file
+bindkey '^p' find-in-file

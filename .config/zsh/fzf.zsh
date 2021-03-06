@@ -26,7 +26,7 @@ fzf-redraw-prompt() {
 }
 zle -N fzf-redraw-prompt
 
-# zle -N fzf-find-widget
+zle -N fzf-find-widget
 # bindkey '^f' fzf-find-widget
 
 fzf-cd-widget() {
@@ -69,7 +69,7 @@ zle -N find-file
 bindkey '^f' find-file
 
 find-in-file() {
-	rg \. | fzf --reverse | cut -d":" -f1
+  rg \. | fzf --reverse | cut -d":" -f1
 }
 zle -N find-in-file
 bindkey '^p' find-in-file

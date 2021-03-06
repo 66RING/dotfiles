@@ -175,13 +175,16 @@ cmd creat_zip ${{
 
 
 cmd fzf_jump ${{
-    res="$(rg --files-with-matches --no-messages . | fzf --preview 'highlight -O ansi -l {} 2> /dev/null' --reverse)"
+    res="$(rg --files-with-matches --no-messages . | fzf --preview 'highlight -O ansi -l {} 2> /dev/null' --reverse | tr -d '\n')"
+    cmd=""
     if [ -f "$res" ]; then
       cmd="select"
     elif [ -d "$res" ]; then
       cmd="cd"                                                       
     fi
-    lf -remote "send $id $cmd \"$res\""
+    if [ ! -z "$cmd" ]; then
+      lf -remote "send $id $cmd \"$res\""
+    fi
 }}
 
 cmd fzf_find_in_file ${{

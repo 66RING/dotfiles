@@ -185,7 +185,7 @@ function config.lspsaga()
 end
 
 function config.nvim_compe()
-  -- vim.cmd [[packadd nvim-compe]]
+  require('keymap.config')
   require'compe'.setup {
     enabled = true;
     autocomplete = true;
@@ -205,6 +205,10 @@ function config.nvim_compe()
     };
   }
   vim.api.nvim_command("autocmd FileType clap_input,markdown call compe#setup({ 'autocomplete': v:false }, 0)")
+  local opts = {noremap=true, silent=true, expr=true}
+  vim.fn.nvim_set_keymap('i','<TAB>','v:lua.tab_complete()',opts)
+  vim.fn.nvim_set_keymap('i','<S-TAB>','v:lua.s_tab_complete()',opts)
+  vim.fn.nvim_set_keymap('i','<CR>',"compe#confirm('<CR>')",opts)
 end
 
 

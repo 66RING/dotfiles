@@ -54,18 +54,18 @@ local function init()
   use {'itchyny/vim-cursorword',
     event={'BufReadPre *', 'BufNewFile *'}
   }
-  use {"glepnir/zephyr-nvim",
-    config= function()
-      vim.cmd('colorscheme zephyr')
-      vim.cmd('highlight Normal ctermbg=NONE guibg=NONE')
-      vim.cmd('highlight SignColumn ctermbg=NONE guibg=NONE')
-      vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
-    end,
-  }
-  use{'nvim-treesitter/nvim-treesitter',
-    event = 'BufRead *',
-    config = conf.nvim_treesitter
-  }
+  -- use {"glepnir/zephyr-nvim",
+  --   config= function()
+  --     vim.cmd('colorscheme zephyr')
+  --     vim.cmd('highlight Normal ctermbg=NONE guibg=NONE')
+  --     vim.cmd('highlight SignColumn ctermbg=NONE guibg=NONE')
+  --     vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
+  --   end,
+  -- }
+  -- use{'nvim-treesitter/nvim-treesitter',
+  --   event = 'BufRead *',
+  --   config = conf.nvim_treesitter
+  -- }
   -- use {'nvim-treesitter/nvim-treesitter-textobjects',
   --   after = 'nvim-treesitter'
   -- }

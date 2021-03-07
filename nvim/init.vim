@@ -65,6 +65,7 @@ map g<C-h>  <Nop>
 map <C-z>  <Nop>
 
 
+set completeopt=menu,menuone,noselect
 set enc=utf8
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set termencoding=utf-8
@@ -388,5 +389,6 @@ endif
 execute 'source' fnamemodify('$HOME/.config/nvim/config/plugin_config.vim', '')
 " " dein.vim
 " execute 'source' fnamemodify('$HOME/.config/nvim/config/dein_plugins.vim', '')
+" /home/ring/.config/nvim/lua/plugins.lua
 
 

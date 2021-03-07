@@ -36,7 +36,7 @@
 "   \]
 " autocmd FileType markdown let g:completion_enable_auto_popup = 0
 
-set completeopt=menu,menuone,noselect
+" set completeopt=menu,menuone,noselect
 " function! s:check_back_space() abort
 "   let col = col('.') - 1
 "   return !col || getline('.')[col - 1]  =~# '\s'
@@ -96,41 +96,41 @@ set completeopt=menu,menuone,noselect
 "========================
 " easymotion
 "========================
-let g:EasyMotion_do_mapping = 'off'
-nmap ss <Plug>(easymotion-sn)
+" let g:EasyMotion_do_mapping = 'off'
+" nmap ss <Plug>(easymotion-sn)
 
 
 "========================
 " tagalong
 "========================
-let g:tagalong_additional_filetypes = ['vue', 'wxml']
+" let g:tagalong_additional_filetypes = ['vue', 'wxml']
 
 
 "========================
 " vim-commentary
 "========================
-autocmd FileType apache setlocal commentstring=#\ %s
-autocmd FileType c,cpp setlocal commentstring=//\ %s
+" autocmd FileType apache setlocal commentstring=#\ %s
+" autocmd FileType c,cpp setlocal commentstring=//\ %s
 
 
 "========================
 " EasyAlign
 "========================
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+" " Start interactive EasyAlign in visual mode (e.g. vipga)
+" xmap ga <Plug>(EasyAlign)
+" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+" nmap ga <Plug>(EasyAlign)
 
 
 "========================
 " bullets
 "========================
-let g:bullets_enabled_file_types = [
-    \ 'markdown',
-    \ 'text',
-    \ 'gitcommit',
-    \ 'scratch'
-    \]
+" let g:bullets_enabled_file_types = [
+"     \ 'markdown',
+"     \ 'text',
+"     \ 'gitcommit',
+"     \ 'scratch'
+"     \]
 " disable default key mapping
 " let g:bullets_set_mappings = 0 "
 
@@ -138,41 +138,41 @@ let g:bullets_enabled_file_types = [
 "========================
 " GitGutte
 "========================
-let g:gitgutter_signs = 1
-let g:gitgutter_map_keys = 0
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_preview_win_floating = 1
-" autocmd BufWritePost * GitGutter
-nnoremap <LEADER>gf :GitGutterFold<CR>
-nnoremap <LEADER>gh :GitGutterPreviewHunk<CR>
-nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
-nnoremap <LEADER>g= :GitGutterNextHunk<CR>
+" let g:gitgutter_signs = 1
+" let g:gitgutter_map_keys = 0
+" let g:gitgutter_override_sign_column_highlight = 0
+" let g:gitgutter_preview_win_floating = 1
+" " autocmd BufWritePost * GitGutter
+" nnoremap <LEADER>gf :GitGutterFold<CR>
+" nnoremap <LEADER>gh :GitGutterPreviewHunk<CR>
+" nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
+" nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 
 
 "========================
 " Vista.vim
 "========================
 ":Vista [EXECUTIVE]: open vista window powered by EXECUTIVE
-noremap T :<C-u>Vista!!<CR>
-noremap <LEADER>v :<C-u>silent! Vista finder<CR>
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'ctags'
-let g:vista_echo_cursor_strategy = 'floating_win'
-let g:vista_vimwiki_executive = 'markdown'
-let g:vista_disable_statusline = 1
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
-let g:vista_executive_for = {
-  \ 'vimwiki': 'markdown',
-  \ 'pandoc': 'markdown',
-  \ 'markdown': 'toc',
-  \ 'yaml': 'coc',
-  \ 'typescript': 'coc',
-  \ 'typescriptreact': 'coc',
-  \ }
+" noremap T :<C-u>Vista!!<CR>
+" noremap <LEADER>v :<C-u>silent! Vista finder<CR>
+" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" let g:vista_default_executive = 'ctags'
+" let g:vista_echo_cursor_strategy = 'floating_win'
+" let g:vista_vimwiki_executive = 'markdown'
+" let g:vista_disable_statusline = 1
+" let g:vista#renderer#enable_icon = 1
+" let g:vista#renderer#icons = {
+" \   "function": "\uf794",
+" \   "variable": "\uf71b",
+" \  }
+" let g:vista_executive_for = {
+"   \ 'vimwiki': 'markdown',
+"   \ 'pandoc': 'markdown',
+"   \ 'markdown': 'toc',
+"   \ 'yaml': 'coc',
+"   \ 'typescript': 'coc',
+"   \ 'typescriptreact': 'coc',
+"   \ }
 
 "========================
 " Telescope
@@ -205,9 +205,9 @@ autocmd FileType clap_input inoremap <silent> <buffer> <Esc> <Esc>:<c-u>call cla
 "========================
 " vim-translator
 "========================
-let g:translator_default_engines=['bing', 'google']
-nmap <silent> ts <Plug>TranslateW
-vmap <silent> ts <Plug>TranslateWV
+" let g:translator_default_engines=['bing', 'google']
+" nmap <silent> ts <Plug>TranslateW
+" vmap <silent> ts <Plug>TranslateWV
 
 
 "========================

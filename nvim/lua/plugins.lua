@@ -86,7 +86,10 @@ local function init()
     ft = 'markdown'
   }
   use {'dkarter/bullets.vim',
-    ft = 'markdown'
+    ft = 'markdown',
+    setup = function ()
+      vim.g.bullets_enabled_file_types = {'markdown', 'text', 'gitcommit', 'scratch' }
+    end
   }
 
   use {'hrsh7th/vim-vsnip',
@@ -100,23 +103,46 @@ local function init()
   }
 
   use {'tpope/vim-commentary',
-    event = "BufRead *"
+    event = "BufRead *",
+    setup = function ()
+      vim.cmd [[autocmd FileType apache setlocal commentstring=#\ %s]]
+      vim.cmd [[autocmd FileType c,cpp setlocal commentstring=//\ %s]]
+    end
   }
 
   -- git
   use {'airblade/vim-gitgutter',
-    event = "BufRead *"
+    event = "BufRead *",
+    setup = function ()
+      vim.g.gitgutter_signs = 1
+      vim.g.gitgutter_map_keys = 0
+      vim.g.gitgutter_override_sign_column_highlight = 0
+      vim.g.gitgutter_preview_win_floating = 1
+
+      vim.fn.nvim_set_keymap('n', '<LEADER>gf', [[:GitGutterFold<CR>]], {noremap=true})
+      vim.fn.nvim_set_keymap('n', '<LEADER>gh', [[:GitGutterPreviewHunk<CR>]], {noremap=true})
+      vim.fn.nvim_set_keymap('n', '<LEADER>g-', [[:GitGutterPrevHunk<CR>]], {noremap=true})
+      vim.fn.nvim_set_keymap('n', '<LEADER>g=', [[:GitGutterNextHunk<CR>]], {noremap=true})
+    end
   }
 
   -- something useful
   use {'junegunn/vim-easy-align' ,
-    keys = '<Plug>(EasyAlign)'
+    keys = '<Plug>(EasyAlign)',
+    setup = function()
+      vim.fn.nvim_set_keymap('x', 'ga', [[<Plug>(EasyAlign)]], {})
+      vim.fn.nvim_set_keymap('n', 'ga', [[<Plug>(EasyAlign)]], {})
+    end
   }
   use {'tpope/vim-surround',
     event = "BufRead *"
   } -- type ysiw' i sur in word '' or type cs'` to change 'word' to `word` or 'ds' del sur or 'yss'' for sur line h h-> 'h h'
   use {'easymotion/vim-easymotion',
-    keys = '<Plug>(easymotion-sn)'
+    keys = '<Plug>(easymotion-sn)',
+    setup = function()
+      vim.g.EasyMotion_do_mapping = 'off'
+      vim.fn.nvim_set_keymap('n', 'ss', [[<Plug>(easymotion-sn)]], {})
+    end
   }
 
   -- fuzzy find
@@ -150,11 +176,33 @@ local function init()
   }
 
   use {'voldikss/vim-translator',
-    keys = '<Plug>TranslateW'
+    keys = '<Plug>TranslateW',
+    setup = function ()
+      vim.g.translator_default_engines={'bing', 'google'}
+      vim.api.nvim_set_keymap('n', 'ts', [[<Plug>TranslateW]], {silent=true})
+      vim.api.nvim_set_keymap('v', 'ts', [[<Plug>TranslateWV]], {silent=true})
+    end
   }
 
   use {'liuchengxu/vista.vim',
-    cmd = 'Vista'
+    cmd = 'Vista',
+    setup = function ()
+      vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
+      vim.g.vista_default_executive = 'ctags'
+      vim.g.vista_echo_cursor_strategy = 'floating_win'
+      vim.g.vista_vimwiki_executive = 'markdown'
+      vim.g.vista_disable_statusline = 1
+      vim.g['vista#renderer#enable_icon'] = 1
+      vim.g.vista_executive_for = {
+          vimwiki =  'markdown',
+          pandoc = 'markdown',
+          markdown = 'toc',
+          typescript = 'nvim_lsp',
+          typescriptreact =  'nvim_lsp',
+        }
+
+      vim.api.nvim_set_keymap('n', 'T', [[:<C-u>Vista!!<CR>]], {noremap=true})
+    end
   }
 
   use {'Yggdroot/indentLine',
@@ -187,7 +235,10 @@ local function init()
   -- emmet ket + d, D, n, N, m, k, j, /, a
 
   use {'AndrewRadev/tagalong.vim',
-    ft = "html",
+    ft = {"html", "vue", 'wxml'},
+    setup = function ()
+      vim.g.tagalong_additional_filetypes = {'vue', 'wxml'}
+    end
   }
 
   use {'szw/vim-maximizer',

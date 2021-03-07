@@ -44,7 +44,12 @@ local function init()
   use {'66RING/bookmarks-nvim',
     keys = '<Plug>(bookmarks_nvim)'
   }
-  use {'mg979/vim-xtabline'}
+
+  use {'akinsho/nvim-bufferline.lua',
+    config = conf.nvim_bufferline,
+    requires = {'kyazdani42/nvim-web-devicons'}
+  }
+
 
   -- enhance
   use {"norcalli/nvim-colorizer.lua",
@@ -94,16 +99,22 @@ local function init()
     after = 'vim-vsnip'
   }
 
-  use {'tpope/vim-commentary'}
+  use {'tpope/vim-commentary',
+    event = "BufRead *"
+  }
 
   -- git
-  use {'airblade/vim-gitgutter'}
+  use {'airblade/vim-gitgutter',
+    event = "BufRead *"
+  }
 
   -- something useful
   use {'junegunn/vim-easy-align' ,
     keys = '<Plug>(EasyAlign)'
   }
-  use {'tpope/vim-surround'} -- type ysiw' i sur in word '' or type cs'` to change 'word' to `word` or 'ds' del sur or 'yss'' for sur line h h-> 'h h'
+  use {'tpope/vim-surround',
+    event = "BufRead *"
+  } -- type ysiw' i sur in word '' or type cs'` to change 'word' to `word` or 'ds' del sur or 'yss'' for sur line h h-> 'h h'
   use {'easymotion/vim-easymotion',
     keys = '<Plug>(easymotion-sn)'
   }
@@ -126,14 +137,16 @@ local function init()
   -- }
 
 
-  use {'mg979/vim-visual-multi'}
+  use {'mg979/vim-visual-multi',
+    event = "BufRead *"
+  }
   use {'Shougo/defx.nvim',
     run = "vim.cmd('UpdateRemotePlugins')",
     cmd = 'Defx',
-    requires =  {'kristijanhusak/defx-icons',
-      after = 'defx.nvim'
-    },
     config = conf.defx
+  }
+  use {'kristijanhusak/defx-icons',
+    after = 'defx.nvim'
   }
 
   use {'voldikss/vim-translator',
@@ -150,7 +163,9 @@ local function init()
   }
 
   -- sreach
-  use {'bronson/vim-visual-star-search'}
+  use {'bronson/vim-visual-star-search',
+    event = "BufRead *"
+  }
 
   -- database
   -- use {'tpope/vim-dadbod'}
@@ -173,9 +188,6 @@ local function init()
 
   use {'AndrewRadev/tagalong.vim',
     ft = "html",
-  }
-  use {'sophacles/vim-processing',
-    ft = 'processing'
   }
 
   use {'szw/vim-maximizer',

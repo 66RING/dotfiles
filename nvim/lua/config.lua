@@ -41,6 +41,30 @@ function config.indentLine()
   vim.g.indentLine_showFirstIndentLevel =1
 end
 
+function config.nvim_bufferline()
+  require('bufferline').setup{
+    options = {
+      modified_icon = '✥',
+      buffer_close_icon = '',
+      show_buffer_close_icons = false,
+      mappings = true,
+      always_show_bufferline = false,
+      separator_style = {"", ""},
+      numbers = "ordinal",
+      number_style = "",
+      -- view = "multiwindow",
+    }
+  }
+  local map_key = vim.fn.nvim_set_keymap
+  local opts = {silent=true, noremap=true}
+  map_key('n', '<LEADER>]', [[:BufferLineCycleNext<CR>]], opts)
+  map_key('n', '<LEADER>[', [[:BufferLineCyclePrev<CR>]], opts)
+  map_key('n', '<BS>', [[:lua if vim.v.count~=0 then require"bufferline".go_to_buffer(vim.v.count) else vim.cmd("buffer #")end<CR>]], {silent=true})
+  map_key('n', 'r<BS>', [[:lua if vim.tbl_count(vim.fn.getbufinfo({buflisted=true}))>1 then vim.cmd("bd") end <CR>]], opts)
+  -- lua print(vim.tbl_count(vim.fn.getbufinfo({buflisted=true})))
+
+end
+
 
 --
 -- editor

@@ -376,6 +376,7 @@ command! PackerSync packadd packer.nvim | lua require('plugins').sync()
 command! PackerClean packadd packer.nvim | lua require('plugins').clean()
 command! PackerCompile packadd packer.nvim | lua require('plugins').compile()
 autocmd BufWritePost plugins.lua PackerCompile
+autocmd BufWritePost config.lua PackerCompile
 " auto install packer.nvim
 let s:install_path = stdpath("data").'/site/pack/packer/opt/packer.nvim'
 if empty(glob(s:install_path))

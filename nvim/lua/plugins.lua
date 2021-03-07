@@ -36,18 +36,35 @@ local function init()
     config = conf.dashboard
   }
 
+  use {"glepnir/zephyr-nvim",
+    config= function()
+      vim.cmd('colorscheme zephyr')
+      vim.cmd('highlight Normal ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight SignColumn ctermbg=NONE guibg=NONE')
+      -- vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
+      -- vim.cmd('highlight TabLineSel ctermbg=NONE guibg=NONE')
+    end,
+  }
+  use{'nvim-treesitter/nvim-treesitter',
+    event = 'BufRead *',
+    config = conf.nvim_treesitter
+  }
+  use {'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter'
+  }
   use {'glepnir/galaxyline.nvim',
     config = [[require('statusline.moonline')]],
     requires = {'kyazdani42/nvim-web-devicons'}
   }
 
-  use {'66RING/bookmarks-nvim',
-    keys = '<Plug>(bookmarks_nvim)'
-  }
-
   use {'akinsho/nvim-bufferline.lua',
     config = conf.nvim_bufferline,
+    after = 'zephyr-nvim',
     requires = {'kyazdani42/nvim-web-devicons'}
+  }
+
+  use {'66RING/bookmarks-nvim',
+    keys = '<Plug>(bookmarks_nvim)'
   }
 
 
@@ -59,21 +76,6 @@ local function init()
   use {'itchyny/vim-cursorword',
     event={'BufReadPre *', 'BufNewFile *'}
   }
-  -- use {"glepnir/zephyr-nvim",
-  --   config= function()
-  --     vim.cmd('colorscheme zephyr')
-  --     vim.cmd('highlight Normal ctermbg=NONE guibg=NONE')
-  --     vim.cmd('highlight SignColumn ctermbg=NONE guibg=NONE')
-  --     vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
-  --   end,
-  -- }
-  -- use{'nvim-treesitter/nvim-treesitter',
-  --   event = 'BufRead *',
-  --   config = conf.nvim_treesitter
-  -- }
-  -- use {'nvim-treesitter/nvim-treesitter-textobjects',
-  --   after = 'nvim-treesitter'
-  -- }
 
 
 
@@ -147,7 +149,7 @@ local function init()
 
   -- fuzzy find
   use {'liuchengxu/vim-clap',
-    run = [[vim.cmd('Clap install-binary')]],
+    run = [[:Clap install-binary]],
     lock = true,
     cmd = 'Clap'
   }
@@ -167,7 +169,7 @@ local function init()
     event = "BufRead *"
   }
   use {'Shougo/defx.nvim',
-    run = "vim.cmd('UpdateRemotePlugins')",
+    run = ":UpdateRemotePlugins",
     cmd = 'Defx',
     config = conf.defx
   }
@@ -186,23 +188,23 @@ local function init()
 
   use {'liuchengxu/vista.vim',
     cmd = 'Vista',
-    setup = function ()
-      vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
-      vim.g.vista_default_executive = 'ctags'
-      vim.g.vista_echo_cursor_strategy = 'floating_win'
-      vim.g.vista_vimwiki_executive = 'markdown'
-      vim.g.vista_disable_statusline = 1
-      vim.g['vista#renderer#enable_icon'] = 1
-      vim.g.vista_executive_for = {
-          vimwiki =  'markdown',
-          pandoc = 'markdown',
-          markdown = 'toc',
-          typescript = 'nvim_lsp',
-          typescriptreact =  'nvim_lsp',
-        }
+    -- setup = function ()
+    --   vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
+    --   vim.g.vista_default_executive = 'ctags'
+    --   vim.g.vista_echo_cursor_strategy = 'floating_win'
+    --   vim.g.vista_vimwiki_executive = 'markdown'
+    --   vim.g.vista_disable_statusline = 1
+    --   vim.g['vista#renderer#enable_icon'] = 1
+    --   vim.g.vista_executive_for = {
+    --       vimwiki =  'markdown',
+    --       pandoc = 'markdown',
+    --       markdown = 'toc',
+    --       typescript = 'nvim_lsp',
+    --       typescriptreact =  'nvim_lsp',
+    --     }
 
-      vim.api.nvim_set_keymap('n', 'T', [[:<C-u>Vista!!<CR>]], {noremap=true})
-    end
+    --   vim.api.nvim_set_keymap('n', 'T', [[:<C-u>Vista!!<CR>]], {noremap=true})
+    -- end
   }
 
   use {'Yggdroot/indentLine',

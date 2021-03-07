@@ -53,6 +53,13 @@ function config.nvim_bufferline()
       numbers = "ordinal",
       number_style = "",
       -- view = "multiwindow",
+    },
+    highlights = {
+      buffer_selected = {
+          guifg = '#61AFEF',
+          -- guifg = '#8be9fd',
+          gui = "bold,italic"
+      },
     }
   }
   local map_key = vim.fn.nvim_set_keymap

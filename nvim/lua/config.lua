@@ -26,9 +26,9 @@ function config.nvim_treesitter()
   vim.api.nvim_command('set foldmethod=expr')
   vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
   require'nvim-treesitter.configs'.setup {
-      highlight = {
-        enable = true,
-      },
+    highlight = {
+      enable = true,
+    },
     ensure_installed = 'all'
   }
 end
@@ -58,7 +58,8 @@ function config.nvim_bufferline()
       buffer_selected = {
           guifg = '#61AFEF',
           -- guifg = '#8be9fd',
-          gui = "bold,italic"
+          -- gui = "bold,italic"
+          gui = "bold"
       },
     }
   }

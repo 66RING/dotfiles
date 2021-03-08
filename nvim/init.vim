@@ -48,7 +48,8 @@ let g:netrw_browsex_viewer= "setsid xdg-open"
 
 
 " shotcut configuration file
-source $HOME/.config/nvim/shot_cut_source/md_snippits.vim
+autocmd FileType markdown source $HOME/.config/nvim/shot_cut_source/md_snippits.vim
+autocmd FileType markdown source $HOME/.config/nvim/config/markdown_theme.vim
 source $HOME/.config/nvim/shot_cut_source/coding_short_cut.vim
 
 

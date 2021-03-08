@@ -9,7 +9,11 @@
 # - <Ctrl-f>  fzf-find-widget
 # - <Ctrl-p>  find-in-file
 #
-export FZF_DEFAULT_OPTS='--bind=ctrl-t:top,change:top --bind ctrl-k:down,ctrl-i:up'
+export FZF_DEFAULT_OPTS='--bind=ctrl-t:top,change:top --bind ctrl-e:down,ctrl-u:up --preview "highlight -O ansi -l {} 2> /dev/null" --reverse'
+# export FZF_DEFAULT_OPTS='--bind ctrl-e:down,ctrl-u:up --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
+# export FZF_DEFAULT_COMMAND='rg --files-with-matches --no-messages .'
+# export FZF_COMPLETION_TRIGGER='\'
+# export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
 
 
 _fzf_fpath=${0:h}/fzf

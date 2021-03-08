@@ -49,9 +49,9 @@ local function init()
     event = 'BufRead *',
     config = conf.nvim_treesitter
   }
-  use {'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter'
-  }
+  -- use {'nvim-treesitter/nvim-treesitter-textobjects',
+  --   after = 'nvim-treesitter'
+  -- }
   use {'glepnir/galaxyline.nvim',
     config = [[require('statusline.moonline')]],
     requires = {'kyazdani42/nvim-web-devicons'}
@@ -188,23 +188,23 @@ local function init()
 
   use {'liuchengxu/vista.vim',
     cmd = 'Vista',
-    -- setup = function ()
-    --   vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
-    --   vim.g.vista_default_executive = 'ctags'
-    --   vim.g.vista_echo_cursor_strategy = 'floating_win'
-    --   vim.g.vista_vimwiki_executive = 'markdown'
-    --   vim.g.vista_disable_statusline = 1
-    --   vim.g['vista#renderer#enable_icon'] = 1
-    --   vim.g.vista_executive_for = {
-    --       vimwiki =  'markdown',
-    --       pandoc = 'markdown',
-    --       markdown = 'toc',
-    --       typescript = 'nvim_lsp',
-    --       typescriptreact =  'nvim_lsp',
-    --     }
+    setup = function ()
+      vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
+      vim.g.vista_default_executive = 'ctags'
+      vim.g.vista_echo_cursor_strategy = 'floating_win'
+      vim.g.vista_vimwiki_executive = 'markdown'
+      vim.g.vista_disable_statusline = 1
+      vim.g['vista#renderer#enable_icon'] = 1
+      vim.g.vista_executive_for = {
+          vimwiki =  'markdown',
+          pandoc = 'markdown',
+          markdown = 'toc',
+          typescript = 'nvim_lsp',
+          typescriptreact =  'nvim_lsp',
+        }
 
-    --   vim.api.nvim_set_keymap('n', 'T', [[:<C-u>Vista!!<CR>]], {noremap=true})
-    -- end
+      vim.api.nvim_set_keymap('n', 'T', [[:<C-u>Vista!!<CR>]], {noremap=true})
+    end
   }
 
   use {'Yggdroot/indentLine',
@@ -218,7 +218,6 @@ local function init()
   }
 
   -- database
-  -- use {'tpope/vim-dadbod'}
   use {'kristijanhusak/vim-dadbod-ui',
     cmd = {'DBUIToggle', 'DBUIAddConnection', 'DBUI', 'DBUIFindBuffer', 'DBUIRenameBuffer'} ,
     requires = {'tpope/vim-dadbod',opt = true}

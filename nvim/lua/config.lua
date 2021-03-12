@@ -63,7 +63,7 @@ function config.nvim_bufferline()
       },
     }
   }
-  local map_key = vim.fn.nvim_set_keymap
+  local map_key = vim.api.nvim_set_keymap
   local opts = {silent=true, noremap=true}
   map_key('n', '<LEADER>]', [[:BufferLineCycleNext<CR>]], opts)
   map_key('n', '<LEADER>[', [[:BufferLineCyclePrev<CR>]], opts)
@@ -186,7 +186,7 @@ end
 function config.vim_vsnip()
   vim.g.vsnip_snippet_dir = os.getenv('HOME') .. "/.config/nvim/config/vsnips"
 
-  local map_key = vim.fn.nvim_set_keymap
+  local map_key = vim.api.nvim_set_keymap
   local opts = {expr=true}
   map_key('i', '<C-e>', [[vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>']], opts)
   map_key('s', '<C-e>', [[vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>']], opts)
@@ -203,7 +203,7 @@ function config.lspsaga()
     },
   }
 
-  local map_key = vim.fn.nvim_set_keymap
+  local map_key = vim.api.nvim_set_keymap
   local opts = {silent=true, noremap=true}
   map_key('n', '<LEADER>rn', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
   map_key('n', 'gd', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)
@@ -238,9 +238,9 @@ function config.nvim_compe()
   }
   vim.api.nvim_command("autocmd FileType clap_input,markdown call compe#setup({ 'autocomplete': v:false }, 0)")
   local opts = {noremap=true, silent=true, expr=true}
-  vim.fn.nvim_set_keymap('i','<TAB>','v:lua.tab_complete()',opts)
-  vim.fn.nvim_set_keymap('i','<S-TAB>','v:lua.s_tab_complete()',opts)
-  vim.fn.nvim_set_keymap('i','<CR>',"compe#confirm('<CR>')",opts)
+  vim.api.nvim_set_keymap('i','<TAB>','v:lua.tab_complete()',opts)
+  vim.api.nvim_set_keymap('i','<S-TAB>','v:lua.s_tab_complete()',opts)
+  vim.api.nvim_set_keymap('i','<CR>',"compe#confirm('<CR>')",opts)
 end
 
 

@@ -121,10 +121,10 @@ local function init()
       vim.g.gitgutter_override_sign_column_highlight = 0
       vim.g.gitgutter_preview_win_floating = 1
 
-      vim.fn.nvim_set_keymap('n', '<LEADER>gf', [[:GitGutterFold<CR>]], {noremap=true})
-      vim.fn.nvim_set_keymap('n', '<LEADER>gh', [[:GitGutterPreviewHunk<CR>]], {noremap=true})
-      vim.fn.nvim_set_keymap('n', '<LEADER>g-', [[:GitGutterPrevHunk<CR>]], {noremap=true})
-      vim.fn.nvim_set_keymap('n', '<LEADER>g=', [[:GitGutterNextHunk<CR>]], {noremap=true})
+      vim.api.nvim_set_keymap('n', '<LEADER>gf', [[:GitGutterFold<CR>]], {noremap=true})
+      vim.api.nvim_set_keymap('n', '<LEADER>gh', [[:GitGutterPreviewHunk<CR>]], {noremap=true})
+      vim.api.nvim_set_keymap('n', '<LEADER>g-', [[:GitGutterPrevHunk<CR>]], {noremap=true})
+      vim.api.nvim_set_keymap('n', '<LEADER>g=', [[:GitGutterNextHunk<CR>]], {noremap=true})
     end
   }
 
@@ -132,8 +132,8 @@ local function init()
   use {'junegunn/vim-easy-align' ,
     keys = '<Plug>(EasyAlign)',
     setup = function()
-      vim.fn.nvim_set_keymap('x', 'ga', [[<Plug>(EasyAlign)]], {})
-      vim.fn.nvim_set_keymap('n', 'ga', [[<Plug>(EasyAlign)]], {})
+      vim.api.nvim_set_keymap('x', 'ga', [[<Plug>(EasyAlign)]], {})
+      vim.api.nvim_set_keymap('n', 'ga', [[<Plug>(EasyAlign)]], {})
     end
   }
   use {'tpope/vim-surround',
@@ -143,7 +143,7 @@ local function init()
     keys = '<Plug>(easymotion-sn)',
     setup = function()
       vim.g.EasyMotion_do_mapping = 'off'
-      vim.fn.nvim_set_keymap('n', 'ss', [[<Plug>(easymotion-sn)]], {})
+      vim.api.nvim_set_keymap('n', 'ss', [[<Plug>(easymotion-sn)]], {})
     end
   }
 

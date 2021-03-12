@@ -20,7 +20,6 @@
 
 " let g:oceanic_material_transparent_background = 1
 " let g:colors_name="oceanic_material"
-" call theme#theme_init("dark", "oceanic_material")
 
 
 "========================

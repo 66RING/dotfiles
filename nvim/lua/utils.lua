@@ -1,4 +1,4 @@
-local map_key = vim.fn.nvim_set_keymap
+local map_key = vim.api.nvim_set_keymap
 local M = {}
 
 function M.opt(o, v, scopes)

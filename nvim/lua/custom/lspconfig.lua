@@ -33,9 +33,16 @@ lspconfig.pyright.setup{
     python = {
       analysis = {
         autoSearchPaths = true,
-        useLibraryCodeForTypes = true
-      }
-    }
+        useLibraryCodeForTypes = true,
+        diagnosticSeverityOverrides = {
+          reportMissingImports = 'none',
+          reportUndefinedVariable = 'none',
+          reportGeneralTypeIssues = 'none',
+          reportMissingModuleSource = 'none',
+        }
+      },
+      venvPath = os.getenv("VIRTUAL_ENV"),
+    },
   }
 }
 

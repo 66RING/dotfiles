@@ -181,25 +181,25 @@
 "========================
 " vim-clap
 "========================
-let g:clap_cache_directory = '~/cache/clap'
-let g:clap_theme = 'material_design_dark'
-let g:clap_current_selection_sign= { 'text': '🚀', 'texthl': "ClapCurrentSelectionSign", "linehl": "ClapCurrentSelection"}
-let g:clap_layout = { 'relative': 'editor' }
-let g:clap_enable_icon = 1
-let g:clap_enable_background_shadow = v:false
-let g:clap_provider_grep_enable_icon = 1
+" let g:clap_cache_directory = '~/cache/clap'
+" let g:clap_theme = 'material_design_dark'
+" let g:clap_current_selection_sign= { 'text': '🚀', 'texthl': "ClapCurrentSelectionSign", "linehl": "ClapCurrentSelection"}
+" let g:clap_layout = { 'relative': 'editor' }
+" let g:clap_enable_icon = 1
+" let g:clap_enable_background_shadow = v:false
+" let g:clap_provider_grep_enable_icon = 1
 
-noremap <C-f> :<C-u>Clap filer %:p:h<CR>
-noremap <C-h> :<C-u>Clap history<CR>
-noremap tT :<C-u>Clap buffers<CR>
-noremap <leader>; :<C-u>Clap hist:<CR>
-noremap <leader>: :<C-u>Clap command<CR>
-" Unmap
-autocmd FileType clap_input inoremap <silent> <buffer> <C-j> <NOP>
-autocmd FileType clap_input inoremap <silent> <buffer> <C-k> <NOP>
-autocmd FileType clap_input inoremap <silent> <buffer> <C-n> <C-R>=clap#navigation#linewise('down')<CR>
-autocmd FileType clap_input inoremap <silent> <buffer> <C-p> <C-R>=clap#navigation#linewise('up')<CR>
-autocmd FileType clap_input inoremap <silent> <buffer> <Esc> <Esc>:<c-u>call clap#handler#exit()<CR>
+" noremap <C-f> :<C-u>Clap filer %:p:h<CR>
+" noremap <C-h> :<C-u>Clap history<CR>
+" noremap tT :<C-u>Clap buffers<CR>
+" noremap <leader>; :<C-u>Clap hist:<CR>
+" noremap <leader>: :<C-u>Clap command<CR>
+" " Unmap
+" autocmd FileType clap_input inoremap <silent> <buffer> <C-j> <NOP>
+" autocmd FileType clap_input inoremap <silent> <buffer> <C-k> <NOP>
+" autocmd FileType clap_input inoremap <silent> <buffer> <C-n> <C-R>=clap#navigation#linewise('down')<CR>
+" autocmd FileType clap_input inoremap <silent> <buffer> <C-p> <C-R>=clap#navigation#linewise('up')<CR>
+" autocmd FileType clap_input inoremap <silent> <buffer> <Esc> <Esc>:<c-u>call clap#handler#exit()<CR>
 
 
 "========================
@@ -263,23 +263,23 @@ autocmd FileType clap_input inoremap <silent> <buffer> <Esc> <Esc>:<c-u>call cla
 " dadbod and dadbod-ui
 "========================
 " :DBUI... to connect to database
-let g:db_ui_win_position = 'left'
-let g:db_ui_use_nerd_fonts = 1
-let g:db_ui_winwidth = 35
-let g:db_ui_save_location = '$HOME/.cache/db_ui_save_location'
-function! s:load_db()
-    let l:dbs = []
-    let l:db_url = getenv("HOME")."/.db_url"
-    if filereadable(l:db_url)
-      let l:url_content = readfile(l:db_url)
-      for item in l:url_content
-        let l:line_content = split(item,",")
-        call add(l:dbs, {'name':l:line_content[0], 'url': l:line_content[1]})
-      endfor
-      return l:dbs
-    endif
-endfunction
-let g:dbs = s:load_db()
+" let g:db_ui_win_position = 'left'
+" let g:db_ui_use_nerd_fonts = 1
+" let g:db_ui_winwidth = 35
+" let g:db_ui_save_location = '$HOME/.cache/db_ui_save_location'
+" function! s:load_db()
+"     let l:dbs = []
+"     let l:db_url = getenv("HOME")."/.db_url"
+"     if filereadable(l:db_url)
+"       let l:url_content = readfile(l:db_url)
+"       for item in l:url_content
+"         let l:line_content = split(item,",")
+"         call add(l:dbs, {'name':l:line_content[0], 'url': l:line_content[1]})
+"       endfor
+"       return l:dbs
+"     endif
+" endfunction
+" let g:dbs = s:load_db()
 
 
 "========================

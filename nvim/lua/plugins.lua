@@ -149,14 +149,15 @@ local function init()
 
   -- fuzzy find
   use {'liuchengxu/vim-clap',
+    cmd = 'Clap',
     run = [[:Clap install-binary]],
-    lock = true,
-    cmd = 'Clap'
+    config = conf.vim_clap,
+    lock = true
   }
 
   -- use {'nvim-telescope/telescope.nvim',
   --   cmd = 'Telescope',
-  --   -- config = conf.telescope,
+  --   config = conf.telescope,
   --   requires = {
   --     {'nvim-lua/popup.nvim', after="telescope.nvim"},
   --     {'nvim-lua/plenary.nvim', after="telescope.nvim"},
@@ -220,12 +221,13 @@ local function init()
   -- database
   use {'kristijanhusak/vim-dadbod-ui',
     cmd = {'DBUIToggle', 'DBUIAddConnection', 'DBUI', 'DBUIFindBuffer', 'DBUIRenameBuffer'} ,
+    config = conf.vim_dadbod_ui,
     requires = {'tpope/vim-dadbod',opt = true}
   }
 
   use {'mattn/emmet-vim',
     event = 'InsertEnter *',
-    ft = {'html','css','javascript','javascriptreact','vue','typescript','typescriptreact'},
+    ft = {'html','css','vue', 'wxml'},
     setup = conf.emmet
   }
   -- div>li>a  div+li+a*3  div>li>a^p  div>(li>a)^p

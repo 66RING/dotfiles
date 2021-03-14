@@ -44,9 +44,10 @@ end
 function config.nvim_bufferline()
   require('bufferline').setup{
     options = {
-      modified_icon = '✥',
+      modified_icon = '',
       buffer_close_icon = '',
       show_buffer_close_icons = false,
+      close_icon = "",
       mappings = true,
       always_show_bufferline = false,
       separator_style = {"", ""},
@@ -107,33 +108,50 @@ function config.defx()
   })
 end
 
-function config.telescope()
-  print("tele")
-  -- if not packer_plugins['plenary.nvim'].loaded then
-  --   vim.cmd [[packadd plenary.nvim]]
-  --   vim.cmd [[packadd popup.nvim]]
-  --   vim.cmd [[packadd telescope-fzy-native.nvim]]
-  -- end
-  require('telescope').setup {
-    defaults = {
-      prompt_prefix = '🚀 ',
-      prompt_position = 'top',
-      sorting_strategy = 'ascending',
-      -- file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-      -- grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-      -- qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
-    },
-    extensions = {
-        fzy_native = {
-            override_generic_sorter = false,
-            override_file_sorter = true,
-        }
-    }
-  }
-  -- require('telescope').load_extension('fzy_native')
-  -- require'telescope'.load_extension('dotfiles')
-  -- require'telescope'.load_extension('gosource')
+function config.vim_clap()
+  vim.g.clap_cache_directory = '~/cache/clap'
+  vim.g.clap_theme = 'material_design_dark'
+  vim.g.clap_current_selection_sign= { text='🚀', texthl="ClapCurrentSelectionSign", linehl="ClapCurrentSelection"}
+  vim.g.clap_layout = { relative='editor' }
+  vim.g.clap_enable_icon = 1
+  vim.g.clap_enable_background_shadow = false
+  vim.g.clap_provider_grep_enable_icon = 1
+
+  -- vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <C-j> <NOP>]]
+  -- vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <C-k> <NOP>]]
+  vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <C-n> <C-R>=clap#navigation#linewise('down')<CR>]]
+  vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <C-p> <C-R>=clap#navigation#linewise('up')<CR>]]
+  vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <Esc> <Esc>:<c-u>call clap#handler#exit()<CR>]]
 end
+
+-- function config.telescope()
+--   if not packer_plugins['plenary.nvim'].loaded then
+--     vim.cmd [[packadd plenary.nvim]]
+--     vim.cmd [[packadd popup.nvim]]
+--     vim.cmd [[packadd telescope-fzy-native.nvim]]
+--   end
+--   require('telescope').setup {
+--     defaults = {
+--       prompt_prefix = '🚀 ',
+--       prompt_position = 'top',
+--       sorting_strategy = 'ascending',
+--       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+--       grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+--       qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+--       mappings = {
+--         i = {
+--           ["<esc>"] = require('telescope.actions').close,
+--         }
+--       }
+--     },
+--     -- extensions = {
+--     --     fzy_native = {
+--     --         override_generic_sorter = false,
+--     --         override_file_sorter = true,
+--     --     }
+--     -- }
+--   }
+-- end
 
 function config.dashboard()
   vim.g.dashboard_custom_header = {
@@ -181,6 +199,8 @@ end
 function config.emmet()
   vim.g.user_emmet_mode = "ivn"
   vim.g.user_emmet_leader_key = ","
+  vim.g.user_emmet_install_global = false
+  vim.cmd [[autocmd FileType html,css,vue,wxml EmmetInstall]]
 end
 
 function config.vim_vsnip()
@@ -217,7 +237,6 @@ function config.lspsaga()
 end
 
 function config.nvim_compe()
-  require('keymap.config')
   require'compe'.setup {
     enabled = true;
     autocomplete = true;
@@ -243,5 +262,28 @@ function config.nvim_compe()
   vim.api.nvim_set_keymap('i','<CR>',"compe#confirm('<CR>')",opts)
 end
 
+-- tool
+function config.vim_dadbod_ui()
+  local function load_dbs()
+    local dbs_url = os.getenv("HOME").."/.db_url"
+    local dbs = {}
+    if vim.fn.filereadable(dbs_url) == 1 then
+        local url_content = vim.fn.readfile(dbs_url)
+        for _, item in pairs(url_content) do
+          local line_content = vim.fn.split(item,",")
+          dbs[line_content[1]] = line_content[2]
+        end
+        print(dbs.name)
+        print(dbs.url)
+        return dbs
+    end
+  end
+
+  vim.g.db_ui_win_position = 'left'
+  vim.g.db_ui_use_nerd_fonts = 1
+  vim.g.db_ui_winwidth = 35
+  vim.g.db_ui_save_location = os.getenv("HOME")..'/.cache/db_ui_save_location'
+  vim.g.dbs = load_dbs()
+end
 
 return config

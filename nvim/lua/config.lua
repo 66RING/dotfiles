@@ -29,7 +29,7 @@ function config.nvim_treesitter()
     highlight = {
       enable = true,
     },
-    ensure_installed = 'all'
+    -- ensure_installed = 'all'
   }
 end
 
@@ -200,7 +200,10 @@ function config.emmet()
   vim.g.user_emmet_mode = "ivn"
   vim.g.user_emmet_leader_key = ","
   vim.g.user_emmet_install_global = false
-  vim.cmd [[autocmd FileType html,css,vue,wxml EmmetInstall]]
+  if not packer_plugins['emmet-vim'].loaded then
+    vim.cmd [[packadd emmet-vim]]
+    vim.cmd [[autocmd FileType html,css,vue,wxml EmmetInstall]]
+  end
 end
 
 function config.vim_vsnip()

@@ -190,7 +190,7 @@ local function init()
   use {'liuchengxu/vista.vim',
     cmd = 'Vista',
     setup = function ()
-      vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
+      -- vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
       vim.g.vista_default_executive = 'ctags'
       vim.g.vista_echo_cursor_strategy = 'floating_win'
       vim.g.vista_vimwiki_executive = 'markdown'

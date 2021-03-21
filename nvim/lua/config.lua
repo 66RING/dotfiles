@@ -202,7 +202,7 @@ function config.emmet()
   vim.g.user_emmet_install_global = false
   if not packer_plugins['emmet-vim'].loaded then
     vim.cmd [[packadd emmet-vim]]
-    vim.cmd [[autocmd FileType html,css,vue,wxml EmmetInstall]]
+    vim.cmd [[autocmd FileType html,css,vue,wxml,js,jsx EmmetInstall]]
   end
 end
 
@@ -229,7 +229,8 @@ function config.lspsaga()
   local map_key = vim.api.nvim_set_keymap
   local opts = {silent=true, noremap=true}
   map_key('n', '<LEADER>rn', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
-  map_key('n', 'gd', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)
+  map_key('n', 'gd', [[<cmd>lua vim.fn['autoload#smart_split']('lua vim.lsp.buf.declaration()')<CR>]], opts)
+  map_key('n', 'gD', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)
   map_key('n', 'gh', [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
   map_key('n', '<LEADER>h', [[<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]], opts)
   map_key('n', '<LEADER>a', [[<cmd>lua require('lspsaga.codeaction').code_action()<CR>]], opts)

@@ -227,7 +227,7 @@ local function init()
 
   use {'mattn/emmet-vim',
     event = 'InsertEnter *',
-    ft = {'html','css','vue', 'wxml'},
+    -- ft = {'html','css','vue', 'wxml', 'js', 'jsx'},
     setup = conf.emmet
   }
   -- div>li>a  div+li+a*3  div>li>a^p  div>(li>a)^p

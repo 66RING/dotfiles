@@ -48,7 +48,17 @@ let g:loaded_netrwFileHandlers = 1
 
 
 " netrw
-let g:netrw_browsex_viewer= "setsid xdg-open" 
+" let g:netrw_browsex_viewer= "setsid xdg-open" 
+function! HandleURL()
+  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;]*')
+  echo s:uri
+  if s:uri != ""
+    silent exec "!open '".s:uri."'"
+  else
+    echo "No URI found in line."
+  endif
+endfunction
+map <leader>u :call HandleURL()<cr>
 
 
 " shotcut configuration file

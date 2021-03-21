@@ -1,8 +1,10 @@
 local map_key = vim.api.nvim_set_keymap
 local opts
 
-require("keymap.config")
+require("keymap.global_functions")
 
+-- global_utils
+map_key('n', 'gx', [[<cmd>call v:lua.handle_url()<CR>]], {noremap=true})
 
 -- telescope.nvim
 -- map_key('n', '<C-f>', "<cmd>Telescope find_files<cr>", {noremap=true})

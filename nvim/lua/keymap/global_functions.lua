@@ -36,5 +36,29 @@ _G.s_tab_complete = function()
 end
 
 
+_G.handle_url = function()
+  local uri = vim.fn.matchstr(vim.fn.getline("."), "[a-z]*://[^ >,;]*")
+  if uri ~= "" then
+    local cmd = "silent !"..os.getenv("BROWSER").." '"..uri.."'"
+    vim.cmd(cmd)
+  else
+    print("No URI found in line.")
+  end
+end
+
+_G.smart_split = function (cmd)
+  print(cmd)
+  if vim.fn.winnr('$')>=4 and vim.fn.winwidth(0) < 120 then
+    vim.cmd(cmd)
+  else
+    vim.cmd [[setlocal splitright]]
+    vim.cmd [[vsplit]]
+    vim.cmd(cmd)
+  end
+end
+
+
+
+
 
 

@@ -124,34 +124,35 @@ function config.vim_clap()
   vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <Esc> <Esc>:<c-u>call clap#handler#exit()<CR>]]
 end
 
--- function config.telescope()
---   if not packer_plugins['plenary.nvim'].loaded then
---     vim.cmd [[packadd plenary.nvim]]
---     vim.cmd [[packadd popup.nvim]]
---     vim.cmd [[packadd telescope-fzy-native.nvim]]
---   end
---   require('telescope').setup {
---     defaults = {
---       prompt_prefix = '🚀 ',
---       prompt_position = 'top',
---       sorting_strategy = 'ascending',
---       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
---       grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
---       qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
---       mappings = {
---         i = {
---           ["<esc>"] = require('telescope.actions').close,
---         }
---       }
---     },
---     -- extensions = {
---     --     fzy_native = {
---     --         override_generic_sorter = false,
---     --         override_file_sorter = true,
---     --     }
---     -- }
---   }
--- end
+function config.telescope()
+  if not packer_plugins['plenary.nvim'].loaded then
+    vim.cmd [[packadd plenary.nvim]]
+    vim.cmd [[packadd popup.nvim]]
+    vim.cmd [[packadd telescope-fzy-native.nvim]]
+  end
+  require('telescope').setup {
+    defaults = {
+      prompt_prefix = '🚀 ',
+      prompt_position = 'top',
+      sorting_strategy = 'ascending',
+      file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+      grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+      qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+      mappings = {
+        i = {
+          ["<esc>"] = require('telescope.actions').close,
+        }
+      }
+    },
+    extensions = {
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
+        }
+    }
+  }
+  require('telescope').load_extension('fzy_native')
+end
 
 function config.dashboard()
   vim.g.dashboard_custom_header = {
@@ -185,10 +186,12 @@ function config.dashboard()
         command= 'set laststatus=2 | enew' },
     find_history= {
         description= {'ﭯ History     '},
-        command= 'Clap history' },
+        -- command= 'Clap history' },
+        command= 'Telescope oldfiles' },
     find_file= {
         description= {' Find Files  '},
-        command= 'Clap filer' },
+        -- command= 'Clap filer' },
+        command= 'Telescope find_files' },
   }
 end
 
@@ -211,8 +214,8 @@ function config.vim_vsnip()
 
   local map_key = vim.api.nvim_set_keymap
   local opts = {expr=true}
-  map_key('i', '<C-e>', [[vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>']], opts)
-  map_key('s', '<C-e>', [[vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-e>']], opts)
+  map_key('i', '<C-e>', [[vsnip#available()  ? '<Plug>(vsnip-expand-or-jump)' : '<C-e>']], opts)
+  map_key('s', '<C-e>', [[vsnip#available()  ? '<Plug>(vsnip-expand-or-jump)' : '<C-e>']], opts)
 
   map_key('s', '<C-l>', [[vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-l>']], opts)
   map_key('s', '<C-j>', [[vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-j>']], opts)

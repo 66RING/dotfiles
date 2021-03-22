@@ -148,22 +148,22 @@ local function init()
   }
 
   -- fuzzy find
-  use {'liuchengxu/vim-clap',
-    cmd = 'Clap',
-    run = [[:Clap install-binary]],
-    config = conf.vim_clap,
-    lock = true
-  }
-
-  -- use {'nvim-telescope/telescope.nvim',
-  --   cmd = 'Telescope',
-  --   config = conf.telescope,
-  --   requires = {
-  --     {'nvim-lua/popup.nvim', after="telescope.nvim"},
-  --     {'nvim-lua/plenary.nvim', after="telescope.nvim"},
-  --     {'nvim-telescope/telescope-fzy-native.nvim', after="telescope.nvim"},
-  --   }
+  -- use {'liuchengxu/vim-clap',
+  --   cmd = 'Clap',
+  --   run = [[:Clap install-binary]],
+  --   config = conf.vim_clap,
+  --   lock = true
   -- }
+
+  use {'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
+    config = conf.telescope,
+    requires = {
+      {'nvim-lua/popup.nvim', opt = true},
+      {'nvim-lua/plenary.nvim', opt = true},
+      {'nvim-telescope/telescope-fzy-native.nvim', opt = true},
+    }
+  }
 
 
   use {'mg979/vim-visual-multi',

@@ -38,9 +38,11 @@ local function init()
 
   use {"glepnir/zephyr-nvim",
     config= function()
-      vim.cmd('colorscheme zephyr')
-      vim.cmd('highlight Normal ctermbg=NONE guibg=NONE')
-      vim.cmd('highlight SignColumn ctermbg=NONE guibg=NONE')
+      vim.cmd[[colorscheme zephyr]]
+      vim.cmd[[highlight Normal ctermbg=NONE guibg=NONE]]
+      vim.cmd[[highlight SignColumn ctermbg=NONE guibg=NONE]]
+      vim.cmd[[highlight Cursorline cterm=bold ctermbg=black guibg=#48515E]]
+      vim.cmd[[autocmd FileType markdown source $HOME/.config/nvim/config/markdown_theme.vim]]
       -- vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
       -- vim.cmd('highlight TabLineSel ctermbg=NONE guibg=NONE')
     end,
@@ -71,6 +73,7 @@ local function init()
   -- enhance
   use {"norcalli/nvim-colorizer.lua",
     ft = { 'html','css','sass','vim','typescript','typescriptreact'},
+    cmd = "ColorizerToggle",
     config = conf.nvim_colorizer
   }
   use {'itchyny/vim-cursorword',

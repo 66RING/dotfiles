@@ -14,7 +14,7 @@
 " syntax on
 " autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 " autocmd ColorScheme * highlight TabLineSel ctermbg=NONE guibg=NONE
-" autocmd ColorScheme * highlight! Cursorline cterm=bold ctermfg=black guibg=#666666
+" autocmd ColorScheme * highlight! Cursorline cterm=bold ctermfg=black guibg=#48515E
 " autocmd ColorScheme * highlight! Colorcolumn cterm=bold guibg=#666666
 " set background=dark " dulp in oceanic_material
 
@@ -63,7 +63,6 @@ map <leader>u :call HandleURL()<cr>
 
 " shotcut configuration file
 autocmd FileType markdown source $HOME/.config/nvim/shot_cut_source/md_snippits.vim
-autocmd FileType markdown source $HOME/.config/nvim/config/markdown_theme.vim
 source $HOME/.config/nvim/shot_cut_source/coding_short_cut.vim
 
 

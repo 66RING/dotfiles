@@ -115,3 +115,7 @@ endfunction
 
 call s:set_color_variables()
 call s:apply_syntax_highlightings()
+
+syntax match todoPrompt "TODO"
+highlight link todoPrompt RedrawDebugClear
+

@@ -315,9 +315,7 @@ func! RunCode()
 		:sp
         exec "term processing-java --sketch='".trim(system('pwd'))."' --output='".trim(system('pwd'))."/bin' --force --run"
     elseif &filetype == 'html'
-		set splitbelow
-		:sp
-		:term google-chrome-stable %:p
+		:silent ! google-chrome-stable %:p
     elseif &filetype == 'lua'
 		set splitbelow
 		:sp

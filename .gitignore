@@ -24,3 +24,5 @@ nvim/lua/test
 
 nvim/plugin/packer_compiled.vim
 .config/microsoft-edge-dev
+
+.config/SciTools

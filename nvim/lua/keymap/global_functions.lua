@@ -47,8 +47,7 @@ _G.handle_url = function()
 end
 
 _G.smart_split = function (cmd)
-  print(cmd)
-  if vim.fn.winnr('$')>=4 and vim.fn.winwidth(0) < 120 then
+  if vim.fn.winnr('$')>=4 or vim.fn.winwidth(0) < 120 then
     vim.cmd(cmd)
   else
     vim.cmd [[setlocal splitright]]

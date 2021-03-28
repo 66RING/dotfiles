@@ -78,35 +78,6 @@ end
 --
 -- editor
 --
-function config.defx()
-  vim.fn['defx#custom#option']('_', {
-      floating_preview= 1,
-      winwidth= 30,
-      split= 'vertical',
-      direction= 'topleft',
-      columns= 'mark:indent:git:icons:filename:type:size:time',
-      show_ignored_files= 0,
-      root_marker= '[in]: '
-  })
-
-  vim.fn['defx#custom#column']('git', {
-     indicators= {
-       Modified  = '•',
-       Staged    = '✚',
-       Untracked = 'ᵁ',
-       Renamed   = '≫',
-       Unmerged  = '≠',
-       Ignored   = 'ⁱ',
-       Deleted   = '✖',
-       Unknown   = '⁇'
-     }
-   })
-
-  vim.fn['defx#custom#column']('mark', {
-       readonly_icon= '',
-       selected_icon= ''
-  })
-end
 
 function config.vim_clap()
   vim.g.clap_cache_directory = '~/cache/clap'

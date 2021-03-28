@@ -172,14 +172,6 @@ local function init()
   use {'mg979/vim-visual-multi',
     event = "BufRead *"
   }
-  use {'Shougo/defx.nvim',
-    run = ":UpdateRemotePlugins",
-    cmd = 'Defx',
-    config = conf.defx
-  }
-  use {'kristijanhusak/defx-icons',
-    after = 'defx.nvim'
-  }
 
   use {'voldikss/vim-translator',
     keys = '<Plug>TranslateW',

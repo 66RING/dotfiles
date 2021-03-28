@@ -37,7 +37,10 @@
 #  unset f
 # fi
 
-xmodmap /home/ring/.Xmodmap
+source ./.xprofile
+xmodmap /home/ring/.Xmodmap &
+
+exec bspwm
 # exec ~/scripts/dwm/startdwm
 # exec /home/ring/scripts/autostart.sh
 # exec bspwm

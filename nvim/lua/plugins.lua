@@ -151,13 +151,6 @@ local function init()
   }
 
   -- fuzzy find
-  -- use {'liuchengxu/vim-clap',
-  --   cmd = 'Clap',
-  --   run = [[:Clap install-binary]],
-  --   config = conf.vim_clap,
-  --   lock = true
-  -- }
-
   use {'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
     config = conf.telescope,

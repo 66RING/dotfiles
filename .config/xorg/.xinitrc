@@ -37,7 +37,7 @@
 #  unset f
 # fi
 
-source ./.xprofile
+source ./.xprofile &
 xmodmap /home/ring/.Xmodmap &
 
 exec bspwm

@@ -399,9 +399,6 @@ endif
 
 lua require('keymap.init')
 
-" execute 'source' fnamemodify('$HOME/.config/nvim/config/plugin_config.vim', '')
-" " dein.vim
-" execute 'source' fnamemodify('$HOME/.config/nvim/config/dein_plugins.vim', '')
 " /home/ring/.config/nvim/lua/plugins.lua
 
 

@@ -26,3 +26,8 @@ nvim/plugin/packer_compiled.vim
 .config/microsoft-edge-dev
 
 .config/SciTools
+
+.config/font-manager
+.config/fontconfig/conf.d
+
+.config/sourcetrail

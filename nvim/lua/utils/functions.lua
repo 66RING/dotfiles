@@ -1,0 +1,137 @@
+local M = {
+  input_toggle = 1
+}
+
+M.handle_url = function()
+  local uri = vim.fn.matchstr(vim.fn.getline("."), "[a-z]*://[^ >,;#]*")
+  if uri ~= "" then
+    local cmd = "silent !"..os.getenv("BROWSER").." '"..uri.."'"
+    vim.cmd(cmd)
+  else
+    print("No URI found in line.")
+  end
+end
+
+M.smart_split = function (cmd)
+  if vim.fn.winnr('$')>=4 or vim.fn.winwidth(0) < 120 then
+    vim.cmd(cmd)
+  else
+    vim.cmd [[setlocal splitright]]
+    vim.cmd [[vsplit]]
+    vim.cmd(cmd)
+  end
+end
+
+--
+-- fcitx auto switch
+--
+function M.fcitx2en()
+  if tonumber(vim.fn.system("fcitx-remote")) == 2 then
+    M.input_toggle = 2
+    os.execute("fcitx-remote -c")
+  end
+end
+
+function M.fcitx2cn()
+  if tonumber(vim.fn.system("fcitx-remote")) ~= 2 and M.input_toggle == 1 then
+    M.input_toggle = 2
+    os.execute("fcitx-remote -o")
+  end
+end
+
+
+--
+-- quick run
+--
+function M.run_code()
+  local cmd = {
+    c = "term %:p:r",
+    cpp = "term %:p:r",
+    python = "term python %:p",
+    java = "term java %:p:r",
+    sh = "term bash %:p",
+    vim = "term source %:p",
+    go = "term go run %:p",
+    lua = "term lua %:p",
+    processing = "term processing-java --sketch='"..vim.fn.trim(vim.fn.system('pwd')).."' --output='"..vim.fn.trim(vim.fn.system('pwd')).."/bin' --force --run"
+  }
+  local file_type = vim.bo.filetype
+  if file_type == 'markdown' or file_type == 'vimwiki' then
+    vim.cmd("MarkdownPreview")
+  elseif cmd[file_type] ~= nil then
+    vim.cmd("w")
+    vim.o.splitbelow = true
+    vim.cmd("sp")
+    vim.cmd(cmd[file_type])
+  else
+    print("nothing to run")
+  end
+end
+
+--
+-- quick build
+--
+function M.build_code()
+  local cmd = {
+    c = "term gcc -g %:p -o %<",
+    cpp = "term g++ -g %:p -o %<",
+    java = "term javac %:p",
+    typescript = "term tsc %:p",
+    lua = "term luac %:p",
+    processing = "term processing-java --sketch='"..vim.fn.trim(vim.fn.system('pwd')).."' --output='"..vim.fn.trim(vim.fn.system('pwd')).."/bin' --force --build"
+  }
+  local file_type = vim.bo.filetype
+  if cmd[file_type] ~= nil then
+    vim.cmd("w")
+    vim.o.splitbelow = true
+    vim.cmd("sp")
+    vim.cmd(cmd[file_type])
+  else
+    print("nothing to run")
+  end
+end
+
+--
+-- debug with gdb
+--
+function M.debug_code()
+  local cmd = {
+    c = "term gdb %:p:r",
+    cpp = "term gdb %:p:r",
+  }
+  local file_type = vim.bo.filetype
+  if cmd[file_type] ~= nil then
+    vim.cmd("w")
+    vim.o.nosplitbelow = true
+    vim.cmd("sp")
+    vim.cmd(cmd[file_type])
+  else
+    print("nothing to run")
+  end
+end
+
+--
+-- find doc
+--
+function M.find_doc()
+  local cmd = {
+    python = "term python -c \"help('"..vim.fn.expand("<cword>").."')\" | cat",
+    vim = "h "..vim.fn.expand("<cword>"),
+  }
+  local file_type = vim.bo.filetype
+  if file_type == "vim" then
+    vim.cmd(cmd[file_type])
+  elseif cmd[file_type] ~= nil then
+    vim.cmd("w")
+    vim.o.splitbelow = false
+    vim.cmd("sp")
+    vim.cmd(cmd[file_type])
+  else
+    vim.cmd(cmd["vim"])
+  end
+end
+
+
+
+return M
+

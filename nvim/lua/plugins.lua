@@ -17,7 +17,7 @@ local function init()
 
   use {"neovim/nvim-lspconfig",
     event = "BufReadPre *",
-    config = [[require('custom.lspconfig')]]
+    config = [[require('lsp.lspconfig')]]
   }
 
   use {"glepnir/lspsaga.nvim",

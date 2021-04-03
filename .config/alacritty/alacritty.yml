@@ -10,12 +10,12 @@ window:
 
 font:
   normal:
-    family: DejaVuSansMono Nerd Font Mono
+    family: CaskaydiaCove Nerd Font Mono
     style: Regular
   bold:
-    family: DejaVuSansMono Nerd Font Mono
+    family: CaskaydiaCove Nerd Font Mono
   italic:
-    family: DejaVuSansMono Nerd Font Mono
+    family: CaskaydiaCove Nerd Font Mono
   size: 10
   offset:
       y: 1

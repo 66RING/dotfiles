@@ -66,7 +66,7 @@ local function init()
   }
 
   use {'66RING/bookmarks-nvim',
-    keys = '<Plug>(bookmarks_nvim)'
+    cmd = 'BookmarksToggle'
   }
 
 

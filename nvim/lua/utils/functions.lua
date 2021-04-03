@@ -102,7 +102,7 @@ function M.debug_code()
   local file_type = vim.bo.filetype
   if cmd[file_type] ~= nil then
     vim.cmd("w")
-    vim.o.nosplitbelow = true
+    vim.o.splitbelow = true
     vim.cmd("sp")
     vim.cmd(cmd[file_type])
   else

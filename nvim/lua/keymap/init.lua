@@ -8,9 +8,9 @@ require("keymap.global_functions")
 map_key('n', 'gx', [[<cmd>lua require("utils.functions").handle_url()<CR>]], {noremap=true})
 
 -- telescope.nvim
-map_key('n', '<C-f>', "<cmd>Telescope find_files<cr>", {noremap=true})
+map_key('n', '<C-f>', "<cmd>Telescope find_files hidden=true follow=true cwd=%:p:h<cr>", {noremap=true})
 map_key('n', '<C-h>', "<cmd>Telescope oldfiles<cr>", {noremap=true})
-map_key('n', 'tt', "<cmd>Telescope file_browser hidden=true<cr>", {noremap=true})
+map_key('n', 'tt', "<cmd>Telescope file_browser hidden=true cwd=%:p:h<cr>", {noremap=true})
 map_key('n', 'tT', "<cmd>Telescope buffers<cr>", {noremap=true})
 map_key('n', '<LEADER>;', "<cmd>Telescope command_history<cr>", {noremap=true})
 map_key('n', '<LEADER>:', "<cmd>Telescope commands<cr>", {noremap=true})

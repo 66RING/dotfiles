@@ -130,7 +130,7 @@ noremap P "+p
 " m for join
 noremap m J  
 noremap <silent> M :exec ":mark "nr2char(getchar())<CR>
-nmap ' <Plug>(bookmarks_nvim)
+nmap ' :exec "let save_cursor=getcurpos()" \| exec 'BookmarksToggle' \| call setpos("''", save_cursor)<CR>
 noremap <LEADER><CR> :nohlsearch<CR>
 
 

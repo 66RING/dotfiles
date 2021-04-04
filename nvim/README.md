@@ -11,13 +11,3 @@
 - `<LEADER>d` to find doc
 - `<LEADER>R,B,D` to run, build and debug
 
-
-![dashboard](./demo/dashboard.png)
-
-![dashboard](./demo/vista_and_explore.png)
-
-Pretty statusline and tabline
-![dashboard](./demo/nice_tabbar_and_statusline.png)
-
-
-

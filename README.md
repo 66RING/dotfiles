@@ -1,5 +1,15 @@
 # My dotfiles
 
+
+## Screenshots
+
+<img src="./.github/images/bspwm.png">Bspwm</img>
+
+<img src="./.github/images/vim_and_work_flow.png">Work Flow</img>
+
+<img src="./.github/images/dashboard.png">Dashboard</img>
+
+
 ## My config
 
 - neovim

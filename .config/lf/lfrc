@@ -9,6 +9,7 @@
 #* global setting 
 #************************
 set previewer /home/ring/.config/lf/scope.sh
+set cleaner /home/ring/.config/lf/clear_img.sh
 set shell bash
 set shellopts '-eu'
 set ifs "\n"

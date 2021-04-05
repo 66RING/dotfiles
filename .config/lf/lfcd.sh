@@ -1,20 +1,6 @@
-# Change working dir in shell to last dir in lf on exit (adapted from ranger).
-#
-# You need to either copy the content of this file to your shell rc file
-# (e.g. ~/.bashrc) or source this file directly:
-#
-#     LFCD="/path/to/lfcd.sh"
-#     if [ -f "$LFCD" ]; then
-#         source "$LFCD"
-#     fi
-#
-# You may also like to assign a key to this command:
-#
-#     bind '"\C-o":"lfcd\C-m"'  # bash
-#     bindkey -s '^o' 'lfcd\n'  # zsh
-#
+#!/bin/sh
 
-lfcd () {
+_lf () {
     tmp="$(mktemp)"
     export LF_BACK="$(pwd)"
     lf -last-dir-path="$tmp" "$@"
@@ -28,4 +14,37 @@ lfcd () {
             fi
         fi
     fi
+}
+
+
+lfcd() {
+  set +m 
+  if [ -n "$DISPLAY" ]; then
+    export FIFO_UEBERZUG="${TMPDIR:-/tmp}/lf-ueberzug-$$"
+
+    cleanup() {
+      exec 3>&-
+      rm "$FIFO_UEBERZUG"
+    }
+
+    if [ -f "$FIFO_UEBERZUG" ]; then
+      rm "$FIFO_UEBERZUG"
+    fi
+    mkfifo "$FIFO_UEBERZUG"
+    ueberzug layer --silent <"$FIFO_UEBERZUG" &
+    upid=$!
+    exec 3>"$FIFO_UEBERZUG"
+    trap cleanup EXIT
+
+    if ! [ -d "$HOME/.cache/lf" ]; then
+      mkdir -p "$HOME/.cache/lf"
+    fi
+
+    _lf "$@" 3>&-
+  else
+    _lf "$@"
+  fi
+  # kill $upid &
+  # wait $upid
+  # set -m
 }

@@ -103,7 +103,7 @@ function config.telescope()
   end
   require('telescope').setup {
     defaults = {
-      prompt_prefix = '🚀 ',
+      prompt_prefix = ' 🚀 ',
       prompt_position = 'top',
       sorting_strategy = 'ascending',
       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,

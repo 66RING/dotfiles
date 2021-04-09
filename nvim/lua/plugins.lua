@@ -56,6 +56,7 @@ local function init()
   -- }
   use {'glepnir/galaxyline.nvim',
     config = [[require('statusline.moonline')]],
+    -- config = [[require('statusline.clearline')]],
     requires = {'kyazdani42/nvim-web-devicons'}
   }
 

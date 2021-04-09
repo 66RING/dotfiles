@@ -55,9 +55,14 @@ function M.run_code()
     lua = "term lua %:p",
     processing = "term processing-java --sketch='"..vim.fn.trim(vim.fn.system('pwd')).."' --output='"..vim.fn.trim(vim.fn.system('pwd')).."/bin' --force --run"
   }
+  local cmd_without_split = {
+    html = "silent ! "..os.getenv("BROWSER").." %:p",
+    markdown = "MarkdownPreview",
+    vimwiki = "MarkdownPreview",
+  }
   local file_type = vim.bo.filetype
-  if file_type == 'markdown' or file_type == 'vimwiki' then
-    vim.cmd("MarkdownPreview")
+  if cmd_without_split[file_type] ~= nil then
+    vim.cmd(cmd_without_split[file_type])
   elseif cmd[file_type] ~= nil then
     vim.cmd("w")
     vim.o.splitbelow = true

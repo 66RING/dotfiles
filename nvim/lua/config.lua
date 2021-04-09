@@ -195,7 +195,8 @@ function config.lspsaga()
   local saga = require 'lspsaga'
   saga.init_lsp_saga{
     finder_action_keys = {
-      open = '<enter>', vsplit = 'v',split = 's',quit = 'q'
+      open = '<enter>', vsplit = 'v',split = 's',quit = 'q',
+      scroll_down = '<C-d>', scroll_up = '<C-u>'
     },
   }
 

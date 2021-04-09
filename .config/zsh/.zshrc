@@ -8,7 +8,7 @@ source ~/.config/zsh/env.zsh
 source ~/.config/zsh/plugin.zsh
 source ~/.config/zsh/aliases.zsh
 
-if type "fortune" &> /dev/null; then
-    fortune -s
-fi
+# if type "fortune" &> /dev/null; then
+#     fortune -s
+# fi
 

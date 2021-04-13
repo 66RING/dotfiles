@@ -216,9 +216,15 @@ cmd dragon-individual ${{
     lf -remote "send $id unselect"
 }}
 
-
-# copy files path
-cmd cpath $echo $fx | tr -d '\n' |  xsel -b
+cmd paste_soft_link %{{
+    set -- $(lf -remote load)
+    shift
+    if [ "$#" -lt 1 ]; then
+        lf -remote "send $id echo no files to link"
+        exit 0
+    fi
+    ln -sr -t . -- "$@"
+}}
 
 #************************
 #* unbind some default key
@@ -257,6 +263,7 @@ map M mark-save
 map yy copy
 map yp cpath
 map pp paste
+map pl paste_soft_link
 map dd cut
 map dD push :delete<space>?[y/N]<space>
 map DD push :trash<space>?[y/N]<space>

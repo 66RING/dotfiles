@@ -42,7 +42,10 @@ alias ssroff='unset http_proxy ; unset export https_proxy'
 alias v2rayon='export ALL_PROXY="socks5://127.0.0.1:1089"'
 alias v2rayoff='unset http_proxy ; unset export https_proxy'
 
-alias t="$HOME/scripts/tools/ai_trans_demo.py"
-
 alias poweroff="prompt2 'Shutdown?' 'poweroff'"
 alias reboot="prompt2 'Reboot?' 'reboot'"
+
+# scripts/utils
+SCRIPTS_DIR='/home/ring/scripts'
+alias t="$SCRIPTS_DIR/utils/ai_trans_demo.py"
+alias osdoc="$SCRIPTS_DIR/utils/osdoc.sh"

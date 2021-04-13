@@ -31,3 +31,5 @@ nvim/plugin/packer_compiled.vim
 .config/fontconfig/conf.d
 
 .config/sourcetrail
+
+.config/inkscape

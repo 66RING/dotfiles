@@ -5,7 +5,7 @@ local M = {
 M.handle_url = function()
   local uri = vim.fn.matchstr(vim.fn.getline("."), "[a-z]*://[^ >,;#]*")
   if uri ~= "" then
-    local cmd = "silent !"..os.getenv("BROWSER").." '"..uri.."'"
+    local cmd = "silent !"..os.getenv("BROWSER").." '"..uri.."' &"
     vim.cmd(cmd)
   else
     print("No URI found in line.")
@@ -56,7 +56,7 @@ function M.run_code()
     processing = "term processing-java --sketch='"..vim.fn.trim(vim.fn.system('pwd')).."' --output='"..vim.fn.trim(vim.fn.system('pwd')).."/bin' --force --run"
   }
   local cmd_without_split = {
-    html = "silent ! "..os.getenv("BROWSER").." %:p",
+    html = "silent ! "..os.getenv("BROWSER").." %:p &",
     markdown = "MarkdownPreview",
     vimwiki = "MarkdownPreview",
   }

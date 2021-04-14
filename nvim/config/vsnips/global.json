@@ -5,5 +5,19 @@
 			"${VIM:system('date \"+%Y-%m-%d\"|tr -d \"\\n\"')}"
 		],
 		"description": "Current time"
+	},
+	"github": {
+		"prefix": "gh",
+		"body": [
+			"https://github.com/66RING"
+		],
+		"description": "66RING github url"
+	},
+	"raw data repo": {
+		"prefix": "ghr",
+		"body": [
+            "https://raw.githubusercontent.com/66RING/66RING/master/.github"
+		],
+		"description": "personal raw data"
 	}
 }

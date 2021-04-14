@@ -216,6 +216,9 @@ cmd dragon-individual ${{
     lf -remote "send $id unselect"
 }}
 
+# copy files path
+cmd cpath $echo $fx | tr -d '\n' |  xsel -b
+
 cmd paste_soft_link %{{
     set -- $(lf -remote load)
     shift
@@ -224,6 +227,7 @@ cmd paste_soft_link %{{
         exit 0
     fi
     ln -sr -t . -- "$@"
+    lf -remote "send $id clear"
 }}
 
 #************************

@@ -3,7 +3,7 @@ local M = {
 }
 
 M.handle_url = function()
-  local uri = vim.fn.matchstr(vim.fn.getline("."), "[a-z]*://[^ >,;#]*")
+  local uri = vim.fn.matchstr(vim.fn.getline("."), "[a-z]*://[^ >,;#()]*")
   if uri ~= "" then
     local cmd = "silent !"..os.getenv("BROWSER").." '"..uri.."' &"
     vim.cmd(cmd)

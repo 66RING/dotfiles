@@ -104,6 +104,7 @@ function config.telescope()
   require('telescope').setup {
     defaults = {
       prompt_prefix = ' 🚀 ',
+      selection_caret = "🛸 ",
       prompt_position = 'top',
       sorting_strategy = 'ascending',
       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
@@ -112,6 +113,7 @@ function config.telescope()
       mappings = {
         i = {
           ["<esc>"] = require('telescope.actions').close,
+          ["<C-j>"] = require('telescope.actions').move_to_top + require('telescope.actions').select_default + require('telescope.actions').center
         }
       }
     },

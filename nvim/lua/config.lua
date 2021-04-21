@@ -198,12 +198,16 @@ function config.lspsaga()
   saga.init_lsp_saga{
     finder_action_keys = {
       open = '<enter>', vsplit = 'v',split = 's',quit = 'q',
-      scroll_down = '<C-d>', scroll_up = '<C-u>'
     },
   }
 
   local map_key = vim.api.nvim_set_keymap
   local opts = {silent=true, noremap=true}
+  -- saga.buildin
+  map_key('n', '<C-u>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
+  map_key('n', '<C-d>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
+
+  -- saga.personal
   map_key('n', '<LEADER>rn', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
   map_key('n', 'gd', [[<cmd>lua require("utils.functions").smart_split('lua vim.lsp.buf.definition()')<CR>]], opts)
   map_key('n', 'gD', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)

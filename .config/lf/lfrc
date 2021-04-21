@@ -287,6 +287,7 @@ map md push :mkdirs<space>
 map mf push :mkfiles<space>
 
 # quick move
+# global
 map gf cd ~/.config
 map gm cd ~/Videos
 map gc cd ~/Documents/code
@@ -294,6 +295,9 @@ map gv cd ~/var
 map gs cd ~/scripts
 map gd cd ~/Downloads
 map gu cd /usr
+map gn cd ~/Documents/Notes
+# tmp
+map gw cd ~/Documents/HomeWorks/OS_Project
 
 
 #************************

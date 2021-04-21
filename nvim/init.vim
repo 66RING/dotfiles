@@ -63,6 +63,8 @@ map gh  <Nop>
 map gH  <Nop>
 map g<C-h>  <Nop>
 map <C-z>  <Nop>
+noremap <C-u>  <Nop>
+noremap <C-d>  <Nop>
 
 
 set completeopt=menu,menuone,noselect

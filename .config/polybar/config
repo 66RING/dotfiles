@@ -181,12 +181,17 @@ format = <ramp-load> <label>
 
 ramp-load-0 = 
 ramp-load-0-foreground = ${colors.success}
-
 ramp-load-1 = 
-ramp-load-1-foreground = ${colors.notice}
-
+ramp-load-1-foreground = ${colors.success}
 ramp-load-2 = 
-ramp-load-2-foreground = ${colors.warning}
+ramp-load-2-foreground = ${colors.success}
+ramp-load-3 = 
+ramp-load-3-foreground = ${colors.success}
+
+ramp-load-4 = 
+ramp-load-4-foreground = ${colors.notice}
+ramp-load-5 = 
+ramp-load-5-foreground = ${colors.warning}
 
 
 [module/memory]
@@ -195,16 +200,21 @@ interval = 3
 
 format = <ramp-used> <label>
 
-label = %gb_used%/%gb_total%
+label = %percentage_used%%
 
 ramp-used-0 = 
 ramp-used-0-foreground = ${colors.success}
-
 ramp-used-1 = 
-ramp-used-1-foreground = ${colors.notice}
-
+ramp-used-1-foreground = ${colors.success}
 ramp-used-2 = 
-ramp-used-2-foreground = ${colors.warning}
+ramp-used-2-foreground = ${colors.success}
+ramp-used-3 = 
+ramp-used-3-foreground = ${colors.success}
+
+ramp-used-4 = 
+ramp-used-4-foreground = ${colors.notice}
+ramp-used-5 = 
+ramp-used-5-foreground = ${colors.warning}
 
 
 [module/date]
@@ -275,11 +285,15 @@ label-muted-foreground = #666
 ramp-volume-0 = 
 ramp-volume-0-foreground = ${colors.success}
 ramp-volume-1 = 
-ramp-volume-1-foreground = ${colors.notice}
+ramp-volume-1-foreground = ${colors.success}
 ramp-volume-2 = 
-ramp-volume-2-foreground = ${colors.notice}
-ramp-volume-3 = 
-ramp-volume-3-foreground = ${colors.warning}
+ramp-volume-2-foreground = ${colors.success}
+ramp-volume-3 = 
+ramp-volume-3-foreground = ${colors.success}
+ramp-volume-4 = 
+ramp-volume-4-foreground = ${colors.notice}
+ramp-volume-5 = 
+ramp-volume-5-foreground = ${colors.warning}
 
 ramp-volume-foreground = ${colors.nord7}
 

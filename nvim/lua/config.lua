@@ -107,6 +107,7 @@ function config.telescope()
       selection_caret = "🛸 ",
       prompt_position = 'top',
       sorting_strategy = 'ascending',
+      minimum_grep_characters = 2,
       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
       grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
       qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
@@ -119,9 +120,9 @@ function config.telescope()
     },
     extensions = {
         fzy_native = {
-            override_generic_sorter = false,
-            override_file_sorter = true,
-        }
+          override_generic_sorter = false,
+          override_file_sorter = true,
+        },
     }
   }
   require('telescope').load_extension('fzy_native')

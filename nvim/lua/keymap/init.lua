@@ -10,6 +10,7 @@ map_key('n', 'gx', [[<cmd>lua require("utils.functions").handle_url()<CR>]], {no
 -- telescope.nvim
 map_key('n', '<C-f>', "<cmd>Telescope find_files hidden=true follow=true<CR>", {noremap=true})
 map_key('n', '<C-p>', "<cmd>Telescope live_grep<CR>", {noremap=true})
+map_key('n', '<C-P>', "<cmd>Telescope live_grep cwd=%:p:h<CR>", {noremap=true})
 map_key('n', '<C-h>', "<cmd>Telescope oldfiles<CR>", {noremap=true})
 map_key('n', 'tt', "<cmd>Telescope file_browser hidden=true cwd=%:p:h<CR>", {noremap=true})
 map_key('n', 'tT', "<cmd>Telescope buffers<CR>", {noremap=true})

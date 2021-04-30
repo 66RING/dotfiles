@@ -78,7 +78,7 @@ end
 --
 function M.build_code()
   local cmd = {
-    c = "term gcc -g %:p -o %<",
+    c = "term gcc -g -l pthread %:p -o %<",
     cpp = "term g++ -g %:p -o %<",
     java = "term javac %:p",
     typescript = "term tsc %:p",

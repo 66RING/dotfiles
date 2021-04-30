@@ -42,6 +42,7 @@ local function init()
       vim.cmd[[highlight Normal ctermbg=NONE guibg=NONE]]
       vim.cmd[[highlight SignColumn ctermbg=NONE guibg=NONE]]
       vim.cmd[[highlight Cursorline cterm=bold ctermbg=black guibg=#48515E]]
+      vim.cmd[[highlight MatchParen cterm=bold ctermfg=black ctermbg=grey guifg=black guibg=grey]]
       vim.cmd[[autocmd FileType markdown source $HOME/.config/nvim/config/markdown_theme.vim]]
       -- vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
       -- vim.cmd('highlight TabLineSel ctermbg=NONE guibg=NONE')

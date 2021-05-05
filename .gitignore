@@ -33,3 +33,5 @@ nvim/plugin/packer_compiled.vim
 .config/sourcetrail
 
 .config/inkscape
+
+.config/libvirt

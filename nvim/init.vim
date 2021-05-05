@@ -87,9 +87,9 @@ set ignorecase
 set smartcase
 set scrolloff=10 
 set tabstop=4
-set softtabstop=4   
+set softtabstop=0
 set shiftwidth=4    
-set expandtab 
+set noexpandtab 
 " set lazyredraw
 set foldmethod=indent
 set foldlevel=99

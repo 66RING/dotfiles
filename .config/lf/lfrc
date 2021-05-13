@@ -39,7 +39,7 @@ cmd open_with ${{
 cmd open ${{
     case $(file --mime-type $f -b) in
         # text file
-        text/*|application/octet-stream|*/json|*/x-empty)
+        text/*|*/json|*/x-empty)
             $EDITOR $f;;
         */csv|inode/symlink)
             $EDITOR $fx;;

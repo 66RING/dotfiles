@@ -35,3 +35,8 @@ nvim/plugin/packer_compiled.vim
 .config/inkscape
 
 .config/libvirt
+
+.config/Clashy
+.config/clash
+
+.config/virt-viewer

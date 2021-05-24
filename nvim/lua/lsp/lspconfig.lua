@@ -72,22 +72,32 @@ lspconfig.tsserver.setup({
 })
 
 
-lspconfig.clangd.setup({
-  cmd = {
-    "clangd",
-    "--background-index",
-    "--suggest-missing-includes",
-    "--clang-tidy",
-    "--header-insertion=iwyu",
-  },
-  on_attach = custom_attach,
-  -- Required for lsp-status
+lspconfig.ccls.setup {
   init_options = {
-    clangdFileStatus = true
-  },
-  -- handlers = nvim_status.extensions.clangd.setup(),
-  -- capabilities = nvim_status.capabilities,
-})
+	diagnostics = {
+	  onOpen = -1,
+	  onChange = -1,
+	  onSave = -1,
+	}
+  }
+}
+
+-- lspconfig.clangd.setup({
+--   cmd = {
+--     "clangd",
+--     "--background-index",
+--     "--suggest-missing-includes",
+--     "--clang-tidy",
+--     "--header-insertion=iwyu",
+--   },
+--   on_attach = custom_attach,
+--   -- Required for lsp-status
+--   init_options = {
+--     clangdFileStatus = true
+--   },
+--   -- handlers = nvim_status.extensions.clangd.setup(),
+--   -- capabilities = nvim_status.capabilities,
+-- })
 
 
 

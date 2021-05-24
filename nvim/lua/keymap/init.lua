@@ -17,6 +17,15 @@ map_key('n', 'tT', "<cmd>Telescope buffers<CR>", {noremap=true})
 map_key('n', '<LEADER>;', "<cmd>Telescope command_history<CR>", {noremap=true})
 map_key('n', '<LEADER>:', "<cmd>Telescope commands<CR>", {noremap=true})
 
+-- -- fzf.vim
+-- map_key('n', '<C-f>', "<cmd>Files<CR>", {noremap=true})
+-- map_key('n', '<C-p>', "<cmd>Rg<CR>", {noremap=true})
+-- map_key('n', '<C-c>', "<cmd>Rgpwd<CR>", {noremap=true})
+-- map_key('n', '<C-h>', "<cmd>History<CR>", {noremap=true})
+-- -- map_key('n', 'tt', "<cmd>Telescope file_browser hidden=true cwd=%:p:h<CR>", {noremap=true})
+-- map_key('n', 'tT', "<cmd>Buffers<CR>", {noremap=true})
+-- map_key('n', '<LEADER>;', "<cmd>History:<CR>", {noremap=true})
+-- map_key('n', '<LEADER>:', "<cmd>Commands<CR>", {noremap=true})
 
 -- local mapping = {
 --   -- global_utils

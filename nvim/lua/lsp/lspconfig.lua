@@ -2,7 +2,6 @@
 local lspconfig = require 'lspconfig'
 local lsp_folder = "/home/ring/var/lsp"
 local api = vim.api
-local util = require("lspconfig/util")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -78,6 +77,9 @@ lspconfig.ccls.setup {
 	  onOpen = -1,
 	  onChange = -1,
 	  onSave = -1,
+	},
+	cache = {
+	  directory = os.getenv('HOME').."/.cache/.ccls-cache"
 	}
   }
 }
@@ -127,10 +129,6 @@ lspconfig.sumneko_lua.setup {
   },
   on_attach = custom_attach,
   root_dir = vim.loop.cwd,
-  -- root_dir = function(fname)
-  --   return util.find_git_ancestor(fname) or
-  --     util.path.dirname(fname)
-  -- end,
   settings = {
     Lua = {
       runtime = {

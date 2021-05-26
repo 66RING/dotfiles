@@ -143,7 +143,6 @@ noremap sl :<C-u>set splitright<CR>:vsplit<CR>
 noremap sj :<C-u>set nosplitright<CR>:vsplit<CR>
 noremap si :<C-u>set nosplitbelow<CR>:split<CR>
 noremap sk :<C-u>set splitbelow<CR>:split<CR>
-noremap st :<C-u>set splitbelow<CR>:10sp<CR>:term<CR>
 
 " " standard
 " noremap sl :<C-u>set splitright<CR>:vsplit<CR>

@@ -1,5 +1,6 @@
 local M = {
-  input_toggle = 1
+  input_toggle = 1,
+  term_bufnr = nil
 }
 
 M.handle_url = function()
@@ -101,8 +102,8 @@ end
 --
 function M.debug_code()
   local cmd = {
-    c = "term gdb %:p:r",
-    cpp = "term gdb %:p:r",
+    c = "term gdb -q %:p:r",
+    cpp = "term gdb -q %:p:r",
   }
   local file_type = vim.bo.filetype
   if cmd[file_type] ~= nil then
@@ -133,6 +134,21 @@ function M.find_doc()
     vim.cmd(cmd[file_type])
   else
     vim.cmd(cmd["vim"])
+  end
+end
+
+--
+-- toggle term window
+--
+function M.toggle_term()
+  vim.o.splitbelow = true
+  vim.cmd[[5sp]]
+
+  if vim.fn.bufexists(M.term_bufnr) == 1 then
+	vim.cmd("buffer "..M.term_bufnr)
+  else
+	vim.cmd[[term]]
+	M.term_bufnr = vim.fn.bufnr()
   end
 end
 

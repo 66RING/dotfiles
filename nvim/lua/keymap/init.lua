@@ -6,6 +6,7 @@ require("keymap.global_functions")
 
 -- global_utils
 map_key('n', 'gx', [[<cmd>lua require("utils.functions").handle_url()<CR>]], {noremap=true})
+map_key('n', 'st', [[<cmd>lua require("utils.functions").toggle_term()<CR>]], {noremap=true})
 
 -- telescope.nvim
 map_key('n', '<C-f>', "<cmd>Telescope find_files hidden=true follow=true<CR>", {noremap=true})

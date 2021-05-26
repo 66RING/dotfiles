@@ -108,6 +108,7 @@ function config.telescope()
       prompt_position = 'top',
       sorting_strategy = 'ascending',
       minimum_grep_characters = 2,
+	  file_ignore_patterns = {".git.*"},
       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
       grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
       qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,

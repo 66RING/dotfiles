@@ -4,7 +4,9 @@ local map_key = vim.api.nvim_set_keymap
 require("keymap.global_functions")
 
 
+--
 -- global_utils
+--
 map_key('n', 'gx', [[<cmd>lua require("utils.functions").handle_url()<CR>]], {noremap=true})
 map_key('n', 'st', [[<cmd>lua require("utils.functions").toggle_term()<CR>]], {noremap=true})
 
@@ -18,7 +20,9 @@ map_key('n', 'tT', "<cmd>Telescope buffers<CR>", {noremap=true})
 map_key('n', '<LEADER>;', "<cmd>Telescope command_history<CR>", {noremap=true})
 map_key('n', '<LEADER>:', "<cmd>Telescope commands<CR>", {noremap=true})
 
+-- --
 -- -- fzf.vim
+-- --
 -- map_key('n', '<C-f>', "<cmd>Files<CR>", {noremap=true})
 -- map_key('n', '<C-p>', "<cmd>Rg<CR>", {noremap=true})
 -- map_key('n', '<C-c>', "<cmd>Rgpwd<CR>", {noremap=true})
@@ -27,6 +31,35 @@ map_key('n', '<LEADER>:', "<cmd>Telescope commands<CR>", {noremap=true})
 -- map_key('n', 'tT', "<cmd>Buffers<CR>", {noremap=true})
 -- map_key('n', '<LEADER>;', "<cmd>History:<CR>", {noremap=true})
 -- map_key('n', '<LEADER>:', "<cmd>Commands<CR>", {noremap=true})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- local mapping = {
 --   -- global_utils

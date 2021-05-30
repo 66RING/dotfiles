@@ -70,8 +70,6 @@ function config.nvim_bufferline()
   map_key('n', '<LEADER>[', [[:BufferLineCyclePrev<CR>]], opts)
   map_key('n', '<BS>', [[:lua if vim.v.count~=0 then require"bufferline".go_to_buffer(vim.v.count) else vim.cmd("buffer #")end<CR>]], {silent=true})
   map_key('n', 'r<BS>', [[:lua if vim.tbl_count(vim.fn.getbufinfo({buflisted=true}))>1 then vim.cmd("bd") end <CR>]], opts)
-  -- lua print(vim.tbl_count(vim.fn.getbufinfo({buflisted=true})))
-
 end
 
 
@@ -79,21 +77,6 @@ end
 -- editor
 --
 
-function config.vim_clap()
-  vim.g.clap_cache_directory = '~/cache/clap'
-  vim.g.clap_theme = 'material_design_dark'
-  vim.g.clap_current_selection_sign= { text='🚀', texthl="ClapCurrentSelectionSign", linehl="ClapCurrentSelection"}
-  vim.g.clap_layout = { relative='editor' }
-  vim.g.clap_enable_icon = 1
-  vim.g.clap_enable_background_shadow = false
-  vim.g.clap_provider_grep_enable_icon = 1
-
-  -- vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <C-j> <NOP>]]
-  -- vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <C-k> <NOP>]]
-  vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <C-n> <C-R>=clap#navigation#linewise('down')<CR>]]
-  vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <C-p> <C-R>=clap#navigation#linewise('up')<CR>]]
-  vim.cmd [[autocmd FileType clap_input inoremap <silent> <buffer> <Esc> <Esc>:<c-u>call clap#handler#exit()<CR>]]
-end
 
 function config.telescope()
   if not packer_plugins['plenary.nvim'].loaded then

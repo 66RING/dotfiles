@@ -31,7 +31,7 @@ local function init()
   }
 
 
-  -- dress up
+  -- UI
   use {"glepnir/dashboard-nvim",
     config = conf.dashboard
   }
@@ -48,6 +48,23 @@ local function init()
       -- vim.cmd('highlight TabLineSel ctermbg=NONE guibg=NONE')
     end,
   }
+  --use{"marko-cerovac/material.nvim",
+	--config = function ()
+	  ---- Example config in lua
+	  --vim.g.material_style = 'oceanic'
+	  --vim.g.material_italic_comments = true
+	  --vim.g.material_italic_keywords = true
+	  --vim.g.material_italic_functions = true
+	  --vim.g.material_italic_variables = false
+	  --vim.g.material_contrast = true
+	  --vim.g.material_borders = true
+	  --vim.g.material_disable_background = true
+	  ----vim.g.material_custom_colors = { black = "#000000", bg = "#0F111A" }
+	  ---- Load the colorscheme
+	  --require('material').set()
+	--end,
+  --}
+
   use{'nvim-treesitter/nvim-treesitter',
     event = 'BufRead *',
     config = conf.nvim_treesitter
@@ -81,6 +98,13 @@ local function init()
   use {'itchyny/vim-cursorword',
     event={'BufReadPre *', 'BufNewFile *'}
   }
+  use {'romgrk/nvim-treesitter-context',
+    event = 'BufRead *',
+	config = function ()
+      vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
+	end
+  }
+
 
 
 

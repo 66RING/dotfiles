@@ -9,20 +9,6 @@
 
 
 "========================
-" theme settings
-"========================
-" syntax on
-" autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-" autocmd ColorScheme * highlight TabLineSel ctermbg=NONE guibg=NONE
-" autocmd ColorScheme * highlight! Cursorline cterm=bold ctermfg=black guibg=#48515E
-" autocmd ColorScheme * highlight! Colorcolumn cterm=bold guibg=#666666
-" set background=dark " dulp in oceanic_material
-
-" let g:oceanic_material_transparent_background = 1
-" let g:colors_name="oceanic_material"
-
-
-"========================
 " Disable vim distribution plugins
 "========================
 let g:loaded_getscript         = 1
@@ -107,6 +93,10 @@ noremap k j
 noremap K 5j
 noremap i k
 noremap I 5k
+noremap gk gj
+noremap gK 5gj
+noremap gi gk
+noremap gI 5gk
 noremap j h
 noremap J 5h
 noremap L 5l

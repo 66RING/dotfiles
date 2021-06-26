@@ -220,14 +220,21 @@ cmd dragon-individual ${{
 cmd cpath $echo $fx | tr -d '\n' |  xsel -b
 
 cmd paste_soft_link %{{
-    set -- $(lf -remote load)
+	set -- $(cat ~/.local/share/lf/files)
+    mode="$1"
     shift
     if [ "$#" -lt 1 ]; then
         lf -remote "send $id echo no files to link"
         exit 0
     fi
-    ln -sr -t . -- "$@"
-    lf -remote "send $id clear"
+    case "$mode" in
+        # symbolically copy mode is indicating a soft link
+        copy) ln -sr -t . -- "$@";;
+        # while a move mode is indicating a hard link
+        move) ln -t . -- "$@";;
+    esac
+    rm ~/.local/share/lf/files
+    lf -remote "send clear"
 }}
 
 #************************
@@ -293,7 +300,7 @@ map gm cd ~/Videos
 map gc cd ~/Documents/code
 map gv cd ~/var
 map gs cd ~/scripts
-map gd cd ~/Downloads
+map gd cd ~/Documents
 map gu cd /usr
 map gn cd ~/Documents/Notes
 # tmp

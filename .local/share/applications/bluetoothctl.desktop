@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=bluetooth management
+Exec=bluetooth_management
+Terminal=false
+Type=Application
+

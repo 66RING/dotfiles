@@ -86,10 +86,12 @@ function config.telescope()
   end
   require('telescope').setup {
     defaults = {
-      prompt_prefix = ' 🚀 ',
-      selection_caret = "🛸 ",
-      prompt_position = 'top',
-      sorting_strategy = 'ascending',
+	  layout_config = {
+		prompt_position = 'top',
+	  },
+	  prompt_prefix = ' 🚀 ',
+	  selection_caret = "🛸 ",
+	  sorting_strategy = 'ascending',
       minimum_grep_characters = 2,
 	  file_ignore_patterns = {".git.*"},
       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
@@ -219,7 +221,7 @@ function config.nvim_compe()
     debug = false;
     min_length = 1;
     preselect = 'disable';
-    allow_prefix_unmatch = false;
+    allow_prefix_unmatch = true;
     source = {
       path = true;
       buffer = true;
@@ -227,7 +229,7 @@ function config.nvim_compe()
       vsnip = true;
       nvim_lsp = true;
       nvim_lua = true;
-      spell = true;
+      spell = false;
       tags = true;
     };
   }

@@ -12,7 +12,7 @@ __lf() {
     if [ -f "$FIFO_UEBERZUG" ]; then
       rm "$FIFO_UEBERZUG"
     fi
-    mkfifo "$FIFO_UEBERZUG"
+    mkfifo "$FIFO_UEBERZUG" || exit 1
     ueberzug layer --silent <"$FIFO_UEBERZUG" &
     upid=$!
     exec 3>"$FIFO_UEBERZUG"

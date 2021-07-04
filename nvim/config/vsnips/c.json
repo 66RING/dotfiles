@@ -1,4 +1,13 @@
 {
+	"desc": {
+		"prefix": "desc",
+		"body": [
+			"//=====================",
+			"//      ${1:title}     ",
+			"//====================="
+		],
+		"description": "title"
+	},
 	"for": {
 		"prefix": "for",
 		"body": [

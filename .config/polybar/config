@@ -331,7 +331,7 @@ label-full-font = 6
 [module/cputemp]
 type = internal/temperature
 
-hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp2_input
 thermal-zone = 0
 
 base-temperature = 20

@@ -36,17 +36,13 @@ alias yg='you-get'
 #* tools
 #************************
 alias venvon="source $(which virtualenvwrapper.sh)"
-# alias proxyon='export http_proxy="127.0.0.1:12333" export https_proxy="127.0.0.1:12333"'
-# alias proxyoff='unset http_proxy ; unset export https_proxy'
-alias ssron='export http_proxy="127.0.0.1:12333" export https_proxy="127.0.0.1:12333"'
-alias ssroff='unset http_proxy ; unset export https_proxy'
-alias v2rayon='export ALL_PROXY="socks5://127.0.0.1:1089"'
-alias v2rayoff='unset http_proxy ; unset export https_proxy'
+alias proxyon='export http_proxy="127.0.0.1:7890" export https_proxy="127.0.0.1:7890"'
+alias proxyoff='unset http_proxy ; unset export https_proxy'
 
 alias poweroff="prompt2 'Shutdown?' 'poweroff'"
 alias reboot="prompt2 'Reboot?' 'reboot'"
 
 # scripts/utils
 SCRIPTS_DIR='/home/ring/scripts'
-alias t="$SCRIPTS_DIR/utils/ai_trans_demo.py"
+alias t="http_proxy= https_proxy= $SCRIPTS_DIR/utils/ai_trans_demo.py"
 alias osdoc="$SCRIPTS_DIR/utils/osdoc.sh"

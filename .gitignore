@@ -45,3 +45,5 @@ nvim/plugin/packer_compiled.vim
 
 .config/Unknown Organization
 .config/zoomus.conf
+
+nvim/plugin/packer_compiled.lua

@@ -177,25 +177,25 @@ local function init()
   }
 
   -- fuzzy find
-  -- telescope
- use {'nvim-telescope/telescope.nvim',
-   cmd = 'Telescope',
-   config = conf.telescope,
-   requires = {
-	 {'nvim-lua/popup.nvim', opt = true},
-	 {'nvim-lua/plenary.nvim', opt = true},
-	 {'nvim-telescope/telescope-fzy-native.nvim', opt = true},
-   }
- }
+  -- -- telescope
+ -- use {'nvim-telescope/telescope.nvim',
+  --  cmd = 'Telescope',
+  --  config = conf.telescope,
+  --  requires = {
+	 -- {'nvim-lua/popup.nvim', opt = true},
+	 -- {'nvim-lua/plenary.nvim', opt = true},
+	 -- {'nvim-telescope/telescope-fzy-native.nvim', opt = true},
+  --  }
+ -- }
 
-  -- -- fzf.vim
-  -- use {'junegunn/fzf.vim',
-  --   cmd = {'Files', 'Rg','History', 'Buffers', 'Commands'},
-  --   config = conf.fzf_vim,
-  --   requires = {
-  --     {'junegunn/fzf'},
-	-- }
-  -- }
+  -- fzf.vim
+  use {'junegunn/fzf.vim',
+    cmd = {'Files', 'Rg','History', 'Buffers', 'Commands'},
+    config = conf.fzf_vim,
+    requires = {
+      {'junegunn/fzf'},
+	}
+  }
 
 
   use {'mg979/vim-visual-multi',

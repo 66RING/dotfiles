@@ -16,10 +16,10 @@ alias ggl='git log --graph --pretty=oneline --abbrev-commit'
 alias ls='ls --color'
 alias ll='ls -l'
 alias lg='lazygit'
-alias m='neomutt'
+# alias m='neomutt'
 alias md='mkdir'
 alias mf='touch'
-alias pc='proxychains'
+alias pc='proxyon && '
 # alias qrcp='qrcp -k'
 alias ra='ranger'
 alias rm='rm -I'
@@ -36,8 +36,8 @@ alias yg='you-get'
 #* tools
 #************************
 alias venvon="source $(which virtualenvwrapper.sh)"
-alias proxyon='export http_proxy="127.0.0.1:7890" export https_proxy="127.0.0.1:7890"'
-alias proxyoff='unset http_proxy ; unset export https_proxy'
+alias proxyon='export all_proxy="http://127.0.0.1:7890" export all_proxy="http://127.0.0.1:7890" use_proxy=yes'
+alias proxyoff='unset all_proxy  unset export all_proxy use_proxy=no'
 
 alias poweroff="prompt2 'Shutdown?' 'poweroff'"
 alias reboot="prompt2 'Reboot?' 'reboot'"

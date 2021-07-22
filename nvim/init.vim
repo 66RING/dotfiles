@@ -118,6 +118,7 @@ inoremap <C-l> <ESC>A
 noremap Y "+y
 " :[range]y[ank] [x]
 nnoremap yY :%y+<CR> 
+autocmd VimLeave * call system("xsel -ib", getreg('+'))
 noremap P "+p
 " m for join
 noremap m J  

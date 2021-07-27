@@ -28,7 +28,7 @@ alias bctl='bluetoothctl'
 alias s='neofetch | lolcat'
 alias top='htop'
 alias vim='nvim'
-alias vi='nvim'
+# alias vi='nvim'
 alias yg='you-get'
 
 

@@ -1,6 +1,6 @@
 -- vim.cmd [[packadd nvim-lspconfig]]
 local lspconfig = require 'lspconfig'
-local lsp_folder = "/home/ring/var/lsp"
+local lsp_folder = "/home/ring/var/APPs/lsp"
 local api = vim.api
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

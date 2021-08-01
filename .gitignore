@@ -48,3 +48,8 @@ nvim/plugin/packer_compiled.vim
 
 nvim/plugin/packer_compiled.lua
 .config/jesseduffield/lazygit/Qemu_p2020
+
+.config/zsh/.zcompdump
+.config/simplescreenrecorder
+
+.config/docker/config.json

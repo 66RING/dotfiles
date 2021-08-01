@@ -39,6 +39,8 @@ source $HOME/.config/nvim/shot_cut_source/coding_short_cut.vim
 
 
 command! Vimrc :e $MYVIMRC
+command! Zshrc :e $ZDOTDIR/.zshrc
+
 map s <nop>
 map <Up> <Nop>
 map <Down> <Nop>
@@ -210,6 +212,7 @@ if has('persistent_undo')
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
 
+if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
 
 "========================
 " last position

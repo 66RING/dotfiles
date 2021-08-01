@@ -26,6 +26,7 @@ bspc config merge_overlapping_monitors true
 bspc rule -a Screenkey           manage=off
 
 bspc rule -a scratchpad          sticky=on state=floating
+bspc rule -a qq          		 sticky=on
 
 # bspc rule -a VirtualBox\ Manager desktop='^10'
 

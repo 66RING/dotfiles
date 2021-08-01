@@ -16,7 +16,7 @@ super + grave
 
 # program launcher
 super + space
-    rofi -theme "~/.config/rofi/rofi-themes/slate_without_prompt.rasi" -show drun 
+    rofi -show drun 
     #dmenu_run -fn "Inconsolata:size=25" -nb "#222222" -nf "#bbbbbb" -sb "#0099CC" -sf "#ffffff"
 
 # chromuim launcher

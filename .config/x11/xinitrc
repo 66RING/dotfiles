@@ -1,8 +1,10 @@
 #!/bin/sh
 
+systemctl --user import-environment DISPLAY
+
 xset r rate 300 50 &
-# xmodmap "${XDG_CONFIG_HOME:-$HOME/.config}/x11/Xmodmap"
 bash -c "sleep 5; xmodmap \"${XDG_CONFIG_HOME:-$HOME/.config}/x11/Xmodmap\"" &
+xrdb -merge "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources" &
 
 exec bspwm
 

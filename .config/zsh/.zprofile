@@ -10,7 +10,7 @@
 # Global
 #========================
 export PATH="$PATH:$HOME/.local/bin"
-export SUDO_ASKPASS="/$HOME/scripts/global/rofipass.sh"
+export SUDO_ASKPASS="/$HOME/scripts/global/rofipass"
 export MAIN_HOME="/home/ring"
 export PATH="$PATH:./node_modules/.bin"
 
@@ -66,6 +66,40 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 
 
+export MYSQL_HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/mysql_history"
+export NUGET_PACKAGES="${XDG_CACHE_HOME:-$HOME/.cache}/NuGetPackages"
+export DOCKER_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/docker"
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+export WINEARCH=win32
+export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
+export PYLINTHOME="$XDG_CACHE_HOME"/pylint
+
+#
+# Virsh
+#
+export VIRSH_DEFAULT_CONNECT_URI='qemu:///system'
+
+#
+# Other
+#
+export LESS=-R
+export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
+export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
+export LESS_TERMCAP_me="$(printf '%b' '[0m')"
+export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
+export LESS_TERMCAP_se="$(printf '%b' '[0m')"
+export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
+export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
+export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+export QT_QPA_PLATFORMTHEME="gtk3"	# Have QT use gtk3 theme.
+export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
+
+# Scaling
+export GDK_SCALE=1.5
+export GDK_DPI_SCALE=1.5
+# export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_SCALE_FACTOR=1.5
+
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -74,13 +108,6 @@ export AWT_TOOLKIT=MToolkit
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
 
 
-export MYSQL_HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/mysql_history"
-export NUGET_PACKAGES="${XDG_CACHE_HOME:-$HOME/.cache}/NuGetPackages"
-export DOCKER_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/docker"
-export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
-export WINEARCH=win32
-export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
-export PYLINTHOME="$XDG_CACHE_HOME"/pylint
 
 
 #

@@ -4,7 +4,7 @@ configuration {
 	width: 40;
 	lines: 12;
 /*	columns: 1;*/
-	font: "monospace 24";
+	font: "monospace 40";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/

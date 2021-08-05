@@ -49,7 +49,7 @@ foreground-alt = #6272a4
 [bar/primary]
 enable-ipc = true
 width = 100%
-height = 27
+height = 37
 bottom = false
 ;offset-x = 1%
 ;offset-y = 1%
@@ -71,13 +71,13 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = MacGrande:pixelsize=15;4
-font-1 = FontAwesome5Free:style=Solid:pixelsize=15;3
-font-2 = FontAwesome5Brands:pixelsize=15;3
-font-3 = Weather Icons:pixelsize=15;2
-font-4 = Source Han Sans CN:pixelsize=15;2
-font-5 = CaskaydiaCove Nerd Font Mono:pixelsize=15;2
-font-6 = Twemoji:scale=4;2
+font-0 = MacGrande:pixelsize=22;4
+font-1 = FontAwesome5Free:style=Solid:pixelsize=22;3
+font-2 = FontAwesome5Brands:pixelsize=22;3
+font-3 = Weather Icons:pixelsize=22;2
+font-4 = Source Han Sans CN:pixelsize=22;2
+font-5 = CaskaydiaCove Nerd Font Mono:pixelsize=22;2
+font-6 = Twemoji:scale=3.5;2
 
 
 modules-left = terminal bspwm  weather 
@@ -369,7 +369,7 @@ type = custom/text
 content = "   😈"
 content-foreground = #fff
 content-padding = 
-click-left = ~/scripts/bspwm/scratchpad.sh &
+click-left = ~/scripts/bspwm/scratchpad &
 
 
 [module/updates]

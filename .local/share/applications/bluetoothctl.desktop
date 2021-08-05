@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=bluetooth management
-Exec=bluetooth_management
+Exec=_bluetooth_management
 Terminal=false
 Type=Application
 

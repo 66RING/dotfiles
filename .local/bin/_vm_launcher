@@ -1,0 +1,13 @@
+#!/bin/sh
+
+type "virsh" &> /dev/null || (notify-send "Virsh not found" && exit 1)
+
+CONNECT_URI=${VIRSH_DEFAULT_CONNECT_URI:-'qemu:///system'}
+
+VM="$(virsh -c $CONNECT_URI list --all | sed '1,2d' | sed '/^$/d' | awk '{VM=$2;$1=null;$2=null;STATE="["$0" ]";printf("%-15s %s\n", STATE, VM)}' | rofi -dmenu -p "Start VM:" | awk '{print $NF}')"
+
+[ -z "$VM" ] && exit 0
+
+MSG=$(virsh -c $CONNECT_URI start $VM 2>&1 )
+
+notify-send "$MSG"

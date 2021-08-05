@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=VMlauncher
+Exec=_vm_launcher
+Terminal=false
+Type=Application
+

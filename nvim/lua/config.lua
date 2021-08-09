@@ -93,7 +93,7 @@ function config.telescope()
 	  selection_caret = "🛸 ",
 	  sorting_strategy = 'ascending',
       minimum_grep_characters = 2,
-	  file_ignore_patterns = {".git.*"},
+	  file_ignore_patterns = {".git/"},
       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
       grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
       qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
@@ -146,14 +146,14 @@ function config.dashboard()
     '',
   }
 
-  vim.cmd [[autocmd FileType dashboard set laststatus=0 | autocmd BufLeave <buffer> set laststatus=2]]
-  vim.cmd [[autocmd FileType dashboard set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2]]
-  vim.cmd [[autocmd FileType dashboard nnoremap <silent><buffer> e :exec "set laststatus=2 \| enew"<CR>]]
+  -- vim.cmd [[autocmd FileType dashboard set laststatus=0 | autocmd BufLeave <buffer> set laststatus=2]]
+  -- vim.cmd [[autocmd FileType dashboard set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2]]
+  vim.cmd [[autocmd FileType dashboard nnoremap <silent><buffer> e :exec "enew"<CR>]]
 
   vim.g.dashboard_custom_section={
     empty_buffer= {
         description = {' Empty Buffer'},
-        command= 'set laststatus=2 | enew' },
+        command= 'enew' },
     find_history= {
         description= {'ﭯ History     '},
         command= 'Telescope oldfiles' },

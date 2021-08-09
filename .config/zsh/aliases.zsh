@@ -15,29 +15,35 @@ alias gct='git clone --depth=1'
 alias ggl='git log --graph --pretty=oneline --abbrev-commit'
 alias ls='ls --color'
 alias ll='ls -l'
-alias lg='lazygit'
 # alias m='neomutt'
 alias md='mkdir'
 alias mf='touch'
-alias pc='proxyon && '
 # alias qrcp='qrcp -k'
-alias ra='ranger'
 alias rm='rm -I'
 alias sctl='systemctl'
 alias bctl='bluetoothctl'
-alias s='neofetch | lolcat'
+#
+# APPs
+alias yg='you-get'
 alias top='htop'
 alias vim='nvim'
 # alias vi='nvim'
-alias yg='you-get'
+alias s='neofetch | lolcat'
+alias ra='ranger'
+alias lg='lazygit'
+alias tl='tldr'
+#
+# TOOls
+alias pc='proxyon && '
 
 
 #************************
 #* tools
 #************************
 alias venvon="source $(which virtualenvwrapper.sh)"
-alias proxyon='export all_proxy="http://127.0.0.1:7890" export all_proxy="http://127.0.0.1:7890" use_proxy=yes'
-alias proxyoff='unset all_proxy  unset export all_proxy use_proxy=no'
+proxy_servce='http://127.0.0.1:7890'
+alias proxyon='export http_proxy="$proxy_servce" export https_proxy="$proxy_servce" use_proxy=yes'
+alias proxyoff='unset http_proxy  unset https_proxy use_proxy'
 
 alias poweroff="prompt2 'Shutdown?' 'poweroff'"
 alias reboot="prompt2 'Reboot?' 'reboot'"

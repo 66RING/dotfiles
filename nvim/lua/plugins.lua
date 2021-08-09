@@ -9,7 +9,7 @@ local function init()
   end
 
   local use = packer.use
-  local use_rocks = packer.use_rocks
+  -- local use_rocks = packer.use_rocks
   packer.reset()
 
   -- Packer can manage itself as an optional plugin
@@ -72,11 +72,11 @@ local function init()
   -- use {'nvim-treesitter/nvim-treesitter-textobjects',
   --   after = 'nvim-treesitter'
   -- }
-  use {'glepnir/galaxyline.nvim',
-    config = [[require('statusline.moonline')]],
-    -- config = [[require('statusline.clearline')]],
-    requires = {'kyazdani42/nvim-web-devicons'}
-  }
+  -- use {'glepnir/galaxyline.nvim',
+  --   -- config = [[require('statusline.moonline')]],
+  --   config = [[require('statusline.clearline')]],
+  --   requires = {'kyazdani42/nvim-web-devicons'}
+  -- }
 
   use {'akinsho/nvim-bufferline.lua',
     config = conf.nvim_bufferline,
@@ -145,7 +145,7 @@ local function init()
   use {'airblade/vim-gitgutter',
     event = "BufRead *",
     setup = function ()
-      vim.g.gitgutter_signs = 1
+      vim.g.gitgutter_signs = 0
       vim.g.gitgutter_map_keys = 0
       vim.g.gitgutter_override_sign_column_highlight = 0
       vim.g.gitgutter_preview_win_floating = 1
@@ -197,6 +197,9 @@ local function init()
 	-- }
   -- }
 
+  -- use {'brooth/far.vim',
+  --   cmd = 'Far',
+  -- }
 
   use {'mg979/vim-visual-multi',
     event = "BufRead *"
@@ -272,9 +275,9 @@ local function init()
     cmd = "MaximizerToggle",
     setup = function()
       local opts = {silent=true, noremap=true}
-      vim.api.nvim_set_keymap('n', '<C-z>', ":MaximizerToggle<CR>", opts)
-      vim.api.nvim_set_keymap('i', '<C-z>', "<ESC>:MaximizerToggle<CR>", opts)
-      vim.api.nvim_set_keymap('v', '<C-z>', "<C-o>:MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('n', '<C-x>', ":MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('i', '<C-x>', "<ESC>:MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('v', '<C-x>', "<C-o>:MaximizerToggle<CR>", opts)
     end
   }
 

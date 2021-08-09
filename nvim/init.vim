@@ -34,8 +34,8 @@ let g:loaded_netrwFileHandlers = 1
 
 
 " shotcut configuration file
-autocmd FileType markdown source $HOME/.config/nvim/shot_cut_source/md_snippits.vim
-source $HOME/.config/nvim/shot_cut_source/coding_short_cut.vim
+" autocmd FileType markdown source $HOME/.config/nvim/shot_cut_source/md_snippits.vim
+" source $HOME/.config/nvim/shot_cut_source/coding_short_cut.vim
 
 
 command! Vimrc :e $MYVIMRC
@@ -59,7 +59,7 @@ set completeopt=menu,menuone,noselect
 set enc=utf8
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set termencoding=utf-8
-set colorcolumn=80
+" set colorcolumn=80
 
 set termguicolors
 set number
@@ -88,6 +88,9 @@ set hidden
 set updatetime=100
 set shortmess+=c
 set display=lastline
+
+" hide statusline
+set laststatus=0
 
 noremap h i
 noremap H I

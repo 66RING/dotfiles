@@ -16,13 +16,13 @@ font:
     family: CaskaydiaCove Nerd Font Mono
   italic:
     family: CaskaydiaCove Nerd Font Mono
-  size: 10
+  size: 8
   offset:
       y: 1
       x: 0
 
 
-background_opacity: 0.75
+background_opacity: 0.9
 
 
 mouse:
@@ -94,9 +94,10 @@ key_bindings:
   - { key: K, mods: Alt,         action: ScrollLineDown, mode: ~Alt }
   - { key: I, mods: Alt|Control, action: ScrollPageUp,   mode: ~Alt }
   - { key: K, mods: Alt|Control, action: ScrollPageDown, mode: ~Alt }
-  - { key: Space,  mods: Alt,           action: ToggleViMode            }
 
     # Vi mode
+  - { key: Space,   mods: Alt,           action: ToggleViMode            }
+  # - { key: Escape,  mode: Vi,           action: ToggleViMode            }
   - { key: I, mode: Vi, action: Up                      }
   - { key: K, mode: Vi, action: Down                    }
   - { key: J, mode: Vi, action: Left                    }
@@ -105,6 +106,9 @@ key_bindings:
   - { key: L,      mods: Shift,         mode: Vi, action: WordRight               }
   - { key: I, mods: Shift, action: ScrollHalfPageUp,   mode: Vi }
   - { key: K, mods: Shift, action: ScrollHalfPageDown, mode: Vi }
+
+    # Spawn in cwd
+  - { key: Return, mods: Alt,  action: SpawnNewInstance}
 
     # unbind
   - { key: L,         mods: Control,             action: ReceiveChar }

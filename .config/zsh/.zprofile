@@ -40,6 +40,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR="nvim"
 export VISUAL="nvim"
+export TERMINAL="st"
 export BROWSER="google-chrome-stable"
 export VIDEO="mpv"
 export IMAGE="sxiv"
@@ -103,6 +104,8 @@ export QT_SCALE_FACTOR=1.5
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+export INPUT_METHOD  DEFAULT=fcitx
+export SDL_IM_MODULE DEFAULT=fcitx
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"

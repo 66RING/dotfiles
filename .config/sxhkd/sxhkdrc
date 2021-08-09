@@ -8,9 +8,9 @@
 
 # terminal emulator
 super + Return
-	st
+	$TERMINAL
 
-# st scratchpad
+# scratchpad
 super + grave
     $HOME/scripts/bspwm/scratchpad 
 

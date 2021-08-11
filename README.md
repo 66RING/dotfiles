@@ -39,5 +39,7 @@
 
 ## Install
 
+Dependency: stow
+
 - `./install.sh`
 

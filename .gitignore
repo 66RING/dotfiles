@@ -53,3 +53,4 @@ nvim/plugin/packer_compiled.lua
 .config/simplescreenrecorder
 
 .config/docker/config.json
+.config/cheat

@@ -1,15 +1,12 @@
 #!/bin/sh
 
-path=$(pwd)
+STOW_DIR=$(pwd)/..
+TAR_DIR=${HOME}
 
-ln -s $path/.config $HOME/.config
-ln -s $path/nvim $HOME/.config/nvim
-ln -s $path/nvim/init.vim $HOME/.vimrc
+stow -t "$TAR_DIR" -d "$STOW_DIR" --ignore='.*\.md' --ignore='.*\.sh' --ignore='\.git.*' dotfiles
 
-# zsh
-ln -s $path/.config/zsh/.zprofile $HOME/.zprofile
+# remove
+# stow -t "$TAR_DIR" -d "$STOW_DIR" -D dotfiles
 
-# bins + applications
-ln -s $path/.local/bin/* $HOME/.local/bin/
-ln -s $path/.local/share/applications/* $HOME/.local/share/applications/
+
 

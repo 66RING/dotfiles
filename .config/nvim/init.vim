@@ -255,5 +255,3 @@ endif
 lua require('keymap.init')
 
 " /home/ring/.config/nvim/lua/plugins.lua
-
-

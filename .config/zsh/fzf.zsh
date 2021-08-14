@@ -61,19 +61,16 @@ fzf-history-widget() {
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
 
-fif() {
-  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
-}
-
 find-file() {
-  rg --files-with-matches --no-messages \. | fzf --preview "highlight -O ansi -l {} 2> /dev/null" --reverse
+	LBUFFER=$LBUFFER$(rg --files-with-matches --no-messages \. | fzf --preview "highlight -O ansi -l {} 2> /dev/null" --reverse)
+	zle reset-prompt
 }
 zle -N find-file
 bindkey '^f' find-file
 
 find-in-file() {
-  rg \. | fzf --reverse | cut -d":" -f1
+	LBUFFER=$LBUFFER$(rg \. | fzf --reverse | cut -d":" -f1)
+	zle reset-prompt
 }
 zle -N find-in-file
 bindkey '^p' find-in-file

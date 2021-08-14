@@ -54,3 +54,7 @@ nvim/plugin/packer_compiled.lua
 
 .config/docker/config.json
 .config/cheat
+
+.config/nvim/plugin/packer_compiled.lua
+
+.config/kingsoft

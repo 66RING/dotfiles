@@ -49,10 +49,11 @@ function config.nvim_bufferline()
       buffer_close_icon = '',
       show_buffer_close_icons = false,
       close_icon = "",
-      mappings = true,
+      -- mappings = true,
       always_show_bufferline = false,
       separator_style = {"", ""},
-      numbers = "ordinal",
+      -- numbers = "ordinal",
+      numbers = "none",
       number_style = "",
       -- view = "multiwindow",
     },
@@ -174,7 +175,7 @@ function config.emmet()
   vim.g.user_emmet_install_global = false
   if not packer_plugins['emmet-vim'].loaded then
     vim.cmd [[packadd emmet-vim]]
-    vim.cmd [[autocmd FileType html,css,vue,wxml,js,jsx EmmetInstall]]
+    vim.cmd [[autocmd FileType html,css,vue,wxml,js,jsx,markdown EmmetInstall]]
   end
 end
 

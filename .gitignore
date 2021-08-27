@@ -58,3 +58,6 @@ nvim/plugin/packer_compiled.lua
 .config/nvim/plugin/packer_compiled.lua
 
 .config/kingsoft
+
+.config/qrcp
+.config/spotify

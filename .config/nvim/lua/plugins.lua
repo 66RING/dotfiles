@@ -112,6 +112,9 @@ local function init()
   -- markdown
   use {'iamcco/markdown-preview.nvim',
     ft = {'markdown', 'pandoc.markdown', 'rmd'},
+	setup = function ()
+	  vim.cmd[[let g:mkdp_auto_close = 0]]
+	end,
     run = 'sh -c "cd app && yarn install"' }
   use {'dhruvasagar/vim-table-mode',
     ft = 'markdown'

@@ -8,7 +8,9 @@
           "tags: ",
           "- ${3:tags}",
           "mathjax: true",
-          "---"
+          "---\n",
+          "# Preface\n\n",
+          "# Overview"
         ],
         "description": "hexo blog prefix"
     }

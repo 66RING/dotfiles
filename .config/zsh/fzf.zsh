@@ -62,14 +62,14 @@ zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
 
 find-file() {
-	LBUFFER=$LBUFFER$(rg --files-with-matches --no-messages \. | fzf --preview "highlight -O ansi -l {} 2> /dev/null" --reverse)
+	LBUFFER=$LBUFFER$(rg --files-with-matches --no-messages \. | fzf --preview "highlight -O ansi -l {} 2> /dev/null")
 	zle reset-prompt
 }
 zle -N find-file
 bindkey '^f' find-file
 
 find-in-file() {
-	LBUFFER=$LBUFFER$(rg \. | fzf --reverse | cut -d":" -f1)
+	LBUFFER=$LBUFFER$(rg \. | fzf --delimiter : --preview "rg --ignore-case --colors 'match:bg:yellow' --pretty -F --context 10 {+2..}" | cut -d: -f1)
 	zle reset-prompt
 }
 zle -N find-in-file

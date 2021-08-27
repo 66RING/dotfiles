@@ -31,7 +31,7 @@ alias vim='nvim'
 alias s='neofetch | lolcat'
 alias ra='ranger'
 alias lg='lazygit'
-alias tl='tldr'
+alias tl='proxyon && tldr'
 #
 # TOOls
 alias pc='proxyon && '
@@ -42,7 +42,7 @@ alias pc='proxyon && '
 #************************
 alias venvon="source $(which virtualenvwrapper.sh)"
 proxy_servce='http://127.0.0.1:7890'
-alias proxyon='export http_proxy="$proxy_servce" export https_proxy="$proxy_servce" use_proxy=yes'
+alias proxyon='export http_proxy="$proxy_servce" export https_proxy="$proxy_servce" export use_proxy=yes'
 alias proxyoff='unset http_proxy  unset https_proxy use_proxy'
 
 alias poweroff="prompt2 'Shutdown?' 'poweroff'"

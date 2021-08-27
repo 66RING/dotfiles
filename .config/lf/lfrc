@@ -176,7 +176,7 @@ cmd creat_zip ${{
 
 
 cmd fzf_jump ${{
-    res="$(rg --files-with-matches --no-messages . | fzf --preview 'highlight -O ansi -l {} 2> /dev/null' --reverse | tr -d '\n')"
+    res="$(rg --files-with-matches --no-messages . | fzf --preview 'highlight -O ansi -l {} 2> /dev/null' | tr -d '\n')"
     cmd=""
     if [ -f "$res" ]; then
       cmd="select"
@@ -189,7 +189,7 @@ cmd fzf_jump ${{
 }}
 
 cmd fzf_find_in_file ${{
-    res="$(rg \. | fzf --reverse | cut -d':' -f1)"
+    res="$(rg \. | fzf  --keep-right --delimiter : --preview 'rg --ignore-case --colors 'match:bg:yellow' --pretty -F --context 10 {+2..}' | cut -d':' -f1)"
     cmd=""
     if [ -f "$res" ]; then
       cmd="select"

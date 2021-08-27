@@ -30,9 +30,12 @@ source ~/.config/zsh/aliases.zsh
 # export PATH=$PATH:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/bin:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/powerpc-linux-musl/bin:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/usr/bin
 
 
+# x86
+# export PATH=$PATH:/home/ring/var/toolchain/x86_64-linux-musl-cross/bin:/home/ring/var/toolchain/x86_64-linux-musl-cross/x86_64-linux-musl/bin
 
 # export ARCH=powerpc
 # export CROSS_COMPILE=powerpc-linux-
+# export CROSS_COMPILE=x86_64-linux-musl-
 
 export NEMU_HOME=/home/ring/var/ics2020/nemu
 export AM_HOME=/home/ring/var/ics2020/abstract-machine

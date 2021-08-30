@@ -49,12 +49,14 @@ function config.nvim_bufferline()
       buffer_close_icon = '',
       show_buffer_close_icons = false,
       close_icon = "",
-      -- mappings = true,
+	  persist_buffer_sort = true,
+	  sort_by = "tabs",
       always_show_bufferline = false,
-      separator_style = {"", ""},
-      -- numbers = "ordinal",
-      numbers = "none",
-      number_style = "",
+      separator_style = {'', ''},
+	  indicator_icon = '',
+	  numbers = function(opts)
+		return string.format('%s', opts.ordinal)
+	  end,
       -- view = "multiwindow",
     },
     highlights = {

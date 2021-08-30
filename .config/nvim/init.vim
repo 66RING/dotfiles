@@ -183,16 +183,6 @@ noremap R :<C-u>source $MYVIMRC<CR>
 
 
 "========================
-" fcitx auto switch CN/EN
-"========================
-"set ttimeoutlen=150
-"退出插入模式
-autocmd InsertLeave * lua require("utils.functions").fcitx2en()
-""进入插入模式
-" autocmd InsertEnter * call <SID>fcitx2zh()
-
-
-"========================
 " something Useful
 "========================
 " open a terminal window
@@ -216,42 +206,51 @@ if has('persistent_undo')
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
 
-if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
-
 "========================
 " last position
 "========================
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" find doc
-nnoremap <silent> <leader>d :lua require("utils.functions").find_doc()<CR>
-" quick run code
-nnoremap <silent> <leader>R :lua require("utils.functions").run_code()<CR>
-" build run code
-nnoremap <silent> <leader>B :lua require("utils.functions").build_code()<CR>
-" debugging with gdb
-nnoremap <silent> <leader>D :lua require("utils.functions").debug_code()<CR>
 
-" autocmd FileType json syntax match Comment +\/\/.\+$+
+"  _   ___     _____ __  __ 
+" | \ | \ \   / /_ _|  \/  |
+" |  \| |\ \ / / | || |\/| |
+" | |\  | \ V /  | || |  | |
+" |_| \_|  \_/  |___|_|  |_| only
+" --------------------------------------.
 
+if has('nvim') 
+  " widget
+  nnoremap <silent> <leader>d :lua require("utils.functions").find_doc()<CR>
+  nnoremap <silent> <leader>R :lua require("utils.functions").run_code()<CR>
+  nnoremap <silent> <leader>B :lua require("utils.functions").build_code()<CR>
+  nnoremap <silent> <leader>D :lua require("utils.functions").debug_code()<CR>
 
-"========================
-" packer.nvim
-"========================
-command! PackerInstall packadd packer.nvim | lua require('plugins').install()
-command! PackerUpdate packadd packer.nvim | lua require('plugins').update()
-command! PackerSync packadd packer.nvim | lua require('plugins').sync()
-command! PackerClean packadd packer.nvim | lua require('plugins').clean()
-command! PackerCompile packadd packer.nvim | lua require('plugins').compile()
-autocmd BufWritePost plugins.lua PackerCompile
-autocmd BufWritePost config.lua PackerCompile
-" auto install packer.nvim
-let s:install_path = stdpath("data").'/site/pack/packer/opt/packer.nvim'
-if empty(glob(s:install_path))
-  execute '!git clone https://github.com/wbthomason/packer.nvim '.s:install_path
-  execute 'packadd packer.nvim'
+  " autocmd FileType json syntax match Comment +\/\/.\+$+
+
+  " fcitx auto switch
+  autocmd InsertLeave * lua require("utils.functions").fcitx2en()
+
+  "========================
+  " packer.nvim
+  "========================
+  command! PackerInstall packadd packer.nvim | lua require('plugins').install()
+  command! PackerUpdate packadd packer.nvim | lua require('plugins').update()
+  command! PackerSync packadd packer.nvim | lua require('plugins').sync()
+  command! PackerClean packadd packer.nvim | lua require('plugins').clean()
+  command! PackerCompile packadd packer.nvim | lua require('plugins').compile()
+  autocmd BufWritePost plugins.lua PackerCompile
+  autocmd BufWritePost config.lua PackerCompile
+  " auto install packer.nvim
+  let s:install_path = stdpath("data").'/site/pack/packer/opt/packer.nvim'
+  if empty(glob(s:install_path))
+	execute '!git clone https://github.com/wbthomason/packer.nvim '.s:install_path
+	execute 'packadd packer.nvim'
+  endif
+
+  lua require('keymap.init')
+else
+  set viminfofile=$XDG_CACHE_HOME/vim/viminfo 
 endif
-
-lua require('keymap.init')
 
 " /home/ring/.config/nvim/lua/plugins.lua

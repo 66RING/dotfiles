@@ -191,14 +191,14 @@ local function init()
    }
  }
 
-  -- -- fzf.vim
-  -- use {'junegunn/fzf.vim',
-  --   cmd = {'Files', 'Rg','History', 'Buffers', 'Commands'},
-  --   config = conf.fzf_vim,
-  --   requires = {
-  --     {'junegunn/fzf'},
-	-- }
-  -- }
+  -- fzf.vim
+  use {'junegunn/fzf.vim',
+    cmd = {'Files', 'Rg','History', 'Buffers', 'Commands'},
+    config = conf.fzf_vim,
+    requires = {
+      {'junegunn/fzf'},
+	}
+  }
 
   -- use {'brooth/far.vim',
   --   cmd = 'Far',

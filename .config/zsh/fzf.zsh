@@ -69,7 +69,7 @@ zle -N find-file
 bindkey '^f' find-file
 
 find-in-file() {
-	LBUFFER=$LBUFFER$(rg \. | fzf --delimiter : --preview "rg --ignore-case --colors 'match:bg:yellow' --pretty -F --context 10 {+2..}" | cut -d: -f1)
+	LBUFFER=$LBUFFER$(rg \. | fzf --delimiter : --preview 'rg --ignore-case --colors 'match:bg:yellow' --pretty -F --context 10 {2..} -- {1}' | cut -d: -f1)
 	zle reset-prompt
 }
 zle -N find-in-file

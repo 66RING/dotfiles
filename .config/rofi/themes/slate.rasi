@@ -6,12 +6,31 @@
   spacing: 0;
   border-radius: 10px;
   width: 40%;
-  /* height: 700px; */
+}
+
+window {
+  background-color: @background;
+  location:         center;
+  anchor:           north;
+  y-offset:         -3.6em;
+  border:           0;
+  padding:          0;
+  fixed-height:     false;
+  max-height:       false;
+}
+
+mainbox {
+  border:  0;
+  padding: 0;
 }
 
 inputbar {
   border: 0 0 1px 0;
   children: [prompt,entry];
+}
+
+entry {
+  padding: 16px;
 }
 
 prompt {
@@ -25,15 +44,13 @@ textbox {
   padding: 8px 16px;
 }
 
-entry {
-  padding: 16px;
-}
-
 listview {
   cycle: true;
   margin: 0 0 -1px 0;
   scrollbar: false;
-  lines: 2;
+  fixed-height: false;
+  dynamic: true;
+  lines: 7;
 }
 
 element {
@@ -45,3 +62,11 @@ element selected {
   background-color: @selected;
 }
 
+element-text {
+	background-color: transparent;
+}
+
+element-icon {
+    size: 40px;
+	background-color: transparent;
+}

@@ -131,4 +131,13 @@
     padding: 3 7 3 0;
 }
 
+element-text {
+	background-color: transparent;
+}
+
+element-icon {
+    size: 40px;
+	background-color: transparent;
+}
+
 /* vim:ft=css

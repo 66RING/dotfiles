@@ -37,7 +37,9 @@ source ~/.config/zsh/aliases.zsh
 # export CROSS_COMPILE=powerpc-linux-
 # export CROSS_COMPILE=x86_64-linux-musl-
 
-export NEMU_HOME=/home/ring/var/ics2020/nemu
-export AM_HOME=/home/ring/var/ics2020/abstract-machine
+# export NEMU_HOME=/home/ring/var/ics2020/nemu
+# export AM_HOME=/home/ring/var/ics2020/abstract-machine
+
+ export AM_HOME=/home/ring/var/ics2020/abstract-machine
 
 

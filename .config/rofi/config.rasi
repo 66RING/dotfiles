@@ -1,4 +1,9 @@
 configuration {
+	display-run: " ";
+	display-drun: " ";
+	display-window: " ";
+	drun-display-format: "{icon} {name}";
+	show-icons: true;
 	modi: "ssh,drun";
 /* 	modi: "window,run,ssh,drun"; */
 	width: 40;
@@ -11,7 +16,6 @@ configuration {
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
-	show-icons: true;
 /*	terminal: "rofi-sensible-terminal";*/
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
@@ -54,7 +58,7 @@ configuration {
 /*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
-	theme: "./themes/slate_with_prompt.rasi";
+	theme: "./themes/slate.rasi";
 /*	color-normal: ;*/
 /*	color-urgent: ;*/
 /*	color-active: ;*/

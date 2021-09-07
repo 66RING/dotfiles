@@ -6,8 +6,6 @@ configuration {
 	show-icons: true;
 	modi: "ssh,drun";
 /* 	modi: "window,run,ssh,drun"; */
-	width: 40;
-	lines: 12;
 /*	columns: 1;*/
 	font: "monospace 40";
 /*	bw: 1;*/

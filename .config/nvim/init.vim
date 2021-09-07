@@ -55,13 +55,13 @@ noremap <C-u>  <Nop>
 noremap <C-d>  <Nop>
 
 
-set completeopt=menu,menuone,noselect
+" set completeopt=menu,menuone,noselect
 set enc=utf8
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set termencoding=utf-8
 " set colorcolumn=80
 
-set termguicolors
+" set termguicolors
 set number
 set numberwidth=1
 set relativenumber
@@ -87,7 +87,7 @@ let mapleader=" "
 set hidden
 set updatetime=100
 set noruler
-set shortmess+=c
+" set shortmess+=c
 set display=lastline
 
 " hide statusline
@@ -249,8 +249,6 @@ if has('nvim')
   endif
 
   lua require('keymap.init')
-else
-  set viminfofile=$XDG_CACHE_HOME/vim/viminfo 
 endif
 
 " /home/ring/.config/nvim/lua/plugins.lua

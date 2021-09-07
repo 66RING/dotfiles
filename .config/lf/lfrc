@@ -281,6 +281,14 @@ map I push 5i
 map K push 5k
 map j updir
 map l open
+
+# map k up
+# map j down
+# map J push 5j
+# map K push 5k
+# map h updir
+# map l open
+
 map e push :open_with<space>
 # use enter for shell commands
 map <enter> shell
@@ -318,7 +326,7 @@ map gf cd ~/.config
 map gm cd ~/Videos
 map gc cd ~/Documents/code
 map gv cd ~/var
-map gs cd ~/scripts
+map gs cd /home/ring/var/APPs/scripts
 map gd cd ~/Documents
 map gu cd /usr
 map gn cd ~/Documents/Notes

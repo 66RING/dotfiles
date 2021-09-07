@@ -49,6 +49,6 @@ alias poweroff="prompt2 'Shutdown?' 'poweroff'"
 alias reboot="prompt2 'Reboot?' 'reboot'"
 
 # scripts/utils
-SCRIPTS_DIR='/home/ring/scripts'
+SCRIPTS_DIR='~/.local/bin/scripts'
 alias t="http_proxy= https_proxy= $SCRIPTS_DIR/utils/ai_trans_demo.py"
 alias osdoc="$SCRIPTS_DIR/utils/osdoc.sh"

@@ -12,7 +12,7 @@ super + Return
 
 # scratchpad
 super + grave
-    $HOME/scripts/bspwm/scratchpad 
+    ~/.local/bin/scripts/bspwm/scratchpad 
 
 # program launcher
 super + space
@@ -47,14 +47,14 @@ super + shift + e
     bspc node @/ -B
 
 super + m
-    $HOME/scripts/bspwm/bspfullscreen
+    ~/.local/bin/scripts/bspwm/bspfullscreen
 
 super + f
-    $HOME/scripts/bspwm/bsphideandfullscreen
+    ~/.local/bin/scripts/bspwm/bsphideandfullscreen
 
 # hide polybar
 super + p
-    $HOME/scripts/bspwm/hidebar
+    ~/.local/bin/scripts/bspwm/hidebar
 
 
 #
@@ -124,15 +124,15 @@ super + {Left,Down,Up,Right}
 
 # emoji selecter
 super + e
-    $HOME/scripts/global/emoji-selector
+    ~/.local/bin/scripts/global/emoji-selector
 
 # wallpaper change
 super + b
-    $HOME/scripts/wp-change
+    ~/.local/bin/scripts/wp-change
 
 # wallpaper colletion change
 super + shift +b
-    $HOME/scripts/bspwm/wp-collection
+    ~/.local/bin/scripts/bspwm/wp-collection
 
 
 #
@@ -181,14 +181,14 @@ alt + shift + 4
 
 # picom toggle
 super + u
-    $HOME/scripts/alpha-toggle
+    ~/.local/bin/scripts/alpha-toggle
 
 # bspwm window hidden toggle
 super + h
     bspc node $(bspc query -N -n .focused) -g hidden=on
 
 super + shift + h
-    /home/ring/scripts/bspwm/unhide
+    ~/.local/bin/scripts/bspwm/unhide
 
 # lock screen
 super + BackSpace
@@ -196,9 +196,9 @@ super + BackSpace
 
 # monitor toggle
 super + shift + p
-    $HOME/scripts/global/all-monitors
+    ~/.local/bin/scripts/global/all-monitors
 
 # monitor selector
 super + shift + M
-    $HOME/scripts/global/displayselect
+    ~/.local/bin/scripts/global/displayselect
 

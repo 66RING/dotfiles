@@ -360,7 +360,7 @@ ramp-4-foreground = ${colors.warning}
 
 [module/weather]
 type = custom/script
-exec = ~/scripts/polybar/getweather.sh
+exec = ~/.local/bin/scripts/polybar/getweather.sh
 interval = 600
 label-font = 4
 
@@ -369,7 +369,7 @@ type = custom/text
 content = "   😈"
 content-foreground = #fff
 content-padding = 
-click-left = ~/scripts/bspwm/scratchpad &
+click-left = ~/.local/bin/scripts/bspwm/scratchpad &
 
 
 [module/updates]

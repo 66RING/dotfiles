@@ -1,6 +1,6 @@
 #! /bin/sh
 
-mode=$(echo -e 'Connect\nNew Connection\nDisconnect\n' | rofi -i -p "bluetoothctl" -dmenu)
+mode=$(echo -e 'Connect\nNew Connection\nDisconnect' | rofi -i -p "bluetoothctl" -dmenu)
 
 if [ "$mode" = "Connect" ]; then
   selection=($(bluetoothctl devices | awk '{print $2,$3}' | rofi -i -p "Connect:" -dmenu))

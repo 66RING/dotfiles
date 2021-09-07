@@ -239,6 +239,7 @@ function config.nvim_compe()
       tags = true;
     };
   }
+  vim.api.nvim_command("set completeopt=menu,menuone,noselect")
   vim.api.nvim_command("autocmd FileType clap_input,markdown call compe#setup({ 'autocomplete': v:false }, 0)")
   local opts = {noremap=true, silent=true, expr=true}
   vim.api.nvim_set_keymap('i','<TAB>','v:lua.tab_complete()',opts)

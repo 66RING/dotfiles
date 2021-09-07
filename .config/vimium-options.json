@@ -1,15 +1,19 @@
 {
-  "settingsVersion": "1.66",
+  "settingsVersion": "1.67",
   "exclusionRules": [
     {
       "pattern": "https?://mail.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://asciiflow.com/*",
       "passKeys": ""
     }
   ],
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\n# Insert your preferred key mappings here.\nunmap r\nunmap x\nunmap X\nmap k scrollDown\nmap i scrollUp\nmap j scrollLeft\nmap l scrollRight\nmap J previousTab\nmap L nextTab\nmap K scrollPageDown\nmap I scrollPageUp\nmap <a-j> goBack\nmap <a-l> goForward\nmap <a-w> removeTab\nmap <a-t> createTab\nmap <a-r> reload\nmap <a-T> restoreTab",
+  "keyMappings": "# Insert your preferred key mappings here.\n# Insert your preferred key mappings here.\nunmap r\nunmap x\nunmap X\nmap <a-j> goBack\nmap <a-l> goForward\nmap <a-w> removeTab\nmap <a-t> createTab\nmap <a-r> reload\nmap <a-T> restoreTab\n\n# ===========\nmap k scrollDown\nmap i scrollUp\nmap j scrollLeft\nmap l scrollRight\nmap J previousTab\nmap L nextTab\nmap K scrollPageDown\nmap I scrollPageUp\n\n# ==== standard vim =======\n# map j scrollDown\n# map k scrollUp\n# map h scrollLeft\n# map l scrollRight\n# map H previousTab\n# map L nextTab\n# map J scrollPageDown\n# map K scrollPageUp",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",

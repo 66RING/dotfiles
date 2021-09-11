@@ -1,6 +1,6 @@
 #! /bin/sh
 
-$HOME/scripts/autostart &
+$HOME/.local/bin/scripts/autostart &
 $HOME/.config/polybar/launch &
 sxhkd &
 

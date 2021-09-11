@@ -36,7 +36,7 @@ end
 function config.indentLine()
   vim.g.indentLine_enabled = 1
   vim.g.indentLine_char='¦'
-  vim.g.indentLine_fileTypeExclude = {'defx', 'json', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown'}
+  vim.g.indentLine_fileTypeExclude = {'defx', 'json', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown', 'terminal', 'FTerm'}
   vim.g.indentLine_concealcursor = 'inc'
   vim.g.indentLine_showFirstIndentLevel =1
 end

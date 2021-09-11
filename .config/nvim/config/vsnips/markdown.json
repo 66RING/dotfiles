@@ -9,6 +9,7 @@
           "- ${3:tags}",
           "mathjax: true",
           "---\n",
+          "# Abstract\n\n",
           "# Preface\n\n",
           "# Overview"
         ],

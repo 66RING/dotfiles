@@ -326,7 +326,7 @@ map gf cd ~/.config
 map gm cd ~/Videos
 map gc cd ~/Documents/code
 map gv cd ~/var
-map gs cd /home/ring/var/APPs/scripts
+map gs cd ~/.local/bin/scripts
 map gd cd ~/Documents
 map gu cd /usr
 map gn cd ~/Documents/Notes

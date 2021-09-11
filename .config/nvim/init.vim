@@ -146,7 +146,6 @@ noremap sk :<C-u>set splitbelow<CR>:split<CR>
 " noremap sh :<C-u>set nosplitright<CR>:vsplit<CR>
 " noremap sk :<C-u>set nosplitbelow<CR>:split<CR>
 " noremap sj :<C-u>set splitbelow<CR>:split<CR>
-" noremap st :<C-u>set splitbelow<CR>:sp<CR>:term<CR>
 "=== split screen movement===
 noremap <LEADER>w <C-w>w
 noremap <LEADER>i <C-w>k

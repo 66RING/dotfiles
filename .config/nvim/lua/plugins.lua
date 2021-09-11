@@ -160,7 +160,7 @@ local function init()
     end
   }
 
-  -- something useful
+  -- editor
   use {'junegunn/vim-easy-align' ,
     keys = '<Plug>(EasyAlign)',
     setup = function()
@@ -199,6 +199,9 @@ local function init()
       {'junegunn/fzf'},
 	}
   }
+
+  -- float term
+  -- use {'numToStr/FTerm.nvim', }
 
   -- use {'brooth/far.vim',
   --   cmd = 'Far',

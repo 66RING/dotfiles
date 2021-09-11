@@ -61,3 +61,5 @@ nvim/plugin/packer_compiled.lua
 
 .config/qrcp
 .config/spotify
+
+.config/XMind

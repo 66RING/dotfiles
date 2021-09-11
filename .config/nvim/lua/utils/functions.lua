@@ -145,11 +145,14 @@ function M.toggle_term()
   vim.cmd[[5sp]]
 
   if vim.fn.bufexists(M.term_bufnr) == 1 then
-	vim.cmd("buffer "..M.term_bufnr)
+  vim.cmd("buffer "..M.term_bufnr)
   else
-	vim.cmd[[term]]
-	M.term_bufnr = vim.fn.bufnr()
+  vim.cmd[[term]]
+  M.term_bufnr = vim.fn.bufnr()
   end
+
+  -- -- float term plugin
+  -- require("FTerm").toggle()
 end
 
 

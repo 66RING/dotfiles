@@ -323,7 +323,7 @@ map mf push :mkfiles<space>
 # quick move
 # global
 map gf cd ~/.config
-map gm cd ~/Videos
+map gm cd ~/opt/Videos
 map gc cd ~/Documents/code
 map gv cd ~/var
 map gs cd ~/.local/bin/scripts

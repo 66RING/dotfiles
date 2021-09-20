@@ -1,5 +1,5 @@
 local M = {}
-local tools=os.getenv("HOME")..'/.vscode-insiders/extensions/xsro.masm-tasm-0.9.0/tools'
+local tools=os.getenv("HOME")..'/.config/nvim/cross/asm'
 local dosbox="dosbox -conf "..os.getenv("XDG_CONFIG_HOME")..'/dosbox/dosbox.conf'
 local workspace=vim.fn.expand("%:p:h")
 local filename=vim.fn.expand("%<")
@@ -8,18 +8,16 @@ local env={
   "mount c: "..tools,
   "mount d: "..workspace,
   "d:",
-  "set path=c:\\masm;c:\\tasm",
+  "set PATH=c:\\masm;c:\\tasm",
 }
 
 local build = {
   masm = {
-	"set path=c:\\masm",
 	"masm "..filename..".ASM; >d:\\ASM.LOG ",
 	"if exist "..filename..".OBJ link "..filename..".OBJ; >d:\\LINK.LOG",
 	"@type d:\\LINK.LOG",
   },
   tasm = {
-	"set path=c:\\tasm",
 	"tasm /zi "..filename..".ASM >d:\\ASM.LOG ",
 	"@type d:\\ASM.LOG",
 	"if exist "..filename..".OBJ tlink /v/3 "..filename..".obj >d:\\LINK.LOG ",

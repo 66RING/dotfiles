@@ -49,7 +49,8 @@ cmd open ${{
             setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
         #office things
         image/vnd.djvu|application/pdf|application/epub*)
-            setsid -f wpspdf $fx >/dev/null 2>&1 ;;
+            setsid -f evince $fx >/dev/null 2>&1 ;;
+            # setsid -f wpspdf $fx >/dev/null 2>&1 ;;
         application/ppt|application/vnd.ms-powerpoint|application/*office*presentation)
             setsid -f wpp $fx >/dev/null 2>&1 ;;
         application/xlsx|application/*office*sheet|application/*excel*)

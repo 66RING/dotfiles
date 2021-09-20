@@ -55,7 +55,7 @@ function M.run_code()
     go = "term go run %:p",
     lua = "term lua %:p",
     processing = "term processing-java --sketch='"..vim.fn.trim(vim.fn.system('pwd')).."' --output='"..vim.fn.trim(vim.fn.system('pwd')).."/bin' --force --run",
-    asm = "term "..require("utils.masm").commands("tasm", 'run')
+    asm = "term "..require("utils.asm").commands("masm", 'run')
   }
   local cmd_without_split = {
     html = "silent ! "..os.getenv("BROWSER").." %:p &",

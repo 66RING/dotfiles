@@ -219,16 +219,22 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " --------------------------------------.
 
 if has('nvim') 
-  " widget
+  "========================
+  " widgets
+  "========================
+  " " TODO bang argments
+  command! ImageUrl lua require('utils.edit').img_to_url()
   nnoremap <silent> <leader>d :lua require("utils.functions").find_doc()<CR>
   nnoremap <silent> <leader>R :lua require("utils.functions").run_code()<CR>
   nnoremap <silent> <leader>B :lua require("utils.functions").build_code()<CR>
   nnoremap <silent> <leader>D :lua require("utils.functions").debug_code()<CR>
+  " command! ImgUrl :%s/\(<img src="\)\.\/\(.\{-}\)\(".*\)/\1https:\/\/raw.githubusercontent.com\/66RING\/66RING\/master\/.github\/images\/Notes\/universe\/qemu\/qemu_bus_simulate\/\2\3
 
   " autocmd FileType json syntax match Comment +\/\/.\+$+
 
   " fcitx auto switch
   autocmd InsertLeave * lua require("utils.functions").fcitx2en()
+
 
   "========================
   " packer.nvim
@@ -249,5 +255,6 @@ if has('nvim')
 
   lua require('keymap.init')
 endif
+
 
 " /home/ring/.config/nvim/lua/plugins.lua

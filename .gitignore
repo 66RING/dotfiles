@@ -66,3 +66,7 @@ nvim/plugin/packer_compiled.lua
 
 
 .config/dosbox
+
+.config/okular*
+
+.config/nvim/cross

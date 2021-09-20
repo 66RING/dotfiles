@@ -18,6 +18,12 @@ function vi-accept-line() {
 
 zle -N vi-accept-line
 
+# clean up
+bindkey -M vicmd -r ':'
+bindkey -M vicmd -r '/'
+bindkey -M vicmd -r '?'
+bindkey -M vicmd -r '#'
+
 
 bindkey -v
 

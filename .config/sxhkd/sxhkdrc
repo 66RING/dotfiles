@@ -117,6 +117,16 @@ super + alt + {j,k,i,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# "Drag to floating" tiled windows or move floating windows.
+super + button1
+	~/.local/bin/scripts/bspwm/dragtofloat
+super + @button1
+	~/.local/bin/scripts/bspwm/dragtofloat stop
+@button1
+	~/.local/bin/scripts/bspwm/dragtofloat stop
+~button1
+	:
+
 
 #
 # User config
@@ -201,4 +211,5 @@ super + shift + p
 # monitor selector
 super + shift + M
     ~/.local/bin/scripts/global/displayselect
+
 

@@ -32,6 +32,8 @@ alias s='neofetch | lolcat'
 alias ra='ranger'
 alias lg='lazygit'
 alias tl='proxyon && tldr'
+alias ct='cht.sh'
+alias py='python'
 #
 # TOOls
 alias pc='proxyon && '

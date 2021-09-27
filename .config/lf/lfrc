@@ -50,13 +50,13 @@ cmd open ${{
         #office things
         image/vnd.djvu|application/pdf|application/epub*)
             setsid -f evince $fx >/dev/null 2>&1 ;;
-            # setsid -f wpspdf $fx >/dev/null 2>&1 ;;
+            # setsid -f env QT_SCALE_FACTOR= wpspdf $fx >/dev/null 2>&1 ;;
         application/ppt|application/vnd.ms-powerpoint|application/*office*presentation)
             setsid -f wpp $fx >/dev/null 2>&1 ;;
         application/xlsx|application/*office*sheet|application/*excel*)
             setsid -f et $fx >/dev/null 2>&1 ;;
         application/docx|application/doc|application/*office*document|application/msword)
-            setsid -f wps $fx >/dev/null 2>&1 ;;
+            setsid -f env QT_SCALE_FACTOR= wps $fx >/dev/null 2>&1 ;;
         application/*opendoc*)
             setsid -f soffice $fx >/dev/null 2>&1 ;;
         #default

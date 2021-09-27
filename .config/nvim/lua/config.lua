@@ -49,14 +49,14 @@ function config.nvim_bufferline()
       buffer_close_icon = '',
       show_buffer_close_icons = false,
       close_icon = "",
-	  persist_buffer_sort = true,
-	  sort_by = "tabs",
+	  -- persist_buffer_sort = true,
+	  -- sort_by = "tabs",
       always_show_bufferline = false,
       separator_style = {'', ''},
 	  indicator_icon = '',
-	  numbers = function(opts)
-		return string.format('%s', opts.ordinal)
-	  end,
+	  -- numbers = function(opts)
+		-- return string.format('%s', opts.ordinal)
+	  -- end,
       -- view = "multiwindow",
     },
     highlights = {
@@ -199,6 +199,12 @@ function config.lspsaga()
     finder_action_keys = {
       open = '<enter>', vsplit = 'v',split = 's',quit = 'q',
     },
+	code_action_prompt = {
+	  enable = false,
+	  sign = true,
+	  sign_priority = 20,
+	  virtual_text = true,
+	},
   }
 
   local map_key = vim.api.nvim_set_keymap

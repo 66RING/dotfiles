@@ -179,6 +179,17 @@ local function init()
     end
   }
 
+  -- use {
+  --   'lewis6991/spellsitter.nvim',
+  --   config = function()
+  --     require('spellsitter').setup {
+  --   	hl = 'SpellBad',
+  --   	captures = {'comment'},  -- set to {} to spellcheck everything
+  --     }
+  --   end
+  -- }
+
+
   -- fuzzy find
   -- -- telescope
  use {'nvim-telescope/telescope.nvim',

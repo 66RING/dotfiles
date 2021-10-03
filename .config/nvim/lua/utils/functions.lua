@@ -105,7 +105,7 @@ function M.debug_code()
   local cmd = {
     c = "term gdb -q %:p:r",
     cpp = "term gdb -q %:p:r",
-    asm = "term "..require("utils.masm").commands('tasm', 'debug')
+    asm = "term "..require("utils.asm").commands('masm', 'debug')
   }
   local file_type = vim.bo.filetype
   if cmd[file_type] ~= nil then

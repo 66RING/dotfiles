@@ -225,7 +225,7 @@ local function init()
   use {'voldikss/vim-translator',
     keys = '<Plug>TranslateW',
     setup = function ()
-      vim.g.translator_default_engines={'bing', 'google'}
+      vim.g.translator_default_engines={'bing', 'haici', 'youdao'}
       vim.api.nvim_set_keymap('n', 'ts', [[<Plug>TranslateW]], {silent=true})
       vim.api.nvim_set_keymap('v', 'ts', [[<Plug>TranslateWV]], {silent=true})
     end

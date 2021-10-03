@@ -129,6 +129,10 @@ function config.dashboard()
     '',
     '',
     '',
+    '',
+    '',
+    '',
+    '',
 	'⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢹⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
 	'⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⠀⢻⡾⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
 	'⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⢸⣼⠁⠀⠀⠄⠹⣿⣆⠀⠀⡰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
@@ -155,16 +159,20 @@ function config.dashboard()
   vim.cmd [[autocmd FileType dashboard nnoremap <silent><buffer> e :exec "enew"<CR>]]
 
   vim.g.dashboard_custom_section={
-    empty_buffer= {
-        description = {' Empty Buffer'},
-        command= 'enew' },
-    find_history= {
-        description= {'ﭯ History     '},
-        command= 'Telescope oldfiles' },
-    find_file= {
-        description= {' File Browser'},
-        command= 'Telescope file_browser hidden=true' },
+    empty_buffer = {
+        description = {},
+        command = 'enew' },
+    -- empty_buffer = {
+    --     description = {' Empty Buffer'},
+    --     command = 'enew' },
+    -- find_history = {
+    --     description= {'ﭯ History     '},
+    --     command = 'Telescope oldfiles' },
+    -- find_file = {
+    --     description = {' File Browser'},
+    --     command = 'Telescope file_browser hidden=true' },
   }
+  vim.g.dashboard_custom_footer = {}
 end
 
 

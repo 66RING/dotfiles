@@ -52,9 +52,9 @@ cmd open ${{
             setsid -f evince $fx >/dev/null 2>&1 ;;
             # setsid -f env QT_SCALE_FACTOR= wpspdf $fx >/dev/null 2>&1 ;;
         application/ppt|application/vnd.ms-powerpoint|application/*office*presentation)
-            setsid -f wpp $fx >/dev/null 2>&1 ;;
+            setsid -f env QT_SCALE_FACTOR= wpp $fx >/dev/null 2>&1 ;;
         application/xlsx|application/*office*sheet|application/*excel*)
-            setsid -f et $fx >/dev/null 2>&1 ;;
+            setsid -f env QT_SCALE_FACTOR= et $fx >/dev/null 2>&1 ;;
         application/docx|application/doc|application/*office*document|application/msword)
             setsid -f env QT_SCALE_FACTOR= wps $fx >/dev/null 2>&1 ;;
         application/*opendoc*)
@@ -332,7 +332,7 @@ map gd cd ~/Documents
 map gu cd /usr
 map gn cd ~/Documents/Notes
 # tmp
-map gw cd ~/Documents/HomeWorks/OS_Project
+map gw cd ~/Documents/system_project
 
 
 #************************

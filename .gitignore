@@ -70,3 +70,5 @@ nvim/plugin/packer_compiled.lua
 .config/okular*
 
 .config/nvim/cross
+
+.config/google-chrome-unstable

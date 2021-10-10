@@ -6,6 +6,7 @@ window:
     x: 2
     y: 2
   dynamic_padding: true
+  opacity: 0.9
 
 
 font:
@@ -16,18 +17,17 @@ font:
     family: CaskaydiaCove Nerd Font Mono
   italic:
     family: CaskaydiaCove Nerd Font Mono
-  size: 8
+  size: 18
   offset:
       y: 1
       x: 0
 
 
-background_opacity: 0.9
 
 
 mouse:
   hide_when_typing: true
-  url:
+  hints:
     # URL launcher
     launcher:
       program: xdg-open

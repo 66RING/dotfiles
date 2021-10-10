@@ -157,6 +157,7 @@ function config.dashboard()
   -- vim.cmd [[autocmd FileType dashboard set laststatus=0 | autocmd BufLeave <buffer> set laststatus=2]]
   -- vim.cmd [[autocmd FileType dashboard set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2]]
   vim.cmd [[autocmd FileType dashboard nnoremap <silent><buffer> e :exec "enew"<CR>]]
+  vim.cmd [[autocmd FileType dashboard hi Cursor blend=100 | set guicursor+=a:Cursor/Cursor | autocmd BufLeave <buffer> set guicursor-=a:Cursor/Cursor]]
 
   vim.g.dashboard_custom_section={
     empty_buffer = {
@@ -172,7 +173,12 @@ function config.dashboard()
     --     description = {' File Browser'},
     --     command = 'Telescope file_browser hidden=true' },
   }
-  vim.g.dashboard_custom_footer = {}
+  vim.g.dashboard_custom_footer = {
+	"  THE PEOPLE WHO ARE CRAZY ENOUGH",
+	"TO THINK THEY CAN CHANGE THE WORLD",
+	"  		  THE ONES WHO DO.",
+	" 		       			— Steve Jobs"
+  }
 end
 
 

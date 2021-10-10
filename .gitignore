@@ -72,3 +72,5 @@ nvim/plugin/packer_compiled.lua
 .config/nvim/cross
 
 .config/google-chrome-unstable
+
+.config/jesseduffield/lazygit

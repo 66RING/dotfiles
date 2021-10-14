@@ -174,10 +174,12 @@ function config.dashboard()
     --     command = 'Telescope file_browser hidden=true' },
   }
   vim.g.dashboard_custom_footer = {
-	"  THE PEOPLE WHO ARE CRAZY ENOUGH",
-	"TO THINK THEY CAN CHANGE THE WORLD",
-	"  		  THE ONES WHO DO.",
-	" 		       			— Steve Jobs"
+	"STAY HUNGRY, STAY FOOLISH",
+	-- " 		       			— Steve Jobs"
+	-- "  THE PEOPLE WHO ARE CRAZY ENOUGH",
+	-- "TO THINK THEY CAN CHANGE THE WORLD",
+	-- "  		  THE ONES WHO DO.",
+	-- " 		       			— Steve Jobs"
   }
 end
 

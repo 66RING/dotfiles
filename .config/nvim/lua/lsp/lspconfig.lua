@@ -25,6 +25,38 @@ for _,server in ipairs(servers) do
   }
 end
 
+lspconfig.jdtls.setup{
+  cmd_env = {
+	JDTLS_HOME = "/usr/share/java/jdtls",
+  },
+  cmd = {"jdtls"},
+ --  cmd = {
+	-- "java",
+	-- "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+	-- "-Dosgi.bundles.defaultStartLevel=4",
+	-- "-Declipse.product=org.eclipse.jdt.ls.core.product",
+	-- "-Dlog.level=ALL",
+	-- "-noverify",
+	-- "-Xmx1G",
+	-- "-jar", "/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.300.v20210813-1054.jar",
+	-- "-configuration", "/usr/share/java/jdtls/config_linux",
+	-- "-data", vim.fn.getcwd().."/workspace",
+	-- "--add-modules=ALL-SYSTEM",
+	-- "--add-opens java.base/java.util=ALL-UNNAMED",
+	-- "--add-opens java.base/java.lang=ALL-UNNAMED"
+ --  },
+}
+
+-- lspconfig.java_language_server.setup{
+--   cmd = {"/usr/share/java/java-language-server/lang_server_linux.sh"},
+--   settings = {
+-- 	java = {
+-- 	  classPath = {
+--         "/usr/local/algs4/algs4.jar"
+-- 	  }
+--     }
+--   }
+-- }
 
 lspconfig.pyright.setup{
   on_attach = custom_attach,

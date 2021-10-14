@@ -49,7 +49,7 @@ function M.run_code()
     c = "term %:p:r",
     cpp = "term %:p:r",
     python = "term python %:p",
-    java = "term java %:p:r",
+    java = "term java %:p:t:r",
     sh = "term bash %:p",
     vim = "term source %:p",
     go = "term go run %:p",

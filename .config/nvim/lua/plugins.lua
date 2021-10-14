@@ -136,13 +136,21 @@ local function init()
     after = 'vim-vsnip'
   }
 
-  use {'tpope/vim-commentary',
-    event = "BufRead *",
-    setup = function ()
-      vim.cmd [[autocmd FileType apache setlocal commentstring=#\ %s]]
-      vim.cmd [[autocmd FileType c,cpp setlocal commentstring=//\ %s]]
-    end
+  -- use {'tpope/vim-commentary',
+  --   event = "BufRead *",
+  --   setup = function ()
+  --     vim.cmd [[autocmd FileType apache setlocal commentstring=#\ %s]]
+  --     vim.cmd [[autocmd FileType c,cpp setlocal commentstring=//\ %s]]
+  --   end
+  -- }
+  use {
+	  'numToStr/Comment.nvim',
+	  event = "BufRead *",
+	  config = function()
+		  require('Comment').setup()
+	  end
   }
+
 
   -- git
   use {'airblade/vim-gitgutter',

@@ -25,9 +25,27 @@ local function init()
     config = conf.lspsaga
   }
 
-  use {"hrsh7th/nvim-compe",
-    event = 'BufReadPre *',
-    config = conf.nvim_compe
+  use {"hrsh7th/nvim-cmp",
+    -- event = 'BufReadPre *',
+    config = conf.nvim_cmp,
+    requires = {
+	  'hrsh7th/cmp-nvim-lsp',
+	  'hrsh7th/cmp-buffer',
+	  'hrsh7th/cmp-vsnip',
+	  'hrsh7th/cmp-path',
+	  {'kristijanhusak/vim-dadbod-completion', opt = true, ft = {'sql', 'mysql', 'plsql'}},
+	  {'kdheepak/cmp-latex-symbols', opt = true, ft = {'markdown', 'tex', 'text'}}
+	}
+  }
+
+  use {'hrsh7th/vim-vsnip',
+    event = 'InsertEnter *',
+    setup = conf.vim_vsnip
+  }
+
+  use {'hrsh7th/vim-vsnip-integ',
+    event = 'InsertEnter *',
+    after = 'vim-vsnip'
   }
 
 
@@ -124,16 +142,6 @@ local function init()
     setup = function ()
       vim.g.bullets_enabled_file_types = {'markdown', 'text', 'gitcommit', 'scratch' }
     end
-  }
-
-  use {'hrsh7th/vim-vsnip',
-    event = 'InsertEnter *',
-    setup = conf.vim_vsnip
-  }
-
-  use {'hrsh7th/vim-vsnip-integ',
-    event = 'InsertEnter *',
-    after = 'vim-vsnip'
   }
 
   -- use {'tpope/vim-commentary',

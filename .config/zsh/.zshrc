@@ -8,6 +8,12 @@ source ~/.config/zsh/lf_setting.zsh
 source ~/.config/zsh/plugin.zsh
 source ~/.config/zsh/aliases.zsh
 
+export JDTLS_HOME=/usr/share/java/jdtls
+export CLASSPATH=./:/home/ring/Documents/code/undergraduate_code/algo/princeton-algs4/stdlib.jar:/home/ring/Documents/code/undergraduate_code/algo/princeton-algs4/algs4.jar
+
+# export JAVA_HOME=/path/to/java_home
+# export WORKSPACE=/path/to/workspace
+
 
 # if type "fortune" &> /dev/null; then
 #     fortune -s
@@ -22,18 +28,28 @@ source ~/.config/zsh/aliases.zsh
 #               |_|    
 #
 
-# echo "PowerPC env activate"
 # eldk-5.6
- # export PATH=$PATH:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin/powerpc-linux:/opt/eldk-5.6/powerpc/sysroots/powerpc-linux/usr/bin/powerpc-linux
+# export PATH=$PATH:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin/powerpc-linux:/opt/eldk-5.6/powerpc/sysroots/powerpc-linux/usr/bin/powerpc-linux
+# export ARCH=powerpc
+# export CROSS_COMPILE=powerpc-linux-
 
 # musl.cc
 # export PATH=$PATH:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/bin:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/powerpc-linux-musl/bin:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/usr/bin
+# export ARCH=powerpc
+# export CROSS_COMPILE=powerpc-linux-musl-
 
 
 # x86
 # export PATH=$PATH:/home/ring/var/toolchain/x86_64-linux-musl-cross/bin:/home/ring/var/toolchain/x86_64-linux-musl-cross/x86_64-linux-musl/bin
-
-# export ARCH=powerpc
-# export CROSS_COMPILE=powerpc-linux-
+# export ARCH=x86_64
 # export CROSS_COMPILE=x86_64-linux-musl-
+
+# x86, x86-64-core-i7--glibc--stable, gcc 5.4
+# export PATH=$PATH:/home/ring/var/toolchain/x86-64-core-i7--glibc--stable/bin:/home/ring/var/toolchain/x86-64-core-i7--glibc--stable/x86_64-buildroot-linux-gnu/bin
+# export ARCH=x86_64
+# export CROSS_COMPILE=x86_64-linux-
+# export GCCPREFIX=x86_64-linux-
+# export LD_LIBRARY_PATH=/home/ring/var/toolchain/x86-64-core-i7--glibc--stable/lib
+
+
 

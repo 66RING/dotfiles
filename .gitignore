@@ -74,3 +74,6 @@ nvim/plugin/packer_compiled.lua
 .config/google-chrome-unstable
 
 .config/jesseduffield/lazygit
+
+.config/kdiff3rc
+.config/dlv

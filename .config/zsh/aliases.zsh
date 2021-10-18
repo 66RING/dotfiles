@@ -54,4 +54,4 @@ alias reboot="prompt2 'Reboot?' 'reboot'"
 SCRIPTS_DIR='~/.local/bin/scripts'
 alias t="http_proxy= https_proxy= $SCRIPTS_DIR/utils/ai_trans_demo.py"
 alias osdoc="$SCRIPTS_DIR/utils/osdoc.sh"
-alias bc="$SCRIPTS_DIR/utils/calc"
+# alias bc="$SCRIPTS_DIR/utils/calc"

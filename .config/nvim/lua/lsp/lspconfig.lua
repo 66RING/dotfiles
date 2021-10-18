@@ -3,7 +3,9 @@ local lspconfig = require 'lspconfig'
 local lsp_folder = "/home/ring/var/APPs/lsp"
 local api = vim.api
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- use for nvim-cmp
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 

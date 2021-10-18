@@ -242,32 +242,39 @@ function config.lspsaga()
   vim.cmd [[command! Format lua vim.lsp.buf.formatting()]]
 end
 
-function config.nvim_compe()
-  require'compe'.setup {
-    enabled = true;
-    autocomplete = true;
-    debug = false;
-    min_length = 1;
-    preselect = 'disable';
-    allow_prefix_unmatch = true;
-    source = {
-      path = true;
-      buffer = true;
-      calc = true;
-      vsnip = true;
-      nvim_lsp = true;
-      nvim_lua = true;
-      spell = false;
-      tags = true;
-    };
+function config.nvim_cmp()
+  -- vim.cmd [[set completeopt=menu,preview,noinsert]]
+  local cmp = require'cmp'
+  cmp.setup {
+	snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
+    mapping = {
+      -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<Down>'] = cmp.mapping.scroll_docs(-4),
+      ['<Up>'] = cmp.mapping.scroll_docs(4),
+	  ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+      ['<C-e>'] = cmp.mapping.complete(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = {
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' },
+      { name = 'path' },
+      { name = 'buffer' },
+      -- { name = 'latex_symbols' },
+      -- { name = 'kristijanhusak/vim-dadbod-completion' },
+    }
   }
-  vim.api.nvim_command("set completeopt=menu,menuone,noselect")
-  vim.api.nvim_command("autocmd FileType clap_input,markdown call compe#setup({ 'autocomplete': v:false }, 0)")
-  local opts = {noremap=true, silent=true, expr=true}
-  vim.api.nvim_set_keymap('i','<TAB>','v:lua.tab_complete()',opts)
-  vim.api.nvim_set_keymap('i','<S-TAB>','v:lua.s_tab_complete()',opts)
-  vim.api.nvim_set_keymap('i','<CR>',"compe#confirm('<CR>')",opts)
+    -- vim.cmd [[packadd nvim-colorizer.lua]]
+
+  vim.cmd[[autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })]]
+  vim.cmd[[autocmd FileType markdown,tex,text lua require('cmp').setup.buffer({ sources = {{ name = 'latex_symbols' }} })]]
 end
+
 
 -- tool
 function config.vim_dadbod_ui()

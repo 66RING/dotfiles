@@ -242,8 +242,8 @@ function config.lspsaga()
   vim.cmd [[command! Format lua vim.lsp.buf.formatting()]]
 end
 
+
 function config.nvim_cmp()
-  -- vim.cmd [[set completeopt=menu,preview,noinsert]]
   local cmp = require'cmp'
   cmp.setup {
 	snippet = {
@@ -252,27 +252,48 @@ function config.nvim_cmp()
       end,
     },
     mapping = {
-      -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-      -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<Down>'] = cmp.mapping.scroll_docs(-4),
       ['<Up>'] = cmp.mapping.scroll_docs(4),
 	  ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
       ['<C-e>'] = cmp.mapping.complete(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
-    sources = {
-      { name = 'nvim_lsp' },
-      { name = 'vsnip' },
-      { name = 'path' },
-      { name = 'buffer' },
-      -- { name = 'latex_symbols' },
-      -- { name = 'kristijanhusak/vim-dadbod-completion' },
-    }
+	-- formatting = {
+	--   format = function(entry, vim_item)
+	-- 	vim_item.menu = ({
+	-- 	  buffer                = "[Buf]",
+	-- 	  nvim_lsp              = "[LSP]",
+	-- 	  vsnip                 = "[Snip]",
+	-- 	  nvim_lua              = "[Lua]",
+	-- 	  latex_symbols         = "[Tex]",
+	-- 	  vim_dadbod_completion = "[SQL]",
+	-- 	  cmp_tabnine           = "[Tab]",
+	-- 	})[entry.source.name]
+	-- 	return vim_item
+	--   end
+	-- },
+	sources = {
+	  { name = 'nvim_lsp' },
+	  { name = 'path' },
+	  { name = 'buffer' },
+	  { name = 'vsnip'},
+	  { name = 'cmp_tabnine'},
+	  { name = 'latex_symbols'},
+	  { name = 'vim-dadbod-completion'},
+	}
   }
-    -- vim.cmd [[packadd nvim-colorizer.lua]]
+  vim.cmd[[autocmd FileType markdown lua require'cmp'.setup.buffer{completion = {autocomplete=false}}]]
+end
 
-  vim.cmd[[autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })]]
-  vim.cmd[[autocmd FileType markdown,tex,text lua require('cmp').setup.buffer({ sources = {{ name = 'latex_symbols' }} })]]
+function config.cmp_tabnine()
+  local tabnine = require('cmp_tabnine.config')
+  tabnine:setup({
+		  max_lines = 1000;
+		  max_num_results = 20;
+		  sort = true;
+	  run_on_every_keystroke = true;
+	  snippet_placeholder = '🚀';
+  })
 end
 
 

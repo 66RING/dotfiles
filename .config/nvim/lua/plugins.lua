@@ -26,27 +26,46 @@ local function init()
   }
 
   use {"hrsh7th/nvim-cmp",
-    -- event = 'BufReadPre *',
     config = conf.nvim_cmp,
     requires = {
 	  'hrsh7th/cmp-nvim-lsp',
-	  'hrsh7th/cmp-buffer',
-	  'hrsh7th/cmp-vsnip',
-	  'hrsh7th/cmp-path',
-	  {'kristijanhusak/vim-dadbod-completion', opt = true, ft = {'sql', 'mysql', 'plsql'}},
-	  {'kdheepak/cmp-latex-symbols', opt = true, ft = {'markdown', 'tex', 'text'}}
+	  {'hrsh7th/cmp-buffer', event = 'InsertEnter *'},
+	  {'hrsh7th/cmp-path', event = 'InsertEnter *'},
+	  {
+		'tzachar/cmp-tabnine', event = 'InsertEnter *',
+		run='./install.sh', config = conf.cmp_tabnine,
+	  },
+	  {'kristijanhusak/vim-dadbod-completion', ft = {'sql', 'mysql', 'plsql'}},
+	  {'kdheepak/cmp-latex-symbols', ft = {'markdown', 'tex', 'text'}},
+	  {'hrsh7th/cmp-vsnip', event = 'InsertEnter *'}
 	}
   }
-
+  --
+  -- cmp sources
+  --
+ --  use {'tzachar/cmp-tabnine',
+ --    event = 'InsertEnter *',
+	-- run='./install.sh',
+	-- config = conf.cmp_tabnine,
+ --  }
+ --  use{'kristijanhusak/vim-dadbod-completion',
+	-- ft = {'sql', 'mysql', 'plsql'},
+ --  }
+ --  use{'kdheepak/cmp-latex-symbols',
+	-- ft = {'markdown', 'tex', 'text'},
+ --  }
+  -- use {'hrsh7th/cmp-vsnip',
+  --   event = 'InsertEnter *',
+  -- }
   use {'hrsh7th/vim-vsnip',
     event = 'InsertEnter *',
     setup = conf.vim_vsnip
   }
-
   use {'hrsh7th/vim-vsnip-integ',
     event = 'InsertEnter *',
     after = 'vim-vsnip'
   }
+  -- ^^ cmp source ^^
 
 
   -- UI

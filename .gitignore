@@ -77,3 +77,5 @@ nvim/plugin/packer_compiled.lua
 
 .config/kdiff3rc
 .config/dlv
+
+.config/TabNine

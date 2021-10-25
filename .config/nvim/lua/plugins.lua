@@ -31,32 +31,16 @@ local function init()
 	  'hrsh7th/cmp-nvim-lsp',
 	  {'hrsh7th/cmp-buffer', event = 'InsertEnter *'},
 	  {'hrsh7th/cmp-path', event = 'InsertEnter *'},
+	  {'hrsh7th/cmp-calc', event = 'InsertEnter *'},
 	  {
 		'tzachar/cmp-tabnine', event = 'InsertEnter *',
 		run='./install.sh', config = conf.cmp_tabnine,
 	  },
 	  {'kristijanhusak/vim-dadbod-completion', ft = {'sql', 'mysql', 'plsql'}},
-	  {'kdheepak/cmp-latex-symbols', ft = {'markdown', 'tex', 'text'}},
+	  {'kdheepak/cmp-latex-symbols', ft = {'markdown', 'tex', 'text', 'plaintex'}},
 	  {'hrsh7th/cmp-vsnip', event = 'InsertEnter *'}
 	}
   }
-  --
-  -- cmp sources
-  --
- --  use {'tzachar/cmp-tabnine',
- --    event = 'InsertEnter *',
-	-- run='./install.sh',
-	-- config = conf.cmp_tabnine,
- --  }
- --  use{'kristijanhusak/vim-dadbod-completion',
-	-- ft = {'sql', 'mysql', 'plsql'},
- --  }
- --  use{'kdheepak/cmp-latex-symbols',
-	-- ft = {'markdown', 'tex', 'text'},
- --  }
-  -- use {'hrsh7th/cmp-vsnip',
-  --   event = 'InsertEnter *',
-  -- }
   use {'hrsh7th/vim-vsnip',
     event = 'InsertEnter *',
     setup = conf.vim_vsnip
@@ -65,7 +49,6 @@ local function init()
     event = 'InsertEnter *',
     after = 'vim-vsnip'
   }
-  -- ^^ cmp source ^^
 
 
   -- UI
@@ -163,11 +146,16 @@ local function init()
     end
   }
 
-  -- use {'tpope/vim-commentary',
-  --   event = "BufRead *",
-  --   setup = function ()
-  --     vim.cmd [[autocmd FileType apache setlocal commentstring=#\ %s]]
-  --     vim.cmd [[autocmd FileType c,cpp setlocal commentstring=//\ %s]]
+  -- use {'vimwiki/vimwiki',
+  --   ft = {"markdown", "wiki"},
+  --   confit = function ()
+	 --  vim.g.vimwiki_list = {
+		-- {
+		--   path = '~/Documents/Notes/',
+		--   syntax = 'markdown',
+		--   ext = '.md'
+		-- }
+	 --  }
   --   end
   -- }
   use {
@@ -237,14 +225,14 @@ local function init()
    }
  }
 
-  -- fzf.vim
-  use {'junegunn/fzf.vim',
-    cmd = {'Files', 'Rg','History', 'Buffers', 'Commands'},
-    config = conf.fzf_vim,
-    requires = {
-      {'junegunn/fzf'},
-	}
-  }
+ --  -- fzf.vim
+ --  use {'junegunn/fzf.vim',
+ --    cmd = {'Files', 'Rg','History', 'Buffers', 'Commands'},
+ --    config = conf.fzf_vim,
+ --    requires = {
+ --      {'junegunn/fzf'},
+	-- }
+ --  }
 
   -- float term
   -- use {'numToStr/FTerm.nvim', }

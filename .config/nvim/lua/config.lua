@@ -256,6 +256,7 @@ function config.nvim_cmp()
       ['<Up>'] = cmp.mapping.scroll_docs(4),
 	  ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
       ['<C-e>'] = cmp.mapping.complete(),
+      ['<C-c>'] = cmp.mapping.close(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
 	-- formatting = {
@@ -277,6 +278,7 @@ function config.nvim_cmp()
 	  { name = 'path' },
 	  { name = 'buffer' },
 	  { name = 'vsnip'},
+	  { name = 'calc'},
 	  { name = 'cmp_tabnine'},
 	  { name = 'latex_symbols'},
 	  { name = 'vim-dadbod-completion'},

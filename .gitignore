@@ -79,3 +79,5 @@ nvim/plugin/packer_compiled.lua
 .config/dlv
 
 .config/TabNine
+
+.config/go/env

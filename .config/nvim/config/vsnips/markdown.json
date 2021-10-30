@@ -14,5 +14,26 @@
           "# Overview"
         ],
         "description": "hexo blog prefix"
+    },
+    "pps": {
+        "prefix": "pps",
+        "body": [
+          "---",
+          "title: ${1:title}",
+          "date: ${2:datetime}",
+          "tags: ",
+          "- papers",
+          "- ${3:tags}",
+          "mathjax: true",
+          "---\n",
+		  "# Abstract\n",
+		  "# Preface\n",
+		  "# 正文内容\n",
+		  "# 实验设计\n",
+		  "# 亮点与不足\n",
+		  "# What's more\n",
+		  "# 思考\n"
+        ],
+        "description": "paper reading note template"
     }
 }

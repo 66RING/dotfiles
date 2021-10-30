@@ -50,6 +50,12 @@ local function init()
     after = 'vim-vsnip'
   }
 
+  use { "ray-x/lsp_signature.nvim",
+    event = 'InsertEnter *',
+	config = function ()
+	  require "lsp_signature".setup()
+	end
+  }
 
   -- UI
   use {"glepnir/dashboard-nvim",
@@ -158,14 +164,14 @@ local function init()
 	 --  }
   --   end
   -- }
-  use {
-	  'numToStr/Comment.nvim',
-	  event = "BufRead *",
-	  config = function()
-		  require('Comment').setup()
-	  end
+  use {'tpope/vim-commentary',
+    event = "BufRead *",
+    setup = function ()
+      vim.cmd [[autocmd FileType apache setlocal commentstring=#\ %s]]
+      vim.cmd [[autocmd FileType c,cpp setlocal commentstring=//\ %s]]
+      vim.cmd [[autocmd FileType vue,jsx setlocal commentstring=<!--\ %s\ -->]]
+    end
   }
-
 
   -- git
   use {'airblade/vim-gitgutter',
@@ -224,22 +230,6 @@ local function init()
 	 {'nvim-telescope/telescope-fzy-native.nvim', opt = true},
    }
  }
-
- --  -- fzf.vim
- --  use {'junegunn/fzf.vim',
- --    cmd = {'Files', 'Rg','History', 'Buffers', 'Commands'},
- --    config = conf.fzf_vim,
- --    requires = {
- --      {'junegunn/fzf'},
-	-- }
- --  }
-
-  -- float term
-  -- use {'numToStr/FTerm.nvim', }
-
-  -- use {'brooth/far.vim',
-  --   cmd = 'Far',
-  -- }
 
   use {'mg979/vim-visual-multi',
     event = "BufRead *"

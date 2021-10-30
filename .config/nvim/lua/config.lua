@@ -275,11 +275,11 @@ function config.nvim_cmp()
 	-- },
 	sources = {
 	  { name = 'nvim_lsp' },
+	  { name = 'vsnip'},
+	  { name = 'cmp_tabnine'},
 	  { name = 'path' },
 	  { name = 'buffer' },
-	  { name = 'vsnip'},
 	  { name = 'calc'},
-	  { name = 'cmp_tabnine'},
 	  { name = 'latex_symbols'},
 	  { name = 'vim-dadbod-completion'},
 	}

@@ -48,6 +48,7 @@ function M.run_code()
   local cmd = {
     c = "term %:p:r",
     cpp = "term %:p:r",
+    rust = "term %:p:r",
     python = "term python %:p",
     java = "term java %:p:t:r",
     sh = "term bash %:p",
@@ -55,7 +56,7 @@ function M.run_code()
     go = "term go run %:p",
     lua = "term lua %:p",
     processing = "term processing-java --sketch='"..vim.fn.trim(vim.fn.system('pwd')).."' --output='"..vim.fn.trim(vim.fn.system('pwd')).."/bin' --force --run",
-    asm = "term "..require("utils.asm").commands("masm", 'run')
+    asm = "term "..require("utils.asm").commands("masm", 'run'),
   }
   local cmd_without_split = {
     html = "silent ! "..os.getenv("BROWSER").." %:p &",
@@ -82,6 +83,7 @@ function M.build_code()
   local cmd = {
     c = "term gcc -g -l pthread %:p -o %<",
     cpp = "term g++ -g %:p -o %<",
+    rust = "term rustc %:p -o %<",
     java = "term javac %:p",
     typescript = "term tsc %:p",
     lua = "term luac %:p",

@@ -57,7 +57,7 @@ function config.nvim_bufferline()
 	  -- numbers = function(opts)
 		-- return string.format('%s', opts.ordinal)
 	  -- end,
-      -- view = "multiwindow",
+      view = "multiwindow",
     },
     highlights = {
       buffer_selected = {
@@ -257,7 +257,7 @@ function config.nvim_cmp()
 	  ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
       ['<C-e>'] = cmp.mapping.complete(),
       ['<C-c>'] = cmp.mapping.close(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.confirm(),
     },
 	-- formatting = {
 	--   format = function(entry, vim_item)
@@ -284,6 +284,7 @@ function config.nvim_cmp()
 	  { name = 'vim-dadbod-completion'},
 	}
   }
+  vim.cmd[[set completeopt=menu,menuone,noinsert,noselect]]
   vim.cmd[[autocmd FileType markdown lua require'cmp'.setup.buffer{completion = {autocomplete=false}}]]
 end
 

@@ -20,10 +20,10 @@ local function init()
     config = [[require('lsp.lspconfig')]]
   }
 
-  use {"glepnir/lspsaga.nvim",
-    event = "BufRead *",
-    config = conf.lspsaga
-  }
+  -- use {"glepnir/lspsaga.nvim",
+  --   event = "BufRead *",
+  --   config = conf.lspsaga
+  -- }
 
   use {"hrsh7th/nvim-cmp",
     config = conf.nvim_cmp,
@@ -207,6 +207,12 @@ local function init()
       vim.api.nvim_set_keymap('n', 'ss', [[<Plug>(easymotion-sn)]], {})
     end
   }
+
+  use {
+    'diepm/vim-rest-console',
+	ft = {'rest'}
+  }
+
 
   -- use {
   --   'lewis6991/spellsitter.nvim',

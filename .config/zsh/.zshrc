@@ -29,9 +29,9 @@ export CLASSPATH=./:/home/ring/Documents/code/undergraduate_code/algo/princeton-
 #
 
 # eldk-5.6
-# export PATH=$PATH:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin/powerpc-linux:/opt/eldk-5.6/powerpc/sysroots/powerpc-linux/usr/bin/powerpc-linux
-# export ARCH=powerpc
-# export CROSS_COMPILE=powerpc-linux-
+export PATH=$PATH:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin/powerpc-linux:/opt/eldk-5.6/powerpc/sysroots/powerpc-linux/usr/bin/powerpc-linux
+export ARCH=powerpc
+export CROSS_COMPILE=powerpc-linux-
 
 # musl.cc
 # export PATH=$PATH:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/bin:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/powerpc-linux-musl/bin:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/usr/bin

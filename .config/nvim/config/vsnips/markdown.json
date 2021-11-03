@@ -4,6 +4,7 @@
         "body": [
           "---",
           "title: ${1:title}",
+          "author: 66RING",
           "date: ${2:datetime}",
           "tags: ",
           "- ${3:tags}",

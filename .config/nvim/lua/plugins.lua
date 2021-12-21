@@ -50,12 +50,12 @@ local function init()
     after = 'vim-vsnip'
   }
 
-  use { "ray-x/lsp_signature.nvim",
-    event = 'InsertEnter *',
-	config = function ()
-	  require "lsp_signature".setup()
-	end
-  }
+  -- use { "ray-x/lsp_signature.nvim",
+  --   event = 'InsertEnter *',
+	-- config = function ()
+	  -- require "lsp_signature".setup()
+	-- end
+  -- }
 
   -- UI
   use {"glepnir/dashboard-nvim",

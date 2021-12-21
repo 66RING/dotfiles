@@ -57,7 +57,7 @@ noremap <C-d>  <Nop>
 
 " set completeopt=menu,menuone,noselect
 set enc=utf8
-set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+set fileencodings=ucs-bom,utf-8,gbk,cp936,utf-16,big5,gb18030,latin1
 set termencoding=utf-8
 " set colorcolumn=80
 
@@ -79,7 +79,8 @@ set softtabstop=0
 set shiftwidth=4    
 set noexpandtab 
 " set lazyredraw
-set foldmethod=indent
+set foldmethod=manual
+" set foldmethod=indent
 set foldlevel=99
 autocmd FileType json,vue,javascript,css,lua,sh,vim setlocal shiftwidth=2
 let mapleader=" "

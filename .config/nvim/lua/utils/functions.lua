@@ -13,15 +13,15 @@ M.handle_url = function()
   end
 end
 
-M.smart_split = function (cmd)
-  if vim.fn.winnr('$')>=4 or vim.fn.winwidth(0) < 120 then
-    vim.cmd(cmd)
-  else
-    vim.cmd [[setlocal splitright]]
-    vim.cmd [[vsplit]]
-    vim.cmd(cmd)
-  end
-end
+-- M.smart_split = function (cmd)
+--   if vim.fn.winnr('$')>=4 or vim.fn.winwidth(0) < 120 then
+--     vim.cmd(cmd)
+--   else
+--     vim.cmd [[setlocal splitright]]
+--     vim.cmd [[vsplit]]
+--     vim.cmd(cmd)
+--   end
+-- end
 
 --
 -- fcitx auto switch
@@ -48,7 +48,7 @@ function M.run_code()
   local cmd = {
     c = "term %:p:r",
     cpp = "term %:p:r",
-    rust = "term %:p:r",
+    rust = "term cargo run",
     python = "term python %:p",
     java = "term java %:p:t:r",
     sh = "term bash %:p",
@@ -83,7 +83,6 @@ function M.build_code()
   local cmd = {
     c = "term gcc -g -l pthread %:p -o %<",
     cpp = "term g++ -g %:p -o %<",
-    rust = "term rustc %:p -o %<",
     java = "term javac %:p",
     typescript = "term tsc %:p",
     lua = "term luac %:p",
@@ -146,7 +145,7 @@ end
 --
 function M.toggle_term()
   vim.o.splitbelow = true
-  vim.cmd[[5sp]]
+  vim.cmd[[10sp]]
 
   if vim.fn.bufexists(M.term_bufnr) == 1 then
   vim.cmd("buffer "..M.term_bufnr)

@@ -96,7 +96,7 @@ cmd trash ${{
     else
         ans=$2
     fi
-    [ $ans = "y" ] || [ $ans = "Y" ] && mv $fx ~/tem
+    [ $ans = "y" ] || [ $ans = "Y" ] && mv $fx ~/tem/trash
 }}
 
 cmd delete ${{
@@ -304,8 +304,8 @@ map yp cpath
 map pp paste
 map pl paste_soft_link
 map dd cut
-map dD push :delete<space>?[y/N]<space>
-map DD push :trash<space>?[y/N]<space>
+map dD push :trash<space>?[y/N]<space>
+map DD push :delete<space>?[y/N]<space>
 map Q quit_back
 map cw bulk-rename
 map cm push :chmod<space>

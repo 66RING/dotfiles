@@ -19,7 +19,7 @@ alias ll='ls -l'
 alias md='mkdir'
 alias mf='touch'
 # alias qrcp='qrcp -k'
-alias rm='rm -I'
+# alias rm='rm -I'
 alias sctl='systemctl'
 alias bctl='bluetoothctl'
 #

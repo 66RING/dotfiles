@@ -11,6 +11,8 @@ source ~/.config/zsh/aliases.zsh
 export JDTLS_HOME=/usr/share/java/jdtls
 export CLASSPATH=./:/home/ring/Documents/code/undergraduate_code/algo/princeton-algs4/stdlib.jar:/home/ring/Documents/code/undergraduate_code/algo/princeton-algs4/algs4.jar
 
+export PATH="$PATH:/home/ring/Documents/code/undergraduate_code/os/lab/software/pintos/src/utils"
+
 # export JAVA_HOME=/path/to/java_home
 # export WORKSPACE=/path/to/workspace
 
@@ -29,9 +31,9 @@ export CLASSPATH=./:/home/ring/Documents/code/undergraduate_code/algo/princeton-
 #
 
 # eldk-5.6
-export PATH=$PATH:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin/powerpc-linux:/opt/eldk-5.6/powerpc/sysroots/powerpc-linux/usr/bin/powerpc-linux
-export ARCH=powerpc
-export CROSS_COMPILE=powerpc-linux-
+# export PATH=$PATH:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin:/opt/eldk-5.6/powerpc/sysroots/i686-eldk-linux/usr/bin/powerpc-linux:/opt/eldk-5.6/powerpc/sysroots/powerpc-linux/usr/bin/powerpc-linux
+# export ARCH=powerpc
+# export CROSS_COMPILE=powerpc-linux-
 
 # musl.cc
 # export PATH=$PATH:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/bin:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/powerpc-linux-musl/bin:/home/ring/var/toolchain/musl.cc/powerpc-linux-musl-cross/usr/bin
@@ -51,5 +53,8 @@ export CROSS_COMPILE=powerpc-linux-
 # export GCCPREFIX=x86_64-linux-
 # export LD_LIBRARY_PATH=/home/ring/var/toolchain/x86-64-core-i7--glibc--stable/lib
 
+# windows
+# export ARCH=Win32
+# export CROSS_COMPILE=i686-w64-mingw32-
 
 

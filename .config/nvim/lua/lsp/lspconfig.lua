@@ -1,7 +1,7 @@
 -- vim.cmd [[packadd nvim-lspconfig]]
 local lspconfig = require 'lspconfig'
 local lsp_folder = "/home/ring/var/APPs/lsp"
-local api = vim.api
+local util = require 'lspconfig/util'
 
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- use for nvim-cmp
@@ -18,11 +18,12 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap=true, silent=true }
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gd', [[<cmd>lua require("utils.functions").smart_split('lua vim.lsp.buf.definition()')<CR>]], opts)
+  buf_set_keymap('n', 'gd', [[<cmd>lua vim.lsp.buf.definition()<CR>]], opts)
   buf_set_keymap('n', '<LEADER>h', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<LEADER>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<LEADER>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('v', '<LEADER>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+  buf_set_keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<LEADER>-', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<LEADER>=', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -49,7 +50,8 @@ lspconfig.jdtls.setup{
 	JDTLS_HOME = "/usr/share/java/jdtls",
   },
   cmd = {"jdtls"},
-  on_attach = on_attach
+  on_attach = on_attach,
+  root_dir = vim.loop.cwd,
  --  cmd = {
 	-- "java",
 	-- "-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -115,6 +117,9 @@ lspconfig.tsserver.setup({
 
 lspconfig.ccls.setup {
   on_attach = on_attach,
+  root_dir = function (path)
+  	return util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git')(path) or vim.loop.cwd()
+  end,
   init_options = {
 	diagnostics = {
 	  onOpen = -1,
@@ -123,23 +128,21 @@ lspconfig.ccls.setup {
 	},
 	cache = {
 	  directory = os.getenv('HOME').."/.cache/.ccls-cache"
-	}
-  }
+	},
+  },
 }
 
 -- lspconfig.clangd.setup({
 --   cmd = {
 --     "clangd",
 --     "--background-index",
---     "--suggest-missing-includes",
---     "--clang-tidy",
---     "--header-insertion=iwyu",
+--     "--enable-config",
 --   },
 --   on_attach = on_attach,
 --   -- Required for lsp-status
---   init_options = {
---     clangdFileStatus = true
---   },
+--   -- init_options = {
+--   --   clangdFileStatus = true
+--   -- },
 --   -- handlers = nvim_status.extensions.clangd.setup(),
 --   -- capabilities = nvim_status.capabilities,
 -- })

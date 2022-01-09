@@ -23,8 +23,8 @@ function config.nvim_colorizer()
 end
 
 function config.nvim_treesitter()
-  vim.api.nvim_command('set foldmethod=expr')
-  vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
+  -- vim.api.nvim_command('set foldmethod=expr')
+  -- vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
@@ -87,6 +87,7 @@ function config.telescope()
     vim.cmd [[packadd plenary.nvim]]
     vim.cmd [[packadd popup.nvim]]
     vim.cmd [[packadd telescope-fzy-native.nvim]]
+    vim.cmd [[packadd telescope-file-browser.nvim]]
   end
   require('telescope').setup {
     defaults = {
@@ -97,7 +98,7 @@ function config.telescope()
 	  selection_caret = "🛸 ",
 	  sorting_strategy = 'ascending',
       minimum_grep_characters = 2,
-	  file_ignore_patterns = {".git/"},
+	  file_ignore_patterns = {".git/", '%.o'},
       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
       grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
       qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
@@ -109,13 +110,20 @@ function config.telescope()
       }
     },
     extensions = {
-        fzy_native = {
-          override_generic_sorter = false,
-          override_file_sorter = true,
-        },
+	  fzy_native = {
+		override_generic_sorter = false,
+		override_file_sorter = true,
+	  },
+	  file_browser = {
+		-- theme = "ivy",
+	  }
     }
   }
+
+  vim.cmd[[command! -nargs=* TelescopeFB lua require 'telescope'.extensions.file_browser.file_browser({cwd=vim.fn.expand('%:p:h')})]]
+
   require('telescope').load_extension('fzy_native')
+  require("telescope").load_extension "file_browser"
 end
 
 function config.fzf_vim()

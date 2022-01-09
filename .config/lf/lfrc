@@ -109,15 +109,7 @@ cmd delete ${{
 }}
 
 
-# cmd mkdirs $mkdir -p "$(echo $* | tr ' ' '\ ')"
-cmd mkdirs ${{
-    DIR="$(echo $* | tr ' ' '\ ')"
-    mkdir -p $DIR
-    if [ ! -z "$fs" ]; then
-        mv $fs $DIR
-    fi
-    lf -remote "send $id cd $DIR"
-}}
+cmd mkdirs %mkdir -p "$@"
 
 
 cmd mkfiles $nvim $*

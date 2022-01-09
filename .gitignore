@@ -82,3 +82,6 @@ nvim/plugin/packer_compiled.lua
 
 .config/go/env
 .config/gh
+
+.config/yay/config.json
+.config/weixin

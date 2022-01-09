@@ -4,6 +4,7 @@
 #/___|___/_| |_|_|  \___|
 #
 # Author: github@66RING
+# /home/ring/.config/zsh/.zprofile
 source ~/.config/zsh/lf_setting.zsh
 source ~/.config/zsh/plugin.zsh
 source ~/.config/zsh/aliases.zsh
@@ -13,8 +14,10 @@ export CLASSPATH=./:/home/ring/Documents/code/undergraduate_code/algo/princeton-
 
 export PATH="$PATH:/home/ring/Documents/code/undergraduate_code/os/lab/software/pintos/src/utils"
 
-# export JAVA_HOME=/path/to/java_home
-# export WORKSPACE=/path/to/workspace
+# rust
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+export PATH=$PATH:$HOME/.local/share/cargo/bin
 
 
 # if type "fortune" &> /dev/null; then

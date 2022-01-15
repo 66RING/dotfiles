@@ -27,6 +27,9 @@ super + c
 #
 # state/flags
 #
+# close bspwm
+super + shift + q
+	bspc quit
 
 # close window
 super + q

@@ -6,6 +6,8 @@
 #                                   
 # Author: github@66RING
 
+SCRIPTS_DIR='~/.local/bin/scripts'
+
 alias c='clear' \
 	cp='cp -iv' \
 	grep='grep --color' \
@@ -19,14 +21,15 @@ alias c='clear' \
 	mf='touch' \
 	sudo='doas' \
 	sctl='systemctl' \
-	bctl='bluetoothctl' 
+	bctl='bluetoothctl'  \
+	yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 #
 # APPs
 alias yg='you-get' \
 	top='htop' \
 	vim='nvim' \
 	s vi='nvim' \
-	s='neofetch | lolcat' \
+	s='neofetch' \
 	ra='ranger' \
 	lg='lazygit' \
 	tl='proxyon && tldr' \
@@ -39,14 +42,14 @@ alias yg='you-get' \
 #* tools
 #************************
 proxy_servce='http://127.0.0.1:7890'
+prompt2=$SCRIPTS_DIR/global/prompt2
 alias venvon="source $(which virtualenvwrapper.sh)" \
 	proxyon='export http_proxy="$proxy_servce" export https_proxy="$proxy_servce" export use_proxy=yes' \
 	proxyoff='unset http_proxy  unset https_proxy use_proxy' \
-	poweroff="prompt2 'Shutdown?' 'poweroff'" \
-	reboot="prompt2 'Reboot?' 'reboot'"
+	poweroff="$prompt2 'Shutdown?' 'poweroff'" \
+	reboot="$prompt2 'Reboot?' 'reboot'"
 
 # scripts/utils
-SCRIPTS_DIR='~/.local/bin/scripts'
 alias t="http_proxy= https_proxy= $SCRIPTS_DIR/utils/ai_trans_demo.py" \
 	osdoc="$SCRIPTS_DIR/utils/osdoc.sh"
 # alias bc="$SCRIPTS_DIR/utils/calc"

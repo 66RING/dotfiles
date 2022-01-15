@@ -14,15 +14,7 @@ export CLASSPATH=./:/home/ring/Documents/code/undergraduate_code/algo/princeton-
 
 export PATH="$PATH:/home/ring/Documents/code/undergraduate_code/os/lab/software/pintos/src/utils"
 
-# rust
-export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-export PATH=$PATH:$HOME/.local/share/cargo/bin
 
-
-# if type "fortune" &> /dev/null; then
-#     fortune -s
-# fi
 
  
 #  _                   
@@ -59,5 +51,4 @@ export PATH=$PATH:$HOME/.local/share/cargo/bin
 # windows
 # export ARCH=Win32
 # export CROSS_COMPILE=i686-w64-mingw32-
-
 

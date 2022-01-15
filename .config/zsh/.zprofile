@@ -7,13 +7,20 @@
 # Author: github@66RING
 
 
+# XDG prelude
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
+export ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
+
 #========================
 # Global
 #========================
 export PATH="$PATH:$HOME/.local/bin"
 export SUDO_ASKPASS="/$HOME/scripts/global/rofipass"
 export MAIN_HOME="/home/ring"
-export PATH="$PATH:./node_modules/.bin"
 
 
 
@@ -39,9 +46,14 @@ export GOPROXY=https://goproxy.io
 #************************
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export PATH=$PATH:$HOME/.local/share/cargo/bin
 
 
+#************************
+#* Node
+#************************
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 #************************
 #* default env
@@ -63,12 +75,6 @@ export LAUNCHER="rofi"
 #************************
 #* env
 #************************
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-
-export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
-export ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
 
 
 export LESSHISTFILE="-"
@@ -111,11 +117,11 @@ export GDK_DPI_SCALE=1.5
 # export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_SCALE_FACTOR=1.5
 
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export INPUT_METHOD  DEFAULT=fcitx
-export SDL_IM_MODULE DEFAULT=fcitx
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
+export INPUT_METHOD  DEFAULT=fcitx5
+export SDL_IM_MODULE DEFAULT=fcitx5
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"

@@ -181,7 +181,7 @@ lspconfig.gopls.setup {
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   cmd = {
-    lsp_folder.."/lua-language-server/bin/Linux/lua-language-server",
+    lsp_folder.."/lua-language-server/bin/lua-language-server",
     "-E",
     lsp_folder.."/lua-language-server/main.lua"
   },

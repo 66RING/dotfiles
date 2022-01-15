@@ -331,7 +331,8 @@ label-full-font = 6
 [module/cputemp]
 type = internal/temperature
 
-hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon4/temp2_input
+; for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input
 thermal-zone = 0
 
 base-temperature = 20

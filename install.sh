@@ -3,7 +3,7 @@
 STOW_DIR=$(pwd)/..
 TAR_DIR=${HOME}
 
-mkdir -p "$TAR_DIR/.config" \
+mkdir -p \
 	  "$TAR_DIR/.local/bin" \
 	  "$TAR_DIR/.local/share/applications"
 

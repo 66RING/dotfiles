@@ -27,7 +27,9 @@ export MAIN_HOME="/home/ring"
 #************************
 #* python
 #************************
-export WORKON_HOME=~/.virtualenvs
+export WORKON_HOME="$XDG_CONFIG_HOME"/.virtualenvs
+export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 
 
 #************************

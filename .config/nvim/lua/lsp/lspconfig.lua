@@ -183,7 +183,7 @@ lspconfig.sumneko_lua.setup {
   cmd = {
     lsp_folder.."/lua-language-server/bin/lua-language-server",
     "-E",
-    lsp_folder.."/lua-language-server/main.lua"
+    lsp_folder.."/lua-language-server/bin/main.lua"
   },
   root_dir = vim.loop.cwd,
   settings = {

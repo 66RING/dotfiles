@@ -49,14 +49,15 @@ function config.nvim_bufferline()
       buffer_close_icon = '',
       show_buffer_close_icons = false,
       close_icon = "",
-	  -- persist_buffer_sort = true,
-	  -- sort_by = "tabs",
+	  persist_buffer_sort = true,
+	  sort_by = "tabs",
       always_show_bufferline = false,
       separator_style = {'', ''},
 	  indicator_icon = '',
-	  -- numbers = function(opts)
-		-- return string.format('%s', opts.ordinal)
-	  -- end,
+	  numbers = function(opts)
+		return string.format('%s', opts.ordinal)
+	  end,
+	  -- numbers = "ordinal",
       view = "multiwindow",
     },
     highlights = {
@@ -116,6 +117,11 @@ function config.telescope()
 	  },
 	  file_browser = {
 		-- theme = "ivy",
+		mappings = {
+		  ["i"] = {
+			["<C-e>"] = require "telescope".extensions.file_browser.actions.create,
+		  },
+		}
 	  }
     }
   }
@@ -284,6 +290,7 @@ function config.nvim_cmp()
 	sources = {
 	  { name = 'nvim_lsp' },
 	  { name = 'vsnip'},
+	  { name = 'cmp-nvim-lsp-signature-help'},
 	  { name = 'cmp_tabnine'},
 	  { name = 'path' },
 	  { name = 'buffer' },

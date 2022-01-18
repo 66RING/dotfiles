@@ -38,7 +38,8 @@ local function init()
 	  },
 	  {'kristijanhusak/vim-dadbod-completion', ft = {'sql', 'mysql', 'plsql'}},
 	  {'kdheepak/cmp-latex-symbols', ft = {'markdown', 'tex', 'text', 'plaintex'}},
-	  {'hrsh7th/cmp-vsnip', event = 'InsertEnter *'}
+	  {'hrsh7th/cmp-vsnip', event = 'InsertEnter *'},
+	  {'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter *'}
 	}
   }
   use {'hrsh7th/vim-vsnip',

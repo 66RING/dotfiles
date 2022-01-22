@@ -1,5 +1,6 @@
 #! /bin/sh
 
+bluetoothctl power on
 mode=$(echo -e 'Connect\nNew Connection\nDisconnect' | rofi -i -p "bluetoothctl" -dmenu)
 
 if [ "$mode" = "Connect" ]; then

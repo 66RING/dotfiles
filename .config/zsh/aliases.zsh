@@ -51,6 +51,7 @@ alias venvon="source $(which virtualenvwrapper.sh)" \
 
 # scripts/utils
 alias t="http_proxy= https_proxy= $SCRIPTS_DIR/utils/ai_trans_demo.py" \
-	osdoc="$SCRIPTS_DIR/utils/osdoc.sh"
+	osdoc="$SCRIPTS_DIR/utils/osdoc.sh" \
+	topdf="$SCRIPTS_DIR/utils/topdf.sh"
 # shortcut for check syslog in artix
 alias j='f(){DIR=${1:-everything};sudo vim -c "set filetype=messages" /var/log/$DIR.log; unset -f f};f'

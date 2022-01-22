@@ -73,7 +73,7 @@ function config.nvim_bufferline()
   local opts = {silent=true, noremap=true}
   map_key('n', '<LEADER>]', [[:BufferLineCycleNext<CR>]], opts)
   map_key('n', '<LEADER>[', [[:BufferLineCyclePrev<CR>]], opts)
-  map_key('n', '<BS>', [[:lua if vim.v.count~=0 then require"bufferline".go_to_buffer(vim.v.count) else vim.cmd("buffer #")end<CR>]], {silent=true})
+  map_key('n', '<BS>', [[:<c-u>lua if vim.v.count~=0 then vim.cmd("BufferLineGoToBuffer "..vim.v.count) else vim.cmd("buffer #")end<CR>]], opts)
   map_key('n', 'r<BS>', [[:lua if vim.tbl_count(vim.fn.getbufinfo({buflisted=true}))>1 then vim.cmd("bd") end <CR>]], opts)
 end
 
@@ -120,6 +120,7 @@ function config.telescope()
 		mappings = {
 		  ["i"] = {
 			["<C-e>"] = require "telescope".extensions.file_browser.actions.create,
+			["<C-r>"] = require "telescope".extensions.file_browser.actions.rename,
 		  },
 		}
 	  }

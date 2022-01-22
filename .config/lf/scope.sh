@@ -151,7 +151,7 @@ handle_mime() {
 
 handle_fallback() {
     echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}"
-    exit 1
+    # exit 1
 }
 
 
@@ -159,4 +159,4 @@ handle_extension
 handle_mime "$@"
 handle_fallback
 
-exit 1
+ # exit 1

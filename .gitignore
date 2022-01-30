@@ -86,3 +86,7 @@ nvim/plugin/packer_compiled.lua
 .config/yay/config.json
 .config/weixin
 .config/.virtualenvs
+.config/java/.userPrefs
+.config/elinks
+.config/gnupg
+.config/Motrix

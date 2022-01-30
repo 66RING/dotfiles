@@ -100,6 +100,8 @@ export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export WINEARCH=win32
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 #
 # Virsh

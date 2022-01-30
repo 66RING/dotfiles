@@ -259,7 +259,11 @@ end
 
 
 function config.nvim_cmp()
+  if not packer_plugins['lspkind-nvim'].loaded then
+    vim.cmd [[packadd lspkind-nvim]]
+  end
   local cmp = require'cmp'
+  local lspkind = require'lspkind'
   cmp.setup {
 	snippet = {
       expand = function(args)
@@ -274,6 +278,9 @@ function config.nvim_cmp()
       ['<C-c>'] = cmp.mapping.close(),
       ['<CR>'] = cmp.mapping.confirm(),
     },
+	formatting = {
+	  format = lspkind.cmp_format({with_text = false, maxwidth = 50})
+	},
 	-- formatting = {
 	--   format = function(entry, vim_item)
 	-- 	vim_item.menu = ({

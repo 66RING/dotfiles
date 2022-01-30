@@ -258,4 +258,6 @@ if has('nvim')
 endif
 
 
+" graphviz
+
 " /home/ring/.config/nvim/lua/plugins.lua

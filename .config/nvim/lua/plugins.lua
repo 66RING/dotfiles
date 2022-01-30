@@ -28,6 +28,7 @@ local function init()
   use {"hrsh7th/nvim-cmp",
     config = conf.nvim_cmp,
     requires = {
+	  {'onsails/lspkind-nvim', opt=true},
 	  'hrsh7th/cmp-nvim-lsp',
 	  {'hrsh7th/cmp-buffer', event = 'InsertEnter *'},
 	  {'hrsh7th/cmp-path', event = 'InsertEnter *'},
@@ -125,12 +126,12 @@ local function init()
   use {'itchyny/vim-cursorword',
     event={'BufReadPre *', 'BufNewFile *'}
   }
-  use {'romgrk/nvim-treesitter-context',
-    event = 'BufRead *',
-	config = function ()
-      vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
-	end
-  }
+  -- use {'romgrk/nvim-treesitter-context',
+  --   event = 'BufRead *',
+	-- config = function ()
+  --     vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
+	-- end
+  -- }
 
 
 
@@ -214,7 +215,37 @@ local function init()
     'diepm/vim-rest-console',
 	ft = {'rest'}
   }
-
+  -- use {
+	-- "NTBBloodbath/rest.nvim",
+	-- config = function()
+	  -- if not packer_plugins['plenary.nvim'].loaded then
+		-- vim.cmd [[packadd plenary.nvim]]
+	  -- end
+	  -- require("rest-nvim").setup({
+		-- -- Open request results in a horizontal split
+		-- result_split_horizontal = false,
+		-- -- Skip SSL verification, useful for unknown certificates
+		-- skip_ssl_verification = false,
+		-- -- Highlight request on run
+		-- highlight = {
+		  -- enabled = true,
+		  -- timeout = 150,
+		-- },
+		-- result = {
+		  -- -- toggle showing URL, HTTP info, headers at top the of result window
+		  -- show_url = true,
+		  -- show_http_info = true,
+		  -- show_headers = true,
+		-- },
+		-- -- Jump to request line on run
+		-- jump_to_request = false,
+		-- env_file = '.env',
+		-- custom_dynamic_variables = {},
+		-- yank_dry_run = true,
+		-- ensure_installed = { "http", "json" }
+	  -- })
+	-- end
+  -- }
 
   -- use {
   --   'lewis6991/spellsitter.nvim',

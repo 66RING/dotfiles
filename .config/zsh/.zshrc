@@ -14,7 +14,9 @@ export CLASSPATH=./:/home/ring/Documents/code/undergraduate_code/algo/princeton-
 
 export PATH="$PATH:/home/ring/Documents/code/undergraduate_code/os/lab/software/pintos/src/utils"
 
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 
  

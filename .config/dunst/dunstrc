@@ -23,7 +23,7 @@
     separator_color = auto
     sort = yes
     idle_threshold = 120
-    font = Monospace 30
+    font = Monospace 20
     line_height = 0
     markup = full
 

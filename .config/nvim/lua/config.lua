@@ -281,20 +281,6 @@ function config.nvim_cmp()
 	formatting = {
 	  format = lspkind.cmp_format({with_text = false, maxwidth = 50})
 	},
-	-- formatting = {
-	--   format = function(entry, vim_item)
-	-- 	vim_item.menu = ({
-	-- 	  buffer                = "[Buf]",
-	-- 	  nvim_lsp              = "[LSP]",
-	-- 	  vsnip                 = "[Snip]",
-	-- 	  nvim_lua              = "[Lua]",
-	-- 	  latex_symbols         = "[Tex]",
-	-- 	  vim_dadbod_completion = "[SQL]",
-	-- 	  cmp_tabnine           = "[Tab]",
-	-- 	})[entry.source.name]
-	-- 	return vim_item
-	--   end
-	-- },
 	sources = {
 	  { name = 'nvim_lsp' },
 	  { name = 'vsnip'},

@@ -7,6 +7,8 @@
 "                                 
 " Author: 66RING@github.com
 
+" Useful tools:
+" -	https://github.com/d0c-s4vage/lookatme
 
 "========================
 " Disable vim distribution plugins

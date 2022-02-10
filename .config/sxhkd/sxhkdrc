@@ -54,7 +54,7 @@ super + f
 
 # hide polybar
 super + p
-    ~/.local/bin/scripts/bspwm/hidebar
+    ~/.local/bin/scripts/bspwm/toggle_bar_autohide
 
 
 #

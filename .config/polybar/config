@@ -41,7 +41,9 @@ success = #50fa7b
 notice = #f1fa8c
 warning = #ff5555
 
-background = #8c000000
+; first Byte as alpha
+; background = #82000000
+background = #00000000
 foreground = #ffffff
 background-alt = #444
 foreground-alt = #6272a4

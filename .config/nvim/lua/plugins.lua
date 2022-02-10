@@ -212,6 +212,9 @@ local function init()
   }
 
   use {
+	'tversteeg/registers.nvim',
+  }
+  use {
     'diepm/vim-rest-console',
 	ft = {'rest'}
   }

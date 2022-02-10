@@ -18,7 +18,7 @@ if type "xrandr" &> /dev/null; then
         IsPrimary=1
     else
         bspc monitor $m -d 1 2 3 4 5 6 7 8 9 10
-        SUDO_ASKPASS="/home/ring/scripts/global/rofipass.sh" MONITOR=$m polybar --reload secondary >> /tmp/polybar1.log 2>&1 &
+        SUDO_ASKPASS="$HOME/.local/bin/scripts/global/rofipass" MONITOR=$m polybar --reload secondary >> /tmp/polybar1.log 2>&1 &
     fi
   done
 else

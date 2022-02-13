@@ -15,10 +15,6 @@ export CLASSPATH=./:/home/ring/Documents/code/undergraduate_code/algo/princeton-
 export PATH="$PATH:/home/ring/Documents/code/undergraduate_code/os/lab/software/pintos/src/utils"
 
 
-export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-
-
  
 #  _                   
 # | |_ _ __ ___  _ __  

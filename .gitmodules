@@ -1,0 +1,3 @@
+[submodule ".local/bin/scripts"]
+	path = .local/bin/scripts
+	url = https://github.com/66RING/scripts

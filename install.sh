@@ -13,6 +13,8 @@
 # stow -t "$TAR_DIR" -d "$STOW_DIR" -D dotfiles
 
 
+git submodule update --init --recursive
+
 mkdir -p \
 	  "$HOME/.local/bin" \
 	  "$HOME/.local/share/applications"

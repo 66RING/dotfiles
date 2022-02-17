@@ -7,7 +7,12 @@
 
 <img src="./.github/images/vim_and_work_flow.png">Work Flow</img>
 
-<img src="./.github/images/dashboard.png">Dashboard</img>
+<img src="./.github/images/dashboard.png">vim</img>
+
+
+## Install
+
+- `./install.sh`
 
 
 ## My config
@@ -29,17 +34,10 @@
 - lf
 - bspwm
 - polybar
-    * `super + p` to toggle polybar. [script repo](https://github.com/66RING/scripts) is needed
+    * `super + p` to toggle polybar(auto hide after 5s). [script repo](https://github.com/66RING/scripts) is needed
 - mpv
     * plugins
         + `<shift> + <enter>`to pop up mpv-playlistmanager
         + \` key to pop up mpv-recent
 - ...
-
-
-## Install
-
-Dependency: stow
-
-- `./install.sh`
 

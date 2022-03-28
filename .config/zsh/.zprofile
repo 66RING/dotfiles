@@ -56,6 +56,7 @@ export PATH=$PATH:$HOME/.local/share/cargo/bin
 #* Node
 #************************
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export PATH=$PATH:$HOME/.local/share/npm/bin
 
 
 #************************

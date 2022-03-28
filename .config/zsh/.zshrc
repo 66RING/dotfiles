@@ -12,7 +12,6 @@ source ~/.config/zsh/aliases.zsh
 export JDTLS_HOME=/usr/share/java/jdtls
 export CLASSPATH=./:/home/ring/Documents/code/undergraduate_code/algo/princeton-algs4/stdlib.jar:/home/ring/Documents/code/undergraduate_code/algo/princeton-algs4/algs4.jar
 
-export PATH="$PATH:/home/ring/Documents/code/undergraduate_code/os/lab/software/pintos/src/utils"
 
 
  

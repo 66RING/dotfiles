@@ -33,10 +33,10 @@ local function init()
 	  {'hrsh7th/cmp-buffer', event = 'InsertEnter *'},
 	  {'hrsh7th/cmp-path', event = 'InsertEnter *'},
 	  {'hrsh7th/cmp-calc', event = 'InsertEnter *'},
-	  {
-		'tzachar/cmp-tabnine', event = 'InsertEnter *',
-		run='./install.sh', config = conf.cmp_tabnine,
-	  },
+	  -- {
+		-- 'tzachar/cmp-tabnine', event = 'InsertEnter *',
+		-- run='./install.sh', config = conf.cmp_tabnine,
+	  -- },
 	  {'kristijanhusak/vim-dadbod-completion', ft = {'sql', 'mysql', 'plsql'}},
 	  {'kdheepak/cmp-latex-symbols', ft = {'markdown', 'tex', 'text', 'plaintex'}},
 	  {'hrsh7th/cmp-vsnip', event = 'InsertEnter *'},
@@ -292,7 +292,7 @@ local function init()
     setup = function ()
       -- vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
       vim.g.vista_default_executive = 'ctags'
-      vim.g.vista_echo_cursor_strategy = 'floating_win'
+      vim.g.vista_echo_cursor_strategy = 'echo'
       vim.g.vista_vimwiki_executive = 'markdown'
       vim.g.vista_disable_statusline = 1
       vim.g['vista#renderer#enable_icon'] = 1
@@ -352,9 +352,9 @@ local function init()
     cmd = "MaximizerToggle",
     setup = function()
       local opts = {silent=true, noremap=true}
-      vim.api.nvim_set_keymap('n', '<C-x>', ":MaximizerToggle<CR>", opts)
-      vim.api.nvim_set_keymap('i', '<C-x>', "<ESC>:MaximizerToggle<CR>", opts)
-      vim.api.nvim_set_keymap('v', '<C-x>', "<C-o>:MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('n', '<C-z>', ":MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('i', '<C-z>', "<ESC>:MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('v', '<C-z>', "<C-o>:MaximizerToggle<CR>", opts)
     end
   }
 

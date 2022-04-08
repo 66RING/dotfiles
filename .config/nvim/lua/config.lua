@@ -189,7 +189,8 @@ function config.dashboard()
     --     command = 'Telescope file_browser hidden=true' },
   }
   vim.g.dashboard_custom_footer = {
-	"STAY HUNGRY, STAY FOOLISH",
+	-- "STAY HUNGRY, STAY FOOLISH",
+	"Fabrice",
 	-- " 		       			— Steve Jobs"
 	-- "  THE PEOPLE WHO ARE CRAZY ENOUGH",
 	-- "TO THINK THEY CAN CHANGE THE WORLD",

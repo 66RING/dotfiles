@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Audio Utils
+Exec=sh -c "$HOME/.local/bin/scripts/utils/audio_utils.sh"
+Terminal=false
+Type=Application
+
+

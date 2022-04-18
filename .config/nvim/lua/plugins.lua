@@ -109,6 +109,7 @@ local function init()
   use {'akinsho/nvim-bufferline.lua',
     config = conf.nvim_bufferline,
     after = 'zephyr-nvim',
+	lock = true,
     requires = {'kyazdani42/nvim-web-devicons'}
   }
 
@@ -171,6 +172,7 @@ local function init()
     event = "BufRead *",
     setup = function ()
       vim.cmd [[autocmd FileType apache setlocal commentstring=#\ %s]]
+      vim.cmd [[autocmd FileType vhdl setlocal commentstring=--\ %s]]
       vim.cmd [[autocmd FileType c,cpp setlocal commentstring=//\ %s]]
       vim.cmd [[autocmd FileType vue,jsx setlocal commentstring=<!--\ %s\ -->]]
     end
@@ -341,12 +343,12 @@ local function init()
   -- ul>li#item$@3*5  start counting from 3, -3 as  reverse
   -- emmet ket + d, D, n, N, m, k, j, /, a
 
-  use {'AndrewRadev/tagalong.vim',
-    ft = {"html", "vue", 'wxml'},
-    setup = function ()
-      vim.g.tagalong_additional_filetypes = {'vue', 'wxml'}
-    end
-  }
+  -- use {'AndrewRadev/tagalong.vim',
+  --   ft = {"html", "vue", 'wxml'},
+  --   setup = function ()
+  --     vim.g.tagalong_additional_filetypes = {'vue', 'wxml'}
+  --   end
+  -- }
 
   use {'szw/vim-maximizer',
     cmd = "MaximizerToggle",

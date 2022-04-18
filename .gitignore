@@ -97,3 +97,4 @@ nvim/plugin/packer_compiled.lua
 .config/Slack
 .config/Vulcan/User Data
 .config/vulcan
+.config/discord

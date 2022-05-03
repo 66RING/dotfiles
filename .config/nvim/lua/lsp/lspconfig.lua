@@ -121,6 +121,7 @@ lspconfig.ccls.setup {
   	return util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git')(path) or vim.loop.cwd()
   end,
   init_options = {
+    compilationDatabaseDirectory = "build";
 	diagnostics = {
 	  onOpen = -1,
 	  onChange = -1,

@@ -77,6 +77,62 @@ function config.nvim_bufferline()
   map_key('n', 'r<BS>', [[:lua if vim.tbl_count(vim.fn.getbufinfo({buflisted=true}))>1 then vim.cmd("bd") end <CR>]], opts)
 end
 
+function config.symbols_outline()
+  vim.g.symbols_outline = {
+	highlight_hovered_item = true,
+	show_guides = true,
+	auto_preview = false,
+	position = 'right',
+	relative_width = true,
+	width = 25,
+	auto_close = false,
+	show_numbers = false,
+	show_relative_numbers = false,
+	show_symbol_details = false,
+	preview_bg_highlight = 'Pmenu',
+	keymaps = { -- These keymaps can be a string or a table for multiple keys
+	  close = {"<Esc>", "q"},
+	  goto_location = "<Cr>",
+	  focus_location = "o",
+	  hover_symbol = "<C-space>",
+	  toggle_preview = "O",
+	  rename_symbol = "r",
+	  code_actions = "<Nop>",
+	},
+	lsp_blacklist = {},
+	symbol_blacklist = {},
+	symbols = {
+	  File = {icon = "", hl = "TSURI"},
+	  Module = {icon = "", hl = "TSNamespace"},
+	  Namespace = {icon = "", hl = "TSNamespace"},
+	  Package = {icon = "", hl = "TSNamespace"},
+	  Class = {icon = "𝓒", hl = "TSType"},
+	  Method = {icon = "ƒ", hl = "TSMethod"},
+	  Property = {icon = "", hl = "TSMethod"},
+	  Field = {icon = "", hl = "TSField"},
+	  Constructor = {icon = "", hl = "TSConstructor"},
+	  Enum = {icon = "ℰ", hl = "TSType"},
+	  Interface = {icon = "ﰮ", hl = "TSType"},
+	  Function = {icon = "", hl = "TSFunction"},
+	  Variable = {icon = "", hl = "TSConstant"},
+	  Constant = {icon = "", hl = "TSConstant"},
+	  String = {icon = "𝓐", hl = "TSString"},
+	  Number = {icon = "#", hl = "TSNumber"},
+	  Boolean = {icon = "⊨", hl = "TSBoolean"},
+	  Array = {icon = "", hl = "TSConstant"},
+	  Object = {icon = "⦿", hl = "TSType"},
+	  Key = {icon = "🔐", hl = "TSType"},
+	  Null = {icon = "NULL", hl = "TSType"},
+	  EnumMember = {icon = "", hl = "TSField"},
+	  Struct = {icon = "𝓢", hl = "TSType"},
+	  Event = {icon = "🗲", hl = "TSType"},
+	  Operator = {icon = "+", hl = "TSOperator"},
+	  TypeParameter = {icon = "𝙏", hl = "TSParameter"}
+	}
+  }
+  vim.api.nvim_set_keymap('n', 'T', [[:<C-u>SymbolsOutline<CR>]], {noremap=true})
+end
+
 
 --
 -- editor
@@ -89,6 +145,7 @@ function config.telescope()
     vim.cmd [[packadd popup.nvim]]
     vim.cmd [[packadd telescope-fzy-native.nvim]]
     vim.cmd [[packadd telescope-file-browser.nvim]]
+    -- vim.cmd [[packadd project.nvim]]
   end
   require('telescope').setup {
     defaults = {
@@ -130,7 +187,8 @@ function config.telescope()
   vim.cmd[[command! -nargs=* TelescopeFB lua require 'telescope'.extensions.file_browser.file_browser({cwd=vim.fn.expand('%:p:h')})]]
 
   require('telescope').load_extension('fzy_native')
-  require("telescope").load_extension "file_browser"
+  require("telescope").load_extension('file_browser')
+  -- require("telescope").load_extension('projects')
 end
 
 function config.fzf_vim()
@@ -139,8 +197,36 @@ function config.fzf_vim()
   vim.cmd[[command! -bang -nargs=* Rgpwd call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': expand('%:p:h')}), <bang>0)]]
 end
 
-function config.dashboard()
-  vim.g.dashboard_custom_header = {
+-- session manager
+function config.neovim_session_manager()
+  if not packer_plugins['plenary.nvim'].loaded then
+    vim.cmd [[packadd plenary.nvim]]
+  end
+
+  local Path = require('plenary.path')
+  local status_ok, session_manager = pcall(require, "session_manager")
+  if not status_ok then
+	return
+  end
+
+  session_manager.setup({
+	sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'), -- The directory where the session files will be saved.
+	path_replacer = '__', -- The character to which the path separator will be replaced for session files.
+	colon_replacer = '++', -- The character to which the colon symbol will be replaced for session files.
+	autoload_mode = require('session_manager.config').AutoloadMode.Disabled, -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession
+	autosave_last_session = true, -- Automatically save last session on exit and on session switch.
+	autosave_ignore_not_normal = true, -- Plugin will not save a session when no buffers are opened, or all of them aren't writable or listed.
+	autosave_ignore_filetypes = { -- All buffers of these file types will be closed before the session is saved.
+	  'gitcommit',
+	},
+	autosave_only_in_session = false, -- Always autosaves session. If true, only autosaves after a session is active.
+	max_path_length = 80,  -- Shorten the display path if length exceeds this threshold. Use 0 if don't want to shorten the path at all.
+  })
+end
+
+function config.alpha_nvim()
+  local dashboard = require("alpha.themes.dashboard")
+  dashboard.section.header.val = {
     '',
     '',
     '',
@@ -168,37 +254,26 @@ function config.dashboard()
 	'⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠂⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
     '',
   }
-
-  -- vim.cmd [[autocmd FileType dashboard set laststatus=0 | autocmd BufLeave <buffer> set laststatus=2]]
-  -- vim.cmd [[autocmd FileType dashboard set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2]]
-  vim.cmd [[autocmd FileType dashboard nnoremap <silent><buffer> e :exec "enew"<CR>]]
-  vim.cmd [[autocmd FileType dashboard hi Cursor blend=100 | set guicursor+=a:Cursor/Cursor | autocmd BufLeave <buffer> set guicursor-=a:Cursor/Cursor]]
-
-  vim.g.dashboard_custom_section={
-    empty_buffer = {
-        description = {},
-        command = 'enew' },
-    -- empty_buffer = {
-    --     description = {' Empty Buffer'},
-    --     command = 'enew' },
-    -- find_history = {
-    --     description= {'ﭯ History     '},
-    --     command = 'Telescope oldfiles' },
-    -- find_file = {
-    --     description = {' File Browser'},
-    --     command = 'Telescope file_browser hidden=true' },
+  dashboard.section.buttons.val = {
+	{ type = "button", val = "" },
   }
-  vim.g.dashboard_custom_footer = {
-	-- "STAY HUNGRY, STAY FOOLISH",
-	"Fabrice",
-	-- " 		       			— Steve Jobs"
-	-- "  THE PEOPLE WHO ARE CRAZY ENOUGH",
-	-- "TO THINK THEY CAN CHANGE THE WORLD",
-	-- "  		  THE ONES WHO DO.",
-	-- " 		       			— Steve Jobs"
-  }
+  dashboard.section.footer.val = "Fabrice!"
+  -- "STAY HUNGRY, STAY FOOLISH",
+  -- " 		       			— Steve Jobs"
+  -- "  THE PEOPLE WHO ARE CRAZY ENOUGH",
+  -- "TO THINK THEY CAN CHANGE THE WORLD",
+  -- "  		  THE ONES WHO DO.",
+  -- " 		       			— Steve Jobs"
+
+  dashboard.section.header.opts.hl = "Title"
+  dashboard.section.buttons.opts.hl = "Keyword"
+  dashboard.section.footer.opts.hl = "ErrorMsg"
+
+  require'alpha'.setup(dashboard.opts)
+
+  vim.cmd [[autocmd FileType alpha nnoremap <silent><buffer> e :exec "enew"<CR>]]
+  vim.cmd [[autocmd FileType alpha hi Cursor blend=100 | set guicursor+=a:Cursor/Cursor | autocmd BufLeave <buffer> set guicursor-=a:Cursor/Cursor]]
 end
-
 
 --
 -- lang

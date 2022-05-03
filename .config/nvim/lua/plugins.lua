@@ -12,6 +12,9 @@ local function init()
   -- local use_rocks = packer.use_rocks
   packer.reset()
 
+  -- Speed up loading Lua modules in Neovim to improve startup time
+  use "lewis6991/impatient.nvim"
+
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim', opt = true}
 
@@ -20,6 +23,8 @@ local function init()
     config = [[require('lsp.lspconfig')]]
   }
 
+  use {'nvim-lua/popup.nvim', opt = true}
+  use {'nvim-lua/plenary.nvim', opt = true}
   -- use {"glepnir/lspsaga.nvim",
   --   event = "BufRead *",
   --   config = conf.lspsaga
@@ -60,8 +65,8 @@ local function init()
   -- }
 
   -- UI
-  use {"glepnir/dashboard-nvim",
-    config = conf.dashboard
+  use {"goolord/alpha-nvim",
+    config = conf.alpha_nvim,
   }
 
   use {"glepnir/zephyr-nvim",
@@ -127,6 +132,22 @@ local function init()
   use {'itchyny/vim-cursorword',
     event={'BufReadPre *', 'BufNewFile *'}
   }
+  use {
+    "folke/todo-comments.nvim",
+    event = "BufReadPost *",
+    config = function()
+  	  -- with `:` after
+  	  require("todo-comments").setup {}
+    end
+  }
+
+  -- use 'folke/trouble.nvim'
+  -- use 'ldelossa/litee.nvim'
+  -- use 'ldelossa/litee-calltree.nvim'
+  -- use {'stevearc/dressing.nvim',
+
+  --   event={'BufReadPre *', 'BufNewFile *'}
+  -- }
   -- use {'romgrk/nvim-treesitter-context',
   --   event = 'BufRead *',
 	-- config = function ()
@@ -145,7 +166,9 @@ local function init()
 	  vim.g.mkdp_auto_close = 0
 	  vim.g.mkdp_browser = os.getenv("BROWSER")
 	end,
-    run = 'sh -c "cd app && yarn install"' }
+    run = 'sh -c "cd app && yarn install"'
+  }
+
   use {'dhruvasagar/vim-table-mode',
     ft = 'markdown'
   }
@@ -195,6 +218,19 @@ local function init()
   }
 
   -- editor
+  -- ghost text for browser
+  use {'raghur/vim-ghost',
+	cmd = 'GhostStart',
+	run = ':GhostInstall',
+  }
+
+  -- use {"Shatur/neovim-session-manager",
+	-- -- cmd = {'SessionManager', 'SessionManager!'},
+	-- -- config = conf.neovim_session_manager,
+	-- setup = conf.neovim_session_manager
+  -- }
+  -- use {'windwp/nvim-spectre'}
+
   use {'junegunn/vim-easy-align' ,
     keys = '<Plug>(EasyAlign)',
     setup = function()
@@ -202,9 +238,13 @@ local function init()
       vim.api.nvim_set_keymap('n', 'ga', [[<Plug>(EasyAlign)]], {})
     end
   }
+
+  -- enhance `.` command
+  use {"tpope/vim-repeat"}
   use {'tpope/vim-surround',
     event = "BufRead *"
   } -- type ysiw' i sur in word '' or type cs'` to change 'word' to `word` or 'ds' del sur or 'yss'' for sur line h h-> 'h h'
+  -- TODO cool https://github.com/phaazon/hop.nvim
   use {'easymotion/vim-easymotion',
     keys = '<Plug>(easymotion-sn)',
     setup = function()
@@ -269,10 +309,10 @@ local function init()
    cmd = {'Telescope', 'TelescopeFB'},
    config = conf.telescope,
    requires = {
-	 {'nvim-lua/popup.nvim', opt = true},
-	 {'nvim-lua/plenary.nvim', opt = true},
 	 {'nvim-telescope/telescope-fzy-native.nvim', opt = true},
 	 {'nvim-telescope/telescope-file-browser.nvim', opt = true},
+	 -- {'ahmedkhalf/project.nvim', opt = true, config=function()
+		-- require("project_nvim").setup {}end },
    }
  }
 
@@ -289,25 +329,30 @@ local function init()
     end
   }
 
-  use {'liuchengxu/vista.vim',
-    cmd = 'Vista',
-    setup = function ()
-      -- vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
-      vim.g.vista_default_executive = 'ctags'
-      vim.g.vista_echo_cursor_strategy = 'echo'
-      vim.g.vista_vimwiki_executive = 'markdown'
-      vim.g.vista_disable_statusline = 1
-      vim.g['vista#renderer#enable_icon'] = 1
-      vim.g.vista_executive_for = {
-          vimwiki =  'markdown',
-          pandoc = 'markdown',
-          markdown = 'toc',
-          typescript = 'nvim_lsp',
-          typescriptreact =  'nvim_lsp',
-        }
+  -- use {'liuchengxu/vista.vim',
+  --   cmd = 'Vista',
+  --   setup = function ()
+  --     -- vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
+  --     vim.g.vista_default_executive = 'ctags'
+  --     vim.g.vista_echo_cursor_strategy = 'echo'
+  --     vim.g.vista_vimwiki_executive = 'markdown'
+  --     vim.g.vista_disable_statusline = 1
+  --     vim.g['vista#renderer#enable_icon'] = 1
+  --     vim.g.vista_executive_for = {
+  --         vimwiki =  'markdown',
+  --         pandoc = 'markdown',
+  --         markdown = 'toc',
+  --         typescript = 'nvim_lsp',
+  --         typescriptreact =  'nvim_lsp',
+  --       }
 
-      vim.api.nvim_set_keymap('n', 'T', [[:<C-u>Vista!!<CR>]], {noremap=true})
-    end
+  --     vim.api.nvim_set_keymap('n', 'T', [[:<C-u>Vista!!<CR>]], {noremap=true})
+  --   end
+  -- }
+
+  use {'simrat39/symbols-outline.nvim',
+	cmd = 'SymbolsOutline',
+	setup = conf.symbols_outline,
   }
 
   use {'Yggdroot/indentLine',

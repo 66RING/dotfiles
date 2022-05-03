@@ -20,6 +20,7 @@ map_key('n', '<C-h>', "<cmd>Telescope oldfiles<CR>", {noremap=true})
 -- map_key('n', 'tT', "<cmd>lua require 'telescope'.extensions.file_browser.file_browser({cwd=vim.fn.expand('%:p:h')})<CR>", {noremap=true})
 map_key('n', 'tT', "<cmd>TelescopeFB<CR>", {noremap=true})
 map_key('n', 'tt', "<cmd>Telescope buffers<CR>", {noremap=true})
+-- map_key('n', 'tp', "<cmd>Telescope projects<CR>", {noremap=true})
 map_key('n', '<LEADER>;', "<cmd>Telescope command_history<CR>", {noremap=true})
 map_key('n', '<LEADER>:', "<cmd>Telescope commands<CR>", {noremap=true})
 

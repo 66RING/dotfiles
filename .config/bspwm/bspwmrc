@@ -2,6 +2,7 @@
 
 $HOME/.local/bin/scripts/autostart &
 $HOME/.config/polybar/launch &
+$HOME/.local/bin/scripts/bspwm/edge_event_showbar &
 sxhkd &
 
 # bspc monitor -d 1 2 3 4 5 6 7 8 9 10  
@@ -23,11 +24,16 @@ bspc config merge_overlapping_monitors true
 # When focusing a monitor, put the pointer at its center.
 
 
+# bspc config external_rules_command $HOME/.config/bspwm/external_rules
+
+
 bspc rule -a Screenkey  manage=off
 
 bspc rule -a scratchpad sticky=on state=floating
 bspc rule -a qq         sticky=on
 bspc rule -a Zathura    state=tiled
+
+bspc rule -a '*:qemu:*' 		state=floating
 
 
 # bspc rule -a VirtualBox\ Manager desktop='^10'

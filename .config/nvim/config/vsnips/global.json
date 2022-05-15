@@ -9,7 +9,7 @@
 	"github": {
 		"prefix": "gh",
 		"body": [
-			"https://github.com/66RING"
+			"https://github.com/66RING/${1:repo}/tree/${2:branch}/"
 		],
 		"description": "66RING github url"
 	},

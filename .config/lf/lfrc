@@ -49,7 +49,7 @@ cmd open ${{
             setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
         #office things
         image/vnd.djvu|application/pdf|application/epub*)
-            setsid -f evince $fx >/dev/null 2>&1 ;;
+            setsid -f okular $fx >/dev/null 2>&1 ;;
             # setsid -f env QT_SCALE_FACTOR= wpspdf $fx >/dev/null 2>&1 ;;
         application/ppt|application/vnd.ms-powerpoint|application/*office*presentation)
             setsid -f env QT_SCALE_FACTOR= wpp $fx >/dev/null 2>&1 ;;

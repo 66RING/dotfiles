@@ -31,7 +31,7 @@ __lf() {
 lfcd () {
     tmp="$(mktemp)"
     export LF_BACK="$(pwd)"
-    (__lf -last-dir-path="$tmp" "$@")
+    (GOTRACEBACK=crash __lf -last-dir-path="$tmp" "$@")
     if [ -f "$tmp" ]; then
         dir="$(cat "$tmp")"
         rm -f "$tmp"

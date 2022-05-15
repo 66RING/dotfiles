@@ -99,3 +99,7 @@ nvim/plugin/packer_compiled.lua
 .config/vulcan
 .config/discord
 .config/Vampire_Survivors
+
+.config/ranger/plugins
+
+.config/LCEDA

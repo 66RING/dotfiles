@@ -19,5 +19,14 @@
             "https://raw.githubusercontent.com/66RING/66RING/master/.github"
 		],
 		"description": "personal raw data"
+	},
+	"cmake template": {
+		"prefix": "cmake",
+		"body": [
+		  "cmake_minimum_required(VERSION ${1:3.0})",
+		  "project(${2:project_name})",
+		  "add_executable($3)"
+		],
+		"description": "cmake template"
 	}
 }

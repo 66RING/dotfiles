@@ -20,7 +20,14 @@ local function init()
 
   use {"neovim/nvim-lspconfig",
     event = "BufReadPre *",
-    config = [[require('lsp.lspconfig')]]
+    config = function ()
+	  require('lsp.lspconfig')
+	  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+	  for type, icon in pairs(signs) do
+		local hl = "DiagnosticSign" .. type
+		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	  end
+    end
   }
 
   use {'nvim-lua/popup.nvim', opt = true}
@@ -81,6 +88,9 @@ local function init()
       -- vim.cmd('highlight TabLineSel ctermbg=NONE guibg=NONE')
     end,
   }
+  use {
+    "projekt0n/github-nvim-theme",
+  }
   --use{"marko-cerovac/material.nvim",
 	--config = function ()
 	  ---- Example config in lua
@@ -138,7 +148,19 @@ local function init()
 	config = conf.todo_comments
   }
 
-  use 'folke/trouble.nvim'
+  use {'folke/trouble.nvim',
+	config = function()
+	  require("trouble").setup {
+		-- your configuration comes here
+		-- or leave it empty to use the default settings
+		-- refer to the configuration section below
+		action_keys = {
+		  previous = "i", -- preview item
+		  next = "k" -- next item
+		}
+	  }
+	end
+  }
   -- use 'ldelossa/litee.nvim'
   -- use 'ldelossa/litee-calltree.nvim'
   use {'stevearc/dressing.nvim',

@@ -407,5 +407,5 @@
             "<component :is='$1'></component>$0"
         ],
         "description": "<component :is=''></component>"
-    },
+    }
 }

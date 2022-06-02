@@ -19,6 +19,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gd', [[<cmd>lua vim.lsp.buf.definition()<CR>]], opts)
+  buf_set_keymap('n', '<LEADER>d', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<LEADER>h', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<LEADER>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<LEADER>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)

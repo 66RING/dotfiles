@@ -103,3 +103,7 @@ nvim/plugin/packer_compiled.lua
 .config/ranger/plugins
 
 .config/LCEDA
+
+.config/Code
+.config/kconf_updaterc
+.config/icalingua

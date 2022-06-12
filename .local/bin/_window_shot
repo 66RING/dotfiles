@@ -1,0 +1,23 @@
+#!/bin/sh
+
+DEFAULT_PATH="$HOME"
+default_name="window_shot_$(date +"%Y%m%d_%H%M%S").png"
+target=$(rofi -dmenu -p "Input name/path: ")
+# Parse variable, like $PWD
+eval "target=$target"
+# current_window=$(xdotool getwindowfocus -f)
+current_window=$(xdotool getactivewindow)
+
+# if start with /, which means that is a absolute path
+if [[ $target == /* ]]; then
+  # do nothing
+  target=$target
+elif [[ -z "$target" ]]; then
+  target=$DEFAULT_PATH"/"$default_name
+else
+  target=$DEFAULT_PATH"/"$target
+fi
+
+# not work when catch a subprocess of lf(a file manager)
+# since lf start ueberzug and then lf become background of ueberzug
+(maim -B -i "$current_window" $target && notify-send "🖼 window shot save as $target") || notify-send "❌window shot failed."

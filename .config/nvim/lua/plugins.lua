@@ -328,11 +328,19 @@ local function init()
    config = conf.telescope,
    requires = {
 	 {'nvim-telescope/telescope-fzy-native.nvim', opt = true},
-	 {'nvim-telescope/telescope-file-browser.nvim', opt = true},
 	 -- {'ahmedkhalf/project.nvim', opt = true, config=function()
 		-- require("project_nvim").setup {}end },
    }
  }
+
+  use {
+    'kyazdani42/nvim-tree.lua',
+	cmd = {"NvimTreeToggle"},
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+	config = conf.nvim_tree
+  }
 
   use {'mg979/vim-visual-multi',
     event = "BufRead *"

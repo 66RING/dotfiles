@@ -97,6 +97,7 @@ set display=lastline
 
 " hide statusline
 set laststatus=0
+set cmdheight=0
 
 noremap h i
 noremap H I

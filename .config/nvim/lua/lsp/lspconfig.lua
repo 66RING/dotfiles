@@ -30,7 +30,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<LEADER>=', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<LEADER>+', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
-  vim.cmd [[command! Format lua vim.lsp.buf.formatting()]]
+  vim.cmd [[command! Format lua vim.lsp.buf.format({async = true})]]
 end
 
 

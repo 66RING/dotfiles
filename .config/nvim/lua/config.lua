@@ -217,7 +217,6 @@ function config.telescope()
     vim.cmd [[packadd plenary.nvim]]
     vim.cmd [[packadd popup.nvim]]
     vim.cmd [[packadd telescope-fzy-native.nvim]]
-    vim.cmd [[packadd telescope-file-browser.nvim]]
     -- vim.cmd [[packadd project.nvim]]
   end
   require('telescope').setup {
@@ -245,22 +244,10 @@ function config.telescope()
 		override_generic_sorter = false,
 		override_file_sorter = true,
 	  },
-	  file_browser = {
-		-- theme = "ivy",
-		mappings = {
-		  ["i"] = {
-			["<C-e>"] = require "telescope".extensions.file_browser.actions.create,
-			["<C-r>"] = require "telescope".extensions.file_browser.actions.rename,
-		  },
-		}
-	  }
     }
   }
 
-  vim.cmd[[command! -nargs=* TelescopeFB lua require 'telescope'.extensions.file_browser.file_browser({cwd=vim.fn.expand('%:p:h')})]]
-
   require('telescope').load_extension('fzy_native')
-  require("telescope").load_extension('file_browser')
   -- require("telescope").load_extension('projects')
 end
 
@@ -463,6 +450,59 @@ function config.cmp_tabnine()
   })
 end
 
+-- nvim tree
+function config.nvim_tree()
+  require'nvim-tree'.setup {
+	view = {
+	  mappings = {
+		list = {
+		  { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
+		  { key = "<C-e>",                          action = "" },
+		  { key = "O",                              action = "" },
+		  { key = { "<C-]>", "<2-RightMouse>" },    action = "" },
+		  { key = "<C-v>",                          action = "" },
+		  { key = "<C-x>",                          action = "" },
+		  { key = "<C-t>",                          action = "" },
+		  { key = "<",                              action = "prev_sibling" },
+		  { key = ">",                              action = "next_sibling" },
+		  { key = "P",                              action = "" },
+		  { key = "<BS>",                           action = "close_node" },
+		  { key = "<Tab>",                          action = "" },
+		  { key = "K",                              action = "" },
+		  { key = "J",                              action = "" },
+		  { key = "I",                              action = "" },
+		  { key = "H",                              action = "" },
+		  { key = "U",                              action = "" },
+		  { key = "R",                              action = "refresh" },
+		  { key = "mf",                              action = "create" },
+		  { key = "dD",                              action = "remove" },
+		  { key = "D",                              action = "trash" },
+		  { key = "r",                              action = "rename" },
+		  { key = "<C-r>",                          action = "" },
+		  { key = "dd",                              action = "cut" },
+		  { key = "yy",                              action = "copy" },
+		  { key = "pp",                              action = "paste" },
+		  { key = "y",                              action = "" },
+		  { key = "Y",                              action = "" },
+		  { key = "yp",                             action = "copy_absolute_path" },
+		  { key = "[c",                             action = "prev_git_item" },
+		  { key = "]c",                             action = "next_git_item" },
+		  { key = "-",                              action = "dir_up" },
+		  { key = "s",                              action = "system_open" },
+		  { key = "f",                              action = "live_filter" },
+		  { key = "F",                              action = "clear_live_filter" },
+		  { key = "q",                              action = "close" },
+		  { key = "W",                              action = "collapse_all" },
+		  { key = "E",                              action = "expand_all" },
+		  { key = "S",                              action = "search_node" },
+		  { key = ".",                              action = "run_file_command" },
+		  { key = "<C-k>",                          action = "toggle_file_info" },
+		  { key = "g?",                             action = "toggle_help" },
+		}
+	  }
+	}
+  }
+end
 
 -- tool
 function config.vim_dadbod_ui()

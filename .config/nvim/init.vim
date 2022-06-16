@@ -130,7 +130,7 @@ inoremap <C-l> <ESC>A
 noremap Y "+y
 " :[range]y[ank] [x]
 nnoremap yY :%y+<CR> 
-autocmd VimLeave * call system("xsel -ib", getreg('+'))
+autocmd TextYankPost * call system("xsel -ib", getreg('+'))
 noremap P "+p
 " m for join
 noremap m J  
@@ -195,7 +195,7 @@ noremap R :<C-u>source $MYVIMRC<CR>
 " exit terminal mode
 " tnoremap <LEADER><Esc> <C-\><C-n>
 " tnoremap <C-n> <C-\><C-n>
-" to next <++>
+" to next < ++>
 nnoremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 if !isdirectory(expand('~/.config/nvim/tmp'))

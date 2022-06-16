@@ -40,7 +40,8 @@ export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME/Documents/code/go
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
-export GOPROXY=https://goproxy.io
+export GOPROXY=https://proxy.golang.com.cn,direct
+# export GOPROXY=https://goproxy.io
 
 
 #************************

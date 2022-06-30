@@ -21,7 +21,7 @@ elif [[ -z "$target" ]]; then
   # target=$DEFAULT_PATH"/"$default_name
 
   # save to clipboard
-  (maim -B -i "$current_window" | xclip -selection clipboard -t image/png && notify-send "🖼 window shot save as $target") || notify-send "❌window shot failed."
+  (maim -B -i "$current_window" | xclip -selection clipboard -t image/png && notify-send "🖼 window shot save to clipboard") || notify-send "❌window shot failed."
 else
   target=$DEFAULT_PATH"/"$target
   (maim -B -i "$current_window" $target && notify-send "🖼 window shot save as $target") || notify-send "❌window shot failed."

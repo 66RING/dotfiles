@@ -460,8 +460,8 @@ function config.nvim_tree()
 		  { key = "<C-e>",                          action = "" },
 		  { key = "O",                              action = "" },
 		  { key = { "<C-]>", "<2-RightMouse>" },    action = "" },
-		  { key = "<C-v>",                          action = "" },
-		  { key = "<C-x>",                          action = "" },
+		  { key = "<C-v>",                          action = "vsplit" },
+		  { key = "<C-x>",                          action = "split" },
 		  { key = "<C-t>",                          action = "" },
 		  { key = "<",                              action = "prev_sibling" },
 		  { key = ">",                              action = "next_sibling" },
@@ -480,6 +480,7 @@ function config.nvim_tree()
 		  { key = "r",                              action = "rename" },
 		  { key = "<C-r>",                          action = "" },
 		  { key = "dd",                              action = "cut" },
+		  { key = "c",                              action =  "" },
 		  { key = "yy",                              action = "copy" },
 		  { key = "pp",                              action = "paste" },
 		  { key = "y",                              action = "" },
@@ -498,6 +499,8 @@ function config.nvim_tree()
 		  { key = ".",                              action = "run_file_command" },
 		  { key = "<C-k>",                          action = "toggle_file_info" },
 		  { key = "g?",                             action = "toggle_help" },
+		  -- custom
+		  { key = "v",                             action = "toggle_help" },
 		}
 	  }
 	}

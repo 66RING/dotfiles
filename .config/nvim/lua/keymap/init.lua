@@ -11,7 +11,7 @@ map_key('n', 'gx', [[<cmd>lua require("utils.functions").handle_url()<CR>]], {no
 map_key('n', 'st', [[<cmd>lua require("utils.functions").toggle_term()<CR>]], {noremap=true})
 
 -- nvim tree
-map_key('n', 'tT', "<cmd>NvimTreeToggle<CR>", {noremap=true})
+map_key('n', 'tT', "<cmd>NvimTreeFindFileToggle<CR>", {noremap=true})
 
 -- telescope.nvim
 map_key('n', '<C-f>', "<cmd>Telescope find_files hidden=true follow=true<CR>", {noremap=true})

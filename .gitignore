@@ -107,3 +107,6 @@ nvim/plugin/packer_compiled.lua
 .config/Code
 .config/kconf_updaterc
 .config/icalingua
+.config/Google/AndroidStudio2021.2
+.config/Android Open Source Project
+.config/java/.java/.userPrefs

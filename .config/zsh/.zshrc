@@ -12,7 +12,13 @@ source ~/.config/zsh/aliases.zsh
 export JDTLS_HOME=/usr/share/java/jdtls
 export CLASSPATH=./:/home/ring/Documents/code/undergraduate_code/algo/princeton-algs4/stdlib.jar:/home/ring/Documents/code/undergraduate_code/algo/princeton-algs4/algs4.jar
 
+export GOPROXY=https://proxy.golang.com.cn,direct
 
+export ali=8.130.31.165
+export tc=101.42.169.253
+
+export NEMU_HOME=/home/ring/Documents/code/c/ics2021/nemu
+export AM_HOME=/home/ring/Documents/code/c/ics2021/abstract-machine
 
  
 #  _                   

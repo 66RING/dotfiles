@@ -335,7 +335,7 @@ local function init()
 
   use {
     'kyazdani42/nvim-tree.lua',
-	cmd = {"NvimTreeToggle"},
+	cmd = {"NvimTreeToggle", "NvimTreeFindFileToggle"},
     requires = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },

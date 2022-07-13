@@ -110,3 +110,6 @@ nvim/plugin/packer_compiled.lua
 .config/Google/AndroidStudio2021.2
 .config/Android Open Source Project
 .config/java/.java/.userPrefs
+.config/rustdesk
+.config/remmina
+.config/freerdp/known_hosts2

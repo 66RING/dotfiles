@@ -1,4 +1,16 @@
 {
+	"stdc": {
+		"prefix": "stdc",
+		"body": [
+			"#include<iostream>",
+			"#include<vector>",
+			"using namespace std;",
+			"int main() {",
+			"\treturn 0;",
+			"}"
+		],
+		"description": "template"
+	},
   	"desc": {
 		"prefix": "desc",
 		"body": [

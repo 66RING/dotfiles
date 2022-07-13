@@ -1,4 +1,14 @@
 {
+	"stdc": {
+		"prefix": "stdc",
+		"body": [
+			"#include<stdio.h>",
+			"int main() {",
+			"\treturn 0;",
+			"}"
+		],
+		"description": "template"
+	},
 	"desc": {
 		"prefix": "desc",
 		"body": [

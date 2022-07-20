@@ -22,7 +22,7 @@ local function init()
     event = "BufReadPre *",
     config = function ()
 	  require('lsp.lspconfig')
-	  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+	  local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
 	  for type, icon in pairs(signs) do
 		local hl = "DiagnosticSign" .. type
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -328,19 +328,20 @@ local function init()
    config = conf.telescope,
    requires = {
 	 {'nvim-telescope/telescope-fzy-native.nvim', opt = true},
+	 {'nvim-telescope/telescope-file-browser.nvim', opt = true},
 	 -- {'ahmedkhalf/project.nvim', opt = true, config=function()
 		-- require("project_nvim").setup {}end },
    }
  }
 
-  use {
-    'kyazdani42/nvim-tree.lua',
-	cmd = {"NvimTreeToggle", "NvimTreeFindFileToggle"},
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
-	config = conf.nvim_tree
-  }
+  -- use {
+  --   'kyazdani42/nvim-tree.lua',
+	-- cmd = {"NvimTreeToggle", "NvimTreeFindFileToggle"},
+  --   requires = {
+  --     'kyazdani42/nvim-web-devicons', -- optional, for file icon
+  --   },
+	-- config = conf.nvim_tree
+  -- }
 
   use {'mg979/vim-visual-multi',
     event = "BufRead *"

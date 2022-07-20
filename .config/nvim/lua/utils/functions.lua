@@ -73,7 +73,7 @@ function M.run_code()
   elseif cmd[file_type] ~= nil then
     vim.cmd("w")
     vim.o.splitbelow = true
-    vim.cmd("sp")
+    vim.cmd("20sp")
     vim.cmd(cmd[file_type])
   else
     print("nothing to run")
@@ -96,7 +96,7 @@ function M.build_code()
   if cmd[file_type] ~= nil then
     vim.cmd("w")
     vim.o.splitbelow = true
-    vim.cmd("sp")
+    vim.cmd("20sp")
     vim.cmd(cmd[file_type])
   else
     print("nothing to run")
@@ -116,7 +116,7 @@ function M.debug_code()
   if cmd[file_type] ~= nil then
     vim.cmd("w")
     vim.o.splitbelow = true
-    vim.cmd("sp")
+    vim.cmd("20sp")
     vim.cmd(cmd[file_type])
   else
     print("nothing to run")

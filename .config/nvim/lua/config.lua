@@ -217,6 +217,7 @@ function config.telescope()
     vim.cmd [[packadd plenary.nvim]]
     vim.cmd [[packadd popup.nvim]]
     vim.cmd [[packadd telescope-fzy-native.nvim]]
+    vim.cmd [[packadd telescope-file-browser.nvim]]
     -- vim.cmd [[packadd project.nvim]]
   end
   require('telescope').setup {
@@ -244,9 +245,20 @@ function config.telescope()
 		override_generic_sorter = false,
 		override_file_sorter = true,
 	  },
-    }
+    },
+	file_browser = {
+	  -- theme = "ivy",
+	  mappings = {
+	    ["i"] = {
+	  	["<C-e>"] = require "telescope".extensions.file_browser.actions.create,
+	  	["<C-r>"] = require "telescope".extensions.file_browser.actions.rename,
+	    },
+	  }
+	}
   }
 
+  vim.cmd[[command! -nargs=* TelescopeFB lua require 'telescope'.extensions.file_browser.file_browser({cwd=vim.fn.expand('%:p:h')})]]
+  require("telescope").load_extension('file_browser')
   require('telescope').load_extension('fzy_native')
   -- require("telescope").load_extension('projects')
 end
@@ -359,6 +371,8 @@ function config.vim_vsnip()
   map_key('s', '<C-l>', [[vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-l>']], opts)
   map_key('s', '<C-j>', [[vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-j>']], opts)
 end
+
+
 
 function config.lspsaga()
   local saga = require 'lspsaga'

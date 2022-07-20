@@ -5,7 +5,7 @@
 # 	-B catch background needed
 
 DEFAULT_PATH="$HOME"
-default_name="window_shot_$(date +"%Y%m%d_%H%M%S").png"
+default_name="window_shot_$(date +"%Y%m%d_%H%M%S%N").png"
 target=$(rofi -dmenu -p "Input name/path: ")
 # Parse variable, like $PWD
 eval "target=$target"
@@ -16,17 +16,23 @@ current_window=$(xdotool getactivewindow)
 if [[ $target == /* ]]; then
   # do nothing
   target=$target
-  (maim -B -i "$current_window" $target && notify-send "🖼 window shot save as $target") || notify-send "❌window shot failed."
-elif [[ -z "$target" ]]; then
+  # (maim -B -i "$current_window" $target && notify-send "🖼 window shot save as $target") || notify-send "❌window shot failed."
+elif [[ $target == -* ]]; then
+  # save as default_name when start with -
   # target=$DEFAULT_PATH"/"$default_name
+  target=$DEFAULT_PATH"/"$default_name
+elif [[ -z "$target" ]]; then
 
   # save to clipboard
   (maim -B -i "$current_window" | xclip -selection clipboard -t image/png && notify-send "🖼 window shot save to clipboard") || notify-send "❌window shot failed."
+  exit 0
 else
   target=$DEFAULT_PATH"/"$target
-  (maim -B -i "$current_window" $target && notify-send "🖼 window shot save as $target") || notify-send "❌window shot failed."
+  # (maim -B -i "$current_window" $target && notify-send "🖼 window shot save as $target") || notify-send "❌window shot failed."
 fi
 
+sleep 0.3
 
 # maim -B -s | xclip -selection clipboard -t image/png
+(maim -B -i "$current_window" $target && notify-send "🖼 window shot save as $target") || notify-send "❌window shot failed."
 

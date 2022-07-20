@@ -4,7 +4,7 @@ configuration {
 	display-window: " ";
 	drun-display-format: "{icon} {name}";
 	show-icons: true;
-	modi: "ssh,drun";
+	modi: "window,drun";
 /* 	modi: "window,run,ssh,drun"; */
 /*	columns: 1;*/
 	font: "monospace 40";

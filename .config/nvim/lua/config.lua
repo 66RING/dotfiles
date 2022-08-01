@@ -245,21 +245,22 @@ function config.telescope()
 		override_generic_sorter = false,
 		override_file_sorter = true,
 	  },
-    },
-	file_browser = {
-	  -- theme = "ivy",
-	  mappings = {
-	    ["i"] = {
-	  	["<C-e>"] = require "telescope".extensions.file_browser.actions.create,
-	  	["<C-r>"] = require "telescope".extensions.file_browser.actions.rename,
-	    },
-	  }
-	}
+ 	  file_browser = {
+ 		-- theme = "ivy",
+ 		mappings = {
+ 		  ["i"] = {
+ 			["<C-e>"] = require "telescope".extensions.file_browser.actions.create,
+ 			["<C-r>"] = require "telescope".extensions.file_browser.actions.rename,
+ 		  },
+ 		}
+ 	  }
+    }
   }
 
   vim.cmd[[command! -nargs=* TelescopeFB lua require 'telescope'.extensions.file_browser.file_browser({cwd=vim.fn.expand('%:p:h')})]]
   require("telescope").load_extension('file_browser')
   require('telescope').load_extension('fzy_native')
+  require("telescope").load_extension('file_browser')
   -- require("telescope").load_extension('projects')
 end
 

@@ -77,6 +77,7 @@ local function init()
   }
 
   use {"glepnir/zephyr-nvim",
+	lock = true,
     config= function()
       vim.cmd[[colorscheme zephyr]]
       vim.cmd[[highlight Normal ctermbg=NONE guibg=NONE]]

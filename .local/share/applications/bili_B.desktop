@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=BiliB
+Exec=sh -c "st -c biliB -t biliB -g 20x10 -e $HOME/.local/bin/scripts/utils/bili.py"
+Terminal=false
+Type=Application
+

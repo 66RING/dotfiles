@@ -53,7 +53,7 @@ function M.run_code()
     -- c = "term %:p:r",
     -- cpp = "term %:p:r",
     -- java = "term java %:p:t:r",
-    rust = "term cargo run",
+    rust = "term cargo run --bin %:t:r",
     python = "term python %:p",
     sh = "term bash %:p",
     vim = "term source %:p",
@@ -160,6 +160,16 @@ function M.toggle_term()
 
   -- -- float term plugin
   -- require("FTerm").toggle()
+end
+
+function M.reload_config()
+  for name,_ in pairs(package.loaded) do
+    if name:match('^cnull') then
+      package.loaded[name] = nil
+    end
+  end
+
+  vim.cmd("source "..vim.env.MYVIMRC)
 end
 
 

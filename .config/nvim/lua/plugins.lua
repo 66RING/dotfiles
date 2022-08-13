@@ -51,17 +51,24 @@ local function init()
 	  -- },
 	  {'kristijanhusak/vim-dadbod-completion', ft = {'sql', 'mysql', 'plsql'}},
 	  {'kdheepak/cmp-latex-symbols', ft = {'markdown', 'tex', 'text', 'plaintex'}},
-	  {'hrsh7th/cmp-vsnip', event = 'InsertEnter *'},
-	  {'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter *'}
+	  -- {'hrsh7th/cmp-vsnip', event = 'InsertEnter *'},
+	  {'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter *'},
+	  {'saadparwaiz1/cmp_luasnip', event = 'InsertEnter *'},
 	}
   }
-  use {'hrsh7th/vim-vsnip',
+  -- use {'hrsh7th/vim-vsnip',
+  --   event = 'InsertEnter *',
+  --   setup = conf.vim_vsnip
+  -- }
+  -- use {'hrsh7th/vim-vsnip-integ',
+  --   event = 'InsertEnter *',
+  --   after = 'vim-vsnip'
+  -- }
+
+  use {'L3MON4D3/LuaSnip',
     event = 'InsertEnter *',
-    setup = conf.vim_vsnip
-  }
-  use {'hrsh7th/vim-vsnip-integ',
-    event = 'InsertEnter *',
-    after = 'vim-vsnip'
+	config = conf.luasnip,
+    requires = {'rafamadriz/friendly-snippets'},
   }
 
   use { "ray-x/lsp_signature.nvim",

@@ -1,0 +1,97 @@
+{
+    "name": "nvim-snippets",
+    "contributes": {
+        "snippets": [
+			{
+				"language": [
+					"all"
+				],
+				"path": "global.json"
+			},
+			{
+				"language": [
+					"c"
+				],
+				"path": "c.json"
+			},
+			{
+				"language": [
+					"cpp"
+				],
+				"path": "cpp.json"
+			},
+			{
+				"language": [
+					"html"
+				],
+				"path": "html.json"
+			},
+			{
+				"language": [
+					"javascript"
+				],
+				"path": "javascript.json"
+			},
+			{
+				"language": [
+					"lua"
+				],
+				"path": "lua.json"
+			},
+			{
+				"language": [
+					"markdown"
+				],
+				"path": "markdown.json"
+			},
+			{
+				"language": [
+					"pug"
+				],
+				"path": "pug.json"
+			},
+			{
+				"language": [
+					"python"
+				],
+				"path": "python.json"
+			},
+			{
+				"language": [
+					"rust"
+				],
+				"path": "rust.json"
+			},
+			{
+				"language": [
+					"typescript"
+				],
+				"path": "typescript.json"
+			},
+			{
+				"language": [
+					"typescriptreact"
+				],
+				"path": "typescriptreact.json"
+			},
+			{
+				"language": [
+					"vim"
+				],
+				"path": "vim.json"
+			},
+			{
+				"language": [
+					"vue"
+				],
+				"path": "vue.json"
+			},
+			{
+				"language": [
+					"zig"
+				],
+				"path": "zig.json"
+			}
+        ]
+    }
+}

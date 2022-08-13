@@ -1,10 +1,8 @@
 {
 	"datetime": {
-		"prefix": "datetime",
-		"body": [
-			"${VIM:system('date \"+%Y-%m-%d\"|tr -d \"\\n\"')}"
-		],
-		"description": "Current time"
+	  "prefix": "datetime",
+	  "body": ["${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"],
+	  "description": "Put the date in (Y-m-D) format"
 	},
 	"github": {
 		"prefix": "gh",

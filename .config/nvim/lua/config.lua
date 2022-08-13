@@ -260,7 +260,6 @@ function config.telescope()
   vim.cmd[[command! -nargs=* TelescopeFB lua require 'telescope'.extensions.file_browser.file_browser({cwd=vim.fn.expand('%:p:h')})]]
   require("telescope").load_extension('file_browser')
   require('telescope').load_extension('fzy_native')
-  require("telescope").load_extension('file_browser')
   -- require("telescope").load_extension('projects')
 end
 
@@ -300,6 +299,10 @@ end
 function config.alpha_nvim()
   local dashboard = require("alpha.themes.dashboard")
   dashboard.section.header.val = {
+    '',
+    '',
+    '',
+    '',
     '',
     '',
     '',
@@ -373,7 +376,49 @@ function config.vim_vsnip()
   map_key('s', '<C-j>', [[vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-j>']], opts)
 end
 
+function config.luasnip()
+  local ls = require "luasnip"
+  local types = require "luasnip.util.types"
 
+  ls.config.set_config {
+	history = true,
+	-- update as your type if you have multi snip
+	updateevents = "TextChanged, TextChangedI",
+	-- TODO:
+	enable_autosnippets = true,
+	ext_opts = {
+	  [types.choiceNode] = {
+		active = {
+		  virt_text = { {"<-", "Error"} },
+		},
+	  }
+	}
+  }
+
+  require("luasnip.loaders.from_vscode").lazy_load()
+  require("luasnip.loaders.from_vscode").load({ paths = { "./config/vsnips" } })
+
+  vim.keymap.set("i", "<c-e>", "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<c-e>'", {expr = true})
+
+  -- vim.keymap.set({"i", "s"}, "<c-l>", function ()
+	-- if ls.expand_or_jumpable() then
+	  -- ls.expand_or_jump()
+	-- end
+  -- end, {silent = true})
+
+  -- vim.keymap.set({"i", "s"}, "<c-j>", function ()
+	-- if ls.jumpable(-1) then
+	  -- ls.jump(-1)
+	-- end
+  -- end, {silent = true})
+
+  -- multi choose
+  vim.keymap.set({"i"}, "<c-o>", function ()
+	if ls.choice_active() then
+	  ls.choice_active(1)
+	end
+  end)
+end
 
 function config.lspsaga()
   local saga = require 'lspsaga'
@@ -381,7 +426,7 @@ function config.lspsaga()
     finder_action_keys = {
       open = '<enter>', vsplit = 'v',split = 's',quit = 'q',
     },
-	code_action_prompt = {
+	code_action_lightbulb = {
 	  enable = false,
 	  sign = true,
 	  sign_priority = 20,
@@ -396,16 +441,16 @@ function config.lspsaga()
   map_key('n', '<C-d>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
 
   -- saga.personal
-  map_key('n', '<LEADER>rn', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
-  map_key('n', 'gd', [[<cmd>lua require("utils.functions").smart_split('lua vim.lsp.buf.definition()')<CR>]], opts)
-  map_key('n', 'gD', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)
-  map_key('n', 'gh', [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
-  map_key('n', '<LEADER>h', [[<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]], opts)
-  map_key('n', '<LEADER>a', [[<cmd>lua require('lspsaga.codeaction').code_action()<CR>]], opts)
-  map_key('v', '<LEADER>a', [[<cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>]], opts)
-  map_key('n', '<LEADER>-', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]], opts)
-  map_key('n', '<LEADER>=', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]], opts)
-  vim.cmd [[command! Format lua vim.lsp.buf.formatting()]]
+  -- map_key('n', '<LEADER>rn', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
+  -- map_key('n', 'gd', [[<cmd>lua require("utils.functions").smart_split('lua vim.lsp.buf.definition()')<CR>]], opts)
+  -- map_key('n', 'gD', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)
+  map_key('n', 'gr', [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
+  -- map_key('n', '<LEADER>h', [[<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]], opts)
+  -- map_key('n', '<LEADER>a', [[<cmd>lua require('lspsaga.codeaction').code_action()<CR>]], opts)
+  -- map_key('v', '<LEADER>a', [[<cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>]], opts)
+  -- map_key('n', '<LEADER>-', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]], opts)
+  -- map_key('n', '<LEADER>=', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]], opts)
+  -- vim.cmd [[command! Format lua vim.lsp.buf.formatting()]]
 end
 
 
@@ -418,7 +463,8 @@ function config.nvim_cmp()
   cmp.setup {
 	snippet = {
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
+        -- vim.fn["vsnip#anonymous"](args.body)
+		require'luasnip'.lsp_expand(args.body)
       end,
     },
 	window = {
@@ -440,7 +486,8 @@ function config.nvim_cmp()
 	},
 	sources = {
 	  { name = 'nvim_lsp' },
-	  { name = 'vsnip'},
+	  -- { name = 'vsnip'},
+	  { name = 'luasnip'},
 	  { name = 'cmp-nvim-lsp-signature-help'},
 	  -- { name = 'cmp_tabnine'},
 	  { name = 'path' },

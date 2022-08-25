@@ -177,7 +177,7 @@ noremap s<right> :<C-u>vertical resize-5<CR>
 "========================
 noremap S :<C-u>w<CR>
 noremap Q :<C-u>q<CR>
-" noremap R :<C-u>source $MYVIMRC<CR>
+noremap R :<C-u>source $MYVIMRC<CR>
 
 
 " Basic file system commands
@@ -231,7 +231,7 @@ if has('nvim')
   " " TODO bang argments
   command! ImageUrl lua require('utils.edit').img_to_url()
   " nnoremap <silent> <leader>d :lua require("utils.functions").find_doc()<CR>
-  nnoremap R :lua require("utils.functions").reload_config()<CR>
+  " nnoremap R :lua require("utils.functions").reload_config()<CR>
   nnoremap <silent> <leader>R :lua require("utils.functions").run_code()<CR>
   nnoremap <silent> <leader>B :lua require("utils.functions").build_code()<CR>
   nnoremap <silent> <leader>D :lua require("utils.functions").debug_code()<CR>

@@ -25,10 +25,40 @@ end
 function config.nvim_treesitter()
   -- vim.api.nvim_command('set foldmethod=expr')
   -- vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
+  if not packer_plugins['nvim-treesitter-textobjects'].loaded then
+	vim.cmd [[packadd nvim-treesitter-textobjects]]
+  end
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
     },
+	textobjects = {
+	  select = {
+		enable = true,
+
+		-- Automatically jump forward to textobj, similar to targets.vim
+		lookahead = true,
+
+		keymaps = {
+		  -- You can use the capture groups defined in textobjects.scm
+		  ["af"] = "@function.outer",
+		  ["hf"] = "@function.inner",
+		  ["ac"] = "@class.outer",
+		  ["hc"] = "@class.inner",
+		},
+		-- You can choose the select mode (default is charwise 'v')
+		selection_modes = {
+		  ['@parameter.outer'] = 'v', -- charwise
+		  ['@function.outer'] = 'V', -- linewise
+		  ['@class.outer'] = '<c-v>', -- blockwise
+		},
+		-- If you set this to `true` (default is `false`) then any textobject is
+		-- extended to include preceding xor succeeding whitespace. Succeeding
+		-- whitespace has priority in order to act similarly to eg the built-in
+		-- `ap`.
+		include_surrounding_whitespace = true,
+	  },
+	},
     -- ensure_installed = 'all'
   }
 end
@@ -87,7 +117,7 @@ function config.nvim_bufferline()
 end
 
 function config.symbols_outline()
-  vim.g.symbols_outline = {
+  require("symbols-outline").setup({
 	highlight_hovered_item = false,
 	show_guides = true,
 	auto_preview = false,
@@ -138,8 +168,7 @@ function config.symbols_outline()
 	  Operator = {icon = "+", hl = "TSOperator"},
 	  TypeParameter = {icon = "𝙏", hl = "TSParameter"}
 	}
-  }
-  vim.api.nvim_set_keymap('n', 'T', [[:<C-u>SymbolsOutline<CR>]], {noremap=true})
+  })
 end
 
 function config.todo_comments()
@@ -308,8 +337,6 @@ function config.alpha_nvim()
     '',
     '',
     '',
-    '',
-    '',
 	'⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢹⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
 	'⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⠀⢻⡾⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
 	'⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⢸⣼⠁⠀⠀⠄⠹⣿⣆⠀⠀⡰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
@@ -333,7 +360,8 @@ function config.alpha_nvim()
   dashboard.section.buttons.val = {
 	{ type = "button", val = "" },
   }
-  dashboard.section.footer.val = "Fabrice!"
+  -- dashboard.section.footer.val = "Fabrice!"
+  dashboard.section.footer.val = "MAY CHAOS TAKE THE WORLD, MAY OPEN SOURCE GUIDE YOUR WAY"
   -- "STAY HUNGRY, STAY FOOLISH",
   -- " 		       			— Steve Jobs"
   -- "  THE PEOPLE WHO ARE CRAZY ENOUGH",
@@ -433,24 +461,6 @@ function config.lspsaga()
 	  virtual_text = true,
 	},
   }
-
-  local map_key = vim.api.nvim_set_keymap
-  local opts = {silent=true, noremap=true}
-  -- saga.buildin
-  map_key('n', '<C-u>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
-  map_key('n', '<C-d>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
-
-  -- saga.personal
-  -- map_key('n', '<LEADER>rn', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
-  -- map_key('n', 'gd', [[<cmd>lua require("utils.functions").smart_split('lua vim.lsp.buf.definition()')<CR>]], opts)
-  -- map_key('n', 'gD', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)
-  map_key('n', 'gr', [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
-  -- map_key('n', '<LEADER>h', [[<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]], opts)
-  -- map_key('n', '<LEADER>a', [[<cmd>lua require('lspsaga.codeaction').code_action()<CR>]], opts)
-  -- map_key('v', '<LEADER>a', [[<cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>]], opts)
-  -- map_key('n', '<LEADER>-', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]], opts)
-  -- map_key('n', '<LEADER>=', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]], opts)
-  -- vim.cmd [[command! Format lua vim.lsp.buf.formatting()]]
 end
 
 

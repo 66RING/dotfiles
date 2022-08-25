@@ -96,7 +96,7 @@ cmd trash ${{
     else
         ans=$2
     fi
-    [ $ans = "y" ] || [ $ans = "Y" ] && mv $fx ~/tem/trash
+    [ $ans = "y" ] || [ $ans = "Y" ] && mv $fx ~/var/trash
 }}
 
 cmd delete ${{

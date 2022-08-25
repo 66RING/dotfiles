@@ -32,10 +32,11 @@ local function init()
 
   use {'nvim-lua/popup.nvim', opt = true}
   use {'nvim-lua/plenary.nvim', opt = true}
-  -- use {"glepnir/lspsaga.nvim",
-  --   event = "BufRead *",
-  --   config = conf.lspsaga
-  -- }
+  use {"glepnir/lspsaga.nvim",
+	cmd = "Lspsaga",
+    -- event = "BufReadPost *",
+    config = conf.lspsaga
+  }
 
   use {"hrsh7th/nvim-cmp",
     config = conf.nvim_cmp,
@@ -120,9 +121,18 @@ local function init()
     event = 'BufRead *',
     config = conf.nvim_treesitter
   }
-  -- use {'nvim-treesitter/nvim-treesitter-textobjects',
-  --   after = 'nvim-treesitter'
-  -- }
+
+  use {'romgrk/nvim-treesitter-context',
+    event = 'BufRead *',
+    after = 'nvim-treesitter',
+	config = function ()
+      vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
+	end,
+  }
+
+  use {'nvim-treesitter/nvim-treesitter-textobjects',
+	opt = true,
+  }
   -- use {'glepnir/galaxyline.nvim',
   --   -- config = [[require('statusline.moonline')]],
   --   config = [[require('statusline.clearline')]],
@@ -174,12 +184,6 @@ local function init()
   use {'stevearc/dressing.nvim',
     event={'BufReadPre *', 'BufNewFile *'},
   }
-  -- use {'romgrk/nvim-treesitter-context',
-  --   event = 'BufRead *',
-	-- config = function ()
-  --     vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
-	-- end
-  -- }
 
 
 
@@ -248,6 +252,32 @@ local function init()
   use {'raghur/vim-ghost',
 	cmd = 'GhostStart',
 	run = ':GhostInstall',
+  }
+
+  use {'nvim-treesitter/playground',
+	cmd = "TSPlaygroundToggle",
+	config = function ()
+	  require "nvim-treesitter.configs".setup {
+		playground = {
+		  enable = true,
+		  disable = {},
+		  updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+		  persist_queries = false, -- Whether the query persists across vim sessions
+		  keybindings = {
+			toggle_query_editor = 'o',
+			toggle_hl_groups = 'h',
+			toggle_injected_languages = 't',
+			toggle_anonymous_nodes = 'a',
+			toggle_language_display = 'H',
+			focus_language = 'f',
+			unfocus_language = 'F',
+			update = 'R',
+			goto_node = '<cr>',
+			show_help = '?',
+		  },
+		}
+	  }
+	end
   }
 
   -- use {"Shatur/neovim-session-manager",
@@ -386,8 +416,8 @@ local function init()
   -- }
 
   use {'simrat39/symbols-outline.nvim',
-	cmd = 'SymbolsOutline',
-	setup = conf.symbols_outline,
+	cmt = 'SymbolsOutline',
+	config = conf.symbols_outline,
   }
 
   -- use {'Yggdroot/indentLine',

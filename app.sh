@@ -6,4 +6,7 @@ yay -S nerd-fonts-cascadia-code \
   clash-for-windows-bin \
   ttf-twemoji \
   ttf-weather-icons \
+  pulsemixer \
+  pamixer \
+
 

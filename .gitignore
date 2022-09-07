@@ -113,3 +113,4 @@ nvim/plugin/packer_compiled.lua
 .config/rustdesk
 .config/remmina
 .config/freerdp/known_hosts2
+.config/clash_win

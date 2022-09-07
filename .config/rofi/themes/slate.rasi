@@ -9,7 +9,6 @@
 }
 
 window {
-  background-color: @background;
   location:         center;
   anchor:           north;
   y-offset:         -3.6em;

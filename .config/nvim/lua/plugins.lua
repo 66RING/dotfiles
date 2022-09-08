@@ -86,6 +86,7 @@ local function init()
 
   use {"glepnir/zephyr-nvim",
 	lock = true,
+	commit = '194a5ae5efed5559b095c182b1bc3d906ec70437',
     config= function()
       vim.cmd[[colorscheme zephyr]]
       vim.cmd[[highlight Normal ctermbg=NONE guibg=NONE]]
@@ -143,6 +144,7 @@ local function init()
     config = conf.nvim_bufferline,
     after = 'zephyr-nvim',
 	lock = true,
+	commmit = '3d77289b20a4ff1689da5ae891a485041e7fe607',
     requires = {'kyazdani42/nvim-web-devicons'}
   }
 

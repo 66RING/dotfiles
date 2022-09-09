@@ -197,7 +197,7 @@ cmd fzf_find_in_file ${{
 
 # drag-and-drop
 cmd dragon ${{
-    dragon-drag-and-drop -a -x $fx
+    dragon-drop -a -x $fx
     lf -remote "send $id unselect"
 }}
 cmd dlfile ${{
@@ -205,7 +205,7 @@ cmd dlfile ${{
     lf -remote "send $id unselect"
 }}
 cmd dragon-individual ${{
-    dragon-drag-and-drop $fx
+    dragon-drop $fx
     lf -remote "send $id unselect"
 }}
 

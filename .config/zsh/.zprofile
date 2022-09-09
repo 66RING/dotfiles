@@ -51,6 +51,7 @@ export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export PATH=$PATH:$HOME/.local/share/cargo/bin
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
 
 #************************

@@ -1,18 +1,18 @@
-yay -S nerd-fonts-cascadia-code \
-  cascaydia-code-fonts \
-  ttf-cascadia-code \
-  adobe-source-han-mono-cn-fonts \
-  adobe-source-han-mono-otc-fonts \
-  ttf-mac-fonts \
+#!/bin/sh
+yay -S \
   clash-for-windows-bin \
-  ttf-twemoji \
-  ttf-weather-icons \
   pulsemixer \
   pamixer \
+  pipewire pipewire-pulse wireplumber \
+  okular \
+  dragon-drop \
+  xdotool \
   luajit \
   tree-sitter \
-  okular \
-  dragon-drop
+  unclutter \
+  flameshot \
+  htop \
+  fcitx5 fcitx5-chinese-addons fcitx5-pinyin-chinese-idiom fcitx5-pinyin-zhwiktionary fcitx5-im \
 
 
 

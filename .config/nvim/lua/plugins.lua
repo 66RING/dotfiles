@@ -144,7 +144,7 @@ local function init()
     config = conf.nvim_bufferline,
     after = 'zephyr-nvim',
 	lock = true,
-	commmit = '3d77289b20a4ff1689da5ae891a485041e7fe607',
+	commit = '3d77289b20a4ff1689da5ae891a485041e7fe607',
     requires = {'kyazdani42/nvim-web-devicons'}
   }
 

@@ -175,11 +175,13 @@ lspconfig.gopls.setup {
 
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
-  cmd = {
-    lsp_folder.."/lua-language-server/bin/lua-language-server",
-    "-E",
-    lsp_folder.."/lua-language-server/bin/main.lua"
-  },
+  -- need not specific cmd for now:
+  -- default cmd assumes that the lua-language-server binary can be found in $PATH
+  -- cmd = {
+  --   lsp_folder.."/lua-language-server/bin/lua-language-server",
+  --   "-E",
+  --   lsp_folder.."/lua-language-server/bin/main.lua"
+  -- },
   root_dir = vim.loop.cwd,
   settings = {
     Lua = {
@@ -195,10 +197,7 @@ lspconfig.sumneko_lua.setup {
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-        },
+		library = vim.api.nvim_get_runtime_file("", true),
       },
     },
   },

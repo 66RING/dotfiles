@@ -167,6 +167,14 @@ local function init()
     event = "BufReadPost *",
 	config = conf.todo_comments
   }
+  use {
+	"levouh/tint.nvim",
+    event = 'BufReadPost *',
+	config = function()
+	  require("tint").setup()
+	end
+  }
+
 
   use {'folke/trouble.nvim',
 	config = function()

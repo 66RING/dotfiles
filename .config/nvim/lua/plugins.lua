@@ -101,6 +101,9 @@ local function init()
   use {
     "projekt0n/github-nvim-theme",
   }
+  use {
+	"folke/tokyonight.nvim",
+  }
   --use{"marko-cerovac/material.nvim",
 	--config = function ()
 	  ---- Example config in lua

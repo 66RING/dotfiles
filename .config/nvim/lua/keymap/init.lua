@@ -28,7 +28,7 @@ map_key('n', '<LEADER>:', "<cmd>Telescope commands<CR>", {noremap=true})
 
 -- lspsaga
 map_key('n', 'gr', [[<cmd>Lspsaga lsp_finder<CR>]], {silent=true, noremap=true})
-map_key("n", "gD", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+map_key("n", "gD", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
 map_key("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 
 -- Outline

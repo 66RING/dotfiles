@@ -9,4 +9,6 @@ source ~/.config/zsh/lf_setting.zsh
 source ~/.config/zsh/plugin.zsh
 source ~/.config/zsh/aliases.zsh
 
-source ~/.local_settings.zsh
+if [ -e ~/.local_settings.zsh ]; then
+	source ~/.local_settings.zsh
+fi

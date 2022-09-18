@@ -317,6 +317,8 @@ map mf push :mkfiles<space>
 # global
 map gf cd ~/.config
 map gm cd ~/opt/Videos
+# go to mount folder
+map gM cd /run/media/
 map gc cd ~/Documents/code
 map gv cd ~/var
 map gs cd ~/.local/bin/scripts

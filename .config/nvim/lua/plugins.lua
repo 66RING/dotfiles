@@ -80,8 +80,12 @@ local function init()
   }
 
   -- UI
-  use {"goolord/alpha-nvim",
-    config = conf.alpha_nvim,
+  -- use {"goolord/alpha-nvim",
+  --   config = conf.alpha_nvim,
+  -- }
+
+  use {"glepnir/dashboard-nvim",
+	config = conf.dashboard_nvim,
   }
 
   use {"glepnir/zephyr-nvim",

@@ -8,6 +8,7 @@
 source ~/.config/zsh/lf_setting.zsh
 source ~/.config/zsh/plugin.zsh
 source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/utils.zsh
 
 if [ -e ~/.local_settings.zsh ]; then
 	source ~/.local_settings.zsh

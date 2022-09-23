@@ -30,6 +30,13 @@ local function init()
     end
   }
 
+--  use { "williamboman/mason.nvim",
+--	cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog"},
+--	config = function ()
+--	  require("mason").setup()
+--	end
+--  }
+
   use {'nvim-lua/popup.nvim', opt = true}
   use {'nvim-lua/plenary.nvim', opt = true}
   use {"glepnir/lspsaga.nvim",
@@ -263,6 +270,10 @@ local function init()
       vim.api.nvim_set_keymap('n', '<LEADER>g=', [[:GitGutterNextHunk<CR>]], {noremap=true})
     end
   }
+  -- use {'junegunn/gv.vim',
+	-- cmd = "GV",
+	-- requires = {"66RING/vim-fugitive"},
+  -- }
 
   -- editor
   -- ghost text for browser

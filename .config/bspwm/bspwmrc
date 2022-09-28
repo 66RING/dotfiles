@@ -34,6 +34,7 @@ bspc rule -a qq         sticky=on
 bspc rule -a Zathura    state=tiled
 
 bspc rule -a '*:qemu:*' 		state=floating
+bspc rule -a 'wemeetapp' 		state=floating
 
 
 # bspc rule -a VirtualBox\ Manager desktop='^10'

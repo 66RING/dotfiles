@@ -6,8 +6,6 @@
 #                                   
 # Author: github@66RING
 
-SCRIPTS_DIR='~/.local/bin/scripts'
-
 alias c='clear' \
 	cp='cp -iv' \
 	grep='grep --color' \

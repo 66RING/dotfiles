@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ttt
+Exec=sh -c "$HOME/.local/bin/scripts/utils/tentry"
+Terminal=false
+Type=Application
+
+

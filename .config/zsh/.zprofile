@@ -84,6 +84,7 @@ export OPENER="xdg-open"
 export PAGER="less"
 export WM="bspwm"
 export LAUNCHER="rofi"
+export SCRIPTS_DIR=~/.local/bin/scripts
 
 #************************
 #* env

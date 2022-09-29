@@ -1,0 +1,18 @@
+[user]
+	email = travisturing@qq.com
+	name = 66RING
+[credential]
+	helper = store
+[alias]
+	co = checkout
+	st = status
+	cm = commit -m
+	br = branch
+[diff]
+	tool = vim
+[core]
+	pager = vim -R -
+[pager]
+	color = false
+[includeIf "gitdir:/home/ring/Documents/code/OpenSourceWorks/gitee"]
+    path = /home/ring/Documents/code/OpenSourceWorks/gitee/dir-gitconfig

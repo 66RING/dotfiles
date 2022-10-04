@@ -1,4 +1,6 @@
 #!/bin/sh
+
+# packages that everyone may
 yay -S \
   clash-for-windows-bin \
   pulsemixer \
@@ -6,9 +8,6 @@ yay -S \
   pipewire pipewire-pulse wireplumber \
   okular \
   dragon-drop \
-  xdotool \
-  luajit \
-  tree-sitter \
   unclutter \
   flameshot \
   htop \

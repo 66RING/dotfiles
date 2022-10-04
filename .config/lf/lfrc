@@ -327,6 +327,8 @@ map gu cd /usr
 map gn cd ~/Documents/Notes
 # tmp
 map gw cd ~/var/workspace
+# papers
+map gp cd ~/var/nutstore/Nutstore/papers
 
 
 #************************

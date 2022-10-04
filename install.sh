@@ -30,4 +30,4 @@ ln -s $BASEDIR/.config/zsh/.zprofile $HOME/
 ln -s $BASEDIR/.config/tmux/.tmux.conf $HOME/
 
 
-
+# pacman -S --needed - < pkglist.txt

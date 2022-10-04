@@ -6,3 +6,4 @@ yay -S \
   icalingua++ \
   wemeet-bin \
   wechat-uos \
+  rpiplay-git \

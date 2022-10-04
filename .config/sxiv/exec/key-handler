@@ -19,6 +19,6 @@ do
         "b")
 			    feh --recursive --randomize --bg-fill --no-fehbg "$file" ;;
         "o")
-			    dragon-drag-and-drop -a -x "$file" ;;
+			    dragon-drop -a -x "$file" ;;
         esac
 done

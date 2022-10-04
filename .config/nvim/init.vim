@@ -261,9 +261,11 @@ if has('nvim')
   endif
 
   lua require('keymap.init')
+  colorscheme zephyr
 endif
 
 
 " graphviz
 
 " /home/ring/.config/nvim/lua/plugins.lua
+"

@@ -1,12 +1,16 @@
 #!/bin/sh
-yay -S unzip \
+yay -S \
+	unzip \
 	lua \
 	luajit \
 	acpilight backlight-runit \
 	highlight \
-	panddoc \
-	htop \
+	pandoc \
 	python-pyexiftool \
 	ffmpeg \
 	ffmpegthumbnailer \
-
+	imagemagick \
+	smartmontools \
+	udisks2 \
+	tree-sitter \
+	xdotool \

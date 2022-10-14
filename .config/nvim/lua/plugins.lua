@@ -181,13 +181,13 @@ local function init()
     event = "BufReadPost *",
 	config = conf.todo_comments
   }
-  use {
-	"levouh/tint.nvim",
-    event = 'BufReadPost *',
-	config = function()
-	  require("tint").setup()
-	end
-  }
+  -- use {
+	-- "levouh/tint.nvim",
+  --   event = 'BufReadPost *',
+	-- config = function()
+	  -- require("tint").setup()
+	-- end
+  -- }
 
 
   use {'folke/trouble.nvim',
@@ -231,6 +231,13 @@ local function init()
     setup = function ()
       vim.g.bullets_enabled_file_types = {'markdown', 'text', 'gitcommit', 'scratch' }
     end
+  }
+  -- see formula in vim
+  use {'jbyuki/nabla.nvim',
+    setup = function()
+	  vim.cmd[[autocmd FileType markdown nnoremap gd :lua require("nabla").popup()<CR>]]
+    end,
+    ft = 'markdown',
   }
 
   -- use {'vimwiki/vimwiki',
@@ -496,9 +503,9 @@ local function init()
     cmd = "MaximizerToggle",
     setup = function()
       local opts = {silent=true, noremap=true}
-      vim.api.nvim_set_keymap('n', '<C-z>', ":MaximizerToggle<CR>", opts)
-      vim.api.nvim_set_keymap('i', '<C-z>', "<ESC>:MaximizerToggle<CR>", opts)
-      vim.api.nvim_set_keymap('v', '<C-z>', "<C-o>:MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('n', '<C-x>', ":MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('i', '<C-x>', "<ESC>:MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('v', '<C-x>', "<C-o>:MaximizerToggle<CR>", opts)
     end
   }
 

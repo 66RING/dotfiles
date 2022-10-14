@@ -123,11 +123,11 @@ lspconfig.ccls.setup {
   end,
   init_options = {
     compilationDatabaseDirectory = "build";
-	diagnostics = {
-	  onOpen = -1,
-	  onChange = -1,
-	  onSave = -1,
-	},
+	-- diagnostics = {
+	--   onOpen = -1,
+	--   onChange = -1,
+	--   onSave = -1,
+	-- },
 	cache = {
 	  directory = os.getenv('HOME').."/.cache/.ccls-cache"
 	},

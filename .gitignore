@@ -114,3 +114,5 @@ nvim/plugin/packer_compiled.lua
 .config/remmina
 .config/freerdp/known_hosts2
 .config/clash_win
+
+.config/lazygit

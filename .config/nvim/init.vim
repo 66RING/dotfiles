@@ -52,7 +52,6 @@ map <Space>  <Nop>
 map gh  <Nop>
 map gH  <Nop>
 map g<C-h>  <Nop>
-map <C-z>  <Nop>
 noremap <C-u>  <Nop>
 noremap <C-d>  <Nop>
 noremap <C-p>  <Nop>
@@ -261,7 +260,7 @@ if has('nvim')
   endif
 
   lua require('keymap.init')
-  colorscheme zephyr
+  " colorscheme zephyr
 endif
 
 

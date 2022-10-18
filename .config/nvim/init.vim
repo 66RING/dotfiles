@@ -34,12 +34,6 @@ let g:loaded_netrwPlugin       = 1
 let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
 
-
-" shotcut configuration file
-" autocmd FileType markdown source $HOME/.config/nvim/shot_cut_source/md_snippits.vim
-" source $HOME/.config/nvim/shot_cut_source/coding_short_cut.vim
-
-
 command! Vimrc :e $MYVIMRC
 command! Zshrc :e $ZDOTDIR/.zshrc
 
@@ -56,6 +50,7 @@ noremap <C-u>  <Nop>
 noremap <C-d>  <Nop>
 noremap <C-p>  <Nop>
 noremap <C-n>  <Nop>
+noremap <C-z>  <Nop>
 
 
 " set completeopt=menu,menuone,noselect
@@ -229,6 +224,7 @@ if has('nvim')
   "========================
   " " TODO bang argments
   command! ImageUrl lua require('utils.edit').img_to_url()
+  command! TD lua require("utils.diagnostics").toggle_diagnostics()
   " nnoremap <silent> <leader>d :lua require("utils.functions").find_doc()<CR>
   " nnoremap R :lua require("utils.functions").reload_config()<CR>
   nnoremap <silent> <leader>R :lua require("utils.functions").run_code()<CR>

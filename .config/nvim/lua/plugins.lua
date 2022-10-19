@@ -30,13 +30,6 @@ local function init()
     end
   }
 
---  use { "williamboman/mason.nvim",
---	cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog"},
---	config = function ()
---	  require("mason").setup()
---	end
---  }
-
   use {'nvim-lua/popup.nvim', opt = true}
   use {'nvim-lua/plenary.nvim', opt = true}
   use {"glepnir/lspsaga.nvim",
@@ -330,6 +323,31 @@ local function init()
     end
   }
 
+  -- 
+  -- debug
+  --
+  use {'mfussenegger/nvim-dap',
+	config = function()
+	  require("dap_config")
+	end,
+    requires = {
+	  {'rcarriga/nvim-dap-ui'}
+	}
+  }
+  use {'williamboman/mason.nvim',
+  	cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog"},
+	config = function()
+	  require("mason").setup()
+	end
+  }
+  -- use {'nvim-telescope/telescope-dap.nvim'}
+  use {'theHamsta/nvim-dap-virtual-text',
+	config = function()
+	  require("nvim-dap-virtual-text").setup()
+	end
+  }
+
+
   -- enhance `.` command
   use {"tpope/vim-repeat"}
   use {'tpope/vim-surround',
@@ -503,9 +521,9 @@ local function init()
     cmd = "MaximizerToggle",
     setup = function()
       local opts = {silent=true, noremap=true}
-      vim.api.nvim_set_keymap('n', '<C-x>', ":MaximizerToggle<CR>", opts)
-      vim.api.nvim_set_keymap('i', '<C-x>', "<ESC>:MaximizerToggle<CR>", opts)
-      vim.api.nvim_set_keymap('v', '<C-x>', "<C-o>:MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('n', '<C-z>', ":MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('i', '<C-z>', "<ESC>:MaximizerToggle<CR>", opts)
+      vim.api.nvim_set_keymap('v', '<C-z>', "<C-o>:MaximizerToggle<CR>", opts)
     end
   }
 

@@ -34,3 +34,19 @@ map_key("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = 
 -- Outline
 vim.api.nvim_set_keymap('n', 'T', [[:<C-u>SymbolsOutline<CR>]], {noremap=true})
 
+
+-- dap
+local opts = { noremap = true, silent = true }
+-- map_key("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'user.dap.dap-util'.store_breakpoints(true)<cr>", opts)
+map_key("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+map_key("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", opts)
+map_key("n", "<leader>dk", "<cmd>lua require'dapui'.eval()<cr>", opts)
+-- map_key("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", opts)
+map_key("n", "<F9>", "<cmd>lua require'dap'.run_last()<cr>", opts)
+map_key('n', '<F10>', '<cmd>lua require"user.dap.dap-util".reload_continue()<CR>', opts)
+map_key("n", "<F4>", "<cmd>lua require'dap'.terminate()<cr>", opts)
+map_key("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opts)
+map_key("n", "<F6>", "<cmd>lua require'dap'.step_over()<cr>", opts)
+map_key("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", opts)
+map_key("n", "<F8>", "<cmd>lua require'dap'.step_out()<cr>", opts)
+

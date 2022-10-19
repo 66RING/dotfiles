@@ -38,7 +38,7 @@ lfcd () {
         unset LF_BACK
         if [ -d "$dir" ]; then
             if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
+                pushd "$dir" > /dev/null
             fi
         fi
     fi

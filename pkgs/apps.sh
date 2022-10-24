@@ -5,7 +5,7 @@ yay -S \
   clash-for-windows-bin \
   pulsemixer \
   pamixer \
-  pipewire pipewire-pulse wireplumber \
+  pipewire pipewire-pulse wireplumber pipewire-alsa \
   okular \
   dragon-drop \
   unclutter \

@@ -37,7 +37,7 @@ cmd open_with ${{
 }}
 
 cmd open ${{
-    case $(file --mime-type $f -b) in
+    case $(file --mime-type "$(realpath $f)" -b) in
         # text file
         text/*|*/json|*/x-empty)
             $EDITOR $f;;

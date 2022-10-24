@@ -33,6 +33,7 @@ alias yg='you-get' \
 	tl='proxyon && tldr' \
 	ct='cht.sh' \
 	py='python' \
+	wget='axel -n 6' \
 	pc='proxyon && '
 
 

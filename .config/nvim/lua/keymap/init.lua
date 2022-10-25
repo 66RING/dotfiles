@@ -1,7 +1,6 @@
 local map_key = vim.api.nvim_set_keymap
 -- local mapper = require('keymap.mapper')
 -- local keymap = mapper.map_cmd
-require("keymap.global_functions")
 
 
 --

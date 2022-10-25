@@ -91,7 +91,6 @@ set display=lastline
 
 " hide statusline
 set laststatus=0
-set cmdheight=0
 
 noremap h i
 noremap H I
@@ -219,6 +218,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " --------------------------------------.
 
 if has('nvim') 
+  set cmdheight=0
+
   "========================
   " widgets
   "========================

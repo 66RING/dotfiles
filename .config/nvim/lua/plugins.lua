@@ -97,7 +97,6 @@ local function init()
       vim.cmd[[highlight SignColumn ctermbg=NONE guibg=NONE]]
       vim.cmd[[highlight Cursorline cterm=bold ctermbg=black guibg=#48515E]]
       vim.cmd[[highlight MatchParen cterm=bold ctermfg=black ctermbg=grey guifg=black guibg=grey]]
-      -- vim.cmd[[autocmd FileType markdown source $HOME/.config/nvim/config/markdown_theme.vim]]
       -- vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
       -- vim.cmd('highlight TabLineSel ctermbg=NONE guibg=NONE')
     end,
@@ -225,6 +224,13 @@ local function init()
       vim.g.bullets_enabled_file_types = {'markdown', 'text', 'gitcommit', 'scratch' }
     end
   }
+
+  use {
+	cmd = 'FeMaco',
+	'AckslD/nvim-FeMaco.lua',
+	config = 'require("femaco").setup()',
+  }
+
   -- see formula in vim
   use {'jbyuki/nabla.nvim',
     setup = function()
@@ -256,19 +262,33 @@ local function init()
   }
 
   -- git
-  use {'airblade/vim-gitgutter',
-    event = "BufRead *",
-    setup = function ()
-      vim.g.gitgutter_signs = 0
-      vim.g.gitgutter_map_keys = 0
-      vim.g.gitgutter_override_sign_column_highlight = 0
-      vim.g.gitgutter_preview_win_floating = 1
+  -- use {'airblade/vim-gitgutter',
+  --   event = "BufRead *",
+  --   setup = function ()
+  --     vim.g.gitgutter_signs = 0
+  --     vim.g.gitgutter_map_keys = 0
+  --     vim.g.gitgutter_override_sign_column_highlight = 0
+  --     vim.g.gitgutter_preview_win_floating = 1
 
-      vim.api.nvim_set_keymap('n', '<LEADER>gf', [[:GitGutterFold<CR>]], {noremap=true})
-      vim.api.nvim_set_keymap('n', '<LEADER>gh', [[:GitGutterPreviewHunk<CR>]], {noremap=true})
-      vim.api.nvim_set_keymap('n', '<LEADER>g-', [[:GitGutterPrevHunk<CR>]], {noremap=true})
-      vim.api.nvim_set_keymap('n', '<LEADER>g=', [[:GitGutterNextHunk<CR>]], {noremap=true})
-    end
+  --     vim.api.nvim_set_keymap('n', '<LEADER>gf', [[:GitGutterFold<CR>]], {noremap=true})
+  --     vim.api.nvim_set_keymap('n', '<LEADER>gh', [[:GitGutterPreviewHunk<CR>]], {noremap=true})
+  --     vim.api.nvim_set_keymap('n', '<LEADER>g-', [[:GitGutterPrevHunk<CR>]], {noremap=true})
+  --     vim.api.nvim_set_keymap('n', '<LEADER>g=', [[:GitGutterNextHunk<CR>]], {noremap=true})
+  --   end
+  -- }
+  use {
+	'lewis6991/gitsigns.nvim',
+	-- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+	cmt = 'Gitsigns',
+	config = function()
+	  require('gitsigns').setup {
+		signcolumn = false,
+	  }
+      vim.api.nvim_set_keymap('n', '<LEADER>gf', [[:Gitsigns setqflist<CR>]], {noremap=true})
+      vim.api.nvim_set_keymap('n', '<LEADER>gh', [[:Gitsigns preview_hunk<CR>]], {noremap=true})
+      vim.api.nvim_set_keymap('n', '<LEADER>g-', [[:Gitsigns prev_hunk<CR>]], {noremap=true})
+      vim.api.nvim_set_keymap('n', '<LEADER>g=', [[:Gitsigns next_hunk<CR>]], {noremap=true})
+	end
   }
   -- use {'junegunn/gv.vim',
 	-- cmd = "GV",
@@ -364,6 +384,9 @@ local function init()
 
   use {
 	'tversteeg/registers.nvim',
+	config = function()
+		require("registers").setup()
+	end,
   }
   use {
     'diepm/vim-rest-console',
@@ -446,27 +469,6 @@ local function init()
       vim.api.nvim_set_keymap('v', 'ts', [[<Plug>TranslateWV]], {silent=true})
     end
   }
-
-  -- use {'liuchengxu/vista.vim',
-  --   cmd = 'Vista',
-  --   setup = function ()
-  --     -- vim.g.vista_icon_indent = {"╰─▸ ", "├─▸ "}
-  --     vim.g.vista_default_executive = 'ctags'
-  --     vim.g.vista_echo_cursor_strategy = 'echo'
-  --     vim.g.vista_vimwiki_executive = 'markdown'
-  --     vim.g.vista_disable_statusline = 1
-  --     vim.g['vista#renderer#enable_icon'] = 1
-  --     vim.g.vista_executive_for = {
-  --         vimwiki =  'markdown',
-  --         pandoc = 'markdown',
-  --         markdown = 'toc',
-  --         typescript = 'nvim_lsp',
-  --         typescriptreact =  'nvim_lsp',
-  --       }
-
-  --     vim.api.nvim_set_keymap('n', 'T', [[:<C-u>Vista!!<CR>]], {noremap=true})
-  --   end
-  -- }
 
   use {'simrat39/symbols-outline.nvim',
 	cmt = 'SymbolsOutline',

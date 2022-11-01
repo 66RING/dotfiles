@@ -36,6 +36,9 @@ alias yg='you-get' \
 	wget='axel -n 6' \
 	pc='proxyon && '
 
+# modern unix
+alias diff='delta' \
+	cat='bat'
 
 #************************
 #* tools

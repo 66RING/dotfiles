@@ -14,3 +14,4 @@ yay -S \
 	udisks2 \
 	tree-sitter \
 	xdotool \
+	xdo \

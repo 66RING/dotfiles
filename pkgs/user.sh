@@ -7,3 +7,5 @@ yay -S \
   wemeet-bin \
   wechat-uos \
   rpiplay-git \
+  git-delta \
+  bat \

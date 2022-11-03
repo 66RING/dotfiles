@@ -21,6 +21,7 @@ alias c='clear' \
 	sctl='systemctl' \
 	bctl='bluetoothctl'  \
 	yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+	zsh='exec zsh'
 #
 # APPs
 alias yg='you-get' \

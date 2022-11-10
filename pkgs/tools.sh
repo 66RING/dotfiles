@@ -15,3 +15,4 @@ yay -S \
 	tree-sitter \
 	xdotool \
 	xdo \
+	xcolor \

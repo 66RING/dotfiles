@@ -124,9 +124,9 @@ end
 function M.setup()
   c_cpp_rust_config()
   dapui_setup()
-  -- vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
-  -- vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
-  -- vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
+  vim.fn.sign_define('DapBreakpoint', {text='', texthl='Error', linehl='', numhl=''})
+  -- vim.fn.sign_define("DapStopped", {text='', texthl='Error', linehl='', numhl=''})
+  -- vim.fn.sign_define("DapBreakpointRejected", {text='', texthl='Error', linehl='', numhl=''})
 end
 
 return M

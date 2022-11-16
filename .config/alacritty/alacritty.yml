@@ -7,6 +7,9 @@ window:
     y: 2
   dynamic_padding: true
   opacity: 0.9
+  dimensions:
+    columns: 140
+    lines: 45
 
 
 font:
@@ -17,7 +20,7 @@ font:
     family: CaskaydiaCove Nerd Font Mono
   italic:
     family: CaskaydiaCove Nerd Font Mono
-  size: 8
+  size: 7
   offset:
       y: 1
       x: 0

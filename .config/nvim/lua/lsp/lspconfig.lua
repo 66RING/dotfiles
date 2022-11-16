@@ -116,38 +116,38 @@ lspconfig.tsserver.setup({
 })
 
 
-lspconfig.ccls.setup {
-  on_attach = on_attach,
-  root_dir = function (path)
-  	return util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git')(path) or vim.loop.cwd()
-  end,
-  init_options = {
-    compilationDatabaseDirectory = "build";
-	-- diagnostics = {
-	--   onOpen = -1,
-	--   onChange = -1,
-	--   onSave = -1,
-	-- },
-	cache = {
-	  directory = os.getenv('HOME').."/.cache/.ccls-cache"
-	},
-  },
-}
-
--- lspconfig.clangd.setup({
---   cmd = {
---     "clangd",
---     "--background-index",
---     "--enable-config",
---   },
+-- lspconfig.ccls.setup {
 --   on_attach = on_attach,
---   -- Required for lsp-status
---   -- init_options = {
---   --   clangdFileStatus = true
---   -- },
---   -- handlers = nvim_status.extensions.clangd.setup(),
---   -- capabilities = nvim_status.capabilities,
--- })
+--   root_dir = function (path)
+--   	return util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git')(path) or vim.loop.cwd()
+--   end,
+--   init_options = {
+--     compilationDatabaseDirectory = "build";
+-- 	-- diagnostics = {
+-- 	--   onOpen = -1,
+-- 	--   onChange = -1,
+-- 	--   onSave = -1,
+-- 	-- },
+-- 	cache = {
+-- 	  directory = os.getenv('HOME').."/.cache/.ccls-cache"
+-- 	},
+--   },
+-- }
+
+lspconfig.clangd.setup({
+  -- cmd = {
+  --   "clangd",
+  --   "--background-index",
+  --   "--enable-config",
+  -- },
+  on_attach = on_attach,
+  -- Required for lsp-status
+  -- init_options = {
+  --   clangdFileStatus = true
+  -- },
+  -- handlers = nvim_status.extensions.clangd.setup(),
+  -- capabilities = nvim_status.capabilities,
+})
 
 
 lspconfig.rust_analyzer.setup{

@@ -126,7 +126,10 @@ local function init()
 
   use{'nvim-treesitter/nvim-treesitter',
     event = 'BufRead *',
-    config = conf.nvim_treesitter
+    config = conf.nvim_treesitter,
+	setup = function ()
+	  vim.api.nvim_set_keymap('n', 'tT', "<cmd>NvimTreeFindFileToggle<CR>", {noremap=true})
+	end
   }
 
   use {'romgrk/nvim-treesitter-context',
@@ -472,20 +475,20 @@ local function init()
    config = conf.telescope,
    requires = {
 	 {'nvim-telescope/telescope-fzy-native.nvim', opt = true},
-	 {'nvim-telescope/telescope-file-browser.nvim', opt = true},
+	 -- {'nvim-telescope/telescope-file-browser.nvim', opt = true},
 	 -- {'ahmedkhalf/project.nvim', opt = true, config=function()
 		-- require("project_nvim").setup {}end },
    }
  }
 
-  -- use {
-  --   'kyazdani42/nvim-tree.lua',
-	-- cmd = {"NvimTreeToggle", "NvimTreeFindFileToggle"},
-  --   requires = {
-  --     'kyazdani42/nvim-web-devicons', -- optional, for file icon
-  --   },
-	-- config = conf.nvim_tree
-  -- }
+  use {
+    'kyazdani42/nvim-tree.lua',
+	cmd = {"NvimTreeToggle", "NvimTreeFindFileToggle"},
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+	config = conf.nvim_tree
+  }
 
   use {'mg979/vim-visual-multi',
     event = "BufRead *"

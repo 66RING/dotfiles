@@ -88,6 +88,7 @@ local function init()
 	config = conf.dashboard_nvim,
   }
 
+  -- colorscheme
   use {"glepnir/zephyr-nvim",
 	lock = true,
 	commit = '194a5ae5efed5559b095c182b1bc3d906ec70437',
@@ -176,13 +177,13 @@ local function init()
     event = "BufReadPost *",
 	config = conf.todo_comments
   }
-  -- use {
-	-- "levouh/tint.nvim",
-  --   event = 'BufReadPost *',
-	-- config = function()
-	  -- require("tint").setup()
-	-- end
-  -- }
+  use {
+	"levouh/tint.nvim",
+    event = 'BufReadPost *',
+	config = function()
+	  require("tint").setup()
+	end
+  }
 
 
   use {'folke/trouble.nvim',
@@ -237,6 +238,7 @@ local function init()
   --   end
   -- }
 
+  -- code block completion
   use {
 	cmd = 'FeMaco',
 	'AckslD/nvim-FeMaco.lua',
@@ -359,6 +361,13 @@ local function init()
 		}
 	  }
 	end
+  }
+
+
+  -- git commit diff view
+  use { 'sindrets/diffview.nvim',
+	cmd = "DiffviewOpen",
+	requires = 'nvim-lua/plenary.nvim'
   }
 
   -- use {"Shatur/neovim-session-manager",

@@ -50,6 +50,7 @@ function M.run_code()
     c = "term gcc -g -l pthread %:p -o %< && %:p:r",
     cpp = "term g++ -g %:p -o %< && %:p:r",
     java = "term javac %:p && java %:p:t:r",
+	--------
     -- c = "term %:p:r",
     -- cpp = "term %:p:r",
     -- java = "term java %:p:t:r",
@@ -90,6 +91,7 @@ function M.build_code()
     java = "term javac %:p",
     typescript = "term tsc %:p",
     lua = "term luac %:p",
+    wast = "term wat2wasm %:p",
     processing = "term processing-java --sketch='"..vim.fn.trim(vim.fn.system('pwd')).."' --output='"..vim.fn.trim(vim.fn.system('pwd')).."/bin' --force --build"
   }
   local file_type = vim.bo.filetype

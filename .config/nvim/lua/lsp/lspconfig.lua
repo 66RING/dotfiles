@@ -47,9 +47,9 @@ for _,server in ipairs(servers) do
 end
 
 -- find pattern in base
-local function find_base(pattern, path, default)
-  -- print(util.root_pattern(pattern)(path) or default)
-  return util.root_pattern(pattern)(path) or default
+local function find_base(pattern, path)
+  -- print(util.root_pattern(pattern)(path))
+  return util.root_pattern(pattern)(path)
 end
 
 lspconfig.jdtls.setup{
@@ -124,11 +124,11 @@ lspconfig.tsserver.setup({
 
 lspconfig.ccls.setup {
   on_attach = on_attach,
-  -- root_dir = function (path)
-  -- 	return util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git')(path) or vim.loop.cwd()
-  -- end,
+  root_dir = function (path)
+  	return util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git')(path) or vim.loop.cwd()
+  end,
   init_options = {
-    compilationDatabaseDirectory = find_base("compile_commands.json", "./build", "./");
+    compilationDatabaseDirectory = find_base("compile_commands.json", "./build") or find_base(".ccls", "./") or vim.loop.cwd();
 	cache = {
 	  directory = os.getenv('HOME').."/.cache/.ccls-cache"
 	},

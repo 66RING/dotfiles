@@ -16,3 +16,5 @@ yay -S \
 	xdotool \
 	xdo \
 	xcolor \
+	frece \
+	translate-shell

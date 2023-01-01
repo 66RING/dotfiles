@@ -118,3 +118,5 @@ nvim/plugin/packer_compiled.lua
 .config/lazygit
 .config/firefoxprofileswitcher
 .config/clangd
+.config/QQ
+.config/koodo-reader

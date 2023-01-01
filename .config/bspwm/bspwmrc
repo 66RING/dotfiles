@@ -24,6 +24,7 @@ bspc config merge_overlapping_monitors true
 # When focusing a monitor, put the pointer at its center.
 
 
+# use to check class_name:instance_name things
 # bspc config external_rules_command $HOME/.config/bspwm/external_rules
 
 
@@ -37,6 +38,7 @@ bspc rule -a Zathura    state=tiled
 bspc rule -a '*:qemu:*' 		state=floating
 bspc rule -a biliB      sticky=on state=floating layer = above
 bspc rule -a 'wemeetapp' 		state=floating
+bspc rule -a 'QQ:qq' 		state=floating
 
 
 # bspc rule -a VirtualBox\ Manager desktop='^10'

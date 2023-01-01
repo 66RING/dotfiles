@@ -207,8 +207,6 @@ local function init()
 
 
 
-
-
   -- markdown
   use {'iamcco/markdown-preview.nvim',
     ft = {'markdown', 'pandoc.markdown', 'rmd'},
@@ -229,7 +227,7 @@ local function init()
     end
   }
 
-  -- WIP
+  -- -- WIP, image preview, kitty only
   -- use {'edluffy/hologram.nvim',
   --   config = function()
 	  -- require('hologram').setup{
@@ -275,21 +273,6 @@ local function init()
     end
   }
 
-  -- git
-  -- use {'airblade/vim-gitgutter',
-  --   event = "BufRead *",
-  --   setup = function ()
-  --     vim.g.gitgutter_signs = 0
-  --     vim.g.gitgutter_map_keys = 0
-  --     vim.g.gitgutter_override_sign_column_highlight = 0
-  --     vim.g.gitgutter_preview_win_floating = 1
-
-  --     vim.api.nvim_set_keymap('n', '<LEADER>gf', [[:GitGutterFold<CR>]], {noremap=true})
-  --     vim.api.nvim_set_keymap('n', '<LEADER>gh', [[:GitGutterPreviewHunk<CR>]], {noremap=true})
-  --     vim.api.nvim_set_keymap('n', '<LEADER>g-', [[:GitGutterPrevHunk<CR>]], {noremap=true})
-  --     vim.api.nvim_set_keymap('n', '<LEADER>g=', [[:GitGutterNextHunk<CR>]], {noremap=true})
-  --   end
-  -- }
   use {
 	'lewis6991/gitsigns.nvim',
 	-- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
@@ -304,10 +287,6 @@ local function init()
       vim.api.nvim_set_keymap('n', '<LEADER>g=', [[:Gitsigns next_hunk<CR>]], {noremap=true})
 	end
   }
-  -- use {'junegunn/gv.vim',
-	-- cmd = "GV",
-	-- requires = {"66RING/vim-fugitive"},
-  -- }
 
   -- editor
   -- ghost text for browser
@@ -316,6 +295,7 @@ local function init()
 	run = ':GhostInstall',
   }
 
+  -- virt text type hint
   use {'lvimuser/lsp-inlayhints.nvim',
     event = "BufReadPost *",
 	config = function()
@@ -363,7 +343,6 @@ local function init()
 	end
   }
 
-
   -- git commit diff view
   use { 'sindrets/diffview.nvim',
 	cmd = "DiffviewOpen",
@@ -388,26 +367,26 @@ local function init()
   -- 
   -- debug
   --
-  use {'mfussenegger/nvim-dap',
-	config = function()
-	  require("dap_config")
-	end,
-    requires = {
-	  {'rcarriga/nvim-dap-ui'}
-	}
-  }
-  use {'williamboman/mason.nvim',
-  	cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog"},
-	config = function()
-	  require("mason").setup()
-	end
-  }
-  -- use {'nvim-telescope/telescope-dap.nvim'}
-  use {'theHamsta/nvim-dap-virtual-text',
-	config = function()
-	  require("nvim-dap-virtual-text").setup()
-	end
-  }
+  -- use {'mfussenegger/nvim-dap',
+	-- config = function()
+	  -- require("dap_config")
+	-- end,
+  --   requires = {
+	  -- {'rcarriga/nvim-dap-ui'}
+	-- }
+  -- }
+  -- use {'williamboman/mason.nvim',
+  -- 	cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog"},
+	-- config = function()
+	  -- require("mason").setup()
+	-- end
+  -- }
+  -- -- use {'nvim-telescope/telescope-dap.nvim'}
+  -- use {'theHamsta/nvim-dap-virtual-text',
+	-- config = function()
+	  -- require("nvim-dap-virtual-text").setup()
+	-- end
+  -- }
 
 
   -- enhance `.` command
@@ -434,47 +413,6 @@ local function init()
     'diepm/vim-rest-console',
 	ft = {'rest'}
   }
-  -- use {
-	-- "NTBBloodbath/rest.nvim",
-	-- config = function()
-	  -- if not packer_plugins['plenary.nvim'].loaded then
-		-- vim.cmd [[packadd plenary.nvim]]
-	  -- end
-	  -- require("rest-nvim").setup({
-		-- -- Open request results in a horizontal split
-		-- result_split_horizontal = false,
-		-- -- Skip SSL verification, useful for unknown certificates
-		-- skip_ssl_verification = false,
-		-- -- Highlight request on run
-		-- highlight = {
-		  -- enabled = true,
-		  -- timeout = 150,
-		-- },
-		-- result = {
-		  -- -- toggle showing URL, HTTP info, headers at top the of result window
-		  -- show_url = true,
-		  -- show_http_info = true,
-		  -- show_headers = true,
-		-- },
-		-- -- Jump to request line on run
-		-- jump_to_request = false,
-		-- env_file = '.env',
-		-- custom_dynamic_variables = {},
-		-- yank_dry_run = true,
-		-- ensure_installed = { "http", "json" }
-	  -- })
-	-- end
-  -- }
-
-  -- use {
-  --   'lewis6991/spellsitter.nvim',
-  --   config = function()
-  --     require('spellsitter').setup {
-  --   	hl = 'SpellBad',
-  --   	captures = {'comment'},  -- set to {} to spellcheck everything
-  --     }
-  --   end
-  -- }
 
 
   -- fuzzy find
@@ -517,10 +455,6 @@ local function init()
 	config = conf.symbols_outline,
   }
 
-  -- use {'Yggdroot/indentLine',
-  --   event = 'BufReadPre *',
-  --   setup = conf.indentLine
-  -- }
   use {'lukas-reineke/indent-blankline.nvim',
     event = 'BufReadPre *',
     config = conf.indent_blankline_nvim

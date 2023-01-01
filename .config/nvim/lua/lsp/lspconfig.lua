@@ -8,6 +8,13 @@ local util = require 'lspconfig/util'
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
+});
+
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -42,7 +49,8 @@ local servers = {
 
 for _,server in ipairs(servers) do
   lspconfig[server].setup {
-    on_attach = on_attach
+    on_attach = on_attach,
+	capabilities = capabilities,
   }
 end
 
@@ -58,6 +66,7 @@ lspconfig.jdtls.setup{
   },
   cmd = {"jdtls"},
   on_attach = on_attach,
+  capabilities = capabilities,
   root_dir = vim.loop.cwd,
  --  cmd = {
 	-- "java",
@@ -79,6 +88,7 @@ lspconfig.jdtls.setup{
 
 lspconfig.pyright.setup{
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     python = {
       analysis = {
@@ -118,17 +128,19 @@ lspconfig.tsserver.setup({
     "typescriptreact",
     "typescript.tsx"
   },
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities,
 })
 
 
 lspconfig.ccls.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   root_dir = function (path)
   	return util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git')(path) or vim.loop.cwd()
   end,
   init_options = {
-    compilationDatabaseDirectory = find_base("compile_commands.json", "./build") or find_base(".ccls", "./") or vim.loop.cwd();
+    compilationDatabaseDirectory = find_base("compile_commands.json", "./") or find_base(".ccls", "./") or find_base("compile_commands.json", "./build") or vim.loop.cwd();
 	cache = {
 	  directory = os.getenv('HOME').."/.cache/.ccls-cache"
 	},
@@ -142,20 +154,13 @@ lspconfig.ccls.setup {
 
 lspconfig.rust_analyzer.setup{
   on_attach = on_attach,
+  capabilities = capabilities,
 }
 
 lspconfig.gopls.setup {
   on_attach = on_attach,
   cmd = {"gopls","--remote=auto"},
-  capabilities ={
-    textDocument = {
-      completion = {
-        completionItem = {
-          snippetSupport = true
-        }
-      }
-    }
-  },
+  capabilities = capabilities,
   init_options = {
     usePlaceholders=true,
     completeUnimported=true,
@@ -165,6 +170,7 @@ lspconfig.gopls.setup {
 
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   -- need not specific cmd for now:
   -- default cmd assumes that the lua-language-server binary can be found in $PATH
   -- cmd = {

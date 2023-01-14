@@ -6,7 +6,7 @@
 			"#include<vector>",
 			"using namespace std;",
 			"int main() {",
-			"\treturn 0;",
+			"  return 0;",
 			"}"
 		],
 		"description": "template"

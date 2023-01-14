@@ -367,26 +367,27 @@ local function init()
   -- 
   -- debug
   --
-  -- use {'mfussenegger/nvim-dap',
-	-- config = function()
-	  -- require("dap_config")
-	-- end,
-  --   requires = {
-	  -- {'rcarriga/nvim-dap-ui'}
-	-- }
-  -- }
-  -- use {'williamboman/mason.nvim',
-  -- 	cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog"},
-	-- config = function()
-	  -- require("mason").setup()
-	-- end
-  -- }
-  -- -- use {'nvim-telescope/telescope-dap.nvim'}
-  -- use {'theHamsta/nvim-dap-virtual-text',
-	-- config = function()
-	  -- require("nvim-dap-virtual-text").setup()
-	-- end
-  -- }
+  use {'mfussenegger/nvim-dap',
+	config = function()
+	  -- .nvim/dap_config
+	  require("dap_config")
+	end,
+    requires = {
+	  {'rcarriga/nvim-dap-ui'}
+	}
+  }
+  use {'williamboman/mason.nvim',
+  	cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog"},
+	config = function()
+	  require("mason").setup()
+	end
+  }
+  -- use {'nvim-telescope/telescope-dap.nvim'}
+  use {'theHamsta/nvim-dap-virtual-text',
+	config = function()
+	  require("nvim-dap-virtual-text").setup()
+	end
+  }
 
 
   -- enhance `.` command

@@ -39,6 +39,7 @@ bspc rule -a '*:qemu:*' 		state=floating
 bspc rule -a biliB      sticky=on state=floating layer = above
 bspc rule -a 'wemeetapp' 		state=floating
 bspc rule -a 'QQ:qq' 		state=floating
+bspc rule -a 'icalingua' 		state=floating
 
 
 # bspc rule -a VirtualBox\ Manager desktop='^10'

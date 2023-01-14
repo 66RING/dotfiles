@@ -47,8 +47,8 @@ end
 function M.run_code()
   local cmd = {
 	-- build and run
-    c = "term gcc -g -l pthread %:p -o %< && %:p:r",
-    cpp = "term g++ -g %:p -o %< && %:p:r",
+    c = "term gcc -g3 -fsanitize=address -l pthread %:p -o %< && %:p:r",
+    cpp = "term g++ -g3 -fsanitize=address %:p -o %< && %:p:r",
     java = "term javac %:p && java %:p:t:r",
 	--------
     -- c = "term %:p:r",
@@ -86,8 +86,8 @@ end
 --
 function M.build_code()
   local cmd = {
-    c = "term gcc -g -l pthread %:p -o %<",
-    cpp = "term g++ -g %:p -o %<",
+    c = "term gcc -g3 -fsanitize=address -l pthread %:p -o %<",
+    cpp = "term g++ -g3 -fsanitize=address %:p -o %<",
     java = "term javac %:p",
     typescript = "term tsc %:p",
     lua = "term luac %:p",

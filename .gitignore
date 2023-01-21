@@ -122,3 +122,4 @@ nvim/plugin/packer_compiled.lua
 .config/koodo-reader
 .config/Microsoft/Microsoft Teams
 .config/teams
+.config/diskmonitorrc

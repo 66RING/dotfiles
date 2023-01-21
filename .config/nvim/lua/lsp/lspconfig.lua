@@ -171,13 +171,6 @@ lspconfig.gopls.setup {
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  -- need not specific cmd for now:
-  -- default cmd assumes that the lua-language-server binary can be found in $PATH
-  -- cmd = {
-  --   lsp_folder.."/lua-language-server/bin/lua-language-server",
-  --   "-E",
-  --   lsp_folder.."/lua-language-server/bin/main.lua"
-  -- },
   root_dir = vim.loop.cwd,
   settings = {
     Lua = {

@@ -1,9 +1,4 @@
 " shotcut configuration file
-source ~/.vim/shot_cut_source/md_snippits.vim
-source ~/.vim/shot_cut_source/cpp_short_cut.vim
-source ~/.vim/shot_cut_source/golang_short_cut.vim
-source ~/.vim/shot_cut_source/python_short_cut.vim
-
 set enc=utf8
 set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
 set termencoding=utf-8
@@ -24,12 +19,32 @@ noremap k j
 noremap K 5j
 noremap i k
 noremap I 5k
+noremap gk gj
+noremap gK 5gj
+noremap gi gk
+noremap gI 5gk
 noremap j h
 noremap J 5h
 noremap L 5l
+noremap <C-j> 0
+noremap <C-l> $
+inoremap <C-j> <ESC>I
+inoremap <C-l> <ESC>A
+noremap m J  
+
 
 noremap Y "+y
+" :[range]y[ank] [x]
+nnoremap yY :%y+<CR> 
 noremap P "+p
+
+"=== split screen movement===
+noremap <LEADER>w <C-w>w
+noremap <LEADER>i <C-w>k
+noremap <LEADER>k <C-w>j
+noremap <LEADER>j <C-w>h
+noremap <LEADER>l <C-w>l
+
 
 " ===quick operation===
 map S :w<CR>

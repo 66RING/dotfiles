@@ -80,13 +80,17 @@ local function init()
   }
 
   -- UI
-  -- use {"goolord/alpha-nvim",
-  --   config = conf.alpha_nvim,
-  -- }
-
-  use {"glepnir/dashboard-nvim",
-	config = conf.dashboard_nvim,
+  use {"goolord/alpha-nvim",
+    event = 'VimEnter',
+    config = conf.alpha_nvim,
+	requires = {'nvim-tree/nvim-web-devicons'},
   }
+
+  -- use {"glepnir/dashboard-nvim",
+  --   event = 'VimEnter',
+	-- config = conf.dashboard_nvim,
+	-- requires = {'nvim-tree/nvim-web-devicons'},
+  -- }
 
   -- colorscheme
   use {"glepnir/zephyr-nvim",

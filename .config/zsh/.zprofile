@@ -8,9 +8,11 @@
 
 
 # XDG prelude
+export NIX_DATA_HOME="/nix/var/nix/profiles/default"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_DATA_DIRS=$NIX_DATA_HOME/share:$HOME/.share:"${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
 export ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
@@ -18,7 +20,7 @@ export ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
 #========================
 # Global
 #========================
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin"
 export SUDO_ASKPASS="/$HOME/scripts/global/rofipass"
 export MAIN_HOME="/home/ring"
 

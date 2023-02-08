@@ -33,8 +33,8 @@ local function init()
   use {'nvim-lua/popup.nvim', opt = true}
   use {'nvim-lua/plenary.nvim', opt = true}
   use {"glepnir/lspsaga.nvim",
-	cmd = "Lspsaga",
-    -- event = "BufReadPost *",
+    event = "BufRead *",
+	requires = { {"nvim-tree/nvim-web-devicons"} },
     config = conf.lspsaga
   }
 

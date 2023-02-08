@@ -1,6 +1,6 @@
 
 # LF
-LFCD="/home/ring/.config/lf/lfcd.sh" 
+LFCD="$HOME/.config/lf/lfcd.sh" 
 if [ -f "$LFCD" ]; then
     source "$LFCD"
 fi

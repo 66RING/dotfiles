@@ -534,12 +534,14 @@ end
 function config.lspsaga()
   require 'lspsaga'.setup({
 	finder = {
-	  jump_to = 'p',
-	  edit = { "o", "<CR>" },
-	  vsplit = "v",
-	  split = "s",
-	  tabe = "t",
-	  quit = { "q", "<ESC>" },
+	  keys = {
+		jump_to = 'p',
+		edit = { "o", "<CR>" },
+		vsplit = "v",
+		split = "s",
+		tabe = "t",
+		quit = { "q", "<ESC>" },
+	  }
 	},
 	callhierarchy = {
 	  show_detail = false,
@@ -574,6 +576,9 @@ function config.lspsaga()
 		expand_collapse = "u",
 		quit = "q",
 	  },
+	},
+	symbol_in_winbar = {
+	  enable = false,
 	},
   })
 end

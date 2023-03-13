@@ -13,7 +13,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS=$NIX_DATA_HOME/share:$HOME/.share:"${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
-# export XAUTHORITY="$HOME"/Xauthority
+export XAUTHORITY="$XDG_CACHE_HOME"/.Xauthority
 export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
 export ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
 

@@ -395,6 +395,8 @@ local function init()
 
 
   -- enhance `.` command
+  use {"github/copilot.vim"}
+
   use {"tpope/vim-repeat"}
   use {'tpope/vim-surround',
     event = "BufRead *"

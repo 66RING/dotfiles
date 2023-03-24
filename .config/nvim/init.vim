@@ -107,7 +107,7 @@ noremap J 5h
 noremap L 5l
 noremap <C-j> 0
 noremap <C-l> $
-inoremap <C-j> <ESC>I
+" inoremap <C-j> <ESC>I
 inoremap <C-l> <ESC>A
 
 " " standard vim
@@ -203,6 +203,10 @@ if has('persistent_undo')
 	set undofile
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
+
+" Copilot
+inoremap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 "========================
 " last position

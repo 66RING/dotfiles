@@ -149,6 +149,7 @@ lspconfig.ccls.setup {
 
 -- lspconfig.clangd.setup({
 --   on_attach = on_attach,
+--   capabilities = capabilities,
 -- })
 
 
@@ -168,7 +169,7 @@ lspconfig.gopls.setup {
 }
 
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = vim.loop.cwd,

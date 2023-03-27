@@ -359,9 +359,8 @@ function config.alpha_nvim()
 	'⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠂⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
     '',
   }
-  dashboard.section.buttons.val = {
-	{ type = "button", val = "" },
-  }
+  dashboard.section.buttons.val = {}
+
   -- dashboard.section.footer.val = "Fabrice!"
   dashboard.section.footer.val = "MAY CHAOS TAKE THE WORLD, MAY OPEN SOURCE GUIDE YOUR WAY"
   -- "STAY HUNGRY, STAY FOOLISH",
@@ -375,7 +374,7 @@ function config.alpha_nvim()
   dashboard.section.buttons.opts.hl = "Keyword"
   dashboard.section.footer.opts.hl = "ErrorMsg"
 
-  require'alpha'.setup(dashboard.opts)
+  require'alpha'.setup(dashboard.config)
 
   vim.cmd [[autocmd FileType alpha nnoremap <silent><buffer> e :exec "enew"<CR>]]
   vim.cmd [[autocmd FileType alpha hi Cursor blend=100 | set guicursor+=a:Cursor/Cursor | autocmd BufLeave <buffer> set guicursor-=a:Cursor/Cursor]]

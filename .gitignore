@@ -126,3 +126,4 @@ nvim/plugin/packer_compiled.lua
 .config/draw.io
 .config/microsoft-edge
 .config/microsoft-edge-beta
+.config/github-copilot

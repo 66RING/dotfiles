@@ -137,13 +137,13 @@ local function init()
 	end
   }
 
-  use {'romgrk/nvim-treesitter-context',
-    event = 'BufRead *',
-    after = 'nvim-treesitter',
-	config = function ()
-      vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
-	end,
-  }
+  -- use {'romgrk/nvim-treesitter-context',
+  --   event = 'BufRead *',
+  --   after = 'nvim-treesitter',
+	-- config = function ()
+  --     vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
+	-- end,
+  -- }
 
   use {'nvim-treesitter/nvim-treesitter-textobjects',
 	opt = true,
@@ -394,9 +394,17 @@ local function init()
   }
 
 
-  -- enhance `.` command
   use {"github/copilot.vim"}
+  -- use {
+	-- "zbirenbaum/copilot.lua",
+	-- cmd = "Copilot",
+	-- event = "InsertEnter",
+	-- config = function()
+	  -- require("copilot").setup({})
+	-- end,
+  -- }
 
+  -- enhance `.` command
   use {"tpope/vim-repeat"}
   use {'tpope/vim-surround',
     event = "BufRead *"

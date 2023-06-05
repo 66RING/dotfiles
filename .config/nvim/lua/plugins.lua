@@ -394,7 +394,7 @@ local function init()
   }
 
 
-  use {"github/copilot.vim"}
+  -- use {"github/copilot.vim"}
   -- use {
 	-- "zbirenbaum/copilot.lua",
 	-- cmd = "Copilot",
@@ -509,6 +509,15 @@ local function init()
   --     vim.g.tagalong_additional_filetypes = {'vue', 'wxml'}
   --   end
   -- }
+
+  -- Python, jupyter
+  use { 'dccsillag/magma-nvim',
+	run = ':UpdateRemotePlugins',
+	setup = function()
+	  vim.g.magma_automatically_open_output = false
+	  vim.g.magma_image_provider = "ueberzug"
+	end,
+  }
 
   use {'szw/vim-maximizer',
     cmd = "MaximizerToggle",

@@ -561,6 +561,10 @@ function config.lspsaga()
 	  sign_priority = 20,
 	  virtual_text = true,
 	},
+	diagnostic = {
+	  on_insert = false,
+	  on_insert_follow = false,
+	},
 	outline = {
 	  win_position = "right",
 	  win_with = "",

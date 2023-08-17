@@ -56,6 +56,8 @@ function M.run_code()
     -- java = "term java %:p:t:r",
     rust = "term cargo run --bin %:t:r",
     python = "term python %:p",
+    typescript = "term ts-node %:p",
+    javascript = "term node %:p",
     sh = "term bash %:p",
     vim = "term source %:p",
     go = "term go run %:p",

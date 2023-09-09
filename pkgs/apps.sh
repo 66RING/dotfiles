@@ -14,6 +14,8 @@ yay -S \
   dunst \
   fcitx-im fcitx-cloudpinyin fcitx-configtool \
   xsel xclip \
+  bluez bluez-utils \
+
 
 # fcitx5 fcitx5-chinese-addons fcitx5-pinyin-chinese-idiom fcitx5-pinyin-zhwiktionary fcitx5-im \
 

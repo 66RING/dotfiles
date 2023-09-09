@@ -17,4 +17,8 @@ yay -S \
 	xdo \
 	xcolor \
 	frece \
-	translate-shell
+	fzf \
+	ripgrep \
+	axel \
+	translate-shell \
+	usb-utils

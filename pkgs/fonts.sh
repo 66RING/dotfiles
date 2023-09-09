@@ -1,8 +1,7 @@
 #!/bin/sh
 yay -S \
   ttf-mac-fonts \
-  nerd-fonts-cascadia-code \
-  nerd-fonts-cascadia-code \
+  ttf-cascadia-code-nerd \
   ttf-twemoji \
   ttf-weather-icons \
   ttf-font-awesome \

@@ -93,7 +93,7 @@ local function init()
   -- }
 
   -- colorscheme
-  use {"glepnir/zephyr-nvim",
+  use {"66RING/zephyr-nvim",
 	lock = true,
 	commit = '194a5ae5efed5559b095c182b1bc3d906ec70437',
     config= function()

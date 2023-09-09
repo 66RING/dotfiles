@@ -22,6 +22,11 @@ set icons
 #* scripts
 #************************
 cmd quit_back ${{
+	if [ ! -f ~/.local/share/lf/marks ]; then
+	  mkdir -p ~/.local/share/lf
+	  touch ~/.local/share/lf/marks
+	fi
+
     num=$(sed -n "/^'/=" ~/.local/share/lf/marks)
     sed -i "${num}c ':$(pwd)" ~/.local/share/lf/marks
 

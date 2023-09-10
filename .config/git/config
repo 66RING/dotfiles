@@ -16,3 +16,5 @@
 	color = false
 [includeIf "gitdir:/home/ring/Documents/code/OpenSourceWorks/gitee"]
     path = /home/ring/Documents/code/OpenSourceWorks/gitee/dir-gitconfig
+[pull]
+	rebase = true

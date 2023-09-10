@@ -27,16 +27,16 @@ end
 -- fcitx auto switch
 --
 function M.fcitx2en()
-  if tonumber(vim.fn.system("fcitx-remote")) == 2 then
+  if tonumber(vim.fn.system("fcitx5-remote")) == 2 then
     M.input_toggle = 2
-    os.execute("fcitx-remote -c")
+    os.execute("fcitx5-remote -c")
   end
 end
 
 function M.fcitx2cn()
-  if tonumber(vim.fn.system("fcitx-remote")) ~= 2 and M.input_toggle == 1 then
+  if tonumber(vim.fn.system("fcitx5-remote")) ~= 2 and M.input_toggle == 1 then
     M.input_toggle = 2
-    os.execute("fcitx-remote -o")
+    os.execute("fcitx5-remote -o")
   end
 end
 

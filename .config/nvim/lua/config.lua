@@ -84,7 +84,7 @@ end
 function config.nvim_bufferline()
   require('bufferline').setup{
     options = {
-      modified_icon = '',
+      modified_icon = '',
       buffer_close_icon = '',
       show_buffer_close_icons = false,
       close_icon = "",
@@ -679,7 +679,46 @@ end
 
 -- nvim tree
 function config.nvim_tree()
+  local function my_on_attach(bufnr)
+    local api = require('nvim-tree.api')
+
+    local function opts(desc)
+      return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+	vim.keymap.set('n', '<C-k>', api.node.show_info_popup,       opts('Info'))
+	vim.keymap.set('n', '<C-v>', api.node.open.vertical,         opts('Open:    Vertical   Split'))
+	vim.keymap.set('n', '<C-x>', api.node.open.horizontal,       opts('Open:    Horizontal Split'))
+	vim.keymap.set('n', '<BS>',  api.node.navigate.parent_close, opts('Close    Directory'))
+	vim.keymap.set('n', '<CR>',  api.node.open.edit,             opts('Open'))
+	vim.keymap.set('n', '<Tab>', api.node.open.preview,          opts('Open     Preview'))
+	vim.keymap.set('n', '>',     api.node.navigate.sibling.next, opts('Next     Sibling'))
+	vim.keymap.set('n', '<',     api.node.navigate.sibling.prev, opts('Previous Sibling'))
+	vim.keymap.set('n', '.',     api.node.run.cmd,               opts('Run      Command'))
+	vim.keymap.set('n', '-',     api.tree.change_root_to_parent, opts('Up'))
+	vim.keymap.set('n', 'mf',    api.fs.create,                  opts('Create'))
+	vim.keymap.set('n', 'yy',    api.fs.copy.node,               opts('Copy'))
+	vim.keymap.set('n', '[c',    api.node.navigate.git.prev,     opts('Prev     Git'))
+	vim.keymap.set('n', ']c',    api.node.navigate.git.next,     opts('Next     Git'))
+	vim.keymap.set('n', 'dD',    api.fs.remove,                  opts('Delete'))
+	vim.keymap.set('n', 'E',     api.tree.expand_all,            opts('Expand   All'))
+	vim.keymap.set('n', 'F',     api.live_filter.clear,          opts('Clean    Filter'))
+	vim.keymap.set('n', 'f',     api.live_filter.start,          opts('Filter'))
+	vim.keymap.set('n', 'g?',    api.tree.toggle_help,           opts('Help'))
+	vim.keymap.set('n', 'yp',    api.fs.copy.absolute_path,      opts('Copy     Absolute   Path'))
+	vim.keymap.set('n', 'o',     api.node.open.edit,             opts('Open'))
+	vim.keymap.set('n', 'pp',    api.fs.paste,                   opts('Paste'))
+	vim.keymap.set('n', 'P',     api.node.navigate.parent,       opts('Parent   Directory'))
+	vim.keymap.set('n', 'q',     api.tree.close,                 opts('Close'))
+	vim.keymap.set('n', 'r',     api.fs.rename,                  opts('Rename'))
+	vim.keymap.set('n', 'R',     api.tree.reload,                opts('Refresh'))
+	vim.keymap.set('n', 's',     api.node.run.system,            opts('Run      System'))
+	vim.keymap.set('n', 'S',     api.tree.search_node,           opts('Search'))
+	vim.keymap.set('n', 'W',     api.tree.collapse_all,          opts('Collapse'))
+	vim.keymap.set('n', 'dd',    api.fs.cut,                     opts('Cut'))
+  end
+
   require'nvim-tree'.setup {
+    on_attach = my_on_attach,
 	filters = {
 	  dotfiles = true,
 	},
@@ -694,58 +733,6 @@ function config.nvim_tree()
 	notify = {
 	  threshold = vim.log.levels.WARN,
 	},
-	view = {
-	  mappings = {
-		list = {
-		  { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
-		  { key = "<C-e>",                          action = "" },
-		  { key = "O",                              action = "" },
-		  { key = { "<C-]>", "<2-RightMouse>" },    action = "" },
-		  { key = "<C-v>",                          action = "vsplit" },
-		  { key = "<C-x>",                          action = "split" },
-		  { key = "<C-t>",                          action = "" },
-		  { key = "<",                              action = "prev_sibling" },
-		  { key = ">",                              action = "next_sibling" },
-		  { key = "P",                              action = "" },
-		  { key = "<BS>",                           action = "close_node" },
-		  { key = "<Tab>",                          action = "" },
-		  { key = "K",                              action = "" },
-		  { key = "J",                              action = "" },
-		  { key = "I",                              action = "" },
-		  { key = "H",                              action = "" },
-		  { key = "U",                              action = "" },
-		  { key = "R",                              action = "refresh" },
-		  { key = "mf",                              action = "create" },
-		  { key = "dD",                              action = "remove" },
-		  { key = "D",                              action = "trash" },
-		  { key = "r",                              action = "rename" },
-		  { key = "<C-r>",                          action = "" },
-		  { key = "dd",                              action = "cut" },
-		  { key = "c",                              action =  "" },
-		  { key = "yy",                              action = "copy" },
-		  { key = "pp",                              action = "paste" },
-		  { key = "y",                              action = "" },
-		  { key = "Y",                              action = "" },
-		  { key = "yp",                             action = "copy_absolute_path" },
-		  { key = "[c",                             action = "prev_git_item" },
-		  { key = "]c",                             action = "next_git_item" },
-		  { key = "-",                              action = "dir_up" },
-		  { key = "s",                              action = "system_open" },
-		  { key = "f",                              action = "live_filter" },
-		  { key = "F",                              action = "clear_live_filter" },
-		  { key = "q",                              action = "close" },
-		  { key = "W",                              action = "collapse_all" },
-		  { key = "E",                              action = "expand_all" },
-		  { key = "S",                              action = "search_node" },
-		  { key = ".",                              action = "run_file_command" },
-		  { key = "<C-k>",                          action = "toggle_file_info" },
-		  { key = "g?",                             action = "toggle_help" },
-		  { key = "zh",                             action = "toggle_dotfiles" },
-		  -- custom
-		  { key = "v",                             action = "toggle_help" },
-		}
-	  }
-	}
   }
 end
 

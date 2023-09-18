@@ -106,15 +106,20 @@ lspconfig.pyright.setup{
   }
 }
 
--- lspconfig.pyls.setup {
+-- lspconfig.pylsp.setup {
 --   enable = true,
---   plugins = {
---     pyls_mypy = {
---       enabled = true,
---       live_mode = false
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         jedi = {
+-- 		  -- select python interpreter
+--           environment = os.getenv("VIRTUAL_ENV")..'/bin/python',
+--         }
+--       }
 --     }
 --   },
---   on_attach = on_attach
+--   on_attach = on_attach,
+--   capabilities = capabilities,
 -- }
 
 

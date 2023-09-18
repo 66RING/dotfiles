@@ -140,11 +140,12 @@ export GDK_DPI_SCALE=1.5
 export QT_SCALE_FACTOR=1.5
 
 # fcitx
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=\@im=fcitx5
-export INPUT_METHODT=fcitx5
-export SDL_IM_MODULE=fcitx5
+export FCITX_VERSION=fcitx5
+export GTK_IM_MODULE=$FCITX_VERSION
+export QT_IM_MODULE=$FCITX_VERSION
+export XMODIFIERS=\@im=$FCITX_VERSION
+export INPUT_METHODT=$FCITX_VERSION
+export SDL_IM_MODULE=$FCITX_VERSION
 export GLFW_IM_MODULE=ibus
 
 
@@ -159,5 +160,5 @@ export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
 # Start X
 #
 
-# [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
 

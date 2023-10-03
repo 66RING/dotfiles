@@ -75,8 +75,8 @@ end
 
 function config.indent_blankline_nvim()
   vim.opt.list = true
-  require("indent_blankline").setup {
-	  show_end_of_line = true,
+  require("ibl").setup {
+	  -- show_end_of_line = true,
   }
 end
 
@@ -647,7 +647,11 @@ function config.nvim_cmp()
 	  -- end, { "i", "s" }),
     },
 	formatting = {
-	  format = lspkind.cmp_format({with_text = false, maxwidth = 50})
+	  format = lspkind.cmp_format({
+		with_text = false, 
+		maxwidth = 50,
+		-- symbol_map = { Copilot = "" }
+	  })
 	},
 	sources = {
 	  { name = 'nvim_lsp' },
@@ -656,6 +660,7 @@ function config.nvim_cmp()
 	  { name = 'cmp-nvim-lsp-signature-help'},
 	  -- { name = 'cmp_tabnine'},
 	  { name = 'path' },
+	  { name = "copilot", group_index = 2 },
 	  { name = 'buffer' },
 	  { name = 'calc'},
 	  { name = 'latex_symbols'},
@@ -679,6 +684,8 @@ end
 
 -- nvim tree
 function config.nvim_tree()
+  vim.api.nvim_set_keymap('n', 'tT', "<cmd>NvimTreeFindFileToggle<CR>", {noremap=true})
+
   local function my_on_attach(bufnr)
     local api = require('nvim-tree.api')
 

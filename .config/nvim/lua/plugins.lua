@@ -55,6 +55,7 @@ local function init()
 	  -- {'hrsh7th/cmp-vsnip', event = 'InsertEnter *'},
 	  {'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter *'},
 	  {'saadparwaiz1/cmp_luasnip', event = 'InsertEnter *'},
+	  { "zbirenbaum/copilot-cmp", after = { "copilot.lua" }, config = function() require("copilot_cmp").setup() end }
 	}
   }
   -- use {'hrsh7th/vim-vsnip',
@@ -112,38 +113,19 @@ local function init()
   use {
 	"folke/tokyonight.nvim",
   }
-  --use{"marko-cerovac/material.nvim",
-	--config = function ()
-	  ---- Example config in lua
-	  --vim.g.material_style = 'oceanic'
-	  --vim.g.material_italic_comments = true
-	  --vim.g.material_italic_keywords = true
-	  --vim.g.material_italic_functions = true
-	  --vim.g.material_italic_variables = false
-	  --vim.g.material_contrast = true
-	  --vim.g.material_borders = true
-	  --vim.g.material_disable_background = true
-	  ----vim.g.material_custom_colors = { black = "#000000", bg = "#0F111A" }
-	  ---- Load the colorscheme
-	  --require('material').set()
-	--end,
-  --}
 
   use{'nvim-treesitter/nvim-treesitter',
     event = 'BufRead *',
     config = conf.nvim_treesitter,
-	setup = function ()
-	  vim.api.nvim_set_keymap('n', 'tT', "<cmd>NvimTreeFindFileToggle<CR>", {noremap=true})
-	end
   }
 
-  -- use {'romgrk/nvim-treesitter-context',
-  --   event = 'BufRead *',
-  --   after = 'nvim-treesitter',
-	-- config = function ()
-  --     vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
-	-- end,
-  -- }
+  use {'romgrk/nvim-treesitter-context',
+    event = 'BufRead *',
+    after = 'nvim-treesitter',
+	config = function ()
+      vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
+	end,
+  }
 
   use {'nvim-treesitter/nvim-treesitter-textobjects',
 	opt = true,
@@ -209,8 +191,6 @@ local function init()
     event={'BufReadPre *', 'BufNewFile *'},
   }
 
-
-
   -- markdown
   use {'iamcco/markdown-preview.nvim',
     ft = {'markdown', 'pandoc.markdown', 'rmd'},
@@ -255,18 +235,6 @@ local function init()
     ft = 'markdown',
   }
 
-  -- use {'vimwiki/vimwiki',
-  --   ft = {"markdown", "wiki"},
-  --   confit = function ()
-	 --  vim.g.vimwiki_list = {
-		-- {
-		--   path = '~/Documents/Notes/',
-		--   syntax = 'markdown',
-		--   ext = '.md'
-		-- }
-	 --  }
-  --   end
-  -- }
   use {'tpope/vim-commentary',
     event = "BufRead *",
     setup = function ()
@@ -393,16 +361,14 @@ local function init()
 	end
   }
 
-
-  -- use {"github/copilot.vim"}
-  -- use {
-	-- "zbirenbaum/copilot.lua",
+  use {
+	"zbirenbaum/copilot.lua",
 	-- cmd = "Copilot",
 	-- event = "InsertEnter",
-	-- config = function()
-	  -- require("copilot").setup({})
-	-- end,
-  -- }
+	config = function()
+	  require("copilot").setup({})
+	end,
+  }
 
   -- enhance `.` command
   use {"tpope/vim-repeat"}
@@ -471,7 +437,7 @@ local function init()
   }
 
   use {'lukas-reineke/indent-blankline.nvim',
-    event = 'BufReadPre *',
+    event = 'BufRead *',
     config = conf.indent_blankline_nvim
   }
 

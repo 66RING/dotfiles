@@ -7,6 +7,11 @@ local util = require 'lspconfig/util'
 -- use for nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.offsetEncoding = "utf-16"
+capabilities.offset_encoding = "utf-16"
+capabilities.clang = {}
+capabilities.clang.offsetEncoding = "utf-16"
+capabilities.clang.offset_encoding = "utf-16"
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
@@ -137,26 +142,24 @@ lspconfig.tsserver.setup({
   capabilities = capabilities,
 })
 
-
-lspconfig.ccls.setup {
+lspconfig.clangd.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  root_dir = function (path)
-  	return util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git')(path) or vim.loop.cwd()
-  end,
-  init_options = {
-    compilationDatabaseDirectory = find_base("compile_commands.json", "./") or find_base(".ccls", "./") or find_base("compile_commands.json", "./build") or vim.loop.cwd();
-	cache = {
-	  directory = os.getenv('HOME').."/.cache/.ccls-cache"
-	},
-  },
-}
+})
 
--- lspconfig.clangd.setup({
+-- lspconfig.ccls.setup {
 --   on_attach = on_attach,
 --   capabilities = capabilities,
--- })
-
+--   root_dir = function (path)
+--   	return util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git')(path) or vim.loop.cwd()
+--   end,
+--   init_options = {
+--     compilationDatabaseDirectory = find_base("compile_commands.json", "./") or find_base(".ccls", "./") or find_base("compile_commands.json", "./build") or vim.loop.cwd();
+-- 	cache = {
+-- 	  directory = os.getenv('HOME').."/.cache/.ccls-cache"
+-- 	},
+--   },
+-- }
 
 lspconfig.rust_analyzer.setup{
   on_attach = on_attach,

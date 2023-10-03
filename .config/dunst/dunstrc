@@ -81,10 +81,10 @@
     # "mod3" and "mod4" (windows-key).
     # Xev might be helpful to find names for keys.
 
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+grave
-    context = ctrl+shift+period
+    # close = ctrl+space
+    # close_all = ctrl+shift+space
+    # history = ctrl+grave
+    # context = ctrl+shift+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.

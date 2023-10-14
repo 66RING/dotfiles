@@ -63,16 +63,6 @@ function config.nvim_treesitter()
   }
 end
 
--- unused
-function config.indentLine()
-  vim.g.indentLine_enabled = 1
-  vim.g.indentLine_char='¦'
-  vim.g.indentLine_fileTypeExclude = {'defx', 'json', 'denite','startify','dbui','vista_kind','vista','coc-explorer','dashboard','chadtree', 'markdown', 'terminal', 'FTerm'}
-  vim.g.indentLine_concealcursor = 'inc'
-  vim.g.indentLine_showFirstIndentLevel =1
-end
-
-
 function config.indent_blankline_nvim()
   vim.opt.list = true
   require("ibl").setup {
@@ -684,8 +674,6 @@ end
 
 -- nvim tree
 function config.nvim_tree()
-  vim.api.nvim_set_keymap('n', 'tT', "<cmd>NvimTreeFindFileToggle<CR>", {noremap=true})
-
   local function my_on_attach(bufnr)
     local api = require('nvim-tree.api')
 
@@ -722,6 +710,7 @@ function config.nvim_tree()
 	vim.keymap.set('n', 'S',     api.tree.search_node,           opts('Search'))
 	vim.keymap.set('n', 'W',     api.tree.collapse_all,          opts('Collapse'))
 	vim.keymap.set('n', 'dd',    api.fs.cut,                     opts('Cut'))
+	vim.keymap.set('n', 'zh',    api.tree.toggle_hidden_filter,  opts('Toggle Filter: Dotfiles'))
   end
 
   require'nvim-tree'.setup {

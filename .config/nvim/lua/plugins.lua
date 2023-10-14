@@ -119,13 +119,15 @@ local function init()
     config = conf.nvim_treesitter,
   }
 
-  use {'romgrk/nvim-treesitter-context',
-    event = 'BufRead *',
-    after = 'nvim-treesitter',
-	config = function ()
-      vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
-	end,
-  }
+  -- we don't need this any more. we have lspsage already
+  -- use {'romgrk/nvim-treesitter-context',
+  -- 	cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog"},
+  --   event = 'BufRead *',
+  --   after = 'nvim-treesitter',
+	-- config = function ()
+  --     vim.cmd[[highlight NormalFloat ctermbg=NONE guibg=NONE]]
+	-- end,
+  -- }
 
   use {'nvim-treesitter/nvim-treesitter-textobjects',
 	opt = true,

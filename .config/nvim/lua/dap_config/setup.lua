@@ -1,3 +1,5 @@
+local python_config = require("dap_config.python_setup")
+
 local M = {}
 
 local function c_cpp_rust_config()
@@ -161,6 +163,7 @@ end
 
 function M.setup()
   c_cpp_rust_config()
+  python_config.setup()
   golang_config()
   dapui_setup()
   vim.fn.sign_define('DapBreakpoint', {text='', texthl='Error', linehl='', numhl=''})

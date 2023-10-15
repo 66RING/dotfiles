@@ -343,8 +343,7 @@ local function init()
   --
   use {'mfussenegger/nvim-dap',
 	config = function()
-	  -- .nvim/dap_config
-	  require("dap_config")
+	  require("user.dap")
 	end,
     requires = {
 	  {'rcarriga/nvim-dap-ui'}

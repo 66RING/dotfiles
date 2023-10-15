@@ -1,4 +1,4 @@
-local python_config = require("dap_config.python_setup")
+local dap_python = require("user.dap.dap-python")
 
 local M = {}
 
@@ -134,16 +134,6 @@ local function dapui_setup()
 	  enabled = true,
 	  -- Display controls in this element
 	  element = "repl",
-	  icons = {
-		pause = "",
-		play = "",
-		step_into = "",
-		step_over = "",
-		step_out = "",
-		step_back = "",
-		run_last = "↻",
-		terminate = "□",
-	  },
 	},
 	floating = {
 	  max_height = nil, -- These can be integers or a float between 0 and 1.
@@ -161,14 +151,27 @@ local function dapui_setup()
   })
 end
 
+local function autocmd()
+  vim.cmd[[
+    augroup _load_break_points
+    autocmd!
+    autocmd FileType c,cpp,go,python,lua :lua require'user.dap.dap-util'.load_breakpoints()
+	augroup end
+  ]]
+end
+
 function M.setup()
   c_cpp_rust_config()
-  python_config.setup()
+  dap_python.setup()
   golang_config()
   dapui_setup()
+  require("dap.ext.vscode").load_launchjs()
+
   vim.fn.sign_define('DapBreakpoint', {text='', texthl='Error', linehl='', numhl=''})
   -- vim.fn.sign_define("DapStopped", {text='', texthl='Error', linehl='', numhl=''})
   -- vim.fn.sign_define("DapBreakpointRejected", {text='', texthl='Error', linehl='', numhl=''})
+
+  autocmd()
 end
 
 return M

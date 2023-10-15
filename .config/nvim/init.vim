@@ -224,19 +224,19 @@ if has('nvim')
   " widgets
   "========================
   " " TODO bang argments
-  command! ImageUrl lua require('utils.edit').img_to_url()
-  command! TD lua require("utils.diagnostics").toggle_diagnostics()
-  " nnoremap <silent> <leader>d :lua require("utils.functions").find_doc()<CR>
-  " nnoremap R :lua require("utils.functions").reload_config()<CR>
-  nnoremap <silent> <leader>R :lua require("utils.functions").run_code()<CR>
-  nnoremap <silent> <leader>B :lua require("utils.functions").build_code()<CR>
-  nnoremap <silent> <leader>D :lua require("utils.functions").debug_code()<CR>
+  command! ImageUrl lua require('user.utils.edit').img_to_url()
+  command! TD lua require("user.utils.diagnostics").toggle_diagnostics()
+  " nnoremap <silent> <leader>d :lua require("user.utils.functions").find_doc()<CR>
+  " nnoremap R :lua require("user.utils.functions").reload_config()<CR>
+  nnoremap <silent> <leader>R :lua require("user.utils.functions").run_code()<CR>
+  nnoremap <silent> <leader>B :lua require("user.utils.functions").build_code()<CR>
+  nnoremap <silent> <leader>D :lua require("user.utils.functions").debug_code()<CR>
   " command! ImgUrl :%s/\(<img src="\)\.\/\(.\{-}\)\(".*\)/\1https:\/\/raw.githubusercontent.com\/66RING\/66RING\/master\/.github\/images\/Notes\/universe\/qemu\/qemu_bus_simulate\/\2\3
 
   " autocmd FileType json syntax match Comment +\/\/.\+$+
 
   " fcitx auto switch
-  autocmd InsertLeave * lua require("utils.functions").fcitx2en()
+  autocmd InsertLeave * lua require("user.utils.functions").fcitx2en()
 
 
   "========================
@@ -257,7 +257,7 @@ if has('nvim')
 	execute 'packadd packer.nvim'
   endif
 
-  lua require('keymap.init')
+  lua require('user.keymap.init')
   " colorscheme zephyr
 endif
 

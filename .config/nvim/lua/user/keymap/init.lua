@@ -6,8 +6,8 @@ local map_key = vim.api.nvim_set_keymap
 --
 -- global_utils
 --
-map_key('n', 'gx', [[<cmd>lua require("utils.functions").handle_url()<CR>]], {noremap=true})
-map_key('n', 'st', [[<cmd>lua require("utils.functions").toggle_term()<CR>]], {noremap=true})
+map_key('n', 'gx', [[<cmd>lua require("user.utils.functions").handle_url()<CR>]], {noremap=true})
+map_key('n', 'st', [[<cmd>lua require("user.utils.functions").toggle_term()<CR>]], {noremap=true})
 
 -- nvim tree
 map_key('n', 'tT', "<cmd>NvimTreeFindFileToggle<CR>", {noremap=true})

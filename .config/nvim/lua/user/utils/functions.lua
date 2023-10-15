@@ -65,7 +65,7 @@ function M.run_code()
     go = "term go run %:p",
     lua = "term lua %:p",
     processing = "term processing-java --sketch='"..vim.fn.trim(vim.fn.system('pwd')).."' --output='"..vim.fn.trim(vim.fn.system('pwd')).."/bin' --force --run",
-    asm = "term "..require("utils.asm").commands("masm", 'run'),
+    asm = "term "..require("user.utils.asm").commands("masm", 'run'),
   }
   local cmd_without_split = {
     html = "silent ! "..os.getenv("BROWSER").." %:p &",
@@ -116,7 +116,7 @@ function M.debug_code()
   local cmd = {
     c = "term gdb -q %:p:r",
     cpp = "term gdb -q %:p:r",
-    asm = "term "..require("utils.asm").commands('masm', 'debug')
+    asm = "term "..require("user.utils.asm").commands('masm', 'debug')
   }
   local file_type = vim.bo.filetype
   if cmd[file_type] ~= nil then

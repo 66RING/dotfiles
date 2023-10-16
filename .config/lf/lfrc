@@ -142,6 +142,7 @@ cmd extract ${{
         *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
         *.tar.gz|*.tgz) tar xzvf $f;;
         *.tar.xz|*.txz) tar xJvf $f;;
+        *.tar) tar xvf $f;;
         *.zip) unzip $f;;
         *.gz) gunzip $f;;
         *.rar) unrar x $f;;

@@ -640,7 +640,6 @@ function config.nvim_cmp()
 	  format = lspkind.cmp_format({
 		with_text = false, 
 		maxwidth = 50,
-		-- symbol_map = { Copilot = "" }
 	  })
 	},
 	sources = {

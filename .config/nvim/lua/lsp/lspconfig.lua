@@ -7,11 +7,6 @@ local util = require 'lspconfig/util'
 -- use for nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.offsetEncoding = "utf-16"
-capabilities.offset_encoding = "utf-16"
-capabilities.clang = {}
-capabilities.clang.offsetEncoding = "utf-16"
-capabilities.clang.offset_encoding = "utf-16"
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
@@ -144,12 +139,30 @@ lspconfig.tsserver.setup({
 
 lspconfig.clangd.setup({
   on_attach = on_attach,
-  capabilities = capabilities,
+  capabilities = (function ()
+	local cap = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+	cap.textDocument.completion.completionItem.snippetSupport = true
+	cap.offsetEncoding = "utf-16"
+	cap.offset_encoding = "utf-16"
+	cap.clang = {}
+	cap.clang.offsetEncoding = "utf-16"
+	cap.clang.offset_encoding = "utf-16"
+	return cap
+  end)(),
 })
 
 -- lspconfig.ccls.setup {
 --   on_attach = on_attach,
---   capabilities = capabilities,
+--   capabilities = (function ()
+-- 	local cap = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- 	cap.textDocument.completion.completionItem.snippetSupport = true
+-- 	cap.offsetEncoding = "utf-16"
+-- 	cap.offset_encoding = "utf-16"
+-- 	cap.clang = {}
+-- 	cap.clang.offsetEncoding = "utf-16"
+-- 	cap.clang.offset_encoding = "utf-16"
+-- 	return cap
+--   end)(),
 --   root_dir = function (path)
 --   	return util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git')(path) or vim.loop.cwd()
 --   end,

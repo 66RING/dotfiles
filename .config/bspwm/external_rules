@@ -4,7 +4,7 @@ class=$2
 instance=$3
 consequences=$4
 
-echo $wid $class $instance $consequences > /tmp/wm_info
+echo $wid $class $instance $consequences >> /tmp/wm_info
 
 # demo
 # if [ "$instance" = fontforge ] ; then

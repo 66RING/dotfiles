@@ -9,3 +9,5 @@ yay -S \
   rpiplay-git \
   git-delta \
   bat \
+  transmission-gtk \
+  motrix-bin

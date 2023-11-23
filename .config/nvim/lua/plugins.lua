@@ -143,7 +143,11 @@ local function init()
     after = 'zephyr-nvim',
 	lock = true,
 	commit = '3d77289b20a4ff1689da5ae891a485041e7fe607',
-    requires = {'kyazdani42/nvim-web-devicons'}
+    requires = {
+	  'kyazdani42/nvim-web-devicons',
+	  -- Delete Neovim buffers without losing window layout
+	  {'famiu/bufdelete.nvim', opt = true, cmd = {'Bwipeout', 'Bdelete'}}
+	}
   }
 
   use {'66RING/bookmarks-nvim',

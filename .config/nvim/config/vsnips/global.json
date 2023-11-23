@@ -26,5 +26,23 @@
 		  "add_executable($3)"
 		],
 		"description": "cmake template"
+	},
+	"rest template": {
+		"prefix": "rest",
+		"body": [
+		  "http://localhost:${1:port}",
+		  "GET /getapi",
+		  "",
+		  "",
+		  "",
+		  "http://localhost:${1:port}",
+		  "POST /postapi",
+		  "{",
+		  "  \"key\": \"new key\",",
+		  "  \"value\": \"new value\"",
+		  "}"
+		],
+		"description": "rest template"
 	}
+
 }

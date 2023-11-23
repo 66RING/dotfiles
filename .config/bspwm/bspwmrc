@@ -42,6 +42,8 @@ bspc rule -a 'wemeetapp' 		state=floating
 bspc rule -a 'QQ:qq' 		state=floating
 bspc rule -a 'electronic-wechat' 		state=floating
 bspc rule -a 'icalingua' 		state=floating
+bspc rule -a 'Wine:wechat.exe:*'	state=floating
+
 
 
 # bspc rule -a VirtualBox\ Manager desktop='^10'

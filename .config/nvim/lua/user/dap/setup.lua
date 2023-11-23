@@ -80,12 +80,12 @@ local function dapui_setup()
   dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
   end
-  dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
-  end
-  dap.listeners.before.event_exited["dapui_config"] = function()
-	dapui.close()
-  end
+  -- dap.listeners.before.event_terminated["dapui_config"] = function()
+	-- dapui.close()
+  -- end
+  -- dap.listeners.before.event_exited["dapui_config"] = function()
+	-- dapui.close()
+  -- end
 
   dapui.setup({
 	icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
@@ -152,6 +152,9 @@ local function dapui_setup()
 end
 
 local function autocmd()
+  local dapui = require("dapui")
+  vim.api.nvim_create_user_command("DapUIOff", dapui.close, {})
+  vim.api.nvim_create_user_command("DapUIOn", dapui.open, {})
   vim.cmd[[
     augroup _load_break_points
     autocmd!

@@ -8,7 +8,7 @@
 
 # terminal emulator
 super + Return
-	tabbed -c -n "$TERMINAL" -r 2 $TERMINAL -w ''
+	tabbed -c -p s+1 -n "$TERMINAL" -r 2 $TERMINAL -w ''
 
 # scratchpad
 super + grave

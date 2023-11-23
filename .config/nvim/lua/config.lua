@@ -102,8 +102,10 @@ function config.nvim_bufferline()
   local opts = {silent=true, noremap=true}
   map_key('n', '<LEADER>]', [[:BufferLineCycleNext<CR>]], opts)
   map_key('n', '<LEADER>[', [[:BufferLineCyclePrev<CR>]], opts)
+
   map_key('n', '<BS>', [[:<c-u>lua if vim.v.count~=0 then vim.cmd("BufferLineGoToBuffer "..vim.v.count) else vim.cmd("buffer #")end<CR>]], opts)
-  map_key('n', 'r<BS>', [[:lua if vim.tbl_count(vim.fn.getbufinfo({buflisted=true}))>1 then vim.cmd("bd") end <CR>]], opts)
+  -- map_key('n', 'r<BS>', [[:lua if vim.tbl_count(vim.fn.getbufinfo({buflisted=true}))>1 then vim.cmd("bd") end <CR>]], opts)
+  map_key('n', 'r<BS>', [[:lua if vim.tbl_count(vim.fn.getbufinfo({buflisted=true}))>1 then vim.cmd("Bdelete") end <CR>]], opts)
 end
 
 function config.symbols_outline()
@@ -719,10 +721,10 @@ function config.nvim_tree()
 	},
 	actions = {
 	  open_file = {
-		quit_on_open = true,
+		-- quit_on_open = true,
 	  },
 	  remove_file = {
-		close_window = true,
+		-- close_window = true,
 	  },
 	},
 	notify = {

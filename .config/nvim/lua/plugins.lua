@@ -55,7 +55,7 @@ local function init()
 	  -- {'hrsh7th/cmp-vsnip', event = 'InsertEnter *'},
 	  {'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter *'},
 	  {'saadparwaiz1/cmp_luasnip', event = 'InsertEnter *'},
-	  { "zbirenbaum/copilot-cmp", after = { "copilot.lua" }, config = function() require("copilot_cmp").setup() end }
+	  -- { "zbirenbaum/copilot-cmp", after = { "copilot.lua" }, config = function() require("copilot_cmp").setup() end }
 	}
   }
   -- use {'hrsh7th/vim-vsnip',
@@ -366,12 +366,28 @@ local function init()
 	end
   }
 
-  use {
-	"zbirenbaum/copilot.lua",
+  -- use {
+	-- "zbirenbaum/copilot.lua",
 	-- cmd = "Copilot",
 	-- event = "InsertEnter",
+	-- config = function()
+	  -- require("copilot").setup({})
+	-- end,
+  -- }
+
+  use {
+	"github/copilot.vim",
+	cmd = "Copilot",
+	event = "InsertEnter",
 	config = function()
-	  require("copilot").setup({})
+      -- vim.g.copilot_proxy = 'localhost:7890'
+
+      vim.keymap.set('i', '<C-J>', 'copilot#Accept("<CR>")', {
+        expr = true,
+        replace_keycodes = false
+      })
+      vim.g.copilot_no_tab_map = true
+
 	end,
   }
 
@@ -395,6 +411,7 @@ local function init()
 		require("registers").setup()
 	end,
   }
+
   use {
     'diepm/vim-rest-console',
 	ft = {'rest'}

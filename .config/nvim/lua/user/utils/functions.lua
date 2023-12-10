@@ -47,6 +47,24 @@ end
 -- quick run
 --
 function M.run_code()
+  --- Check if a file or directory exists in this path
+  local function exists(file)
+     local ok, err, code = os.rename(file, file)
+     if not ok then
+        if code == 13 then
+           -- Permission denied, but it exists
+           return true
+        end
+     end
+     return ok, err
+  end
+
+  --- Check if a directory exists in this path
+  local function isdir(path)
+     -- "/" works on both Unix and Windows
+     return exists(path.."/")
+  end
+
   local cmd = {
 	-- build and run
     c = "term gcc -g3 -fsanitize=address -l pthread %:p -o %< && %:p:r",
@@ -67,6 +85,10 @@ function M.run_code()
     processing = "term processing-java --sketch='"..vim.fn.trim(vim.fn.system('pwd')).."' --output='"..vim.fn.trim(vim.fn.system('pwd')).."/bin' --force --run",
     asm = "term "..require("user.utils.asm").commands("masm", 'run'),
   }
+  if not isdir("./src/bin") then
+    cmd.rust = "term cargo run"
+  end
+
   local cmd_without_split = {
     html = "silent ! "..os.getenv("BROWSER").." %:p &",
     markdown = "MarkdownPreview",

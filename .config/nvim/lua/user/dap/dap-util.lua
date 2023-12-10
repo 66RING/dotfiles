@@ -1,6 +1,17 @@
 local M = {}
 local dap = require 'dap'
 
+M.type2ft = {
+  cppdbg = {'c', 'cpp', 'rust'},
+  python = {'python'},
+  delve = {'go'},
+}
+
+function M.load_launchjs()
+  -- reload launch file is not supported for now
+  require("dap.ext.vscode").load_launchjs(nil, type2ft)
+end
+
 -- refresh config
 M.reload_continue = function()
   package.loaded['user.dap.setup'] = nil

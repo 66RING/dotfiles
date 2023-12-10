@@ -43,6 +43,8 @@ bspc rule -a 'QQ:qq' 		state=floating
 bspc rule -a 'electronic-wechat' 		state=floating
 bspc rule -a 'icalingua' 		state=floating
 bspc rule -a 'Wine:wechat.exe:*'	state=floating
+bspc rule -a 'Clash-verge'	state=floating
+bspc rule -a 'matplotlib'	state=floating
 
 
 

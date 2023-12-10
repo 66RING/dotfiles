@@ -71,16 +71,17 @@ exec "nohlsearch"
 set incsearch
 set ignorecase
 set smartcase
-set scrolloff=10 
+set scrolloff=10
 set tabstop=4
 set softtabstop=0
-set shiftwidth=4    
-set noexpandtab 
+set shiftwidth=4
+" set noexpandtab
+set expandtab
 " set lazyredraw
 set foldmethod=manual
 " set foldmethod=indent
 set foldlevel=99
-autocmd FileType json,vue,javascript,css,lua,sh,vim,cpp setlocal shiftwidth=2
+autocmd FileType json,vue,javascript,css,lua,sh,vim,cpp,html setlocal shiftwidth=2
 let mapleader=" "
 
 set hidden

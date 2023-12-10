@@ -1,6 +1,7 @@
 # git swtich to next commit
-function gitforward() {
-    git log --reverse --pretty=%H main | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout
+function gitforward {
+    branch=${1:-main}
+    git log --reverse --pretty=%H $branch | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout
 }
 
 # git swtich to prev commit

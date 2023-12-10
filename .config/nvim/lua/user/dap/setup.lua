@@ -1,4 +1,5 @@
 local dap_python = require("user.dap.dap-python")
+local dap_util = require("user.dap.dap-util")
 
 local M = {}
 
@@ -159,6 +160,7 @@ local function autocmd()
     augroup _load_break_points
     autocmd!
     autocmd FileType c,cpp,go,python,lua,rust :lua require'user.dap.dap-util'.load_breakpoints()
+    autocmd BufWritePost launch.json :lua require'user.dap.dap-util'.load_launchjs()
 	augroup end
   ]]
 end
@@ -168,7 +170,8 @@ function M.setup()
   dap_python.setup()
   golang_config()
   dapui_setup()
-  require("dap.ext.vscode").load_launchjs()
+
+  require("dap.ext.vscode").load_launchjs(nil, dap_util.type2ft)
 
   vim.fn.sign_define('DapBreakpoint', {text='', texthl='Error', linehl='', numhl=''})
   -- vim.fn.sign_define("DapStopped", {text='', texthl='Error', linehl='', numhl=''})

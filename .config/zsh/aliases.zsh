@@ -58,6 +58,8 @@ alias t="http_proxy= https_proxy= $SCRIPTS_DIR/utils/ai_trans_demo.py" \
 	osdoc="$SCRIPTS_DIR/utils/osdoc.sh" \
 	anydoc="$SCRIPTS_DIR/utils/anydoc.sh" \
 	topdf="$SCRIPTS_DIR/utils/topdf.sh" \
+	sync_server="$SCRIPTS_DIR/utils/sync_server.sh" \
+	ifchange="$SCRIPTS_DIR/utils/ifchange.sh" \
 	cover_text_gen="$SCRIPTS_DIR/utils/media.sh"
 
 # shortcut for check syslog in artix

@@ -8,8 +8,12 @@ M.type2ft = {
 }
 
 function M.load_launchjs()
-  -- reload launch file is not supported for now
-  require("dap.ext.vscode").load_launchjs(nil, type2ft)
+  -- -- reload launch file is not supported for now
+  -- require("dap.ext.vscode").load_launchjs(nil, type2ft)
+
+  -- reload dap to reload json
+  package.loaded['user.dap.setup'] = nil
+  require('user.dap.setup').setup()
 end
 
 -- refresh config

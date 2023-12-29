@@ -54,7 +54,8 @@ alias venvon="source $(which virtualenvwrapper.sh)" \
 	reboot="$prompt2 'Reboot?' 'doas reboot'"
 
 # scripts/utils
-alias t="http_proxy= https_proxy= $SCRIPTS_DIR/utils/ai_trans_demo.py" \
+# alias t="http_proxy= https_proxy= $SCRIPTS_DIR/utils/ai_trans_demo.py" \
+alias t="http_proxy=$proxy_servce https_proxy=$proxy_servce trans :zh+en" \
 	osdoc="$SCRIPTS_DIR/utils/osdoc.sh" \
 	anydoc="$SCRIPTS_DIR/utils/anydoc.sh" \
 	topdf="$SCRIPTS_DIR/utils/topdf.sh" \

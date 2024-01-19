@@ -136,10 +136,10 @@ local function init()
   --   requires = {'kyazdani42/nvim-web-devicons'}
   -- }
 
-  use {'akinsho/nvim-bufferline.lua',
+  use {'66RING/bufferline.nvim',
     config = conf.nvim_bufferline,
     after = 'zephyr-nvim',
-	lock = true,
+	-- lock = true,
 	commit = '3d77289b20a4ff1689da5ae891a485041e7fe607',
     requires = {
 	  'kyazdani42/nvim-web-devicons',
@@ -223,6 +223,33 @@ local function init()
 	  -- }
   --   end
   -- }
+
+  -- Image paste
+  use {
+    'ekickx/clipboard-image.nvim',
+    cmd = 'PasteImg',
+    lock = true,
+    config = function ()
+      require'clipboard-image'.setup {
+      -- Default configuration for all filetype
+      default = {
+        img_dir = "./assets/img",
+        img_dir_txt = "./assets/img",
+        img_name = function ()
+          vim.fn.inputsave()
+          local name = vim.fn.input('Name: ')
+          vim.fn.inputrestore()
+          return name
+        end,
+        affix = "<\n  %s\n>" -- Multi lines affix
+      },
+      -- You can create configuration for ceartain filetype by creating another field (markdown, in this case)
+      -- If you're uncertain what to name your field to, you can run `lua print(vim.bo.filetype)`
+      -- Missing options from `markdown` field will be replaced by options from `default` field
+      -- markdown = {}
+    }
+    end
+  }
 
   -- code block completion
   use {

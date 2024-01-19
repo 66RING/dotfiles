@@ -30,6 +30,9 @@ map_key('n', 'gr', [[<cmd>Lspsaga lsp_finder<CR>]], {silent=true, noremap=true})
 map_key("n", "gD", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
 map_key("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 
+-- clipboard-image.nvim
+map_key("n", "<LEADER>p", "<cmd>PasteImg<CR>", { silent = true })
+
 -- Outline
 vim.api.nvim_set_keymap('n', 'T', [[:<C-u>SymbolsOutline<CR>]], {noremap=true})
 

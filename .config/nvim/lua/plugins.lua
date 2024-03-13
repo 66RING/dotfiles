@@ -271,7 +271,7 @@ local function init()
     setup = function ()
       vim.cmd [[autocmd FileType apache setlocal commentstring=#\ %s]]
       vim.cmd [[autocmd FileType vhdl setlocal commentstring=--\ %s]]
-      vim.cmd [[autocmd FileType c,cpp setlocal commentstring=//\ %s]]
+      vim.cmd [[autocmd FileType c,cpp,cuda setlocal commentstring=//\ %s]]
       vim.cmd [[autocmd FileType vue,jsx setlocal commentstring=<!--\ %s\ -->]]
     end
   }

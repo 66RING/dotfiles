@@ -1,4 +1,14 @@
 {
+    "dbg": {
+        "prefix": "dbg",
+        "body": [
+          "import debugpy", 
+          "debugpy.listen(('127.0.0.1', 9901))",
+          "print('Waiting for debugger attach')",
+          "debugpy.wait_for_client()"
+        ],
+        "description": "insert debugger attach code"
+    },
     "if": {
         "prefix": "if",
         "body": ["if ${1:expression}:", "\t${2:pass}"],

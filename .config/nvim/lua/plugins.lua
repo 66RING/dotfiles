@@ -97,13 +97,14 @@ local function init()
   use {"66RING/zephyr-nvim",
     config= function()
       vim.cmd[[colorscheme zephyr]]
+      -- bg = NONE to set background transparent
       vim.cmd[[highlight Normal ctermbg=NONE guibg=NONE]]
       vim.cmd[[highlight SignColumn ctermbg=NONE guibg=NONE]]
       vim.cmd[[highlight Cursorline cterm=bold ctermbg=black guibg=#48515E]]
-      vim.cmd[[highlight MatchParen cterm=bold ctermfg=black ctermbg=grey guifg=black guibg=grey]]
-      -- vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
-      -- vim.cmd('highlight TabLineSel ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight TabLineSel ctermbg=NONE guibg=NONE')
     end,
+    requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
   }
   use {
     "projekt0n/github-nvim-theme",
@@ -236,9 +237,25 @@ local function init()
         img_dir = "./assets/img",
         img_dir_txt = "./assets/img",
         img_name = function ()
-          vim.fn.inputsave()
-          local name = vim.fn.input('Name: ')
-          vim.fn.inputrestore()
+          local name = ""
+          while true do
+            vim.fn.inputsave()
+            name = vim.fn.input('Name: ')
+            vim.fn.inputrestore()
+            local full_path = "./assets/img/"..name..".png"
+
+            -- check exist
+            local fs = require("user.utils.fs")
+            if fs.file_exists(full_path) then
+              -- overwrite
+              if vim.fn.confirm("Overwrite?", "&Yes\n&No", 2) == 1 then
+                break
+              end
+            else
+              break
+            end
+          end
+
           return name
         end,
         affix = "<\n  %s\n>" -- Multi lines affix
@@ -367,6 +384,9 @@ local function init()
     end
   }
 
+  -- nvim async-io lib
+  use {'nvim-neotest/nvim-nio'}
+
   -- 
   -- debug
   --
@@ -375,7 +395,7 @@ local function init()
 	  require("user.dap")
 	end,
     requires = {
-	  {'rcarriga/nvim-dap-ui'}
+	  {'rcarriga/nvim-dap-ui'},
 	}
   }
   use {'williamboman/mason.nvim',

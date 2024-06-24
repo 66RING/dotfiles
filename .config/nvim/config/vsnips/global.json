@@ -14,7 +14,7 @@
 	"raw data repo": {
 		"prefix": "ghr",
 		"body": [
-            "https://raw.githubusercontent.com/66RING/66RING/master/.github"
+            "https://raw.githubusercontent.com/66RING/${1:repo}/master/${2:path}"
 		],
 		"description": "personal raw data"
 	},

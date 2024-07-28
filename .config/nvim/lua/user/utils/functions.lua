@@ -69,7 +69,7 @@ function M.run_code()
 	-- build and run
     c = "term gcc -g3 -fsanitize=address -l pthread %:p -o %< && %:p:r",
     cpp = "term g++ -std=c++20 -g3 -fsanitize=address %:p -o %< && %:p:r",
-    cuda = "term nvcc -l pthread %:p -o %< && %:p:r",
+    cuda = "term nvcc -arch=compute_80 -code=sm_80  -l pthread %:p -o %< && %:p:r",
     java = "term javac %:p && java %:p:t:r",
 	--------
     -- c = "term %:p:r",
@@ -115,7 +115,7 @@ function M.build_code()
   local cmd = {
     c = "term gcc -g3 -fsanitize=address -l pthread %:p -o %<",
     cpp = "term g++ -std=c++20 -g3 -fsanitize=address %:p -o %<",
-    cuda = "term nvcc -std=c++20 %:p -o %<",
+    cuda = "term nvcc -arch=compute_80 -code=sm_80 -std=c++20 %:p -o %<",
     java = "term javac %:p",
     typescript = "term tsc %:p",
     lua = "term luac %:p",

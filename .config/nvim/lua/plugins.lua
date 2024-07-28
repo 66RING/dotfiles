@@ -103,6 +103,21 @@ local function init()
       vim.cmd[[highlight Cursorline cterm=bold ctermbg=black guibg=#48515E]]
       vim.cmd('highlight StatusLine ctermbg=NONE guibg=NONE')
       vim.cmd('highlight TabLineSel ctermbg=NONE guibg=NONE')
+
+      vim.cmd('highlight DapUIPlayPauseNC ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight DapUIRestartNC ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight DapUIStopNC ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight DapUIUnavailableNC ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight DapUIStepOverNC ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight DapUIStepIntoNC ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight DapUIStepBackNC ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight DapUIStepOutNC ctermbg=NONE guibg=NONE')
+
+      vim.cmd('highlight WinBar ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight WinBarNC ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight CursorLineFold ctermbg=NONE guibg=NONE')
+      vim.cmd('highlight FoldColumn ctermbg=NONE guibg=NONE')
+
     end,
     requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
   }

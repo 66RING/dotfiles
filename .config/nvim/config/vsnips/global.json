@@ -4,6 +4,21 @@
 	  "body": ["${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"],
 	  "description": "Put the date in (Y-m-D) format"
 	},
+	"bang": {
+	  "prefix": "bang",
+	  "body": ["bang!:${1:run}:${2:<cmd> %:p -o %< && %:p:r}"],
+	  "description": "Put the date in (Y-m-D) format"
+	},
+	"cite": {
+	  "prefix": "cite",
+	  "body": ["Created by @66RING ${CURRENT_MONTH}/${CURRENT_DATE}/${CURRENT_YEAR}"],
+	  "description": "Put the date in (Y-m-D) format"
+	},
+	"right": {
+	  "prefix": "right",
+	  "body": ["Created by @66RING ${CURRENT_MONTH}/${CURRENT_DATE}/${CURRENT_YEAR}"],
+	  "description": "Put the date in (Y-m-D) format"
+	},
 	"github": {
 		"prefix": "gh",
 		"body": [

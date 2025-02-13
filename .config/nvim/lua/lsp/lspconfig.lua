@@ -123,7 +123,7 @@ lspconfig.pyright.setup{
 -- }
 
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
   cmd = {"typescript-language-server", "--stdio"},
   filetypes = {
     "javascript",

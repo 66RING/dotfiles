@@ -53,7 +53,8 @@ local function init()
 	  {'kristijanhusak/vim-dadbod-completion', ft = {'sql', 'mysql', 'plsql'}},
 	  {'kdheepak/cmp-latex-symbols', ft = {'markdown', 'tex', 'text', 'plaintex'}},
 	  -- {'hrsh7th/cmp-vsnip', event = 'InsertEnter *'},
-	  {'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter *'},
+      -- TODO:
+	  -- {'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter *'},
 	  {'saadparwaiz1/cmp_luasnip', event = 'InsertEnter *'},
 	  -- { "zbirenbaum/copilot-cmp", after = { "copilot.lua" }, config = function() require("copilot_cmp").setup() end }
 	}
@@ -73,12 +74,13 @@ local function init()
     requires = {'rafamadriz/friendly-snippets'},
   }
 
-  use { "ray-x/lsp_signature.nvim",
-    event = 'BufReadPre *',
-	config = function ()
-	  require "lsp_signature".setup()
-	end
-  }
+  -- TODO:
+  -- use { "ray-x/lsp_signature.nvim",
+  --   event = 'BufReadPre *',
+	-- config = function ()
+	  -- require "lsp_signature".setup()
+	-- end
+  -- }
 
   -- UI
   use {"goolord/alpha-nvim",
@@ -451,6 +453,18 @@ local function init()
 	end,
   }
 
+  use {
+    "olimorris/codecompanion.nvim",
+	cmd = {"CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd", "CodeCompanion"},
+	event = "InsertEnter",
+	config = conf.codecompanion,
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    }
+  }
+
+
   -- enhance `.` command
   use {"tpope/vim-repeat"}
   use {'tpope/vim-surround',
@@ -518,10 +532,11 @@ local function init()
 	config = conf.symbols_outline,
   }
 
-  use {'lukas-reineke/indent-blankline.nvim',
-    event = 'BufRead *',
-    config = conf.indent_blankline_nvim
-  }
+  --TODO: update nvim
+  -- use {'lukas-reineke/indent-blankline.nvim',
+  --   event = 'BufRead *',
+  --   config = conf.indent_blankline_nvim
+  -- }
 
   -- use {'Raimondi/delimitMate',
   --   event = 'InsertEnter *',

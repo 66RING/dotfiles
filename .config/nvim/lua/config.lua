@@ -697,6 +697,52 @@ function config.cmp_tabnine()
   })
 end
 
+
+function config.codecompanion()
+  require("codecompanion").setup({
+    adapters = {
+      siliconflow = function()
+        return require("codecompanion.adapters").extend("openai_compatible", {
+        env = {
+          url = "https://api.siliconflow.cn",
+          api_key = function()
+            return os.getenv("DS_API_KEY_S")
+          end,
+          chat_url ="/v1/chat/completions",
+        },
+        schema = {
+          model = {
+            default = "deepseck-ai/Deepscek-V3",
+          },
+        },
+        })
+      end,
+
+      deepseek = function()
+        return require("codecompanion.adapters").extend("deepseek", {
+        env = {
+          api_key = function()
+            return os.getenv("DS_API_KEY")
+          end,
+        },
+        schema = {
+          model = {
+            default = "deepseek-coder",
+          },
+        },
+      })
+      end,
+
+
+      strategies = {
+        chat = { adapter = "siliconflow", },
+        inline = { adapter = "coplilot", },
+      },
+    }
+  })
+end
+
+
 -- nvim tree
 function config.nvim_tree()
   local function my_on_attach(bufnr)

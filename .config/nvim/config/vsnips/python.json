@@ -9,6 +9,13 @@
         ],
         "description": "insert debugger attach code"
     },
+    "unimpl": {
+        "prefix": "unimpl",
+        "body": [
+          "raise NotImplementedError(\"unimplemented\")"
+        ],
+        "description": "unimplemented placeholder"
+    },
     "if": {
         "prefix": "if",
         "body": ["if ${1:expression}:", "\t${2:pass}"],

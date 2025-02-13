@@ -42,6 +42,37 @@ function M.fcitx2cn()
   end
 end
 
+--
+-- magic bang!
+-- parse magic bang command at ten first line
+-- e.g. // bang!:run:term g++ -mavx2 -std=c++20 -g3 -fsanitize=address -fopenmp %:p -o %< && %:p:r
+--
+function M.parse_bang(filename, keyword)
+  local file = io.open(filename, "r")
+  if not file then
+      print("Can not open file"..filename)
+      return nil
+  end
+
+  local cnt = 0
+  for line in file:lines() do
+      if cnt > 10 then
+        break
+      end
+      cnt = cnt + 1
+
+      if line then
+        -- parse bang!:keyword:command
+        local pattern = "([^%s]-)bang!:"..keyword..":(.+)"
+        local _, command = line:match(pattern)
+        return command
+      else
+        break
+      end
+  end
+  return nil
+end
+
 
 --
 -- quick run
@@ -67,8 +98,8 @@ function M.run_code()
 
   local cmd = {
 	-- build and run
-    c = "term gcc -g3 -fsanitize=address -l pthread %:p -o %< && %:p:r",
-    cpp = "term g++ -std=c++20 -g3 -fsanitize=address %:p -o %< && %:p:r",
+    c = "term gcc -mavx2 -g3 -fsanitize=address -l pthread %:p -o %< && %:p:r",
+    cpp = "term g++ -mavx2 -std=c++20 -g3 -fsanitize=address %:p -o %< && %:p:r",
     cuda = "term nvcc -arch=compute_80 -code=sm_80  -l pthread %:p -o %< && %:p:r",
     java = "term javac %:p && java %:p:t:r",
 	--------
@@ -102,7 +133,13 @@ function M.run_code()
     vim.cmd("w")
     vim.o.splitbelow = true
     vim.cmd("20sp")
-    vim.cmd(cmd[file_type])
+    -- try to run magic bang command
+    local magic_bang = M.parse_bang(vim.fn.expand("%:p"), "run")
+    if magic_bang ~= nil then
+      vim.cmd(magic_bang)
+    else
+      vim.cmd(cmd[file_type])
+    end
   else
     print("nothing to run")
   end
@@ -127,7 +164,13 @@ function M.build_code()
     vim.cmd("w")
     vim.o.splitbelow = true
     vim.cmd("20sp")
-    vim.cmd(cmd[file_type])
+    -- try to run magic bang command
+    local magic_bang = M.parse_bang(vim.fn.expand("%:p"), "build")
+    if magic_bang ~= nil then
+      vim.cmd(magic_bang)
+    else
+      vim.cmd(cmd[file_type])
+    end
   else
     print("nothing to run")
   end
@@ -147,7 +190,13 @@ function M.debug_code()
     vim.cmd("w")
     vim.o.splitbelow = true
     vim.cmd("20sp")
-    vim.cmd(cmd[file_type])
+    -- try to run magic bang command
+    local magic_bang = M.parse_bang(vim.fn.expand("%:p"), "debug")
+    if magic_bang ~= nil then
+      vim.cmd(magic_bang)
+    else
+      vim.cmd(cmd[file_type])
+    end
   else
     print("nothing to run")
   end

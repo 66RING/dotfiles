@@ -47,6 +47,7 @@ alias diff='delta' \
 #************************
 proxy_servce='http://127.0.0.1:7890'
 prompt2=$SCRIPTS_DIR/global/prompt2
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 alias venvon="source $(which virtualenvwrapper.sh)" \
 	proxyon='export http_proxy="$proxy_servce" export https_proxy="$proxy_servce" export use_proxy=yes' \
 	proxyoff='unset http_proxy  unset https_proxy use_proxy' \

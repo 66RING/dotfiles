@@ -703,18 +703,18 @@ function config.codecompanion()
     adapters = {
       siliconflow = function()
         return require("codecompanion.adapters").extend("openai_compatible", {
-        env = {
-          url = "https://api.siliconflow.cn",
-          api_key = function()
-            return os.getenv("DS_API_KEY_S")
-          end,
-          chat_url ="/v1/chat/completions",
-        },
-        schema = {
-          model = {
-            default = "deepseck-ai/Deepscek-V3",
+          env = {
+            url = "https://api.siliconflow.cn",
+            api_key = function()
+              return os.getenv("DS_API_KEY_S")
+            end,
+            chat_url ="/v1/chat/completions",
           },
-        },
+          schema = {
+            model = {
+              default = "deepseek-ai/DeepSeek-V3",
+            },
+          },
         })
       end,
 
@@ -732,13 +732,11 @@ function config.codecompanion()
         },
       })
       end,
-
-
-      strategies = {
-        chat = { adapter = "siliconflow", },
-        inline = { adapter = "coplilot", },
-      },
-    }
+    },
+    strategies = {
+      chat = { adapter = "siliconflow", },
+      inline = { adapter = "siliconflow", },
+    },
   })
 end
 

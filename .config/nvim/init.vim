@@ -56,7 +56,6 @@ noremap <C-z>  <Nop>
 " set completeopt=menu,menuone,noselect
 set enc=utf8
 set fileencodings=utf-8,gbk,cp936,ucs-bom,utf-16,big5,gb18030,latin1
-set termencoding=utf-8
 " set colorcolumn=80
 
 " set termguicolors

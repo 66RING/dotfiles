@@ -20,6 +20,9 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+  -- NOTE: enable by default setting
+  vim.lsp.inlay_hint.enable()
+
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
   -- Mappings.
@@ -38,6 +41,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<LEADER>+', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
   vim.cmd [[command! Format lua vim.lsp.buf.format({async = true})]]
+  -- Inlay hints
+  vim.cmd [[command! HintOn lua vim.lsp.inlay_hint.enable(true)]]
+  vim.cmd [[command! HintOff lua vim.lsp.inlay_hint.enable(false)]]
 end
 
 

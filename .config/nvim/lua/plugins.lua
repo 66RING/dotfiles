@@ -333,26 +333,7 @@ local function init()
   }
 
   -- virt text type hint
-  use {'lvimuser/lsp-inlayhints.nvim',
-    event = "BufReadPost *",
-	config = function()
-	  vim.cmd[[hi LspInlayHint guifg=#73797e guibg=NONE]]
-	  vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-	  vim.api.nvim_create_autocmd("LspAttach", {
-		group = "LspAttach_inlayhints",
-		callback = function(args)
-		  if not (args.data and args.data.client_id) then
-			return
-		  end
-
-		  local bufnr = args.buf
-		  local client = vim.lsp.get_client_by_id(args.data.client_id)
-		  require("lsp-inlayhints").on_attach(client, bufnr)
-		end,
-	  })
-	  require("lsp-inlayhints").setup()
-	end
-  }
+  -- lsp partial support
 
   use {'nvim-treesitter/playground',
 	cmd = "TSPlaygroundToggle",
@@ -533,10 +514,10 @@ local function init()
   }
 
   --TODO: update nvim
-  -- use {'lukas-reineke/indent-blankline.nvim',
-  --   event = 'BufRead *',
-  --   config = conf.indent_blankline_nvim
-  -- }
+  use {'lukas-reineke/indent-blankline.nvim',
+    event = 'BufRead *',
+    config = conf.indent_blankline_nvim
+  }
 
   -- use {'Raimondi/delimitMate',
   --   event = 'InsertEnter *',

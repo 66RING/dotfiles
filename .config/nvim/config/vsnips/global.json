@@ -9,6 +9,17 @@
 	  "body": ["bang!:${1:run}:${2:<cmd> %:p -o %< && %:p:r}"],
 	  "description": "Put the date in (Y-m-D) format"
 	},
+	"clangd": {
+	  "prefix": "clangd",
+	  "body": [
+        "CompileFlags:",
+        "  Add:",
+        "    - \"-xc++\"",
+        "    - \"-I/abs/path/1/include\"",
+        "  Compiler: clang++"
+      ],
+	  "description": "Put the date in (Y-m-D) format"
+	},
 	"cite": {
 	  "prefix": "cite",
 	  "body": ["Created by @66RING ${CURRENT_MONTH}/${CURRENT_DATE}/${CURRENT_YEAR}"],

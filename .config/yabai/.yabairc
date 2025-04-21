@@ -57,6 +57,6 @@ yabai -m config                                 \
 
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"
-yabai -m signal --add event=space_changed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"
+yabai -m signal --add event=space_changed action="yabai -m query --windows --window &> /dev/null && yabai -m window --focus first"
 
 echo "yabai configuration loaded.."

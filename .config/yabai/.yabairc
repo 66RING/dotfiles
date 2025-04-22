@@ -23,7 +23,7 @@ sudo yabai --load-sa
 yabai -m config                                 \
     external_bar                 off:40:0       \
     menubar_opacity              1.0            \
-    mouse_follows_focus          on            \
+    mouse_follows_focus          off            \
     focus_follows_mouse          on            \
     display_arrangement_order    default        \
     window_origin_display        default        \

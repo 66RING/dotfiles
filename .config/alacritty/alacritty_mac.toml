@@ -1,0 +1,190 @@
+[colors.bright]
+black = "#000000"
+blue = "#61afef"
+cyan = "#8be9fd"
+green = "#50fa7b"
+magenta = "#ff79c6"
+red = "#ff5555"
+white = "#ffffff"
+yellow = "#f1fa8c"
+
+[colors.cursor]
+cursor = "#d9d9d9"
+text = "#2c2c2c"
+
+[colors.dim]
+black = "#000000"
+blue = "#98CBFE"
+cyan = "#2bcec2"
+green = "#50fa7b"
+magenta = "#bd93f9"
+red = "#d54e53"
+white = "#bbbbbb"
+yellow = "#edbf69"
+
+[colors.normal]
+black = "#000000"
+blue = "#61afef"
+cyan = "#8be9fd"
+green = "#50fa7b"
+magenta = "#ff79c6"
+red = "#ff5555"
+white = "#ffffff"
+yellow = "#f1fa8c"
+
+[colors.primary]
+background = "#2c323b"
+# bright_background = "#3a3a3a"
+# bright_foreground = "#d9d9d9"
+# dim_background = "#202020"
+# dim_foreground = "#dbdbdb"
+foreground = "#E7E8E9"
+
+[colors.vi_mode_cursor]
+cursor = "#f1fa8c"
+text = "#000000"
+
+[cursor]
+vi_mode_style = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 16
+
+[font.bold]
+# family = "CaskaydiaCove Nerd Font Mono"
+# # NOTE: for mac 
+family = "CaskaydiaMono Nerd Font Propo"
+
+[font.italic]
+# family = "CaskaydiaCove Nerd Font Mono"
+# # NOTE: for mac 
+family = "CaskaydiaMono Nerd Font Propo"
+
+[font.normal]
+# family = "CaskaydiaCove Nerd Font Mono"
+# # NOTE: for mac 
+family = "CaskaydiaMono Nerd Font Propo"
+style = "Bold"
+
+[font.offset]
+x = 0
+y = 1
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "ScrollLineUp"
+key = "I"
+mode = "~Alt"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "ScrollLineDown"
+key = "K"
+mode = "~Alt"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "I"
+mode = "~Alt"
+mods = "Alt|Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "K"
+mode = "~Alt"
+mods = "Alt|Control"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Space"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "Up"
+key = "I"
+mode = "Vi"
+
+[[keyboard.bindings]]
+action = "Down"
+key = "K"
+mode = "Vi"
+
+[[keyboard.bindings]]
+action = "Left"
+key = "J"
+mode = "Vi"
+
+[[keyboard.bindings]]
+action = "Right"
+key = "L"
+mode = "Vi"
+
+[[keyboard.bindings]]
+action = "WordLeft"
+key = "J"
+mode = "Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "WordRight"
+key = "L"
+mode = "Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageUp"
+key = "I"
+mode = "Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageDown"
+key = "K"
+mode = "Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "ReceiveChar"
+key = "L"
+mods = "Control"
+
+[mouse]
+hide_when_typing = true
+
+# [mouse.hints]
+# modifiers = "None"
+
+# [mouse.hints.launcher]
+# program = "xdg-open"
+
+[window]
+dynamic_padding = true
+opacity = 1
+decorations="Buttonless"
+option_as_alt = "OnlyLeft"
+
+[window.dimensions]
+columns = 140
+lines = 45
+
+[window.padding]
+x = 2
+y = 2

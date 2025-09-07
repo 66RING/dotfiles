@@ -12,12 +12,11 @@
         "clock"
     ],
     "modules-right": [
-        "tray",
         "memory",
-        "network",
         "wireplumber",
         "battery",
-        "custom/power"
+        " ",
+        "tray",
     ],
     "wlr/taskbar": {
         "format": "{icon}",
@@ -89,9 +88,9 @@
         "scroll-step": 1
     },
     "custom/logo": {
-        "format": "  ",
+        "format": " 😈 ",
         "tooltip": false,
-        "on-click": "~/.config/rofi/launchers/misc/launcher.sh &"
+        "on-click": "rofi -show drun &"
     },
     "battery": {
         "format": "{capacity}% {icon}",

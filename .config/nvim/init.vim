@@ -123,7 +123,8 @@ inoremap <C-l> <ESC>A
 noremap Y "+y
 " :[range]y[ank] [x]
 nnoremap yY :%y+<CR> 
-autocmd TextYankPost * call system("xsel -ib", getreg('+'))
+" autocmd TextYankPost * call system("xsel -ib", getreg('+'))
+autocmd TextYankPost * call system("wl-copy --primar", getreg('+'))
 noremap P "+p
 " m for join
 noremap m J  

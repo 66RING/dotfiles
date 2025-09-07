@@ -242,6 +242,19 @@ local function init()
   --   end
   -- }
 
+  -- use {'3rd/image.nvim',
+  --   ft = 'markdown',
+  --   requires = {
+  --      { "vhyrro/luarocks.nvim", opt = true},
+  --   },
+  --   config = function()
+  --     require("image").setup({
+  --       backend = "ueberzug",
+  --     })
+  --   end
+  -- }
+
+
   -- Image paste
   use {
     'ekickx/clipboard-image.nvim',

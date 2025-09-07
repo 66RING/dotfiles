@@ -78,7 +78,8 @@ export LANG=en_US.UTF-8
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="st"
-export BROWSER="firefox"
+export BROWSER="google-chrome-stable"
+# export BROWSER="firefox"
 export VIDEO="mpv"
 export IMAGE="sxiv"
 export COLORTERM="truecolor"
@@ -159,5 +160,5 @@ export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
 # Start X
 #
 
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
-
+# [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+[ "$(tty)" = "/dev/tty1" ] && hyprland

@@ -15,3 +15,5 @@ if [ -e ~/.local_settings.zsh ]; then
 fi
 
 
+
+. "$HOME/.local/share/../bin/env"

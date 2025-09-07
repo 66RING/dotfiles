@@ -25,8 +25,8 @@ super + shift + space
 
 # chromuim launcher
 super + c
-    $BROWSER
-    #$BROWSER  --force-device-scale-factor=1.5
+    $BROWSER  --force-device-scale-factor=1.5
+    # $BROWSER
 
 
 #

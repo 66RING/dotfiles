@@ -2,6 +2,8 @@
     "layer": "bottom",
     "position": "top",
     "ipc": true,
+    "on-sigusr1": "show",
+    "on-sigusr2": "hide",
     "spacing": 0,
     "height": 34,
     "modules-left": [
@@ -82,7 +84,7 @@
         "format-muted": "󰝟",
         "format-icons": {
             "headphone": "",
-            "default": ["󰖀","󰕾",""]
+            "default": ["󰖀 ","󰕾 "," "]
         },
         "on-click": "pamixer -t",
         "scroll-step": 1

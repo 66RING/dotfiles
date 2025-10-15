@@ -710,9 +710,32 @@ function config.codecompanion()
             end,
             chat_url ="/v1/chat/completions",
           },
+          parameters = {
+            stream = true,
+          },
           schema = {
             model = {
               default = "deepseek-ai/DeepSeek-V3",
+            },
+          },
+        })
+      end,
+
+      open_router = function()
+        return require("codecompanion.adapters").extend("openai_compatible", {
+          env = {
+            url = "https://openrouter.ai",
+            api_key = function()
+              return os.getenv("OPEN_ROUTER_API_KEY")
+            end,
+            chat_url ="/api/v1/chat/completions",
+          },
+          parameters = {
+            stream = true,
+          },
+          schema = {
+            model = {
+              default = "x-ai/grok-4-fast:free",
             },
           },
         })
@@ -734,8 +757,8 @@ function config.codecompanion()
       end,
     },
     strategies = {
-      chat = { adapter = "siliconflow", },
-      inline = { adapter = "siliconflow", },
+      chat = { adapter = "open_router", },
+      inline = { adapter = "open_router", },
     },
   })
 end

@@ -436,7 +436,7 @@ local function init()
 	cmd = "Copilot",
 	event = "InsertEnter",
 	config = function()
-      -- vim.g.copilot_proxy = 'localhost:7890'
+      vim.g.copilot_proxy = 'https://openrouter.ai/api/v1/chat/completions'
 
       vim.keymap.set('i', '<C-J>', 'copilot#Accept("<CR>")', {
         expr = true,

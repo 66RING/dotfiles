@@ -56,6 +56,7 @@ local function init()
       -- TODO:
 	  -- {'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter *'},
 	  {'saadparwaiz1/cmp_luasnip', event = 'InsertEnter *'},
+	  {'milanglacier/minuet-ai.nvim', event = 'InsertEnter *'},
 	  -- { "zbirenbaum/copilot-cmp", after = { "copilot.lua" }, config = function() require("copilot_cmp").setup() end }
 	}
   }
@@ -305,7 +306,7 @@ local function init()
 	config = 'require("femaco").setup()',
   }
 
-  -- see formula in vim
+  -- see formula/latex in vim
   use {'jbyuki/nabla.nvim',
     setup = function()
 	  vim.cmd[[autocmd FileType markdown nnoremap gd :lua require("nabla").popup()<CR>]]
@@ -431,32 +432,81 @@ local function init()
 	-- end,
   -- }
 
+  -- use {
+	-- "github/copilot.vim",
+	-- cmd = "Copilot",
+	-- event = "InsertEnter",
+	-- config = function()
+  --     vim.g.copilot_proxy = 'https://openrouter.ai/api/v1/chat/completions'
+
+  --     vim.keymap.set('i', '<C-J>', 'copilot#Accept("<CR>")', {
+  --       expr = true,
+  --       replace_keycodes = false
+  --     })
+  --     vim.g.copilot_no_tab_map = true
+
+	-- end,
+  -- }
+
   use {
-	"github/copilot.vim",
-	cmd = "Copilot",
-	event = "InsertEnter",
+	"milanglacier/minuet-ai.nvim",
+	event = "InsertEnter *",
 	config = function()
-      vim.g.copilot_proxy = 'https://openrouter.ai/api/v1/chat/completions'
-
-      vim.keymap.set('i', '<C-J>', 'copilot#Accept("<CR>")', {
-        expr = true,
-        replace_keycodes = false
-      })
-      vim.g.copilot_no_tab_map = true
-
+      require('minuet').setup {
+        provider = 'openai_compatible',
+        request_timeout = 25,
+        -- throttle = 15000000, -- Increase to reduce costs and avoid rate limits
+        -- debounce = 600000, -- Increase to reduce costs and avoid rate limits
+        provider_options = {
+          openai_compatible = {
+            api_key = "DEEPSEEK_API_KEY",
+            end_point = 'https://api.deepseek.com/chat/completions',
+            model = 'deepseek-chat',
+            name = 'deepseek',
+            optional = {
+              max_tokens = 56,
+              top_p = 0.9,
+              provider = {
+                   -- Prioritize throughput for faster completion
+                  sort = 'throughput',
+              },
+            },
+          },
+        },
+        virtualtext = {
+          auto_trigger_ft = {},
+          keymap = {
+              -- accept whole completion
+              accept = '<C-j>',
+              -- accept one line
+              accept_line = nil,
+              -- accept n lines (prompts for number)
+              -- e.g. "A-z 2 CR" will accept 2 lines
+              accept_n_lines = nil,
+              -- Cycle to prev completion item, or manually invoke completion
+              prev = nil,
+              -- Cycle to next completion item, or manually invoke completion
+              next = nil,
+              dismiss = nil,
+          },
+        },
+      }
 	end,
+    requires = {
+	  {'nvim-lua/plenary.nvim'},
+	}
   }
 
-  use {
-    "olimorris/codecompanion.nvim",
-	cmd = {"CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd", "CodeCompanion"},
-	event = "InsertEnter",
-	config = conf.codecompanion,
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    }
-  }
+  -- use {
+  --   "olimorris/codecompanion.nvim",
+	-- cmd = {"CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd", "CodeCompanion"},
+	-- event = "InsertEnter",
+	-- config = conf.codecompanion,
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   }
+  -- }
 
 
   -- enhance `.` command

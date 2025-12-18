@@ -680,7 +680,11 @@ function config.nvim_cmp()
 	  { name = 'calc'},
 	  { name = 'latex_symbols'},
 	  { name = 'vim-dadbod-completion'},
-	}
+	  { name = 'minuet'},
+	},
+    -- performance = {
+    --   fetching_timeout = 2000,
+    -- }
   }
   vim.cmd[[set completeopt=menu,menuone,noinsert,noselect]]
   vim.cmd[[autocmd FileType markdown lua require'cmp'.setup.buffer{completion = {autocomplete=false}}]]

@@ -81,6 +81,7 @@ set foldmethod=manual
 " set foldmethod=indent
 set foldlevel=99
 autocmd FileType json,vue,javascript,css,lua,sh,vim,cpp,html setlocal shiftwidth=2
+autocmd FileType make,makefile setlocal noexpandtab
 let mapleader=" "
 
 set hidden

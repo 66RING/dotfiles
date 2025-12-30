@@ -136,3 +136,10 @@ nvim/plugin/packer_compiled.lua
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/Kitware
+.config/NVIDIA Corporation
+.config/fish/conf.d
+.config/go/telemetry/local
+.config/vllm
+.config/wandb
+.config/uv
+.config/systemd/user/graphical-session.target.wants

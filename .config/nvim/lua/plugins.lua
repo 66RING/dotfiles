@@ -423,6 +423,10 @@ local function init()
 	end
   }
 
+  --
+  -- AI coding
+  --
+
   -- use {
 	-- "zbirenbaum/copilot.lua",
 	-- cmd = "Copilot",
@@ -448,54 +452,54 @@ local function init()
 	-- end,
   -- }
 
-  use {
-	"milanglacier/minuet-ai.nvim",
-	event = "InsertEnter *",
-	config = function()
-      require('minuet').setup {
-        provider = 'openai_compatible',
-        request_timeout = 25,
-        -- throttle = 15000000, -- Increase to reduce costs and avoid rate limits
-        -- debounce = 600000, -- Increase to reduce costs and avoid rate limits
-        provider_options = {
-          openai_compatible = {
-            api_key = "DEEPSEEK_API_KEY",
-            end_point = 'https://api.deepseek.com/chat/completions',
-            model = 'deepseek-chat',
-            name = 'deepseek',
-            optional = {
-              max_tokens = 56,
-              top_p = 0.9,
-              provider = {
-                   -- Prioritize throughput for faster completion
-                  sort = 'throughput',
-              },
-            },
-          },
-        },
-        virtualtext = {
-          auto_trigger_ft = {},
-          keymap = {
-              -- accept whole completion
-              accept = '<C-j>',
-              -- accept one line
-              accept_line = nil,
-              -- accept n lines (prompts for number)
-              -- e.g. "A-z 2 CR" will accept 2 lines
-              accept_n_lines = nil,
-              -- Cycle to prev completion item, or manually invoke completion
-              prev = nil,
-              -- Cycle to next completion item, or manually invoke completion
-              next = nil,
-              dismiss = nil,
-          },
-        },
-      }
-	end,
-    requires = {
-	  {'nvim-lua/plenary.nvim'},
-	}
-  }
+  -- use {
+	-- "milanglacier/minuet-ai.nvim",
+	-- event = "InsertEnter *",
+	-- config = function()
+  --     require('minuet').setup {
+  --       provider = 'openai_compatible',
+  --       request_timeout = 25,
+  --       -- throttle = 15000000, -- Increase to reduce costs and avoid rate limits
+  --       -- debounce = 600000, -- Increase to reduce costs and avoid rate limits
+  --       provider_options = {
+  --         openai_compatible = {
+  --           api_key = "DEEPSEEK_API_KEY",
+  --           end_point = 'https://api.deepseek.com/chat/completions',
+  --           model = 'deepseek-chat',
+  --           name = 'deepseek',
+  --           optional = {
+  --             max_tokens = 56,
+  --             top_p = 0.9,
+  --             provider = {
+  --                  -- Prioritize throughput for faster completion
+  --                 sort = 'throughput',
+  --             },
+  --           },
+  --         },
+  --       },
+  --       virtualtext = {
+  --         auto_trigger_ft = {},
+  --         keymap = {
+  --             -- accept whole completion
+  --             accept = '<C-j>',
+  --             -- accept one line
+  --             accept_line = nil,
+  --             -- accept n lines (prompts for number)
+  --             -- e.g. "A-z 2 CR" will accept 2 lines
+  --             accept_n_lines = nil,
+  --             -- Cycle to prev completion item, or manually invoke completion
+  --             prev = nil,
+  --             -- Cycle to next completion item, or manually invoke completion
+  --             next = nil,
+  --             dismiss = nil,
+  --         },
+  --       },
+  --     }
+	-- end,
+  --   requires = {
+	  -- {'nvim-lua/plenary.nvim'},
+	-- }
+  -- }
 
   -- use {
   --   "olimorris/codecompanion.nvim",

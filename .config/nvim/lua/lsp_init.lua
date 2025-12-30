@@ -1,6 +1,7 @@
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("clangd")
 vim.lsp.enable("pyright")
+vim.lsp.enable("rust_analyzer")
 
 
 vim.api.nvim_create_autocmd("LspAttach", {

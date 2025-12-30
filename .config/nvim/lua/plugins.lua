@@ -18,25 +18,8 @@ local function init()
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim', opt = true}
 
-  use {"neovim/nvim-lspconfig",
-    event = "BufReadPre *",
-    config = function ()
-	  require('lsp.lspconfig')
-	  local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
-	  for type, icon in pairs(signs) do
-		local hl = "DiagnosticSign" .. type
-		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-	  end
-    end
-  }
-
   use {'nvim-lua/popup.nvim', opt = true}
   use {'nvim-lua/plenary.nvim', opt = true}
-  use {"glepnir/lspsaga.nvim",
-    event = "BufRead *",
-	requires = { {"nvim-tree/nvim-web-devicons"} },
-    config = conf.lspsaga
-  }
 
   use {"hrsh7th/nvim-cmp",
     config = conf.nvim_cmp,
@@ -309,7 +292,13 @@ local function init()
   -- see formula/latex in vim
   use {'jbyuki/nabla.nvim',
     setup = function()
-	  vim.cmd[[autocmd FileType markdown nnoremap gd :lua require("nabla").popup()<CR>]]
+      vim.api.nvim_create_autocmd('FileType', {
+          pattern = 'markdown',
+          callback = function()
+              vim.keymap.set('n', 'gd', ':lua require("nabla").popup()<CR>', { buffer = true, desc = 'Show latex symbol.' })
+              vim.opt_local.cursorline = true
+          end,
+      })
     end,
     ft = 'markdown',
   }

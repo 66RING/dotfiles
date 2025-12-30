@@ -546,63 +546,6 @@ function config.luasnip()
   end)
 end
 
-function config.lspsaga()
-  require 'lspsaga'.setup({
-	finder = {
-	  keys = {
-		jump_to = 'p',
-		edit = { "o", "<CR>" },
-		vsplit = "v",
-		split = "s",
-		tabe = "t",
-		quit = { "q", "<ESC>" },
-	  }
-	},
-	callhierarchy = {
-	  show_detail = false,
-	  keys = {
-		edit = "e",
-		vsplit = "v",
-		split = "s",
-		tabe = "t",
-		jump = "o",
-		quit = "q",
-		expand_collapse = "u",
-	  },
-	},
-	lightbulb = {
-	  enable = false,
-	  enable_in_insert = false,
-	  sign = true,
-	  sign_priority = 20,
-	  virtual_text = true,
-	},
-	diagnostic = {
-	  on_insert = false,
-	  on_insert_follow = false,
-	},
-	outline = {
-	  win_position = "right",
-	  win_with = "",
-	  win_width = 30,
-	  show_detail = true,
-	  auto_preview = true,
-	  auto_refresh = true,
-	  auto_close = true,
-	  custom_sort = nil,
-	  keys = {
-		jump = "o",
-		expand_collapse = "u",
-		quit = "q",
-	  },
-	},
-	-- symbol_in_winbar = {
-	--   enable = false,
-	-- },
-  })
-end
-
-
 function config.nvim_cmp()
   if not packer_plugins['lspkind-nvim'].loaded then
     vim.cmd [[packadd lspkind-nvim]]

@@ -240,6 +240,8 @@ if has('nvim')
   " fcitx auto switch
   autocmd InsertLeave * lua require("user.utils.functions").fcitx2en()
 
+  " enable lsp
+  lua require('lsp_init')
 
   "========================
   " packer.nvim

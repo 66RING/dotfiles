@@ -439,54 +439,80 @@ local function init()
 	-- end,
   -- }
 
-  -- use {
-	-- "milanglacier/minuet-ai.nvim",
-	-- event = "InsertEnter *",
-	-- config = function()
-  --     require('minuet').setup {
-  --       provider = 'openai_compatible',
-  --       request_timeout = 25,
-  --       -- throttle = 15000000, -- Increase to reduce costs and avoid rate limits
-  --       -- debounce = 600000, -- Increase to reduce costs and avoid rate limits
-  --       provider_options = {
-  --         openai_compatible = {
-  --           api_key = "DEEPSEEK_API_KEY",
-  --           end_point = 'https://api.deepseek.com/chat/completions',
-  --           model = 'deepseek-chat',
-  --           name = 'deepseek',
-  --           optional = {
-  --             max_tokens = 56,
-  --             top_p = 0.9,
-  --             provider = {
-  --                  -- Prioritize throughput for faster completion
-  --                 sort = 'throughput',
-  --             },
-  --           },
-  --         },
-  --       },
-  --       virtualtext = {
-  --         auto_trigger_ft = {},
-  --         keymap = {
-  --             -- accept whole completion
-  --             accept = '<C-j>',
-  --             -- accept one line
-  --             accept_line = nil,
-  --             -- accept n lines (prompts for number)
-  --             -- e.g. "A-z 2 CR" will accept 2 lines
-  --             accept_n_lines = nil,
-  --             -- Cycle to prev completion item, or manually invoke completion
-  --             prev = nil,
-  --             -- Cycle to next completion item, or manually invoke completion
-  --             next = nil,
-  --             dismiss = nil,
-  --         },
-  --       },
-  --     }
-	-- end,
-  --   requires = {
-	  -- {'nvim-lua/plenary.nvim'},
-	-- }
-  -- }
+  use {
+	"milanglacier/minuet-ai.nvim",
+	event = "InsertEnter *",
+	config = function()
+      require('minuet').setup {
+        provider = 'openai_compatible',
+        request_timeout = 25,
+        -- throttle = 15000000, -- Increase to reduce costs and avoid rate limits
+        -- debounce = 600000, -- Increase to reduce costs and avoid rate limits
+        provider_options = {
+          openai_compatible = {
+            api_key = "DEEPSEEK_API_KEY",
+            end_point = 'https://api.deepseek.com/chat/completions',
+            model = 'deepseek-chat',
+            name = 'deepseek',
+            optional = {
+              max_tokens = 56,
+              top_p = 0.9,
+              provider = {
+                   -- Prioritize throughput for faster completion
+                  sort = 'throughput',
+              },
+            },
+          },
+        },
+        virtualtext = {
+          auto_trigger_ft = { '*' },
+          keymap = {
+              -- accept whole completion
+              accept = '<C-j>',
+              -- accept one line
+              accept_line = nil,
+              -- accept n lines (prompts for number)
+              -- e.g. "A-z 2 CR" will accept 2 lines
+              accept_n_lines = nil,
+              -- Cycle to prev completion item, or manually invoke completion
+              prev = nil,
+              -- Cycle to next completion item, or manually invoke completion
+              next = '<C-k>',
+              dismiss = nil,
+          },
+        },
+      }
+	end,
+    requires = {
+	  {'nvim-lua/plenary.nvim'},
+	}
+  }
+
+  use {
+    "yetone/avante.nvim",
+	cmd = { 'AvanteAsk', 'AvanteChat', 'AvanteChatNew', 'AvanteHistory' },
+    run = 'make',
+    config = function()
+      require('avante').setup({
+        provider = "deepseek",
+        providers = {
+            deepseek = {
+                __inherited_from = "openai",
+                api_key_name = "DEEPSEEK_API_KEY",
+                endpoint = "https://api.deepseek.com",
+                -- model = "deepseek-reasoner",
+                model = "deepseek-chat",
+            },
+        },
+      })
+    end,
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'MunifTanjim/nui.nvim' },
+      { 'MeanderingProgrammer/render-markdown.nvim', opt = true },
+	}
+  }
+
 
   -- use {
   --   "olimorris/codecompanion.nvim",

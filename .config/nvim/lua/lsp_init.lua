@@ -3,6 +3,8 @@ vim.lsp.enable("clangd")
 vim.lsp.enable("pyright")
 vim.lsp.enable("rust_analyzer")
 
+vim.keymap.del("v", "in")
+vim.keymap.del("o", "in")
 
 vim.api.nvim_create_autocmd("LspAttach", {
     -- group = vim.api.nvim_create_augroup("SetupLSP", {}),

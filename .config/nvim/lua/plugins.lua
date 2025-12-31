@@ -137,15 +137,21 @@ local function init()
           move = {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
+            -- goto_previous_start = {},
+            -- goto_next_end = {},
             goto_next = {
-              ["]]"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
+              ["]]"] = "@function.outer",
+              ["]c"] = "@block.outer",
+              -- ["]c"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
               -- ["]c"] = "@conditional.outer",
-              ["]c"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+              -- ["]c"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
             },
             goto_previous = {
-              ["[["] = { query = "@local.scope", query_group = "locals", desc = "Prev scope" },
+              ["[["] = "@function.outer",
+              ["[c"] = "@block.outer",
+              -- ["[c"] = { query = "@local.scope", query_group = "locals", desc = "Prev scope" },
               -- ["[c"] = "@conditional.outer",
-              ["[c"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+              -- ["[c"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
             }
           },
         },

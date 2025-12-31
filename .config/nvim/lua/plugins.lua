@@ -131,12 +131,29 @@ local function init()
 
   use {'nvim-treesitter/nvim-treesitter-textobjects',
 	opt = true,
+	config = function()
+	  require("nvim-treesitter.configs").setup {
+        textobjects = {
+          move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next = {
+              ["]]"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
+              -- ["]c"] = "@conditional.outer",
+              ["]c"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+            },
+            goto_previous = {
+              ["[["] = { query = "@local.scope", query_group = "locals", desc = "Prev scope" },
+              -- ["[c"] = "@conditional.outer",
+              ["[c"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+            }
+          },
+        },
+	  }
+	end,
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
   }
-  -- use {'glepnir/galaxyline.nvim',
-  --   -- config = [[require('statusline.moonline')]],
-  --   config = [[require('statusline.clearline')]],
-  --   requires = {'kyazdani42/nvim-web-devicons'}
-  -- }
 
   use {'66RING/bufferline.nvim',
     config = conf.nvim_bufferline,

@@ -77,7 +77,7 @@ set shiftwidth=4
 " set noexpandtab
 set expandtab
 " set lazyredraw
-set foldmethod=manual
+" set foldmethod=manual " by foldling.lua and treesitter now
 " set foldmethod=indent
 set foldlevel=99
 autocmd FileType json,vue,javascript,css,lua,sh,vim,cpp,html setlocal shiftwidth=2
@@ -262,6 +262,7 @@ if has('nvim')
   endif
 
   lua require('user.keymap.init')
+  lua require('user.utils.folding')
   " colorscheme zephyr
 endif
 

@@ -42,16 +42,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.api.nvim_create_user_command('HintOff', function() vim.lsp.inlay_hint.enable(false) end, {})
 
       vim.keymap.set("n", "gd",         vim.lsp.buf.definition)
-      vim.keymap.set("n", "gD",         function()
-          local params = vim.lsp.util.make_position_params(0, "utf-8")
-          vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result, _, _)
-              if not result or vim.tbl_isempty(result) then
-                  vim.notify("No definition found", vim.log.levels.INFO)
-              else
-                  require("snacks").picker.lsp_definitions()
-              end
-          end)
-      end, { buffer = event.buf, desc = "LSP: Goto Definition" })
+      -- vim.keymap.set("n", "gD",         function()
+      --     local params = vim.lsp.util.make_position_params(0, "utf-8")
+      --     vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result, _, _)
+      --         if not result or vim.tbl_isempty(result) then
+      --             vim.notify("No definition found", vim.log.levels.INFO)
+      --         else
+      --             require("snacks").picker.lsp_definitions()
+      --         end
+      --     end)
+      -- end, { buffer = event.buf, desc = "LSP: Goto Definition" })
 
 
       vim.keymap.set("n", "<LEADER>d",  vim.lsp.buf.hover)

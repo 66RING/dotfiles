@@ -39,7 +39,7 @@ local function init()
       -- TODO:
 	  -- {'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter *'},
 	  {'saadparwaiz1/cmp_luasnip', event = 'InsertEnter *'},
-	  {'milanglacier/minuet-ai.nvim', event = 'InsertEnter *'},
+	  {'66RING/minuet-ai.nvim', event = 'InsertEnter *'},
 	  -- { "zbirenbaum/copilot-cmp", after = { "copilot.lua" }, config = function() require("copilot_cmp").setup() end }
 	}
   }
@@ -463,7 +463,7 @@ local function init()
   -- }
 
   use {
-	"milanglacier/minuet-ai.nvim",
+	"66RING/minuet-ai.nvim",
 	event = "InsertEnter *",
 	config = function()
       require('minuet').setup {

@@ -510,31 +510,50 @@ local function init()
 	  {'nvim-lua/plenary.nvim'},
 	}
   }
-
   use {
-    "yetone/avante.nvim",
-	cmd = { 'AvanteAsk', 'AvanteChat', 'AvanteChatNew', 'AvanteHistory' },
-    run = 'make',
+    "66RING/flex-plane.nvim",
+	cmd = { "AICode" },
     config = function()
-      require('avante').setup({
-        provider = "deepseek",
-        providers = {
-            deepseek = {
-                __inherited_from = "openai",
-                api_key_name = "DEEPSEEK_API_KEY",
-                endpoint = "https://api.deepseek.com",
-                -- model = "deepseek-reasoner",
-                model = "deepseek-chat",
-            },
-        },
+      require('flex_plane').setup({
+        position = 'right',
+        default_width = 30,
+        default_height = 15,
+        default_cmd = vim.o.shell,
       })
+
+      vim.api.nvim_create_user_command('AICode', function()
+        require('flex_plane').toggle('claude', {
+          desc = "Claude cli.",
+          position = "top",
+        })
+      end , { desc = 'Open claude code.' })
     end,
-    requires = {
-      { 'nvim-lua/plenary.nvim' },
-      { 'MunifTanjim/nui.nvim' },
-      { 'MeanderingProgrammer/render-markdown.nvim', opt = true },
-	}
   }
+
+  -- use {
+  --   "yetone/avante.nvim",
+	-- cmd = { 'AvanteAsk', 'AvanteChat', 'AvanteChatNew', 'AvanteHistory' },
+  --   run = 'make',
+  --   config = function()
+  --     require('avante').setup({
+  --       provider = "deepseek",
+  --       providers = {
+  --           deepseek = {
+  --               __inherited_from = "openai",
+  --               api_key_name = "DEEPSEEK_API_KEY",
+  --               endpoint = "https://api.deepseek.com",
+  --               -- model = "deepseek-reasoner",
+  --               model = "deepseek-chat",
+  --           },
+  --       },
+  --     })
+  --   end,
+  --   requires = {
+  --     { 'nvim-lua/plenary.nvim' },
+  --     { 'MunifTanjim/nui.nvim' },
+  --     { 'MeanderingProgrammer/render-markdown.nvim', opt = true },
+	-- }
+  -- }
 
 
   -- use {

@@ -39,7 +39,7 @@ local function init()
       -- TODO:
 	  -- {'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter *'},
 	  {'saadparwaiz1/cmp_luasnip', event = 'InsertEnter *'},
-	  {'66RING/minuet-ai.nvim', event = 'InsertEnter *'},
+	  -- {'66RING/minuet-ai.nvim', event = 'InsertEnter *'},
 	  -- { "zbirenbaum/copilot-cmp", after = { "copilot.lua" }, config = function() require("copilot_cmp").setup() end }
 	}
   }
@@ -169,6 +169,28 @@ local function init()
 	  -- Delete Neovim buffers without losing window layout
 	  {'famiu/bufdelete.nvim', opt = true, cmd = {'Bwipeout', 'Bdelete'}}
 	}
+  }
+
+  use {'66RING/winbar.nvim',
+    event = 'BufRead *',
+    after = 'zephyr-nvim',
+	config = function()
+      require('winbar').setup({
+        symbols = {
+          separator = " » ",
+          icon = "",
+        },
+        highlights = {
+          file = "StatusLine",
+          symbol = "StatusLine",
+          separator = "StatusLine",
+          empty = "StatusLine",
+        },
+      })
+    end,
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    }
   }
 
   use {'66RING/bookmarks-nvim',
@@ -462,54 +484,55 @@ local function init()
 	-- end,
   -- }
 
-  use {
-	"66RING/minuet-ai.nvim",
-	event = "InsertEnter *",
-	config = function()
-      require('minuet').setup {
-        provider = 'openai_compatible',
-        request_timeout = 25,
-        -- throttle = 15000000, -- Increase to reduce costs and avoid rate limits
-        -- debounce = 600000, -- Increase to reduce costs and avoid rate limits
-        provider_options = {
-          openai_compatible = {
-            api_key = "DEEPSEEK_API_KEY",
-            end_point = 'https://api.deepseek.com/chat/completions',
-            model = 'deepseek-chat',
-            name = 'deepseek',
-            optional = {
-              max_tokens = 56,
-              top_p = 0.9,
-              provider = {
-                   -- Prioritize throughput for faster completion
-                  sort = 'throughput',
-              },
-            },
-          },
-        },
-        virtualtext = {
-          auto_trigger_ft = { '*' },
-          keymap = {
-              -- accept whole completion
-              accept = '<C-j>',
-              -- accept one line
-              accept_line = nil,
-              -- accept n lines (prompts for number)
-              -- e.g. "A-z 2 CR" will accept 2 lines
-              accept_n_lines = nil,
-              -- Cycle to prev completion item, or manually invoke completion
-              prev = nil,
-              -- Cycle to next completion item, or manually invoke completion
-              next = '<C-k>',
-              dismiss = nil,
-          },
-        },
-      }
-	end,
-    requires = {
-	  {'nvim-lua/plenary.nvim'},
-	}
-  }
+  -- use {
+	-- "66RING/minuet-ai.nvim",
+	-- event = "InsertEnter *",
+	-- config = function()
+  --     require('minuet').setup {
+  --       provider = 'openai_compatible',
+  --       request_timeout = 25,
+  --       -- throttle = 15000000, -- Increase to reduce costs and avoid rate limits
+  --       -- debounce = 600000, -- Increase to reduce costs and avoid rate limits
+  --       provider_options = {
+  --         openai_compatible = {
+  --           api_key = "DEEPSEEK_API_KEY",
+  --           end_point = 'https://api.deepseek.com/chat/completions',
+  --           model = 'deepseek-chat',
+  --           name = 'deepseek',
+  --           optional = {
+  --             max_tokens = 56,
+  --             top_p = 0.9,
+  --             provider = {
+  --                  -- Prioritize throughput for faster completion
+  --                 sort = 'throughput',
+  --             },
+  --           },
+  --         },
+  --       },
+  --       virtualtext = {
+  --         auto_trigger_ft = { '*' },
+  --         keymap = {
+  --             -- accept whole completion
+  --             accept = '<C-j>',
+  --             -- accept one line
+  --             accept_line = nil,
+  --             -- accept n lines (prompts for number)
+  --             -- e.g. "A-z 2 CR" will accept 2 lines
+  --             accept_n_lines = nil,
+  --             -- Cycle to prev completion item, or manually invoke completion
+  --             prev = nil,
+  --             -- Cycle to next completion item, or manually invoke completion
+  --             next = '<C-k>',
+  --             dismiss = nil,
+  --         },
+  --       },
+  --     }
+	-- end,
+  --   requires = {
+	  -- {'nvim-lua/plenary.nvim'},
+	-- }
+  -- }
+
   use {
     "66RING/flex-plane.nvim",
 	cmd = { "AICode" },

@@ -172,18 +172,17 @@ local function init()
   }
 
   use {'66RING/winbar.nvim',
-    event = 'BufRead *',
+    event = 'BufReadPost *',
     after = 'zephyr-nvim',
 	config = function()
       require('winbar').setup({
         symbols = {
           separator = " » ",
-          icon = "",
         },
         highlights = {
           file = "StatusLine",
           symbol = "StatusLine",
-          separator = "StatusLine",
+          separator = "Conceal",
           empty = "StatusLine",
         },
       })

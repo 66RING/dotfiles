@@ -552,44 +552,6 @@ local function init()
     end,
   }
 
-  -- use {
-  --   "yetone/avante.nvim",
-	-- cmd = { 'AvanteAsk', 'AvanteChat', 'AvanteChatNew', 'AvanteHistory' },
-  --   run = 'make',
-  --   config = function()
-  --     require('avante').setup({
-  --       provider = "deepseek",
-  --       providers = {
-  --           deepseek = {
-  --               __inherited_from = "openai",
-  --               api_key_name = "DEEPSEEK_API_KEY",
-  --               endpoint = "https://api.deepseek.com",
-  --               -- model = "deepseek-reasoner",
-  --               model = "deepseek-chat",
-  --           },
-  --       },
-  --     })
-  --   end,
-  --   requires = {
-  --     { 'nvim-lua/plenary.nvim' },
-  --     { 'MunifTanjim/nui.nvim' },
-  --     { 'MeanderingProgrammer/render-markdown.nvim', opt = true },
-	-- }
-  -- }
-
-
-  -- use {
-  --   "olimorris/codecompanion.nvim",
-	-- cmd = {"CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd", "CodeCompanion"},
-	-- event = "InsertEnter",
-	-- config = conf.codecompanion,
-  --   requires = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-treesitter/nvim-treesitter",
-  --   }
-  -- }
-
-
   -- enhance `.` command
   use {"tpope/vim-repeat"}
   use {'tpope/vim-surround',

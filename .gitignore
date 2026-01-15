@@ -143,3 +143,4 @@ nvim/plugin/packer_compiled.lua
 .config/wandb
 .config/uv
 .config/systemd/user/graphical-session.target.wants
+.config/systemd/user

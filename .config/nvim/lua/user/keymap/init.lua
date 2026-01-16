@@ -1,34 +1,29 @@
-local map_key = vim.api.nvim_set_keymap
--- local mapper = require('keymap.mapper')
--- local keymap = mapper.map_cmd
-
-
 --
 -- global_utils
 --
-map_key('n', 'gx', [[<cmd>lua require("user.utils.functions").handle_url()<CR>]], {noremap=true})
-map_key('n', 'st', [[<cmd>lua require("user.utils.functions").toggle_term()<CR>]], {noremap=true})
+-- vim.keymap.set('n', 'gx', [[<cmd>lua require("user.utils.functions").handle_url()<CR>]], {noremap=true}) -- use default
+vim.keymap.set('n', 'st', function() require('flex_plane').toggle('zsh', { desc = "Open term.", position = "bottom"}) end, { desc = "Open term.", noremap=true})
 
 -- nvim tree
-map_key('n', 'tT', "<cmd>NvimTreeFindFileToggle<CR>", {noremap=true})
+vim.keymap.set('n', 'tT', "<cmd>NvimTreeFindFileToggle<CR>", {noremap=true})
 
 -- telescope.nvim
-map_key('n', '<C-f>', "<cmd>Telescope find_files hidden=true follow=true<CR>", {noremap=true})
-map_key('n', '<C-p>', "<cmd>Telescope live_grep<CR>", {noremap=true})
-map_key('n', '<C-c>', "<cmd>Telescope live_grep cwd=%:p:h<CR>", {noremap=true})
-map_key('n', '<C-h>', "<cmd>Telescope oldfiles<CR>", {noremap=true})
--- map_key('n', 'tT', "<cmd>Telescope file_browser hidden=true cwd=%:p:h<CR>", {noremap=true})
--- map_key('n', 'tT', "<cmd>lua require 'telescope'.extensions.file_browser.file_browser({cwd=vim.fn.expand('%:p:h')})<CR>", {noremap=true})
--- map_key('n', 'tT', "<cmd>TelescopeFB<CR>", {noremap=true})
-map_key('n', 'tt', "<cmd>Telescope buffers<CR>", {noremap=true})
--- map_key('n', 'tp', "<cmd>Telescope projects<CR>", {noremap=true})
-map_key('n', '<LEADER>;', "<cmd>Telescope command_history<CR>", {noremap=true})
-map_key('n', '<LEADER>:', "<cmd>Telescope commands<CR>", {noremap=true})
+vim.keymap.set('n', '<C-f>', "<cmd>Telescope find_files hidden=true follow=true<CR>", {noremap=true})
+vim.keymap.set('n', '<C-p>', "<cmd>Telescope live_grep<CR>", {noremap=true})
+vim.keymap.set('n', '<C-c>', "<cmd>Telescope live_grep cwd=%:p:h<CR>", {noremap=true})
+vim.keymap.set('n', '<C-h>', "<cmd>Telescope oldfiles<CR>", {noremap=true})
+-- vim.keymap.set('n', 'tT', "<cmd>Telescope file_browser hidden=true cwd=%:p:h<CR>", {noremap=true})
+-- vim.keymap.set('n', 'tT', "<cmd>lua require 'telescope'.extensions.file_browser.file_browser({cwd=vim.fn.expand('%:p:h')})<CR>", {noremap=true})
+-- vim.keymap.set('n', 'tT', "<cmd>TelescopeFB<CR>", {noremap=true})
+vim.keymap.set('n', 'tt', "<cmd>Telescope buffers<CR>", {noremap=true})
+-- vim.keymap.set('n', 'tp', "<cmd>Telescope projects<CR>", {noremap=true})
+vim.keymap.set('n', '<LEADER>;', "<cmd>Telescope command_history<CR>", {noremap=true})
+vim.keymap.set('n', '<LEADER>:', "<cmd>Telescope commands<CR>", {noremap=true})
 
 -- clipboard-image.nvim
-map_key("n", "<LEADER>p", "<cmd>PasteImg<CR>", { silent = true })
+vim.keymap.set("n", "<LEADER>p", "<cmd>PasteImg<CR>", { silent = true })
 
 -- Outline
-vim.api.nvim_set_keymap('n', 'T', [[:<C-u>SymbolsOutline<CR>]], {noremap=true})
+vim.keymap.set('n', 'T', [[:<C-u>SymbolsOutline<CR>]], {noremap=true})
 
 

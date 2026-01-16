@@ -2,7 +2,7 @@
 -- global_utils
 --
 -- vim.keymap.set('n', 'gx', [[<cmd>lua require("user.utils.functions").handle_url()<CR>]], {noremap=true}) -- use default
-vim.keymap.set('n', 'st', function() require('flex_plane').toggle('zsh', { desc = "Open term.", position = "bottom"}) end, { desc = "Open term.", noremap=true})
+vim.keymap.set('n', 'st', function() require('flex_plane').toggle('zsh', { desc = "Open term.", position = "bottom", default_height=8 }) end, { desc = "Open term.", noremap=true})
 
 -- nvim tree
 vim.keymap.set('n', 'tT', "<cmd>NvimTreeFindFileToggle<CR>", {noremap=true})

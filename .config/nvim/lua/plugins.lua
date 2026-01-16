@@ -535,6 +535,7 @@ local function init()
   use {
     "66RING/flex-plane.nvim",
 	cmd = { "AICode" },
+    event = "BufReadPost *",
     config = function()
       require('flex_plane').setup({
         position = 'right',

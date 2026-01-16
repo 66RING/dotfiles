@@ -54,19 +54,19 @@ TERM = "xterm-256color"
 size = 16
 
 [font.bold]
-# family = "CaskaydiaCove Nerd Font Mono"
-# # NOTE: for mac 
-family = "CaskaydiaMono Nerd Font Propo"
+family = "CaskaydiaCove Nerd Font Mono"
+# # # NOTE: for mac 
+# family = "CaskaydiaMono Nerd Font Propo"
 
 [font.italic]
-# family = "CaskaydiaCove Nerd Font Mono"
-# # NOTE: for mac 
-family = "CaskaydiaMono Nerd Font Propo"
+family = "CaskaydiaCove Nerd Font Mono"
+# # # NOTE: for mac 
+# family = "CaskaydiaMono Nerd Font Propo"
 
 [font.normal]
-# family = "CaskaydiaCove Nerd Font Mono"
-# # NOTE: for mac 
-family = "CaskaydiaMono Nerd Font Propo"
+family = "CaskaydiaCove Nerd Font Mono"
+# # # NOTE: for mac 
+# family = "CaskaydiaMono Nerd Font Propo"
 style = "Bold"
 
 [font.offset]

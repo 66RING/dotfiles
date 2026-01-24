@@ -26,4 +26,4 @@ vim.keymap.set("n", "<LEADER>p", "<cmd>PasteImg<CR>", { silent = true })
 -- Outline
 vim.keymap.set('n', 'T', [[:<C-u>SymbolsOutline<CR>]], {noremap=true})
 
-
+vim.keymap.set("n", "gD", ":Peek gd<CR>", { desc = "Peek preview.", silent = true })

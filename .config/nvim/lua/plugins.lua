@@ -196,6 +196,17 @@ local function init()
     cmd = 'BookmarksToggle'
   }
 
+  use {'66RING/peek.nvim',
+    cmd = 'Peek',
+    config = function()
+      require('peek').setup({
+        width = 60,
+        height = 10,
+        position = 'cursor',
+        border = 'rounded',
+      })
+    end,
+  }
 
   -- enhance
   use {"norcalli/nvim-colorizer.lua",

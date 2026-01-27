@@ -201,8 +201,9 @@ local function init()
     config = function()
       require('peek').setup({
         width = 60,
-        height = 10,
+        height = 15,
         position = 'cursor',
+        -- position = 'top-right',
         border = 'rounded',
       })
     end,

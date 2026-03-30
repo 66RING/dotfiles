@@ -144,3 +144,5 @@ nvim/plugin/packer_compiled.lua
 .config/uv
 .config/systemd/user/graphical-session.target.wants
 .config/systemd/user
+.config/RawTherapee
+.config/darktable

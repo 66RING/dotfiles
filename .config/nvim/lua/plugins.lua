@@ -557,7 +557,7 @@ local function init()
       })
 
       vim.api.nvim_create_user_command('AICode', function()
-        require('flex_plane').toggle('claude', {
+        require('flex_plane').toggle('claude --enable-auto-mode', {
           desc = "Claude cli.",
           position = "top",
         })

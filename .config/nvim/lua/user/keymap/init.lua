@@ -27,3 +27,11 @@ vim.keymap.set("n", "<LEADER>p", "<cmd>PasteImg<CR>", { silent = true })
 vim.keymap.set('n', 'T', [[:<C-u>SymbolsOutline<CR>]], {noremap=true})
 
 vim.keymap.set("n", "gD", ":Peek gd<CR>", { desc = "Peek preview.", silent = true })
+
+
+vim.api.nvim_create_user_command('LG', function() 
+  require('flex_plane').toggle('lazygit', { desc = "Open lazygit.", position = "bottom", default_height=9999}) 
+end, {
+  desc = 'Opens lazygit.',
+})
+

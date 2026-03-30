@@ -61,7 +61,7 @@ set fileencodings=utf-8,gbk,cp936,ucs-bom,utf-16,big5,gb18030,latin1
 " set termguicolors
 set number
 set numberwidth=1
-set relativenumber
+" set relativenumber
 set cursorline
 set showcmd
 set wildmenu

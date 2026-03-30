@@ -20,9 +20,11 @@ alias c='clear' \
 	sudo='doas' \
 	sctl='systemctl' \
 	bctl='bluetoothctl'  \
-	yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+	yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"' \
 	zsh='exec zsh'
-#
+
+alias pip='uv pip'
+
 # APPs
 alias yg='you-get' \
 	top='htop' \

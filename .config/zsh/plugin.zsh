@@ -35,7 +35,9 @@ source $HOME/.config/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighti
 source $HOME/.config/zsh/fzf.zsh
 source $HOME/.config/zsh/plugins/fzf-tab/fzf-tab.zsh
 source $HOME/.config/zsh/plugins/zsh-autopair/autopair.zsh
-# autopair-init
+# uv
+source $HOME/.config/zsh/plugins/uv_manager/uv_manager.sh
+
 
 
 #************************

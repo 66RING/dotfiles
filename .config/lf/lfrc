@@ -27,8 +27,8 @@ cmd quit_back ${{
 	  touch ~/.local/share/lf/marks
 	fi
 
-    num=$(sed -n "/^'/=" ~/.local/share/lf/marks)
-    sed -i "${num}c ':$(pwd)" ~/.local/share/lf/marks
+    # num=$(sed -n "/^'/=" ~/.local/share/lf/marks)
+    # sed -i "${num}c ':$(pwd)" ~/.local/share/lf/marks
 
     lf -remote "send $id cd $LF_BACK"
     lf -remote "send $id quit"

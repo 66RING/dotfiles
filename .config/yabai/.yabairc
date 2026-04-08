@@ -54,6 +54,10 @@ yabai -m config                                 \
     insert_feedback_color        0xAARRGGBB      \
 
 
+yabai -m rule --add app="Feishu" manage=off
+yabai -m rule --add app="Lark" manage=off
+yabai -m rule --add app="飞书" manage=off
+yabai -m rule --add app="飞连" manage=off
 
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"

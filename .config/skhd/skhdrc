@@ -79,7 +79,7 @@
 # terminal emulator
 alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 
-alt - 0x32 : yabai -m window --toggle terminal || /Applications/Alacritty.app/Contents/MacOS/alacritty --title "AlacrittyScratchpad"
+alt - 0x32 : yabai -m window --toggle sp_terminal || /Applications/Alacritty.app/Contents/MacOS/alacritty --title "AlacrittyScratchpad"
 
 # chromuim launcher
 alt - c : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"

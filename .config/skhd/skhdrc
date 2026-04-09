@@ -200,7 +200,8 @@ cmd + alt - k : yabai -m window --resize top:0:20
 # toggle window zoom
 # fullscreen at parent node
 # alt - d : yabai -m window --toggle zoom-parent
-alt - m : yabai -m window --toggle zoom-fullscreen
+# alt - m : yabai -m window --toggle zoom-fullscreen
+alt - m : yabai -m window --toggle windowed-fullscreen
 
 # toggle window split type
 # alt - e : yabai -m window --toggle split

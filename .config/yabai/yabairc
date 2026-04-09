@@ -58,6 +58,7 @@ yabai -m rule --add app="Feishu" manage=off
 yabai -m rule --add app="Lark" manage=off
 yabai -m rule --add app="飞书" manage=off
 yabai -m rule --add app="飞连" manage=off
+yabai -m rule --add app="系统设置" manage=off
 yabai -m rule --add title="AlacrittyScratchpad" scratchpad=sp_terminal grid=6:6:1:1:4:4 sticky=on
 
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"

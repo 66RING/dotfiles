@@ -7,6 +7,7 @@ vim.lsp.enable("gopls")
 vim.keymap.del("v", "in")
 vim.keymap.del("o", "in")
 
+
 vim.api.nvim_create_autocmd("LspAttach", {
     -- group = vim.api.nvim_create_augroup("SetupLSP", {}),
     callback = function(event)

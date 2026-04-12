@@ -105,7 +105,7 @@ local function init()
       vim.cmd('highlight FoldColumn ctermbg=NONE guibg=NONE')
 
     end,
-    requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
+    -- requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
   }
   use {
     "projekt0n/github-nvim-theme",
@@ -116,7 +116,14 @@ local function init()
 
   use{'nvim-treesitter/nvim-treesitter',
     event = 'BufRead *',
-    config = conf.nvim_treesitter,
+    -- config = conf.nvim_treesitter,
+    config = function()
+      require('nvim-treesitter').setup {
+        -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
+        install_dir = vim.fn.stdpath('data') .. '/site'
+      }
+    end
+    -- branch = "master",
   }
 
   -- we don't need this any more. we have lspsage already
@@ -130,9 +137,34 @@ local function init()
   -- }
 
   use {'nvim-treesitter/nvim-treesitter-textobjects',
-	opt = true,
+    event = 'BufRead *',
 	config = function()
-	  require("nvim-treesitter.configs").setup {
+	  require("nvim-treesitter-textobjects").setup {
+        select = {
+          enable = true,
+
+          -- Automatically jump forward to textobj, similar to targets.vim
+          lookahead = true,
+
+          keymaps = {
+            -- You can use the capture groups defined in textobjects.scm
+            ["af"] = "@function.outer",
+            ["hf"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["hc"] = "@class.inner",
+          },
+          -- You can choose the select mode (default is charwise 'v')
+          selection_modes = {
+            ['@parameter.outer'] = 'v', -- charwise
+            ['@function.outer'] = 'V', -- linewise
+            ['@class.outer'] = '<c-v>', -- blockwise
+          },
+          -- If you set this to `true` (default is `false`) then any textobject is
+          -- extended to include preceding xor succeeding whitespace. Succeeding
+          -- whitespace has priority in order to act similarly to eg the built-in
+          -- `ap`.
+          include_surrounding_whitespace = true,
+        },
         textobjects = {
           move = {
             enable = true,
@@ -157,8 +189,8 @@ local function init()
         },
 	  }
 	end,
-    after = "nvim-treesitter",
-    requires = "nvim-treesitter/nvim-treesitter",
+    -- after = "nvim-treesitter",
+    -- requires = "nvim-treesitter/nvim-treesitter",
   }
 
   use {'66RING/bufferline.nvim',
@@ -258,7 +290,7 @@ local function init()
 	  vim.g.mkdp_auto_close = 0
 	  vim.g.mkdp_browser = os.getenv("BROWSER")
 	end,
-    run = 'sh -c "cd app && yarn install"'
+    run = 'sh -c "cd app && npx --yes yarn install"'
   }
 
   use {'dhruvasagar/vim-table-mode',
@@ -392,31 +424,31 @@ local function init()
   -- virt text type hint
   -- lsp partial support
 
-  use {'nvim-treesitter/playground',
-	cmd = "TSPlaygroundToggle",
-	config = function ()
-	  require "nvim-treesitter.configs".setup {
-		playground = {
-		  enable = true,
-		  disable = {},
-		  updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-		  persist_queries = false, -- Whether the query persists across vim sessions
-		  keybindings = {
-			toggle_query_editor = 'o',
-			toggle_hl_groups = 'h',
-			toggle_injected_languages = 't',
-			toggle_anonymous_nodes = 'a',
-			toggle_language_display = 'H',
-			focus_language = 'f',
-			unfocus_language = 'F',
-			update = 'R',
-			goto_node = '<cr>',
-			show_help = '?',
-		  },
-		}
-	  }
-	end
-  }
+  -- use {'nvim-treesitter/playground',
+	-- cmd = "TSPlaygroundToggle",
+	-- config = function ()
+	  -- require "nvim-treesitter.configs".setup {
+		-- playground = {
+		  -- enable = true,
+		  -- disable = {},
+		  -- updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+		  -- persist_queries = false, -- Whether the query persists across vim sessions
+		  -- keybindings = {
+			-- toggle_query_editor = 'o',
+			-- toggle_hl_groups = 'h',
+			-- toggle_injected_languages = 't',
+			-- toggle_anonymous_nodes = 'a',
+			-- toggle_language_display = 'H',
+			-- focus_language = 'f',
+			-- unfocus_language = 'F',
+			-- update = 'R',
+			-- goto_node = '<cr>',
+			-- show_help = '?',
+		  -- },
+		-- }
+	  -- }
+	-- end
+  -- }
 
   -- git commit diff view
   use { 'sindrets/diffview.nvim',

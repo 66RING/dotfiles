@@ -48,7 +48,7 @@ map gH  <Nop>
 map g<C-h>  <Nop>
 noremap <C-u>  <Nop>
 noremap <C-d>  <Nop>
-noremap <C-p>  <Nop>
+" noremap <C-p>  <Nop>
 noremap <C-n>  <Nop>
 noremap <C-z>  <Nop>
 
@@ -121,6 +121,7 @@ inoremap <C-l> <ESC>A
 " inoremap <C-h> <ESC>I
 " inoremap <C-l> <ESC>A
 
+nnoremap <silent> ,g :call setreg('+', expand('%:p'))<CR>
 noremap Y "+y
 " :[range]y[ank] [x]
 nnoremap yY :%y+<CR> 
@@ -235,6 +236,7 @@ if has('nvim')
 
   " enable lsp
   lua require('lsp_init')
+  lua require('nvim_init')
 
   "========================
   " packer.nvim

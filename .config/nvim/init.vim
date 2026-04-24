@@ -121,15 +121,22 @@ inoremap <C-l> <ESC>A
 " inoremap <C-h> <ESC>I
 " inoremap <C-l> <ESC>A
 
-nnoremap <silent> ,g :call setreg('+', expand('%:p'))<CR>
+nnoremap <silent> ,g :call setreg('+', expand('%'))<CR>
 noremap Y "+y
 " :[range]y[ank] [x]
-nnoremap yY :%y+<CR> 
-" autocmd TextYankPost * call system("xsel -ib", getreg('+'))
-autocmd TextYankPost * call system("wl-copy --primar", getreg('+'))
+nnoremap yY :%y+<CR>
+
+if executable('pbcopy')
+  autocmd TextYankPost * call system("pbcopy", getreg('+'))
+elseif executable('xsel')
+  autocmd TextYankPost * call system("xsel -ib", getreg('+'))
+elseif executable('wl-copy')
+  autocmd TextYankPost * call system("wl-copy --primary", getreg('+'))
+endif
+
 noremap P "+p
 " m for join
-noremap m J  
+noremap m J
 noremap <silent> M :exec ":mark "nr2char(getchar())<CR>
 nmap ' :exec "let save_cursor=getcurpos()" \| exec 'BookmarksToggle' \| call setpos("''", save_cursor)<CR>
 noremap <silent> <LEADER><CR> :nohlsearch<CR>
@@ -232,7 +239,11 @@ if has('nvim')
   " autocmd FileType json syntax match Comment +\/\/.\+$+
 
   " fcitx auto switch
+if executable('im-select')
+  autocmd InsertLeave * lua os.execute("im-select com.apple.keylayout.ABC")
+elseif executable('fcitx')
   autocmd InsertLeave * lua require("user.utils.functions").fcitx2en()
+endif
 
   " enable lsp
   lua require('lsp_init')

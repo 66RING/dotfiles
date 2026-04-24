@@ -132,8 +132,8 @@ function config.nvim_bufferline()
   map_key('n', 'r<BS>', [[:lua if vim.tbl_count(vim.fn.getbufinfo({buflisted=true}))>1 then vim.cmd("Bdelete") end <CR>]], opts)
 end
 
-function config.symbols_outline()
-  require("symbols-outline").setup({
+function config.outline()
+  require("outline").setup({
 	highlight_hovered_item = false,
 	show_guides = true,
 	auto_preview = false,

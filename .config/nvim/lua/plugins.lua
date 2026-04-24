@@ -659,9 +659,9 @@ local function init()
     end
   }
 
-  use {'simrat39/symbols-outline.nvim',
-	cmt = 'SymbolsOutline',
-	config = conf.symbols_outline,
+  use {'hedyhli/outline.nvim',
+    cmd = { "Outline", "OutlineOpen" },
+	config = conf.outline,
   }
 
   --TODO: update nvim

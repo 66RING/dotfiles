@@ -62,6 +62,7 @@ yabai -m rule --add app="飞连" manage=off
 yabai -m rule --add app="系统设置" manage=off
 yabai -m rule --add app="WeGame" manage=off
 yabai -m rule --add app="访达" manage=off
+yabai -m rule --add app="网易云音乐" manage=off
 yabai -m rule --add app="CC Switch" manage=off
 yabai -m rule --add title="AlacrittyScratchpad" scratchpad=sp_terminal grid=6:6:1:1:4:4 sticky=on
 

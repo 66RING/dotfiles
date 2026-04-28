@@ -122,6 +122,8 @@ inoremap <C-l> <ESC>A
 " inoremap <C-l> <ESC>A
 
 nnoremap <silent> ,g :call setreg('+', expand('%'))<CR>
+xnoremap <silent> ,g :<C-u>call setreg('+', expand('%') . ':' . line("'<") . (line("'<") == line("'>") ? '' : '-' . line("'>")))<CR>
+
 noremap Y "+y
 " :[range]y[ank] [x]
 nnoremap yY :%y+<CR>

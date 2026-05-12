@@ -123,10 +123,12 @@ inoremap <C-l> <ESC>A
 
 nnoremap <silent> ,g :call setreg('+', expand('%'))<CR>
 xnoremap <silent> ,g :<C-u>call setreg('+', expand('%') . ':' . line("'<") . (line("'<") == line("'>") ? '' : '-' . line("'>")))<CR>
+nnoremap <silent> ,G :call setreg('+', expand('%:p'))<CR>
+xnoremap <silent> ,G :<C-u>call setreg('+', expand('%:p') . ':' . line("'<") . (line("'<") == line("'>") ? '' : '-' . line("'>")))<CR>
 
-noremap Y "+y
+noremap <silent> Y "+y
 " :[range]y[ank] [x]
-nnoremap yY :%y+<CR>
+nnoremap <silent> yY :%y+<CR>
 
 if executable('pbcopy')
   autocmd TextYankPost * call system("pbcopy", getreg('+'))

@@ -405,7 +405,7 @@ local function init()
 	cmt = 'Gitsigns',
 	config = function()
 	  require('gitsigns').setup {
-		signcolumn = false,
+		signcolumn = true,
 	  }
       vim.api.nvim_set_keymap('n', '<LEADER>gf', [[:Gitsigns setqflist<CR>]], {noremap=true})
       vim.api.nvim_set_keymap('n', '<LEADER>gh', [[:Gitsigns preview_hunk<CR>]], {noremap=true})
@@ -592,6 +592,7 @@ local function init()
         require('flex_plane').toggle('claude --enable-auto-mode', {
           desc = "Claude cli.",
           position = "top",
+          default_height = 30,
         })
       end , { desc = 'Open claude code.' })
     end,
